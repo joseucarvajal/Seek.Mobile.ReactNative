@@ -6,9 +6,9 @@ export default {
     screens: {
       Root: {
         screens: {
-          TabOne: {
+          Settings: {
             screens: {
-              TabOneScreen: 'one',
+              SettingsScreen: 'settings',
             },
           },
           TabTwo: {
@@ -18,6 +18,10 @@ export default {
           },
         },
       },
+      Home: {},
+      SignUp: {},
+      Profile: {},
+      Settings: {},
       NotFound: '*',
     },
   },
