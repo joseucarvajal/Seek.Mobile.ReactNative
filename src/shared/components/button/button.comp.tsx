@@ -4,6 +4,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Layout, Colors } from '../../../constants'
 
 export interface IArButtonProps {
+    type?: ButtonType;
+    color?: ColorType;
     small?: any;
     large?: any;
     social?: any;
@@ -15,11 +17,11 @@ export interface IArButtonProps {
     onPress?: any;
 }
 
+export type ButtonType = "chip" | "social" | "large" | "link" | "gradient";
+export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
+
 const ArButton: React.FC<IArButtonProps> = ({
-    small,
-    large,
-    social,
-    gradient,
+    type,
     shadow,
     disabled,
     children,
@@ -29,10 +31,10 @@ const ArButton: React.FC<IArButtonProps> = ({
 
     const styleButton = [
         styles.button,
-        small && styles.smallButton,
-        large && styles.largeButton,
-        gradient && styles.largeButton,
-        social && styles.socialButton,
+        type === 'chip' && styles.smallButton,
+        type === 'large' && styles.largeButton,
+        type === 'social' && styles.socialButton,
+        type === 'gradient' && styles.largeButton,
         disabled && styles.disabled,
         shadow && styles.shadow
     ];
@@ -40,10 +42,10 @@ const ArButton: React.FC<IArButtonProps> = ({
     return (
         <>
             {
-                gradient ?
+                type === 'gradient' ?
                 <View style={{ borderRadius: Layout.button_radius }}>
                     <LinearGradient
-                        colors={[Colors.primary, Colors.secondary]}
+                        colors={disabled ? [Colors.muted, Colors.default] : [Colors.primary, Colors.secondary]}
                         start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
                         style={styleButton}
                         >

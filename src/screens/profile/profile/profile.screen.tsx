@@ -16,7 +16,7 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Steper />
         </View>
         <View style={styles.footerView}>
-          <Button gradient shadow disabled>
+          <Button type='gradient' shadow>
             <Text style={styles.textLabel}>CONTINUE</Text> 
           </Button>
         </View>
