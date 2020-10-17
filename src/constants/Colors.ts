@@ -9,6 +9,8 @@ export default {
   danger: '#FF3636',
   primary: "#00C1DE",
   secondary: "#60D8EA",
+  tertiary: "#9E9E9E",
+  quaternary: "#c4c6c8",
   black: '#000000',
   white: '#ffffff',
   muted: '#9E9E9E',

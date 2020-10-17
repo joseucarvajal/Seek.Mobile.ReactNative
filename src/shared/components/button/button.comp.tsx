@@ -6,10 +6,7 @@ import { Layout, Colors } from '../../../constants'
 export interface IArButtonProps {
     type?: ButtonType;
     color?: ColorType;
-    small?: any;
-    large?: any;
-    social?: any;
-    gradient?: any;
+    icon?: any;
     shadow?: any;
     disabled?: any;
     children?: React.ReactNode;
@@ -22,6 +19,7 @@ export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 
 const ArButton: React.FC<IArButtonProps> = ({
     type,
+    color,
     shadow,
     disabled,
     children,
@@ -36,7 +34,8 @@ const ArButton: React.FC<IArButtonProps> = ({
         type === 'social' && styles.socialButton,
         type === 'gradient' && styles.largeButton,
         disabled && styles.disabled,
-        shadow && styles.shadow
+        shadow && styles.shadow,
+        color && { backgroundColor: Colors[color]}
     ];
     
     return (
