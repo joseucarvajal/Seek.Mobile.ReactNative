@@ -1,20 +1,28 @@
-import React, { MouseEvent } from 'react';
-import { Button, StyleSheet, View, TouchableOpacity } from 'react-native'
+import React from 'react';
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Layout, Colors } from '../../../constants'
 
 export interface IArButtonProps {
+    type?: ButtonType;
+    color?: ColorType;
     small?: any;
     large?: any;
+    social?: any;
+    gradient?: any;
+    shadow?: any;
     disabled?: any;
     children?: React.ReactNode;
     props?: any;
     onPress?: any;
 }
 
+export type ButtonType = "chip" | "social" | "large" | "link" | "gradient";
+export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
+
 const ArButton: React.FC<IArButtonProps> = ({
-    small,
-    large,
+    type,
+    shadow,
     disabled,
     children,
     onPress,
@@ -23,29 +31,49 @@ const ArButton: React.FC<IArButtonProps> = ({
 
     const styleButton = [
         styles.button,
-        small && styles.smallButton,
-        large && styles.largeButton,
-        disabled && styles.disabled
+        type === 'chip' && styles.smallButton,
+        type === 'large' && styles.largeButton,
+        type === 'social' && styles.socialButton,
+        type === 'gradient' && styles.largeButton,
+        disabled && styles.disabled,
+        shadow && styles.shadow
     ];
     
     return (
-        <View style={{ borderRadius: Layout.button_radius }}>
-            <LinearGradient
-                colors={[Colors.primary, Colors.secondary]}
-                start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
-                style={styleButton}
-                >
-                <TouchableOpacity 
-                    onPress={ disabled ? null: onPress} 
-                    style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        alignItems: "center"
-                    }}>
-                    {children}
-                </TouchableOpacity> 
-            </LinearGradient>
-        </View>
+        <>
+            {
+                type === 'gradient' ?
+                <View style={{ borderRadius: Layout.button_radius }}>
+                    <LinearGradient
+                        colors={disabled ? [Colors.muted, Colors.default] : [Colors.primary, Colors.secondary]}
+                        start={{x: 0.0, y: 1.0}} end={{x: 1.0, y: 1.0}}
+                        style={styleButton}
+                        >
+                        <TouchableOpacity 
+                            onPress={ disabled ? null: onPress} 
+                            style={{
+                                flex: 1,
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}>
+                            {children}
+                        </TouchableOpacity> 
+                    </LinearGradient>
+                </View>
+                :
+                <View style={styleButton}>
+                    <TouchableOpacity 
+                        onPress={ disabled ? null: onPress} 
+                        style={{
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center"
+                        }}>
+                        {children}
+                    </TouchableOpacity>
+                </View>
+            }
+        </>
     );
 }
 
@@ -53,14 +81,27 @@ export default ArButton;
 
 const styles = StyleSheet.create({
     button: {
-        width: Layout.window.width,
+        width: Layout.window.width - Layout.base*2,
+        backgroundColor: Colors.default,
         height: 40
     },
     smallButton: {
-      width: Layout.window.width * 0.50
+      width: 100,
+      backgroundColor: Colors.active,
+      height: 32,
+      borderRadius: Layout.chips_radius
     },
     largeButton: {
       width: Layout.window.width - Layout.base*2,
+      backgroundColor: Colors.primary,
+      height: 50,
+      borderRadius: Layout.button_radius
+    },
+    socialButton: {
+      width: Layout.window.width - Layout.base*2,
+      backgroundColor: Colors.active,
+      height: 48,
+      borderRadius: Layout.socialbutton_radius
     },
     shadow: {        
       shadowColor: 'black',
