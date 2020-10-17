@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components';
-import { Colors } from "../../../constants";
+import { Colors, Layout } from "../../../constants";
 import { Button } from '../../../shared';
 
 export interface IProfileProps {}
@@ -10,12 +10,16 @@ export interface IProfileProps {}
 const Profile: React.FC<IProfileProps> = ({}) => {
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
-        <Steper />
-        <Button large>
-          <Text style={styles.textLabel}>CONTINUE</Text> 
-        </Button>
+        <View style={styles.headerView}>
+          <Steper />
+        </View>
+        <View style={styles.footerView}>
+          <Button gradient shadow disabled>
+            <Text style={styles.textLabel}>CONTINUE</Text> 
+          </Button>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -26,9 +30,23 @@ export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: Colors.white
+  },
+  headerView: {
+    width: '100%', 
+    backgroundColor: Colors.white, 
+    justifyContent: 'flex-start', 
+    position: 'absolute',
+    top: 5
+  },
+  footerView:{
+    width: '100%', 
+    height: 60, 
+    backgroundColor: Colors.white, 
+    justifyContent: 'center', 
     alignItems: 'center',
-    backgroundColor: '#ffffff',
+    position: 'absolute',
+    bottom: 0
   },
   stepIndicator: {
     marginVertical: 50,

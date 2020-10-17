@@ -11,7 +11,9 @@ export default {
   secondary: "#60D8EA",
   black: '#000000',
   white: '#ffffff',
-  muted: '#CDD4E0',
+  muted: '#9E9E9E',
+  active: '#c4c6c8',
+  background: '#ffffff',
   light: {
     text: '#000',
     background: '#fff',
