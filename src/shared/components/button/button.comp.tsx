@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, ViewProps } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
-import { Layout, Colors } from '../../../constants'
+import { Layout, Colors } from '../../../constants';
 
-export interface IArButtonProps {
+export interface IArButtonProps extends  ViewProps {
     type?: ButtonType;
     color?: ColorType;
     icon?: any;
@@ -24,11 +24,13 @@ const ArButton: React.FC<IArButtonProps> = ({
     disabled,
     children,
     onPress,
+    style,
     ...props
 }) => {
 
     const styleButton = [
         styles.button,
+        style,
         type === 'chip' && styles.smallButton,
         type === 'large' && styles.largeButton,
         type === 'social' && styles.socialButton,
@@ -67,7 +69,7 @@ const ArButton: React.FC<IArButtonProps> = ({
                             flex: 1,
                             justifyContent: "center",
                             alignItems: "center"
-                        }}>
+                        }}>                        
                         {children}
                     </TouchableOpacity>
                 </View>
