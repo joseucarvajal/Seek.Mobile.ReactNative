@@ -1,21 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-//import { Steper } from '../../../components';
+import { Steper } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
-import { Button } from '../../../shared';
+import { Button, ToggleButton } from '../../../shared';
 
 export interface IProfileProps {}
 
 const Profile: React.FC<IProfileProps> = ({}) => {
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.headerView}>
-          {/* 
           <Steper />
-          */}
+          <ToggleButton value={true} color='primary'/>
+          <ToggleButton value={false} color='secondary'/>
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>

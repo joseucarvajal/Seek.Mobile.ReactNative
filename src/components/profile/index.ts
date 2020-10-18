@@ -1,4 +1,4 @@
-import Steper from './profile/steper/steper.comp'
+import Steper from './steper/steper.comp'
 
 export {
     Steper

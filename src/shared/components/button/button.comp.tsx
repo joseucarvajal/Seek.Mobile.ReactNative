@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity, ViewProps } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Layout, Colors } from '../../../constants';
 
-export interface IArButtonProps extends  ViewProps {
+export interface IArButtonProps extends ViewProps {
     type?: ButtonType;
     color?: ColorType;
     icon?: any;
