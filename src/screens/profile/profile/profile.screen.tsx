@@ -2,8 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
-import { Colors, Layout } from "../../../constants";
-import { Button, ToggleButton } from '../../../shared';
+import { Colors } from "../../../constants";
+import { Button, Input } from '../../../shared';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export interface IProfileProps {}
 
@@ -13,8 +14,22 @@ const Profile: React.FC<IProfileProps> = ({}) => {
       <View style={styles.container}>
         <View style={styles.headerView}>
           <Steper />
-          <ToggleButton value={true} color='primary'/>
-          <ToggleButton value={false} color='secondary'/>
+        </View>
+        <View style={styles.body}>
+          <Input 
+            left
+            color='primary'
+            borderless 
+            placeholder='Nickname'
+            icon="user"
+            iconColor={Colors.primary}
+            iconSize={24}
+            textInputStyle={styles.textInput}
+          />
+          <Input color='quaternary' borderless placeholder='First Name' textInputStyle={styles.textFisrtNameInput}/>
+          <Input color='quaternary' borderless placeholder='Last Name'/>
+          <Input color='quaternary' borderless placeholder='Password' password viewPass/>
+          <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass/>
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
@@ -39,6 +54,13 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start', 
     position: 'absolute',
     top: 5
+  },
+  body: {
+    width: '100%', 
+    top: 100, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'absolute',
   },
   footerView:{
     width: '100%', 
@@ -74,5 +96,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: '500',
     color: Colors.white,
+  },
+  textInput: {
+    fontSize: 22,
+    fontWeight: '500',
+    color: Colors.primary,
+  },
+  textFisrtNameInput: {
+    fontSize: 24,
+    fontWeight: '500',
+    color: Colors.black,
   }
 });

@@ -15,5 +15,14 @@ export default {
   button_radius: 25,
   dropdown_radius: 3,
   socialbutton_radius: 5,
-  chips_radius: 16
+  chips_radius: 16,
+  input_radius: 0,
+  input_border_width: 3,
+  input_height: 50,
+  input_text_size: 17,
+  input_label_text_size: 12,
+  input_vertical_text: 14,
+  input_vertical_label: 8,
+  input_help_text: 8,
+  input_rounded: 5,
 };
