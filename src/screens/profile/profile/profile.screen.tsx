@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Steper } from '../../../components';
+//import { Steper } from '../../../components';
 import { Colors, Layout } from "../../../constants";
 import { Button } from '../../../shared';
 
@@ -13,7 +13,9 @@ const Profile: React.FC<IProfileProps> = ({}) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.headerView}>
+          {/* 
           <Steper />
+          */}
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
