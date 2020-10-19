@@ -1,10 +1,48 @@
 import { StyleSheet, TextStyle } from "react-native";
 import Colors from "./Colors";
 
-type TFontNames = {Campton: string};
+type TFontNames = {
+  Campton: string;
+  CamptonBlack: string;
+  CamptonBlackItalic: string;
+  CamptonBold: string;
+  CamptonBoldItalic: string;
+  CamptonBook: string;
+  CamptonBookItalic: string;
+  CamptonExtraBold: string;
+  CamptonExtraBoldItalic: string;
+  CamptonExtraLight: string;
+  CamptonExtraLightItalic: string;
+  CamptonLight: string;
+  CamptonLightItalic: string;
+  CamptonMedium: string;
+  CamptonMediumItalic: string;
+  CamptonSemiBold: string;
+  CamptonSemiBoldItalic: string;
+  CamptonThin: string;
+  CamptonThinItalic: string;
+};
 
 const FontNames: TFontNames = {
   Campton: "Campton",
+  CamptonBlack: "Campton-Black",
+  CamptonBlackItalic: "Campton-BlackItalic",
+  CamptonBold: "Campton-Bold",
+  CamptonBoldItalic: "Campton-BoldItalic",
+  CamptonBook: "Campton-Book",
+  CamptonBookItalic: "Campton-BookItalic",
+  CamptonExtraBold: "Campton-ExtraBold",
+  CamptonExtraBoldItalic: "Campton-ExtraBoldItalic",
+  CamptonExtraLight: "Campton-ExtraLight",
+  CamptonExtraLightItalic: "Campton-ExtraLightItalic",
+  CamptonLight: "Campton-Light",
+  CamptonLightItalic: "Campton-LightItalic",
+  CamptonMedium: "Campton-Medium",
+  CamptonMediumItalic: "Campton-MediumItalic",
+  CamptonSemiBold: "Campton-SemiBold",
+  CamptonSemiBoldItalic: "Campton-SemiBoldItalic",
+  CamptonThin: "Campton-Thin",
+  CamptonThinItalic: "Campton-ThinItalic",
 };
 
 const fontStyles = StyleSheet.create({

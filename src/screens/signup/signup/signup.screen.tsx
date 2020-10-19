@@ -14,20 +14,13 @@ import {
 } from "../../../components/signup/";
 import signupStyles from "../../../components/signup/signup.styles";
 import { useNavigation } from "@react-navigation/native";
-import { deviceHeight, deviceWidth } from "../../../constants";
 
 export interface ISignUpProps {}
 
 const SignUp: React.FC<ISignUpProps> = ({}) => {
 
   const navigation = useNavigation();
-
-
-  const height = 100;
-  const width = 50;
-  const realHeight = (height*deviceHeight)/100;
-  const realWidth = (width*deviceWidth)/100;
-
+  const width = 45;
   
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -45,6 +38,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
         >
         </Image>
       </View>
+      <SeekQLogo/>
 
 
         <Text style={signupStyles.normalCenteredParagraph}>
