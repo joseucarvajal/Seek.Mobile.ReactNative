@@ -24,7 +24,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
 
   const height = 100;
-  const width = 10;
+  const width = 50;
   const realHeight = (height*deviceHeight)/100;
   const realWidth = (width*deviceWidth)/100;
 
@@ -34,7 +34,6 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
       <View style={signUpStyles.screenContainer}>
 
       <View style={{
-        borderWidth: 2, 
         width:'100%', 
         flex: 0.1*(width/30), 
         justifyContent:'center',

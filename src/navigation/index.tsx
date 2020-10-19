@@ -7,6 +7,7 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import Profile from '../screens/profile/profile/profile.screen';
+import Components from '../screens/components/components.screen';
 import Home from '../screens/home/home-screen';
 
 import  {
@@ -43,7 +44,7 @@ function RootNavigator() {
 
 
       {/*Profile screens*/}
-      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Profile" component={Components} />
 
       {/*Signup screens*/}
       <Stack.Screen name="SignUp" component={SignUp} />

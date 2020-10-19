@@ -1,8 +1,9 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../components/profile';
-import { Colors } from "../../constants";
+import { Colors, Layout } from "../../constants";
 import { Button, Input, Select, ToggleButton, Text, MenuItem } from '../../shared';
 
 export interface IProfileProps {}
@@ -10,12 +11,10 @@ export interface IProfileProps {}
 const Profile: React.FC<IProfileProps> = ({}) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <View style={styles.headerView}>
-          <Steper />
-        </View>
-        <View style={styles.body}>
-          <MenuItem items={items} />
+      <ScrollView>
+        <Steper />
+        <MenuItem items={items} />
+        <View style={styles.container}>
           <Input 
             left
             color='primary'
@@ -70,13 +69,11 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Button type='link'>
             <Text underline bold style={styles.linkButton}>Continue using email Instead</Text> 
           </Button>
-        </View>
-        <View style={styles.footerView}>
           <Button type='gradient' shadow>
             <Text style={styles.textLabel}>CONTINUE</Text> 
           </Button>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -85,18 +82,16 @@ export default Profile;
 
 const items = [
   { title: "Edit Basic Info", id: "editBasicInfo", type: "button", color: Colors.neutral },
-  { title: "Profile", id: "profile", type: "button", color: Colors.white },
-  { title: "Notifications", id: "notifications", type: "button", color: Colors.neutral },
   { title: "Modes", id: "modes", type: "button", color: Colors.white },
   { title: "Incoming Chat", id: "incomingChat", type: "toggle", color: Colors.neutral },
   { title: "Temperature meter change", id: "temperatureMeter", type: "toggle", color: Colors.white },
-  { title: "In app vibrations", id: "vibration", type: "toggle", color: Colors.neutral },
 ];
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    padding: Layout.base
   },
   headerView: {
     width: '100%', 
