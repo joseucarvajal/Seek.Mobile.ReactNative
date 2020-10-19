@@ -3,7 +3,8 @@ import { StyleSheet, View, FlatList, TouchableOpacity, ScrollView } from "react-
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { Text, ToggleButton } from '../../index'
+import Text from '../text/text.comp'
+import ToggleButton from '../../components/toggle-button/toggle-button.comp'
 import { Layout, Colors } from '../../../constants'
 
 interface IMenuItemProps {
@@ -44,15 +45,11 @@ renderItem = ({ item }: { item: any }) => (
 
 render() {
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={true}
-      contentContainerStyle={styles.settings}>
       <FlatList
         data={this.props.items}
         keyExtractor={(item, index) => item.id}
         renderItem={this.renderItem}
       />
-    </ScrollView>
   )
 }
 }
