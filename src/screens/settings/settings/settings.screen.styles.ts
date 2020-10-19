@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import Fonts from "../../../constants/Fonts";
+import FontNames from "../../../constants/Fonts";
 
 const colors = {
   title: '#00B5D2',
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: Fonts.Campton,
+    fontFamily: FontNames.Campton,
     fontStyle: 'normal',
     fontWeight: 'bold',
     fontSize: 20,

@@ -18,10 +18,23 @@ export default {
           },
         },
       },
+      
       Home: {},
+
+      //Sign-up screens
       SignUp: {},
+      SignUpEmail: {},
+      SignUpPhone: {},
+      SignUpVerificationCode: {},
+      SignUpReady: {},
+
+      //Profile screens
       Profile: {},
+
+      //Settings screens
       Settings: {},
+
+
       NotFound: '*',
     },
   },

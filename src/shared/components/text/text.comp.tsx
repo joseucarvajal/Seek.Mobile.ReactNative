@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import { StyleSheet, TextStyle } from "react-native";
 import { Colors } from "../../../constants";
 import { Text } from "../../../components/Themed";
-import Fonts from "../../../constants/Fonts";
+import FontNames from "../../../constants/Fonts";
 
 export type FontType = "Font16Line18" | "Font14Line16" | "TertiaryButton" | "Heading-1";
 
@@ -40,7 +40,7 @@ export default SText;
 
 const styles = StyleSheet.create({
   text: {
-    fontFamily: Fonts.Campton,
+    fontFamily: FontNames.Campton,
     color: Colors.fontNormal,
   },
   font16Line18: {

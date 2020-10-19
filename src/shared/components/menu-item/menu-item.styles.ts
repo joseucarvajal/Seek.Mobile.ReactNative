@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import Fonts from "../../../constants/Fonts";
+import FontNames from "../../../constants/Fonts";
 
 const colors = {
   text: '#4f4f4f99',
@@ -9,7 +9,7 @@ const colors = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontFamily: Fonts.Campton,
+    fontFamily: FontNames.Campton,
     backgroundColor: colors.container,
     justifyContent: 'space-between',
     alignItems: 'center',

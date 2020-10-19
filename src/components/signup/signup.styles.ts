@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
-import Fonts from "../../constants/Fonts";
+import FontNames, { getFontStyle } from "../../constants/Fonts";
 import { Colors } from "../../constants";
 
 export default StyleSheet.create({
+  normalCenteredParagraph: getFontStyle('font16Line18Centered'),
   screenContainer: {
     flex: 1,
     paddingHorizontal: 20,
@@ -11,7 +12,7 @@ export default StyleSheet.create({
     alignItems: "center",
   },
   paragraphNormal: {
-    fontFamily: Fonts.Campton,
+    fontFamily: FontNames.Campton,
     color: Colors.fontNormal,
     fontSize: 16,
     lineHeight: 18,

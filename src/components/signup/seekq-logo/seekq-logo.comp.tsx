@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Image } from "react-native";
-import signupStyles from '../styles';
+import signupStyles from '../signup.styles';
 
 export interface ISeekQLogoProps {
     
