@@ -11,7 +11,7 @@ export interface ISTextProp {
   style?: TextStyle; //Should use only (bold, italic...etc)
 }
 
-const SText: React.FC<ISTextProp> = ({ type, style }) => {
+const SText: React.FC<ISTextProp> = ({ type, style }, props) => {
   const styleText = [
     { ...styles.text, ...style },
     type === "Font16Line18" && styles.font16Line18,
@@ -20,7 +20,20 @@ const SText: React.FC<ISTextProp> = ({ type, style }) => {
     type === "Heading-1" && styles.heading1,
   ];
 
-  return <Text style={styleText}>{Children}</Text>;
+  const _renderChildren = () => {
+    let childElements: any = [];
+    React.Children.forEach(props.children, (item) => {
+      if (typeof item === 'string' || typeof item === 'number') {
+        const element = ({item});
+        childElements.push(element);
+      } else if (React.isValidElement(item)) {
+        childElements.push(item);
+      }
+    });
+    return (childElements);
+  }
+
+  return <Text style={styleText}>{_renderChildren()}</Text>;
 };
 
 export default SText;
