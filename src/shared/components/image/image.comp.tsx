@@ -26,7 +26,7 @@ const Img: React.FC<IImgProps> = ({
   
   const ViewStyles = [
     size === 'avatar' && styles.avatarStyle,
-    size === 'logo' && styles.logoStyle && {flex: 0.1*(width/30)},
+    size === 'logo' && [styles.logoStyle, {flex: 0.1*(width/30)}],
     size === 'small' && styles.smallStyle,
     size === 'background' && styles.FullStyle,
     size === 'full' && styles.FullStyle,
@@ -42,11 +42,13 @@ const Img: React.FC<IImgProps> = ({
     size === 'full' && styles.FullStyle
   ];
 
+  
+
   return(
     <View style={[ViewStyles, shadow && styles.shadow]}>
       <TouchableWithoutFeedback onPress={onPress}>
         <Image
-          source={{ uri: source, cache: 'force-cache' }}
+          source={source}
           resizeMode={resizeMode}
           style={ImageStyles}
         />

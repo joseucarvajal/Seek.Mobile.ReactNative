@@ -26,20 +26,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
     <SafeAreaView style={{ flex: 1 }}>
       <View style={signUpStyles.screenContainer}>
 
-      <View style={{
-        width:'100%', 
-        flex: 0.1*(width/30), 
-        justifyContent:'center',
-        alignItems:'center'}}>
-        <Image 
-          style={{width:`${width}%`, height:'100%'}}
-          source={require('../../../../assets/images/SeekQ_logo-1.png')}          
-          resizeMode='contain'
-        >
-        </Image>
-      </View>
-      <SeekQLogo/>
-
+        <SeekQLogo/>
 
         <Text style={signupStyles.normalCenteredParagraph}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
