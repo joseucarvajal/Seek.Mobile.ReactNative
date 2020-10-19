@@ -8,7 +8,16 @@ import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import Profile from '../screens/profile/profile/profile.screen';
 import Home from '../screens/home/home-screen';
-import SignUp from '../screens/signup/signup/signup.screen';
+
+import  {
+  SignUp,
+  SignUpEmail,
+  SignUpPhone,
+  SignUpVerificationCode,
+  SignUpReady
+} from '../screens/signup';
+
+
 import Settings from '../screens/settings/settings/settings.screen';
 
 // If you are not familiar with React Navigation, we recommend going through the
@@ -30,9 +39,19 @@ const Stack = createStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>      
-      <Stack.Screen name="Home" component={Home} />            
+      <Stack.Screen name="Home" component={Home} />  
+
+
+      {/*Profile screens*/}
       <Stack.Screen name="Profile" component={Profile} />
+
+      {/*Signup screens*/}
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="SignUpEmail" component={SignUpEmail} />
+      <Stack.Screen name="SignUpPhone" component={SignUpPhone} />
+      <Stack.Screen name="SignUpVerificationCode" component={SignUpVerificationCode} />
+      <Stack.Screen name="SignUpReady" component={SignUpReady} />
+
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
