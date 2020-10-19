@@ -8,7 +8,7 @@ export interface ISeekQLogoProps {
 
 const SeekQLogo: React.FC<ISeekQLogoProps> = ({ }) => {
   const width = 45;
-    return ( 
+    return (
       <Image width={45} source={Images.Logo} size='logo' resizeMode='contain'/>
     );
 }
