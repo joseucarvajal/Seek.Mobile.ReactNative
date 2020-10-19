@@ -1,7 +1,9 @@
-import Colors from './Colors'
-import Layout from './Layout'
+import Colors from "./Colors";
+import Layout from "./Layout";
+import { getFontStyle } from "./Fonts";
 
-export {
-    Colors,
-    Layout
-}
+export { 
+    Colors, 
+    Layout, 
+    getFontStyle
+};

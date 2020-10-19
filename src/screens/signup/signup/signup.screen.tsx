@@ -2,13 +2,15 @@ import React from "react";
 import { Text, StyleSheet, Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button as PaperButton } from 'react-native-paper';
-import Fonts from "../../../constants/Fonts";
+import FontNames from "../../../constants/Fonts";
 import { Button } from "../../../shared";
+import { getFontStyle } from '../../../constants';
 
 import { 
   signUpStyles, 
   SeekQLogo 
 } from "../../../components/signup/";
+import signupStyles from "../../../components/signup/signup.styles";
 
 export interface ISignUpProps {}
 
@@ -19,13 +21,13 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
         <SeekQLogo/>
 
-        <Text style={[signUpStyles.paragraphNormal]}>
+        <Text style={signupStyles.normalCenteredParagraph}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
 
         <View style={styles.socialButtonsGroup}>
-          <Button color="tertiary" style={{ marginBottom: 10 }}>
+          <Button color="tertiary" style={styles.socialButton}>
             <Text>Continue with Apple</Text>
           </Button>
 
@@ -42,7 +44,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </Button>
         </View>
 
-        <Text style={[signUpStyles.paragraphNormal]}>
+        <Text style={signupStyles.normalCenteredParagraph}>
           All your important details are secured. None of your information will
           be shared from our app!
         </Text>
@@ -51,13 +53,13 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           <Text style={styles.smallCenteredText}>
             By registering, you agree to
           </Text>
-          <Text style={[styles.smallCenteredText]}>
-            <Text style={[styles.actionLink]}>Our Terms of Service</Text>
+          <Text style={styles.smallCenteredText}>
+            <Text style={styles.actionLink}>Our Terms of Service</Text>
           </Text>
-          <Text style={[styles.smallCenteredText]}>
-            <Text style={[styles.actionLink]}>Privacy Policy</Text>
+          <Text style={styles.smallCenteredText}>
+            <Text style={styles.actionLink}>Privacy Policy</Text>
             <Text> and </Text>
-            <Text style={[styles.actionLink]}>Cookie Policy</Text>
+            <Text style={styles.actionLink}>Cookie Policy</Text>
           </Text>
         </View>
 
@@ -68,7 +70,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             onPress={() => console.log("Pressed")}            
           >
             <Text style={{
-              fontFamily: Fonts.Campton,
+              fontFamily: FontNames.Campton,
               fontSize: 17,
               lineHeight: 22,
               color: '#1BBED8',
@@ -90,13 +92,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   socialButton: {
+    ...getFontStyle('tertiaryButton'),
     marginVertical: 10,
   },
-  smallCenteredText: {
-    fontFamily: Fonts.Campton,
-    fontSize: 14,
-    lineHeight: 16,
-    textAlign: "center",
+  smallCenteredText:  { 
+    ...getFontStyle('font14Line16Centered'),
+    letterSpacing: 0.24
   },
   actionLink: {
     fontStyle: "italic",

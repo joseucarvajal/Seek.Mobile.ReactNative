@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
-import Fonts from '../constants/Fonts';
+import FontNames from '../constants/Fonts';
 
 
 export default function useCachedResources() {
@@ -17,7 +17,7 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          [Fonts.Campton]: require('../../assets/fonts/Campton-LightDEMO.otf')
+          [FontNames.Campton]: require('../../assets/fonts/Campton-LightDEMO.otf')
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
