@@ -1,11 +1,10 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button as PaperButton } from 'react-native-paper';
 import FontNames from "../../../constants/Fonts";
 import { 
-  Button,
-  Image
+  Button,  
 } from "../../../shared";
 import { getFontStyle } from '../../../constants';
 
@@ -15,18 +14,39 @@ import {
 } from "../../../components/signup/";
 import signupStyles from "../../../components/signup/signup.styles";
 import { useNavigation } from "@react-navigation/native";
+import { deviceHeight, deviceWidth } from "../../../constants";
 
 export interface ISignUpProps {}
 
 const SignUp: React.FC<ISignUpProps> = ({}) => {
 
   const navigation = useNavigation();
+
+
+  const height = 100;
+  const width = 10;
+  const realHeight = (height*deviceHeight)/100;
+  const realWidth = (width*deviceWidth)/100;
+
   
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={signUpStyles.screenContainer}>
 
-        <SeekQLogo/>
+      <View style={{
+        borderWidth: 2, 
+        width:'100%', 
+        flex: 0.1*(width/30), 
+        justifyContent:'center',
+        alignItems:'center'}}>
+        <Image 
+          style={{width:`${width}%`, height:'100%'}}
+          source={require('../../../../assets/images/SeekQ_logo-1.png')}          
+          resizeMode='contain'
+        >
+        </Image>
+      </View>
+
 
         <Text style={signupStyles.normalCenteredParagraph}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet

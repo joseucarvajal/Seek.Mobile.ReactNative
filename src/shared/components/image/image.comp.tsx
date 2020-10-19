@@ -22,7 +22,7 @@ const Image: React.FC<IImageProps> = ({
 
   const realHeight = (height*deviceHeight)/100;
   const realWidth = (width*deviceWidth)/100;
-  return <View style={{ height: realHeight, width: realWidth }}>{children}</View>;
+  return <View style={{ width: realWidth, borderWidth: 2, borderColor: 'red' }}>{children}</View>;
 };
 
 export default Image;

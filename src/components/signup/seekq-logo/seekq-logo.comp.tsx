@@ -16,7 +16,7 @@ export interface ISeekQLogoProps {
 
 const SeekQLogo: React.FC<ISeekQLogoProps> = ({ }) => {
     return ( 
-      <Image height={13} width={65}>
+      <Image height={8} width={34}>
         <SeekQLogoSvg/>
       </Image>
     );
