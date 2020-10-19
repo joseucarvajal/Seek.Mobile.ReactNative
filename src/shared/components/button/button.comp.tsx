@@ -20,7 +20,7 @@ export interface IArButtonProps extends ViewProps {
     onPress?: any;
 }
 
-export type ButtonType = "chip" | "social" | "large" | "link" | "gradient";
+export type ButtonType = "chip" | "social" | "large" | "link" | "gradient" | "backgroundless";
 export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 
 const ArButton: React.FC<IArButtonProps> = ({
@@ -58,6 +58,8 @@ const ArButton: React.FC<IArButtonProps> = ({
         type === 'large' && styles.largeButton,
         type === 'social' && styles.socialButton,
         type === 'gradient' && styles.largeButton,
+        type === 'backgroundless' && styles.backgroundless,
+        type === 'link' && styles.backgroundless,
         disabled && styles.disabled,
         shadow && styles.shadow,
         color && { backgroundColor: Colors[color]}
@@ -126,6 +128,12 @@ const styles = StyleSheet.create({
       backgroundColor: Colors.tertiary,
       height: 48,
       borderRadius: Layout.socialbutton_radius
+    },
+    backgroundless: {
+      width: Layout.window.width - Layout.base*2,
+      backgroundColor: 'transparent',
+      height: 50,
+      borderRadius: Layout.button_radius
     },
     shadow: {        
       shadowColor: 'black',

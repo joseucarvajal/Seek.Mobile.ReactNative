@@ -30,7 +30,6 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Input color='quaternary' borderless placeholder='Password' password viewPass/>
           <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass/>
           <ToggleButton color='primary' value={true}/>
-          <ToggleButton color='primary' />
           <Text />
           <Select
             defaultValue={'f'}
@@ -63,6 +62,13 @@ const Profile: React.FC<IProfileProps> = ({}) => {
             >
             <Text style={styles.textLabel}>Continue with Google</Text> 
           </Button>
+          <Text />
+          <Button type='backgroundless'>
+            <Text style={styles.loginButton}>LOGIN</Text> 
+          </Button>
+          <Button type='link'>
+            <Text style={styles.linkButton}>Continue using email Instead</Text> 
+          </Button>
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
@@ -90,14 +96,14 @@ const styles = StyleSheet.create({
   },
   body: {
     width: '100%', 
-    top: 100, 
+    top: 50, 
     justifyContent: 'center', 
     alignItems: 'center',
     position: 'absolute',
   },
   footerView:{
     width: '100%', 
-    height: 60, 
+    height: 40, 
     backgroundColor: Colors.white, 
     justifyContent: 'center', 
     alignItems: 'center',
@@ -144,5 +150,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
     color: Colors.black,
+  },
+  loginButton: {
+    fontSize: 24,
+    textAlign: 'center',
+    color: Colors.primary,
+  },
+  linkButton: {
+    fontSize: 17,
+    textAlign: 'center',
+    color: Colors.primary,
+    textDecorationLine: 'underline',
+    fontWeight: 'bold'
   }
 });
