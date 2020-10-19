@@ -1,9 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
 import { Colors } from "../../../constants";
-import { Button, Input, Select, ToggleButton } from '../../../shared';
+import { Button, Input, Select, ToggleButton, Text } from '../../../shared';
 
 export interface IProfileProps {}
 
@@ -67,7 +67,7 @@ const Profile: React.FC<IProfileProps> = ({}) => {
             <Text style={styles.loginButton}>LOGIN</Text> 
           </Button>
           <Button type='link'>
-            <Text style={styles.linkButton}>Continue using email Instead</Text> 
+            <Text underline bold style={styles.linkButton}>Continue using email Instead</Text> 
           </Button>
         </View>
         <View style={styles.footerView}>
@@ -160,7 +160,5 @@ const styles = StyleSheet.create({
     fontSize: 17,
     textAlign: 'center',
     color: Colors.primary,
-    textDecorationLine: 'underline',
-    fontWeight: 'bold'
   }
 });
