@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
-import {deviceHeight, deviceWidth} from '../../../constants';
+import { deviceHeight, deviceWidth } from "../../../constants";
 
 export interface IImageProps {
   height: number;
@@ -20,7 +20,9 @@ const Image: React.FC<IImageProps> = ({
     return <Text>Image component, width should not be greater than 100</Text>;
   }
 
-  return <View style={{ height }}><Text>{`Dimensions ${deviceHeight} - ${deviceWidth}`}</Text></View>;
+  const realHeight = (height*deviceHeight)/100;
+  const realWidth = (width*deviceWidth)/100;
+  return <View style={{ height: realHeight, width: realWidth }}>{children}</View>;
 };
 
 export default Image;

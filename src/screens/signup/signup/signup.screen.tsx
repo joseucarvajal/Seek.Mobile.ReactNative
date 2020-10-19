@@ -28,11 +28,8 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
         <SeekQLogo/>
 
-        <Image height={24} width={35}>
-        </Image>
-
         <Text style={signupStyles.normalCenteredParagraph}>
-          1 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
 

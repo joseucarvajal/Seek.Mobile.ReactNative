@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { Image } from "react-native";
 import signupStyles from '../signup.styles';
 import { View } from '../../Themed';
+
+import { 
+  Button,
+  Image
+} from "../../../shared";
 
 import SeekQLogoSvg from '../../../../assets/images/SeekQ_logo-1.svg';
 
@@ -12,17 +16,10 @@ export interface ISeekQLogoProps {
 
 const SeekQLogo: React.FC<ISeekQLogoProps> = ({ }) => {
     return ( 
-      <View style={signupStyles.logoImage}>
+      <Image height={13} width={65}>
         <SeekQLogoSvg/>
-      </View>  
+      </Image>
     );
-      {/* 
-        <Image
-          style={signupStyles.logoImage}
-          source={require("../../../../assets/images/seekqlogot.png")}          
-        />
-      */} 
-
 }
 
 export default SeekQLogo;
