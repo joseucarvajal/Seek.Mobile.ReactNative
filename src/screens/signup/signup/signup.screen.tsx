@@ -1,9 +1,12 @@
 import React from "react";
-import { Text, StyleSheet, Image, View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button as PaperButton } from 'react-native-paper';
 import FontNames from "../../../constants/Fonts";
-import { Button } from "../../../shared";
+import { 
+  Button,
+  Image
+} from "../../../shared";
 import { getFontStyle } from '../../../constants';
 
 import { 
@@ -24,6 +27,9 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
       <View style={signUpStyles.screenContainer}>
 
         <SeekQLogo/>
+
+        <Image height={24} width={35}>
+        </Image>
 
         <Text style={signupStyles.normalCenteredParagraph}>
           1 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
