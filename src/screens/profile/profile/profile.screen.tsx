@@ -3,8 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
 import { Colors } from "../../../constants";
-import { Button, Input } from '../../../shared';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { Button, Input, Select, ToggleButton } from '../../../shared';
 
 export interface IProfileProps {}
 
@@ -30,6 +29,40 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Input color='quaternary' borderless placeholder='Last Name'/>
           <Input color='quaternary' borderless placeholder='Password' password viewPass/>
           <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass/>
+          <ToggleButton color='primary' value={true}/>
+          <ToggleButton color='primary' />
+          <Text />
+          <Select
+            defaultValue={'f'}
+            items={[
+              {label: 'Male', value: 'm'},
+              {label: 'Female', value: 'f'},
+            ]}
+            shadow
+          />
+          <Text />
+          <Button 
+            left
+            type='social' 
+            shadow
+            icon="facebook"
+            iconColor={Colors.quaternary}
+            iconSize={18}
+            >
+            <Text style={styles.textButton}>Continue with Facebook</Text> 
+          </Button>
+          <Text />
+          <Button
+            left
+            type='social' 
+            color='quaternary'
+            shadow
+            icon="google"
+            iconColor={Colors.white}
+            iconSize={18}
+            >
+            <Text style={styles.textLabel}>Continue with Google</Text> 
+          </Button>
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
@@ -105,6 +138,11 @@ const styles = StyleSheet.create({
   textFisrtNameInput: {
     fontSize: 24,
     fontWeight: '500',
+    color: Colors.black,
+  },
+  textButton: {
+    fontSize: 16,
+    textAlign: 'center',
     color: Colors.black,
   }
 });

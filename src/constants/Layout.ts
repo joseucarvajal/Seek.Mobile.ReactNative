@@ -25,4 +25,5 @@ export default {
   input_vertical_label: 8,
   input_help_text: 8,
   input_rounded: 5,
+  select_height: 50,
 };

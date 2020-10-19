@@ -2,11 +2,17 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity, ViewProps } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Layout, Colors } from '../../../constants';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export interface IArButtonProps extends ViewProps {
     type?: ButtonType;
     color?: ColorType;
+    iconContent?: any;
     icon?: any;
+    iconColor?: any;
+    iconSize?: any;
+    left?: any;
+    right?: any;
     shadow?: any;
     disabled?: any;
     children?: React.ReactNode;
@@ -20,6 +26,12 @@ export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 const ArButton: React.FC<IArButtonProps> = ({
     type,
     color,
+    iconContent,
+    icon,
+    iconColor,
+    iconSize,
+    left,
+    right,
     shadow,
     disabled,
     children,
@@ -27,6 +39,17 @@ const ArButton: React.FC<IArButtonProps> = ({
     style,
     ...props
 }) => {
+
+    const iconInstance = icon ? (
+        <Icon
+          name={icon}
+          size={iconSize || Layout.base * 1.0625}
+          style={{ marginRight: left && !right ? 30 : 0 }}
+          color={iconColor}
+        />
+      ) : (
+        iconContent
+    );
 
     const styleButton = [
         styles.button,
@@ -52,12 +75,12 @@ const ArButton: React.FC<IArButtonProps> = ({
                         >
                         <TouchableOpacity 
                             onPress={ disabled ? null: onPress} 
-                            style={{
-                                flex: 1,
-                                justifyContent: "center",
-                                alignItems: "center"
-                            }}>
-                            {children}
+                            style={{ flex: 1 }}>
+                            <View style={[styles.buttonView, left && !right && {justifyContent: 'flex-start', marginLeft: Layout.base}]}>
+                                {left && !right && iconInstance}
+                                {children}
+                                {right && iconInstance}
+                            </View>
                         </TouchableOpacity> 
                     </LinearGradient>
                 </View>
@@ -65,12 +88,12 @@ const ArButton: React.FC<IArButtonProps> = ({
                 <View style={styleButton}>
                     <TouchableOpacity 
                         onPress={ disabled ? null: onPress} 
-                        style={{
-                            flex: 1,
-                            justifyContent: "center",
-                            alignItems: "center"
-                        }}>                        
-                        {children}
+                        style={{ flex: 1 }}>
+                        <View style={[styles.buttonView, left && !right && {justifyContent: 'flex-start', marginLeft: Layout.base}]}>
+                            {left && !right && iconInstance}                        
+                            {children}
+                            {right && iconInstance}
+                        </View>
                     </TouchableOpacity>
                 </View>
             }
@@ -100,7 +123,7 @@ const styles = StyleSheet.create({
     },
     socialButton: {
       width: Layout.window.width - Layout.base*2,
-      backgroundColor: Colors.active,
+      backgroundColor: Colors.tertiary,
       height: 48,
       borderRadius: Layout.socialbutton_radius
     },
@@ -113,5 +136,11 @@ const styles = StyleSheet.create({
     },
     disabled: {
         backgroundColor: Colors.muted
+    },
+    buttonView: {
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
     }
   });

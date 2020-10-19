@@ -27,7 +27,7 @@ const ToggleButton: React.FC<IToggleButtonProps> = ({
     const thumbColor = value === true ? Colors[color] : Colors.muted
 
     return (
-        <Switch
+      <Switch
         value={value}
         thumbColor={thumbColor}
         trackColor={{
