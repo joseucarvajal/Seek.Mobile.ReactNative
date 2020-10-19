@@ -1,9 +1,10 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, TextStyle } from "react-native";
 import { Colors } from "../../../constants"
+import FontNames from "../../../constants/Fonts";
 
 export interface ITextProp {
-  style?: any;
+  style?: TextStyle;
   h1?: any;
   h2?: any;
   h3?: any;
@@ -15,6 +16,7 @@ export interface ITextProp {
   small?: any;
   muted?: any;
   neutral?: any;
+  lineHeight?: number;
   size?: any;
   color?: any;
   bold?: any;
@@ -40,6 +42,7 @@ const Typography: React.FC<ITextProp> = ({
   muted,
   neutral,
   size,
+  lineHeight,
   color,
   bold,
   italic,
@@ -49,8 +52,8 @@ const Typography: React.FC<ITextProp> = ({
 }, props) => {
   return (
     <Text
-      style={[
-        h1 && { fontSize: 44 },
+      style={[{fontFamily: FontNames.Campton},
+        h1 && { fontSize: 28, lineHeight: 18 },
         h2 && { fontSize: 38 },
         h3 && { fontSize: 30 },
         h4 && { fontSize: 24 },
@@ -62,6 +65,7 @@ const Typography: React.FC<ITextProp> = ({
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
         size && { fontSize: size },
+        lineHeight && { lineHeight: lineHeight },
         color && { color },
         italic && { fontStyle: 'italic' },
         bold && { fontWeight: 'bold' },

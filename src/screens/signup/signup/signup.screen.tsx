@@ -11,10 +11,14 @@ import {
   SeekQLogo 
 } from "../../../components/signup/";
 import signupStyles from "../../../components/signup/signup.styles";
+import { useNavigation } from "@react-navigation/native";
 
 export interface ISignUpProps {}
 
 const SignUp: React.FC<ISignUpProps> = ({}) => {
+
+  const navigation = useNavigation();
+  
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={signUpStyles.screenContainer}>
@@ -22,7 +26,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
         <SeekQLogo/>
 
         <Text style={signupStyles.normalCenteredParagraph}>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+          1 Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
 
@@ -39,7 +43,13 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             <Text>Continue with Google</Text>
           </Button>
 
-          <Button color="tertiary" style={styles.socialButton}>
+          <Button 
+            color="tertiary" 
+            style={styles.socialButton}
+            onPress={()=>{
+              navigation.navigate('SignUpPhone');
+            }}
+          >
             <Text>Use Email/Phone</Text>
           </Button>
         </View>

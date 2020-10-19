@@ -3,7 +3,7 @@ import FontNames, { getFontStyle } from "../../constants/Fonts";
 import { Colors } from "../../constants";
 
 export default StyleSheet.create({
-  normalCenteredParagraph: getFontStyle('font16Line18Centered'),
+  normalCenteredParagraph: getFontStyle('font14Line16Centered'),
   screenContainer: {
     flex: 1,
     paddingHorizontal: 20,
@@ -11,15 +11,11 @@ export default StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
   },
-  paragraphNormal: {
-    fontFamily: FontNames.Campton,
-    color: Colors.fontNormal,
-    fontSize: 16,
-    lineHeight: 18,
-    textAlign: "center",
+  heading1: { 
+    ... getFontStyle('font28Line22CenteredBold'), 
   },
   logoImage: {
-    width: 150,
-    height: 55,
+    height: 150,
+    width: 200,
   },
 });

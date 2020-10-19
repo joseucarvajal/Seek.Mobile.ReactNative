@@ -1,7 +1,9 @@
 import { StyleSheet, TextStyle } from "react-native";
 import Colors from "./Colors";
 
-const FontNames: any = {
+type TFontNames = {Campton: string};
+
+const FontNames: TFontNames = {
   Campton: "Campton",
 };
 
@@ -9,6 +11,21 @@ const fontStyles = StyleSheet.create({
   text: {
     fontFamily: FontNames.Campton,
     color: Colors.fontNormal,
+  },
+  font28Line22: {
+    fontSize: 28,
+    lineHeight: 22,
+  },
+  font28Line22Centered: {
+    fontSize: 28,
+    lineHeight: 22,
+    textAlign: "center",
+  },
+  font28Line22CenteredBold: {
+    fontSize: 28,
+    lineHeight: 22,
+    textAlign: "center",
+    fontWeight: "bold"
   },
   font16Line18: {
     fontSize: 16,
@@ -40,6 +57,10 @@ const fontStyles = StyleSheet.create({
   },
 });
 
+const font28Line22 = "font28Line22";
+const font28Line22Centered = "font28Line22Centered";
+const font28Line22CenteredBold = "font28Line22CenteredBold";
+
 const font16Line18 = "font16Line18";
 const font16Line18Centered = "font16Line18Centered";
 
@@ -49,7 +70,10 @@ const font14Line16Centered = "font14Line16Centered";
 const tertiaryButton = "tertiaryButton";
 const heading1 = "heading1";
 
-export type FontType =
+export type FontType = 
+  | typeof font28Line22
+  | typeof font28Line22Centered
+  | typeof font28Line22CenteredBold
   | typeof font16Line18
   | typeof font16Line18Centered
   | typeof font14Line16
@@ -62,11 +86,19 @@ interface IStyleDefinition {
 }
 
 const stylesDefinition: IStyleDefinition = {
+  
+  [font28Line22]: fontStyles.font28Line22,
+  [font28Line22Centered]: fontStyles.font28Line22Centered,
+  [font28Line22CenteredBold]: fontStyles.font28Line22CenteredBold,
+
   [font16Line18]: fontStyles.font16Line18,
   [font16Line18Centered]: fontStyles.font16Line18Centered,
+
   [font14Line16]: fontStyles.font14Line16,
   [font14Line16Centered]: fontStyles.font14Line16Centered,
+
   [tertiaryButton]: fontStyles.font14Line16,
+  
   [heading1]: fontStyles.heading1,
 };
 
