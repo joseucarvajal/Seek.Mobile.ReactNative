@@ -11,11 +11,15 @@ export type SettingItem = {
   icon: undefined;
 };
 
+export interface IRenderItemProps = {
+  item: undefined;
+};
+
 export interface ISettingsProps {}
 
 const Settings: React.FC<ISettingsProps> = ({}) => {
 
-  const renderItem = ({ item: any }) => {
+  const renderItem = ({ item: IRenderItemProps }) => {
     switch(item.type) {
       case 'switch': 
         return (
