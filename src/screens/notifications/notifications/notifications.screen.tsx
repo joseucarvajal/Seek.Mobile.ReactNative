@@ -1,13 +1,11 @@
 import React from 'react';
 import { Text } from 'react-native';
 
-import { Container } from './styles';
+{/*import { Container } from './notifications.style';*/}
 
 const notifications: React.FC = () => {
-  return (
-    <Container>
-      <Text>notifications</Text>
-    </Container>
+  return (    
+      <Text>notifications</Text>    
   );
 };
 

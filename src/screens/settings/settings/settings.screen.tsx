@@ -11,7 +11,7 @@ export type SettingItem = {
   icon: undefined;
 };
 
-export interface IRenderItemProps = {
+export interface IRenderItemProps {
   item: undefined;
 };
 
@@ -19,7 +19,8 @@ export interface ISettingsProps {}
 
 const Settings: React.FC<ISettingsProps> = ({}) => {
 
-  const renderItem = ({ item: IRenderItemProps }) => {
+  const renderItem = (item: IRenderItemProps) => {
+    /*
     switch(item.type) {
       case 'switch': 
         return (
@@ -31,6 +32,7 @@ const Settings: React.FC<ISettingsProps> = ({}) => {
         );
       }
     }
+    */
   }
 
   return (
@@ -38,6 +40,7 @@ const Settings: React.FC<ISettingsProps> = ({}) => {
       <ScrollView
         showsVerticalScrollIndicator={false}
       >
+        {/* 
         <FlatList
           data={SettingsItems}
           keyExtractor={(item: any, index: any) => `${item.text}`}
@@ -50,6 +53,7 @@ const Settings: React.FC<ISettingsProps> = ({}) => {
             </View>
           }
         />
+        */}
       </ScrollView>
     </SafeAreaView>
   );

@@ -1,12 +1,9 @@
 import React from "react";
-import { StyleSheet, Image, View, Text as RNText } from "react-native";
+import { Text, StyleSheet, Image, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button as PaperButton } from 'react-native-paper';
 import Fonts from "../../../constants/Fonts";
-import { Button, Text } from "../../../shared";
-
-import { Button as PButton } from 'react-native-paper';
-
+import { Button } from "../../../shared";
 
 import { 
   signUpStyles, 
@@ -22,49 +19,45 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
         <SeekQLogo/>
 
-        <Text type="Font16Line18">
+        <Text style={[signUpStyles.paragraphNormal]}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
 
-        <PButton icon="camera" mode="contained" onPress={() => console.log('Pressed')}>
-          Press me
-        </PButton>
-
         <View style={styles.socialButtonsGroup}>
           <Button color="tertiary" style={{ marginBottom: 10 }}>
-            <Text type="TertiaryButton">Continue with Apple</Text>
+            <Text>Continue with Apple</Text>
           </Button>
 
           <Button color="tertiary" style={styles.socialButton}>
-            <Text type="TertiaryButton">Continue with Facebook</Text>
+            <Text>Continue with Facebook</Text>
           </Button>
 
           <Button color="tertiary" style={styles.socialButton}>
-            <Text type="TertiaryButton">Continue with Google</Text>
+            <Text>Continue with Google</Text>
           </Button>
 
           <Button color="tertiary" style={styles.socialButton}>
-            <Text type="TertiaryButton">Use Email/Phone</Text>
+            <Text>Use Email/Phone</Text>
           </Button>
         </View>
 
-        <Text type="Font16Line18">
+        <Text style={[signUpStyles.paragraphNormal]}>
           All your important details are secured. None of your information will
           be shared from our app!
         </Text>
 
         <View>
-          <Text type="Font14Line16" style={{fontWeight:'500'}}>
+          <Text style={styles.smallCenteredText}>
             By registering, you agree to
           </Text>
-          <Text type="Font14Line16">
-            <Text type="Font14Line16" style={styles.actionLink}>Our Terms of Service</Text>
+          <Text style={[styles.smallCenteredText]}>
+            <Text style={[styles.actionLink]}>Our Terms of Service</Text>
           </Text>
-          <Text type="Font14Line16" style={styles.centeredText}>
-            <Text type="Font14Line16" style={styles.actionLink}>Privacy Policy</Text>
-            <Text type="Font14Line16"> and </Text>
-            <Text type="Font14Line16" style={styles.actionLink}>Cookie Policy</Text>
+          <Text style={[styles.smallCenteredText]}>
+            <Text style={[styles.actionLink]}>Privacy Policy</Text>
+            <Text> and </Text>
+            <Text style={[styles.actionLink]}>Cookie Policy</Text>
           </Text>
         </View>
 
@@ -74,7 +67,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             uppercase={false}
             onPress={() => console.log("Pressed")}            
           >
-            <RNText style={{
+            <Text style={{
               fontFamily: Fonts.Campton,
               fontSize: 17,
               lineHeight: 22,
@@ -83,9 +76,9 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
               textDecorationLine: "underline",
             }}>
               Having trouble logging in?
-            </RNText>
-          </PaperButton>              
-        </View>        
+            </Text>
+          </PaperButton>          
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -99,7 +92,10 @@ const styles = StyleSheet.create({
   socialButton: {
     marginVertical: 10,
   },
-  centeredText: {
+  smallCenteredText: {
+    fontFamily: Fonts.Campton,
+    fontSize: 14,
+    lineHeight: 16,
     textAlign: "center",
   },
   actionLink: {
