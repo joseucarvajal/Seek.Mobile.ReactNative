@@ -4,10 +4,10 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { Layout, Colors } from '../../../constants';
 
 interface ISelectProps {
-    items?: any;
-    defaultValue?: any;
-    shadow?: any;
-    props?: any;
+  items?: any;
+  defaultValue?: any;
+  shadow?: any;
+  props?: any;
 }
 
 interface ISelectState {

@@ -1,27 +1,80 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ViewProps, Image } from 'react-native';
-import styles from './menu-item.styles';
+import { StyleSheet, View, FlatList, TouchableOpacity, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
-export interface IMenuItem extends ViewProps {
-  text?: string;
-  icon?: any;
+import { Text, ToggleButton } from '../../index'
+import { Layout, Colors } from '../../../constants'
+
+interface IMenuItemProps {
+  items: any;
+  props?: any;
 }
 
-const MenuItem: React.FC<IMenuItem> = ({
-  text,
-  icon
-}) => {
+interface IMenuItemState {
+  value: any;
+}
+
+class MenuItem extends React.Component<IMenuItemProps, IMenuItemState> {
+constructor(props: IMenuItemProps) {
+  super(props);
+
+  this.state = {
+      value: 1,
+  };
+
+}
+
+renderItem = ({ item }: { item: any }) => (
+  <>
+    {
+      item.type === 'toggle' ?
+        <View style={[styles.container, { backgroundColor: item.color }]}>
+          <Text size={16}>{item.title}</Text>
+          <ToggleButton color='primary' value={true}/>
+        </View>
+      : 
+        <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]}>
+            <Text size={16}>{item.title}</Text>
+            <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
+        </TouchableOpacity>
+    }
+  </>
+);
+
+render() {
   return (
-    <View style={ styles.container }>
-      <TouchableOpacity>
-        <Text style={ styles.text }>{text}</Text>
-        <Image
-          style={styles.icon}
-          source={{ uri: `../../../../assets/images/${icon}` }}
-        />
-      </TouchableOpacity>
-    </View>
-  );
+    <ScrollView
+      showsVerticalScrollIndicator={true}
+      contentContainerStyle={styles.settings}>
+      <FlatList
+        data={this.props.items}
+        keyExtractor={(item, index) => item.id}
+        renderItem={this.renderItem}
+      />
+    </ScrollView>
+  )
+}
 }
 
 export default MenuItem;
+
+const styles = StyleSheet.create({
+  settings: {
+    paddingVertical: Layout.base / 3,
+  },
+  title: {
+    paddingTop: Layout.base,
+    paddingBottom: Layout.base / 2,
+  },
+  container: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: Layout.base,
+    backgroundColor: Colors.neutral,
+    width: Layout.window.width,
+    height: Layout.menu_item_height,
+  }
+});

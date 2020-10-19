@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
 import { Colors } from "../../../constants";
-import { Button, Input, Select, ToggleButton, Text } from '../../../shared';
+import { Button, Input, Select, ToggleButton, Text, MenuItem } from '../../../shared';
 
 export interface IProfileProps {}
 
@@ -15,7 +15,8 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Steper />
         </View>
         <View style={styles.body}>
-          <Input 
+          <MenuItem items={items} />
+          {/* <Input 
             left
             color='primary'
             borderless 
@@ -68,7 +69,7 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           </Button>
           <Button type='link'>
             <Text underline bold style={styles.linkButton}>Continue using email Instead</Text> 
-          </Button>
+          </Button> */}
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
@@ -81,6 +82,16 @@ const Profile: React.FC<IProfileProps> = ({}) => {
 };
 
 export default Profile;
+
+const items = [
+  { title: "Edit Basic Info", id: "editBasicInfo", type: "button", color: Colors.neutral },
+  { title: "Profile", id: "profile", type: "button", color: Colors.white },
+  { title: "Notifications", id: "notifications", type: "button", color: Colors.neutral },
+  { title: "Modes", id: "modes", type: "button", color: Colors.white },
+  { title: "Incoming Chat", id: "incomingChat", type: "toggle", color: Colors.neutral },
+  { title: "Temperature meter change", id: "temperatureMeter", type: "toggle", color: Colors.white },
+  { title: "In app vibrations", id: "vibration", type: "toggle", color: Colors.neutral },
+];
 
 const styles = StyleSheet.create({
   container: {

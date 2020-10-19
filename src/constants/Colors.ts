@@ -14,7 +14,7 @@ export default {
   black: '#000000',
   white: '#ffffff',
   muted: '#9E9E9E',
-  neutral: '#E2E9F5',
+  neutral: '#F5F5F6',
   active: '#9E9E9E',
   background: '#ffffff',
   fontNormal: '#252525',
