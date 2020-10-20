@@ -19,6 +19,7 @@ export default {
   background: '#ffffff',
   fontNormal: '#252525',
   placeholder: '#e1e4e8',
+  fontSoft: '#4F4F4F',
   border: '#C4C4C4',
   transparent: 'transparent',
   header: '#F6F6F6',

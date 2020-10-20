@@ -28,6 +28,7 @@ export interface ITextProp {
   theme?: any;
   fontFamily?: string;
   letterSpacing?: number;
+  extraSmall?: boolean;
 }
 
 const Typography: React.FC<ITextProp> = (
@@ -54,12 +55,13 @@ const Typography: React.FC<ITextProp> = (
     children,
     fontFamily,
     letterSpacing,
+    extraSmall
   },
   props
 ) => {
   return (
     <Text
-      style={[{fontFamily: FontNames.Campton},
+      style={[{fontFamily: FontNames.Campton, color: Colors.fontNormal},
         h1 && { fontSize: 28 },
         h2 && { fontSize: 38 },
         h3 && { fontSize: 30 },
@@ -68,7 +70,8 @@ const Typography: React.FC<ITextProp> = (
         h6 && { fontSize: 28 },
         p && { fontSize: 16 },
         body && { fontSize: 14 },
-        small && { fontSize: 12 },
+        small && { fontSize: 14 },
+        extraSmall && { fontSize: 12 },
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
         size && { fontSize: size },

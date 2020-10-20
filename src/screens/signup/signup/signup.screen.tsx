@@ -37,11 +37,11 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           <ButtonTertiary icon="google" style={styles.socialButton}>
             <Text>Continue with Google</Text>
           </ButtonTertiary>
-          <ButtonTertiary 
-            icon="mobile" 
+          <ButtonTertiary
+            icon="mobile"
             style={styles.socialButton}
-            onPress={()=>{
-              navigation.navigate('SignUpPhone');
+            onPress={() => {
+              navigation.navigate("SignUpPhone");
             }}
           >
             <Text>Use Email / Phone</Text>
@@ -52,6 +52,55 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           All your important details are secured. None of your information will
           be shared from our app!
         </Typography>
+
+        <View>
+          <Typography center style={styles.link}>By registering, you agree to</Typography>
+          <Button
+            type="text-link"
+            onPress={() => {
+              console.log("Terms of service");
+            }}
+          >
+            <Typography underline style={styles.actionLink} small center>
+              Out terms of service
+            </Typography>
+          </Button>
+          <Text>
+            <Button
+              type="text-link"
+              onPress={() => {
+                console.log("Privacy Policy");
+              }}
+            >
+              <Typography underline style={styles.actionLink} small center>
+                Privacy Policy
+              </Typography>
+            </Button>
+            <Button type="text-link">
+              <Typography small style={styles.link}> and </Typography>
+            </Button>
+            <Button
+              type="text-link"
+              onPress={() => {
+                console.log("Cookie Policy");
+              }}
+            >
+              <Typography underline style={styles.actionLink} small center>
+                Cookie Policy
+              </Typography>
+            </Button>
+          </Text>
+        </View>
+        <Button 
+          type="link"
+          onPress={()=>{
+            console.log('having trouble logging in?');
+          }}
+        >
+          <Typography underline bold style={styles.linkButtonPrimary} fontSize={17} lineHeight={22}>
+            Having trouble logging in?
+          </Typography>
+        </Button>
       </View>
     </SafeAreaView>
   );
@@ -66,15 +115,17 @@ const styles = StyleSheet.create({
     ...getFontStyle("tertiaryButton"),
     marginVertical: 10,
   },
-  smallCenteredText: {
-    ...getFontStyle("font14Line16Centered"),
-    letterSpacing: 0.24,
+  link:{
+    color: Colors.fontSoft
   },
   actionLink: {
-    fontStyle: "italic",
-    textDecorationLine: "underline",
-    fontWeight: "bold",
+    fontFamily: FontNames.CamptonSemiBoldItalic,
+    color: Colors.fontSoft,
+    margin: 0,
   },
+  linkButtonPrimary: {    
+    color: Colors.primary,
+  }  
 });
 
 export default SignUp;
