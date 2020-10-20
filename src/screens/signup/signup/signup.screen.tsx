@@ -1,21 +1,32 @@
 import React from "react";
-import { Text, StyleSheet, View, Image } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Button as PaperButton } from "react-native-paper";
-import FontNames from "../../../constants/Fonts";
-import { Button, ButtonTertiary } from "../../../shared";
-import { getFontStyle, Colors } from "../../../constants";
 
-import { signUpStyles, SeekQLogo } from "../../../components/signup/";
-import signupStyles from "../../../components/signup/signup.styles";
 import { useNavigation } from "@react-navigation/native";
-import Typography from "../../../shared/components/text/text.comp";
+
+//import FontNames from "../../../constants/Fonts";
+import { 
+  Button, 
+  ButtonTertiary,
+  Typography
+} from "../../../shared";
+
+import { 
+  Colors,
+  FontNames,
+  getFontStyle, 
+} from "../../../constants";
+
+import { 
+  signUpStyles, 
+  SeekQLogo 
+} from "../../../components/signup/";
 
 export interface ISignUpProps {}
 
 const SignUp: React.FC<ISignUpProps> = ({}) => {
+
   const navigation = useNavigation();
-  const width = 45;
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

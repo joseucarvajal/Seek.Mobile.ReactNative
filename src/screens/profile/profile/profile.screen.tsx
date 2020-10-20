@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
 import { Colors } from "../../../constants";
-import { Button, Input, Select, ToggleButton, Text, MenuItem } from '../../../shared';
+import { Button, Input, Select, ToggleButton, Typography, MenuItem } from '../../../shared';
 
 export interface IProfileProps {}
 
@@ -73,7 +73,7 @@ const Profile: React.FC<IProfileProps> = ({}) => {
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
-            <Text style={styles.textLabel}>CONTINUE</Text> 
+            <Typography style={styles.textLabel}>CONTINUE</Typography> 
           </Button>
         </View>
       </View>

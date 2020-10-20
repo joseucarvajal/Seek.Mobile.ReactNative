@@ -23,7 +23,7 @@ type TFontNames = {
   CamptonThinItalic: string;
 };
 
-const FontNames: TFontNames = {
+export const FontNames: TFontNames = {
   Campton: "Campton",
   CamptonBlack: "Campton-Black",
   CamptonBlackItalic: "Campton-BlackItalic",

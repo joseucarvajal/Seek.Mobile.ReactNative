@@ -25,10 +25,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
         <SeekQLogo/>
 
-        <Text style={signupStyles.heading1}>
-          Wellcome back
-        </Text>
-
         <Text style={signupStyles.normalCenteredParagraph}>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
