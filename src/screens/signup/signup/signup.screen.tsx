@@ -52,7 +52,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </ButtonTertiary>
           <ButtonTertiary
             customIcon={Icons.settings}
-            customIconSize={30}
+            customIconSize={50}
             style={styles.socialButton}
             onPress={() => {
               navigation.navigate("SignUpPhone");
