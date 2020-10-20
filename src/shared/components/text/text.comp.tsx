@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, TextStyle } from "react-native";
-import { Colors } from "../../../constants"
+import { Colors } from "../../../constants";
 import FontNames from "../../../constants/Fonts";
 
 export interface ITextProp {
@@ -17,7 +17,7 @@ export interface ITextProp {
   muted?: any;
   neutral?: any;
   lineHeight?: number;
-  size?: any;
+  fontSize?: any;
   color?: any;
   bold?: any;
   italic?: any;
@@ -26,30 +26,35 @@ export interface ITextProp {
   children?: any;
   styles?: any;
   theme?: any;
+  fontFamily?: string;
 }
 
-const Typography: React.FC<ITextProp> = ({ 
-  style,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  body,
-  small,
-  muted,
-  neutral,
-  size,
-  lineHeight,
-  color,
-  bold,
-  italic,
-  center,
-  underline,
-  children,
-}, props) => {
+const Typography: React.FC<ITextProp> = (
+  {
+    style,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    body,
+    small,
+    muted,
+    neutral,
+    fontSize,
+    lineHeight,
+    color,
+    bold,
+    italic,
+    center,
+    underline,
+    children,
+    fontFamily,
+  },
+  props
+) => {
   return (
     <Text
       style={[{fontFamily: FontNames.Campton},
@@ -64,7 +69,7 @@ const Typography: React.FC<ITextProp> = ({
         small && { fontSize: 12 },
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
-        size && { fontSize: size },
+        fontSize && { fontSize },
         lineHeight && { lineHeight: lineHeight },
         color && { color },
         italic && { fontStyle: 'italic' },
@@ -73,7 +78,8 @@ const Typography: React.FC<ITextProp> = ({
         underline && { textDecorationLine: 'underline' },
         style && style,
       ]}
-      {...props}>
+      {...props}
+    >
       {children}
     </Text>
   );

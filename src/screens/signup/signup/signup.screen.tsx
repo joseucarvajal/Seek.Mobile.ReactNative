@@ -1,116 +1,77 @@
 import React from "react";
 import { Text, StyleSheet, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Button as PaperButton } from 'react-native-paper';
+import { Button as PaperButton } from "react-native-paper";
 import FontNames from "../../../constants/Fonts";
-import { 
-  Button,  
-} from "../../../shared";
-import { getFontStyle } from '../../../constants';
+import { Button } from "../../../shared";
+import { getFontStyle, Colors } from "../../../constants";
 
-import { 
-  signUpStyles, 
-  SeekQLogo 
-} from "../../../components/signup/";
+import { signUpStyles, SeekQLogo } from "../../../components/signup/";
 import signupStyles from "../../../components/signup/signup.styles";
 import { useNavigation } from "@react-navigation/native";
+import Typography from "../../../shared/components/text/text.comp";
 
 export interface ISignUpProps {}
 
 const SignUp: React.FC<ISignUpProps> = ({}) => {
-
   const navigation = useNavigation();
   const width = 45;
-  
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={signUpStyles.screenContainer}>
+        <SeekQLogo />
 
-        <SeekQLogo/>
-
-        <Text style={signupStyles.normalCenteredParagraph}>
+        <Typography p lineHeight={18} center>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
-        </Text>
+        </Typography>
 
         <View style={styles.socialButtonsGroup}>
+          <Button
+            left
+            type="social"
+            icon="apple"
+            iconColor={Colors.quaternary}
+            iconSize={18}
+          >
+            <Typography>Continue with Facebook</Typography>
+          </Button>
           <Button color="tertiary" style={styles.socialButton}>
-            <Text>Continue with Apple</Text>
+            <Typography>Continue with Facebook</Typography>
           </Button>
 
           <Button color="tertiary" style={styles.socialButton}>
-            <Text>Continue with Facebook</Text>
+            <Typography>Continue with Google</Typography>
           </Button>
 
-          <Button color="tertiary" style={styles.socialButton}>
-            <Text>Continue with Google</Text>
-          </Button>
-
-          <Button 
-            color="tertiary" 
+          <Button
+            color="tertiary"
             style={styles.socialButton}
-            onPress={()=>{
-              navigation.navigate('SignUpPhone');
+            onPress={() => {
+              navigation.navigate("SignUpPhone");
             }}
           >
-            <Text>Use Email/Phone</Text>
+            <Typography>Use Email / Phone</Typography>
           </Button>
-        </View>
-
-        <Text style={signupStyles.normalCenteredParagraph}>
-          All your important details are secured. None of your information will
-          be shared from our app!
-        </Text>
-
-        <View>
-          <Text style={styles.smallCenteredText}>
-            By registering, you agree to
-          </Text>
-          <Text style={styles.smallCenteredText}>
-            <Text style={styles.actionLink}>Our Terms of Service</Text>
-          </Text>
-          <Text style={styles.smallCenteredText}>
-            <Text style={styles.actionLink}>Privacy Policy</Text>
-            <Text> and </Text>
-            <Text style={styles.actionLink}>Cookie Policy</Text>
-          </Text>
-        </View>
-
-        <View>
-          <PaperButton
-            mode="text"
-            uppercase={false}
-            onPress={() => console.log("Pressed")}            
-          >
-            <Text style={{
-              fontFamily: FontNames.Campton,
-              fontSize: 17,
-              lineHeight: 22,
-              color: '#1BBED8',
-              fontWeight: '700',
-              textDecorationLine: "underline",
-            }}>
-              Having trouble logging in?
-            </Text>
-          </PaperButton>          
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-const styles = StyleSheet.create({  
+const styles = StyleSheet.create({
   socialButtonsGroup: {
     display: "flex",
     justifyContent: "space-between",
   },
   socialButton: {
-    ...getFontStyle('tertiaryButton'),
+    ...getFontStyle("tertiaryButton"),
     marginVertical: 10,
   },
-  smallCenteredText:  { 
-    ...getFontStyle('font14Line16Centered'),
-    letterSpacing: 0.24
+  smallCenteredText: {
+    ...getFontStyle("font14Line16Centered"),
+    letterSpacing: 0.24,
   },
   actionLink: {
     fontStyle: "italic",
