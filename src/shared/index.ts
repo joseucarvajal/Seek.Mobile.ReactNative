@@ -8,7 +8,8 @@ import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
 import Icon from './components/icons/icon.comp'
 import ButtonPrimary from './components/button-primary/button-primary.comp';
-import Header from './components/header/header.comp'
+import Header from './components/header/header.comp';
+import Block from './components/block/block.comp';
 
 export {
     Button,
@@ -21,5 +22,6 @@ export {
     Select,
     Image,
     Icon,
-    Header
+    Header,
+    Block
 }
