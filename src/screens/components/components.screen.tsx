@@ -9,7 +9,7 @@ export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
-    <ScrollView style={{ paddingTop: 16 }}>
+    <ScrollView style={{ paddingTop: 1 }}>
       {/* <MenuItem items={items} /> */}
       <View style={styles.container}>
         <Steper />
