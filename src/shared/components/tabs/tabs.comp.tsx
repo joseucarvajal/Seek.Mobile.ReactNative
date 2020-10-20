@@ -76,14 +76,14 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
 
         const textColor = this.animatedValue.interpolate({
             inputRange: [0, 1],
-            outputRange: [Colors.fontSoft, isActive ? Colors.white : Colors.black],
+            outputRange: [Colors.inactiveTab, isActive ? Colors.activeTab : Colors.inactiveTab],
             extrapolate: 'clamp',
         });
 
         const containerStyles = [
-            this.props.backgroundless ? [ styles.titleContainer,
-                                            !isActive && { backgroundColor: Colors.tabs },
-                                            isActive && styles.containerShadow] : null
+            styles.titleContainer,
+            !isActive && { backgroundColor: Colors.tabs },
+            isActive && this.props.backgroundless && styles.containerShadow
         ];
 
         return (
@@ -122,7 +122,7 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
 
     render() {
         return (
-            <Block style={styles.container}>
+            <Block style={[styles.container, this.props.backgroundless && { backgroundColor: Colors.transparent }]}>
                 {this.renderMenu()}
             </Block>
         )
@@ -134,8 +134,9 @@ export default Tabs;
 const styles = StyleSheet.create({
     container: {
         width: Layout.window.width,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.tabs,
         zIndex: 2,
+        marginLeft: -Layout.base
     },
     shadow: {
         shadowColor: Colors.black,
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     },
     titleContainer: {
         alignItems: 'center',
-        backgroundColor: Colors.primary,
+        backgroundColor: Colors.tabs,
         borderRadius: 21,
         marginRight: 9,
         paddingHorizontal: 10,
@@ -171,4 +172,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         color: Colors.black
     },
+    backgroundless: {
+        
+    }
 });

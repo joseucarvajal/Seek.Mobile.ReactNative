@@ -26,6 +26,8 @@ export default {
   header: '#F6F6F6',
   block: '#808080',
   tabs: '#E5E6F2',
+  activeTab: '#B7BBDA',
+  inactiveTab: '#9E9E9E',
   light: {
     text: '#000',
     background: '#fff',
