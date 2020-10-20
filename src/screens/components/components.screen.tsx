@@ -1,10 +1,10 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../components/profile';
 import { Colors, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, MenuItem } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon } from '../../shared';
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export interface IProfileProps { }
 
@@ -48,6 +48,22 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconSize={18}
         >
           <Text style={styles.textButton}>Continue with Facebook</Text>
+        </Button>
+        <Text />
+        <Button
+          left
+          type='social'
+          shadow
+          iconContent={
+            <Icon
+              name={'email_phone'}
+              size={18}
+              style={{ marginRight: 30 }}
+              color={Colors.quaternary}
+            />
+          }
+        >
+          <Text style={styles.textButton}>User Email Phone</Text>
         </Button>
         <Text />
         <Button

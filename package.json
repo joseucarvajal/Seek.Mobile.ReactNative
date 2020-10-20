@@ -8,6 +8,11 @@
     "eject": "expo eject",
     "test": "jest --watchAll"
   },
+  "rnpm": {
+    "assets": [
+      "assets/fonts"
+    ]
+  },
   "jest": {
     "preset": "jest-expo"
   },
@@ -24,10 +29,12 @@
     "expo-asset": "~8.2.0",
     "expo-constants": "~9.2.0",
     "expo-font": "~8.3.0",
+    "expo-linear-gradient": "^8.3.1",
     "expo-linking": "^1.0.1",
     "expo-splash-screen": "~0.6.2",
     "expo-status-bar": "~1.0.2",
     "expo-web-browser": "~8.5.0",
+    "metro-config": "^0.63.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
@@ -46,7 +53,8 @@
     "react-native-webview": "10.7.0",
     "react-native-youtube": "^2.0.1",
     "react-query": "^2.23.1",
-    "react-query-native-devtools": "^0.3.2"
+    "react-query-native-devtools": "^0.3.2",
+    "react-test-renderer": "^16.14.0"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

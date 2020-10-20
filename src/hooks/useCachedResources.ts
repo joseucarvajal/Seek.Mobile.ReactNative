@@ -20,7 +20,6 @@ export default function useCachedResources() {
           [FontNames.Campton]: require('../../assets/fonts/Campton-LightDEMO.otf'),
           [FontNames.CamptonBlack]: require('../../assets/fonts/Campton-Black.otf'),          
           [FontNames.CamptonBlackItalic]: require('../../assets/fonts/Campton-BlackItalic.otf'),
-
           [FontNames.CamptonBold]: require('../../assets/fonts/Campton-Bold.otf'),
           [FontNames.CamptonBoldItalic]: require('../../assets/fonts/Campton-BoldItalic.otf'),
           [FontNames.CamptonBook]: require('../../assets/fonts/Campton-Book.otf'),
@@ -36,7 +35,8 @@ export default function useCachedResources() {
           [FontNames.CamptonSemiBold]: require('../../assets/fonts/Campton-SemiBold.otf'),
           [FontNames.CamptonSemiBoldItalic]: require('../../assets/fonts/Campton-SemiBoldItalic.otf'),
           [FontNames.CamptonThin]: require('../../assets/fonts/Campton-Thin.otf'),
-          [FontNames.CamptonThinItalic]: require('../../assets/fonts/Campton-ThinItalic.otf')       
+          [FontNames.CamptonThinItalic]: require('../../assets/fonts/Campton-ThinItalic.otf'),
+          [FontNames.SeekQIcons]: require('../../assets/fonts/seekqicons.ttf')
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service

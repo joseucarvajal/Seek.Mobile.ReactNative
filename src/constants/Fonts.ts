@@ -21,6 +21,7 @@ type TFontNames = {
   CamptonSemiBoldItalic: string;
   CamptonThin: string;
   CamptonThinItalic: string;
+  SeekQIcons: string;
 };
 
 export const FontNames: TFontNames = {
@@ -43,6 +44,7 @@ export const FontNames: TFontNames = {
   CamptonSemiBoldItalic: "Campton-SemiBoldItalic",
   CamptonThin: "Campton-Thin",
   CamptonThinItalic: "Campton-ThinItalic",
+  SeekQIcons: "seekqicons",
 };
 
 const fontStyles = StyleSheet.create({
