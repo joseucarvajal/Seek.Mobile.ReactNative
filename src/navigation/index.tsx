@@ -49,21 +49,28 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 // Read more here: https://reactnavigation.org/docs/modal
 const Stack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
+const activeTab = Colors.primary;
+const inactiveTab = Colors.muted;
 
 function HomeTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        activeTintColor: activeTab,
+        inactiveTintColor: inactiveTab
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
           tabBarLabel: () => null,
-          tabBarIcon: () => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name={'home'}
               size={18}
               style={{ marginRight: 30 }}
-              color={Colors.quaternary}
+              color={focused ? activeTab : inactiveTab}
             />
           ),
         }}
@@ -73,12 +80,12 @@ function HomeTabs() {
         component={Home}
         options={{
           tabBarLabel: () => null,
-          tabBarIcon: () => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name={'chat'}
               size={18}
               style={{ marginRight: 30 }}
-              color={Colors.quaternary}
+              color={focused ? activeTab : inactiveTab}
             />
           ),
         }}
@@ -88,12 +95,12 @@ function HomeTabs() {
         component={Profile}
         options={{
           tabBarLabel: () => null,
-          tabBarIcon: () => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name={'contacts'}
               size={18}
               style={{ marginRight: 30 }}
-              color={Colors.quaternary}
+              color={focused ? activeTab : inactiveTab}
             />
           ),
         }}
@@ -103,12 +110,12 @@ function HomeTabs() {
         component={Home}
         options={{
           tabBarLabel: () => null,
-          tabBarIcon: () => (
+          tabBarIcon: ({ focused }) => (
             <Icon
               name={'settings'}
               size={18}
               style={{ marginRight: 30 }}
-              color={Colors.quaternary}
+              color={focused ? activeTab : inactiveTab}
             />
           ),
         }}
