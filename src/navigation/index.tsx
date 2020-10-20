@@ -9,6 +9,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import Profile from '../screens/profile/profile/profile.screen';
 import Components from '../screens/components/components.screen';
 import Home from '../screens/home/home-screen';
+import Settings from '../screens/settings/settings/settings.screen';
 
 import  {
   SignUp,
@@ -19,7 +20,8 @@ import  {
 } from '../screens/signup';
 
 
-import Settings from '../screens/settings/settings/settings.screen';
+import { Layout, Colors } from '../constants';
+import Header from '../shared/components/header/header.comp';
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -39,21 +41,36 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>      
-      <Stack.Screen name="Home" component={Home} />  
-
+    <Stack.Navigator mode="card" headerMode="screen">      
+      <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>  
 
       {/*Profile screens*/}
-      <Stack.Screen name="Profile" component={Components} />
+      <Stack.Screen 
+        name="Profile" 
+        component={Components} 
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Components"
+              navigation={navigation}
+              scene={scene}
+              back
+              next
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header }
+        }}
+      />
 
       {/*Signup screens*/}
-      <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="SignUpEmail" component={SignUpEmail} />
-      <Stack.Screen name="SignUpPhone" component={SignUpPhone} />
-      <Stack.Screen name="SignUpVerificationCode" component={SignUpVerificationCode} />
-      <Stack.Screen name="SignUpReady" component={SignUpReady} />
+      <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
+      <Stack.Screen name="SignUpEmail" component={SignUpEmail} options={{ headerShown: false }}/>
+      <Stack.Screen name="SignUpPhone" component={SignUpPhone} options={{ headerShown: false }}/>
+      <Stack.Screen name="SignUpVerificationCode" component={SignUpVerificationCode} options={{ headerShown: false }}/>
+      <Stack.Screen name="SignUpReady" component={SignUpReady} options={{ headerShown: false }}/>
 
-      <Stack.Screen name="Settings" component={Settings} />
+      <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }}/>
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

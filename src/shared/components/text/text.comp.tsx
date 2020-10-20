@@ -57,14 +57,13 @@ const Typography: React.FC<ITextProp> = (
 ) => {
   return (
     <Text
-      style={[
-        { fontFamily: FontNames.Campton },
-        h1 && { fontSize: 28, lineHeight: 18 },
+      style={[{fontFamily: FontNames.Campton},
+        h1 && { fontSize: 28 },
         h2 && { fontSize: 38 },
         h3 && { fontSize: 30 },
         h4 && { fontSize: 24 },
         h5 && { fontSize: 21 },
-        h6 && { fontSize: 18 },
+        h6 && { fontSize: 28 },
         p && { fontSize: 16 },
         body && { fontSize: 14 },
         small && { fontSize: 12 },
@@ -73,11 +72,10 @@ const Typography: React.FC<ITextProp> = (
         size && { fontSize: size },
         lineHeight && { lineHeight: lineHeight },
         color && { color },
-        italic && { fontStyle: "italic" },
-        bold && { fontWeight: "bold" },
-        center && { textAlign: "center" },
-        fontFamily && { fontFamily },
-        underline && { textDecorationLine: "underline" },
+        italic && { fontStyle: 'italic' },
+        bold && { fontFamily: FontNames.CamptonBold },
+        center && { textAlign: 'center' },
+        underline && { textDecorationLine: 'underline' },
         style && style,
       ]}
       {...props}
