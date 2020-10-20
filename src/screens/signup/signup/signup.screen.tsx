@@ -7,13 +7,15 @@ import { useNavigation } from "@react-navigation/native";
 import { 
   Button, 
   ButtonTertiary,
-  Text
+  Text,
+  Icon
 } from "../../../shared";
 
 import { 
   Colors,
   FontNames,
-  getFontStyle, 
+  getFontStyle,
+  Icons, 
 } from "../../../constants";
 
 import { 
@@ -49,8 +51,8 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             <Text>Continue with Google</Text>
           </ButtonTertiary>
           <ButtonTertiary
-            icon="mobile"
-            iconSize={25}
+            customIcon={Icons.settings}
+            customIconSize={30}
             style={styles.socialButton}
             onPress={() => {
               navigation.navigate("SignUpPhone");
