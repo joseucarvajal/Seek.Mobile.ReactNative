@@ -6,10 +6,12 @@ import MenuItem from './components/menu-item/menu-item.comp';
 import Select from './components/select/select.comp';
 import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
+import ButtonPrimary from './components/button-primary/button-primary.comp';
 
 export {
     Button,
     ButtonTertiary,
+    ButtonPrimary,
     Text,
     ToggleButton,
     Input,
