@@ -21,6 +21,7 @@ export default {
   placeholder: '#e1e4e8',
   border: '#C4C4C4',
   transparent: 'transparent',
+  header: '#F6F6F6',
   light: {
     text: '#000',
     background: '#fff',

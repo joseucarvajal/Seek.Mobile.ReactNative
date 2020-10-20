@@ -1,6 +1,6 @@
 import { Platform, StatusBar, Dimensions } from 'react-native';
 
-export const { width, height } = Dimensions.get("screen");
+const { width, height } = Dimensions.get("screen");
 
 export const isIOS = Platform.OS === 'ios' ? true : false
 export const StatusHeight = StatusBar.currentHeight;

@@ -2139,6 +2139,14 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@types/react-native-navbar@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-native-navbar/-/react-native-navbar-2.1.2.tgz#c06495b330b1f6c9c9e7f33533b23ffaeff76d84"
+  integrity sha512-WL5KBhbrF4tH4hBNrE8Pweq8khXjVWGEVKRrnWFcm8xGXLjtCQtcBmHVrM2WPKeYE8LCtAKL4UEoCuR5ipA4TQ==
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
 "@types/react-native-vector-icons@^6.4.6":
   version "6.4.6"
   resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.6.tgz#848e3b14572def56212cafbf5cb1254b445bfb41"
@@ -7129,6 +7137,13 @@ react-native-iphone-x-helper@^1.2.1:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.0.tgz#84fd13e6b89cc3aa4daa80ec514bf15cb724d86d"
   integrity sha512-+/bcZWFeZt0xSS/+3CHM5K7qPL4vDO/3ARLIowzFpUPGZiPsv9+NET+XNqqseRYwFJwYMmtX+Q4TZKxAVy09ew==
+
+react-native-navbar@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-navbar/-/react-native-navbar-2.1.0.tgz#4f21e947501ce5cf4563a29914cb3192db35a647"
+  integrity sha512-hvETP5lgBbokmTHNMuHdlG6LRqDyXGJb8eiTuxmZ0RSHTsDbGBkxrSBdS9PIA+dizej8Ql9tBQFf6e0QDNG/WA==
+  dependencies:
+    prop-types "^15.5.10"
 
 react-native-paper@^4.2.0:
   version "4.2.0"
