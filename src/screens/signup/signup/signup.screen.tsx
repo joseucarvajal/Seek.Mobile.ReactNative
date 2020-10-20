@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, StyleSheet, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useNavigation } from "@react-navigation/native";
@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { 
   Button, 
   ButtonTertiary,
-  Typography
+  Text
 } from "../../../shared";
 
 import { 
@@ -33,10 +33,10 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
         <SeekQLogo />
 
-        <Typography p lineHeight={18} center>
+        <Text p lineHeight={18} center>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
-        </Typography>
+        </Text>
 
         <View style={styles.socialButtonsGroup}>
           <ButtonTertiary icon="apple" style={styles.socialButton}>
@@ -60,22 +60,22 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </ButtonTertiary>
         </View>
 
-        <Typography p lineHeight={18} center>
+        <Text p lineHeight={18} center>
           All your important details are secured. None of your information will
           be shared from our app!
-        </Typography>
+        </Text>
 
         <View>
-          <Typography center style={styles.link}>By registering, you agree to</Typography>
+          <Text center style={styles.link}>By registering, you agree to</Text>
           <Button
             type="text-link"
             onPress={() => {
               console.log("Terms of service");
             }}
           >
-            <Typography underline style={styles.actionLink} small center>
+            <Text underline style={styles.actionLink} small center>
               Out terms of service
-            </Typography>
+            </Text>
           </Button>
           <Text>
             <Button
@@ -84,12 +84,12 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
                 console.log("Privacy Policy");
               }}
             >
-              <Typography underline style={styles.actionLink} small center>
+              <Text underline style={styles.actionLink} small center>
                 Privacy Policy
-              </Typography>
+              </Text>
             </Button>
             <Button type="text-link">
-              <Typography small style={styles.link}> and </Typography>
+              <Text small style={styles.link}> and </Text>
             </Button>
             <Button
               type="text-link"
@@ -97,9 +97,9 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
                 console.log("Cookie Policy");
               }}
             >
-              <Typography underline style={styles.actionLink} small center>
+              <Text underline style={styles.actionLink} small center>
                 Cookie Policy
-              </Typography>
+              </Text>
             </Button>
           </Text>
         </View>
@@ -110,9 +110,9 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             console.log('having trouble logging in?');
           }}
         >
-          <Typography underline bold style={styles.linkButtonPrimary} fontSize={17} lineHeight={22}>
+          <Text underline bold style={styles.linkButtonPrimary} fontSize={17} lineHeight={22}>
             Having trouble logging in?
-          </Typography>
+          </Text>
         </Button>
       </View>
     </SafeAreaView>

@@ -62,8 +62,7 @@ function RootNavigator() {
               title="Components"
               navigation={navigation}
               scene={scene}
-              back
-              next
+              back              
               bgColor={Colors.header}
             />
           ),

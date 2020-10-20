@@ -8,7 +8,7 @@ interface ISelectProps {
   defaultValue?: any;
   shadow?: any;
   props?: any;
-  style: ViewStyle
+  style?: ViewStyle
 }
 
 interface ISelectState {

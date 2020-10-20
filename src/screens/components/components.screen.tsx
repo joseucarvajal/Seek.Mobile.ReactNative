@@ -36,7 +36,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
             { label: 'Male', value: 'm' },
             { label: 'Female', value: 'f' },
           ]}
-          shadow
+          shadow          
         />
         <Text />
         <Button
