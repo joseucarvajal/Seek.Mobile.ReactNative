@@ -31,12 +31,12 @@ renderItem = ({ item }: { item: any }) => (
     {
       item.type === 'toggle' ?
         <View style={[styles.container, { backgroundColor: item.color }]}>
-          <Text size={16}>{item.title}</Text>
+          <Text fontSize={16}>{item.title}</Text>
           <ToggleButton color='primary' value={true}/>
         </View>
       : 
         <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]}>
-            <Text size={16}>{item.title}</Text>
+            <Text fontSize={16}>{item.title}</Text>
             <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
         </TouchableOpacity>
     }
