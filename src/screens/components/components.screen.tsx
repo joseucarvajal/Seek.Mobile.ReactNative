@@ -9,10 +9,22 @@ export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
-    <ScrollView style={{paddingTop: 16}}>
+    <ScrollView style={{ paddingTop: 16 }}>
       {/* <MenuItem items={items} /> */}
       <View style={styles.container}>
         <Steper />
+        <Text />
+        <Select
+          small
+          borderless
+          defaultValue={'usa'}
+          items={[
+            { label: '+1', value: 'usa' },
+            { label: '+57', value: 'colombia' },
+          ]}
+          shadow
+        />
+        <Text />
         <Input
           left
           color='primary'
@@ -28,6 +40,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Input color='quaternary' borderless placeholder='Password' password viewPass />
         <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass />
         <ToggleButton color='primary' value={true} />
+
         <Text />
         <Select
           defaultValue={'f'}
@@ -35,7 +48,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
             { label: 'Male', value: 'm' },
             { label: 'Female', value: 'f' },
           ]}
-          shadow          
+          shadow
         />
         <Text />
         <Button
@@ -57,7 +70,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
             <Icon
               name={'email_phone'}
               size={22}
-              style={{ marginRight: 30 }}
+              style={{ paddingLeft: Layout.base }}
               color={Colors.quaternary}
             />
           }

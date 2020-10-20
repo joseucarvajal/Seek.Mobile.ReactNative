@@ -1,14 +1,9 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  ViewProps,
-  Text,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, ViewProps } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Block from "../Block/block.comp"
 
 export interface IArButtonProps extends ViewProps {
   type?: ButtonType;
@@ -56,12 +51,12 @@ const ArButton: React.FC<IArButtonProps> = ({
     <Icon
       name={icon}
       size={iconSize || Layout.base * 1.0625}
-      style={{ marginRight: left && !right ? 30 : 0 }}
+      style={{ paddingLeft: left && Layout.base, paddingRight: right && Layout.base }}
       color={iconColor}
     />
   ) : (
-    iconContent
-  );
+      iconContent
+    );
 
   const styleButton = [
     styles.button,
@@ -80,7 +75,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   return (
     <>
       {type === "gradient" ? (
-        <View style={{ borderRadius: Layout.button_radius }}>
+        <Block style={{ borderRadius: Layout.button_radius }}>
           <LinearGradient
             colors={
               disabled
@@ -95,52 +90,38 @@ const ArButton: React.FC<IArButtonProps> = ({
               onPress={disabled ? null : onPress}
               style={{ flex: 1 }}
             >
-              <View
-                style={[
-                  styles.buttonView,
-                  left &&
-                    !right && {
-                      justifyContent: "flex-start",
-                      marginLeft: Layout.base,
-                    },
-                ]}
-              >
+              <Block flex row middle center>
                 {left && !right && iconInstance}
-                {children}
+                <Block flex middle center>
+                  {children}
+                </Block>
                 {right && iconInstance}
-              </View>
+              </Block>
             </TouchableOpacity>
           </LinearGradient>
-        </View>
+        </Block>
       ) : type === "text-link" ? (
         <TouchableOpacity
-          onPress={disabled ? null : onPress}          
+          onPress={disabled ? null : onPress}
         >
           {children}
         </TouchableOpacity>
       ) : (
-        <View style={styleButton}>
-          <TouchableOpacity
-            onPress={disabled ? null : onPress}
-            style={{ flex: 1 }}
-          >
-            <View
-              style={[
-                styles.buttonView,
-                left &&
-                  !right && {
-                    justifyContent: "flex-start",
-                    marginLeft: Layout.base,
-                  },
-              ]}
-            >
-              {left && !right && iconInstance}
-              {children}
-              {right && iconInstance}
-            </View>
-          </TouchableOpacity>
-        </View>
-      )}
+            <Block style={styleButton}>
+              <TouchableOpacity
+                onPress={disabled ? null : onPress}
+                style={{ flex: 1 }}
+              >
+                <Block flex row middle center>
+                  {left && !right && iconInstance}
+                  <Block flex middle center >
+                    {children}
+                  </Block>
+                  {right && iconInstance}
+                </Block>
+              </TouchableOpacity>
+            </Block>
+          )}
     </>
   );
 };
@@ -173,7 +154,7 @@ const styles = StyleSheet.create({
   },
   backgroundless: {
     width: Layout.window.width - Layout.base * 2,
-    backgroundColor: "transparent",
+    backgroundColor: Colors.transparent,
     height: 50,
     borderRadius: Layout.button_radius,
   },

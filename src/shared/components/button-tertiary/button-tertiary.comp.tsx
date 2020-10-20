@@ -3,8 +3,7 @@ import { ViewProps } from "react-native";
 import { Colors } from "../../../constants";
 import Button from "../button/button.comp";
 import Text from "../text/text.comp";
-
-import { Icon } from "../../../shared";
+import Icon from "../icons/icon.comp";
 
 export interface IButtonTertiary extends ViewProps {
   icon?: any;
