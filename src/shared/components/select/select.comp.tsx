@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Layout, Colors } from '../../../constants';
 
@@ -8,6 +8,7 @@ interface ISelectProps {
   defaultValue?: any;
   shadow?: any;
   props?: any;
+  style: ViewStyle
 }
 
 interface ISelectState {
@@ -37,7 +38,7 @@ class Select extends React.Component<ISelectProps, ISelectState> {
             items={this.props.items}
             defaultValue={this.props.defaultValue}
             containerStyle={[styles.dropdown, this.props.shadow && styles.shadow]}
-            style={{backgroundColor: '#fafafa'}}
+            style={[{backgroundColor: '#fafafa'}, this.props.style]}
             itemStyle={{
                 justifyContent: 'flex-start',
             }}
