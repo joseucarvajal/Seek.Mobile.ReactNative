@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button as PaperButton } from "react-native-paper";
 import FontNames from "../../../constants/Fonts";
-import { Button } from "../../../shared";
+import { Button, ButtonTertiary } from "../../../shared";
 import { getFontStyle, Colors } from "../../../constants";
 
 import { signUpStyles, SeekQLogo } from "../../../components/signup/";
@@ -28,33 +28,30 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
         </Typography>
 
         <View style={styles.socialButtonsGroup}>
-          <Button
-            left
-            type="social"
-            icon="apple"
-            iconColor={Colors.quaternary}
-            iconSize={18}
-          >
-            <Typography>Continue with Facebook</Typography>
-          </Button>
-          <Button color="tertiary" style={styles.socialButton}>
-            <Typography>Continue with Facebook</Typography>
-          </Button>
-
-          <Button color="tertiary" style={styles.socialButton}>
-            <Typography>Continue with Google</Typography>
-          </Button>
-
-          <Button
-            color="tertiary"
+          <ButtonTertiary icon="apple" style={styles.socialButton}>
+            <Text>Continue with Apple</Text>
+          </ButtonTertiary>
+          <ButtonTertiary icon="facebook" style={styles.socialButton}>
+            <Text>Continue with Facebook</Text>
+          </ButtonTertiary>
+          <ButtonTertiary icon="google" style={styles.socialButton}>
+            <Text>Continue with Google</Text>
+          </ButtonTertiary>
+          <ButtonTertiary 
+            icon="mobile" 
             style={styles.socialButton}
-            onPress={() => {
-              navigation.navigate("SignUpPhone");
+            onPress={()=>{
+              navigation.navigate('SignUpPhone');
             }}
           >
-            <Typography>Use Email / Phone</Typography>
-          </Button>
+            <Text>Use Email / Phone</Text>
+          </ButtonTertiary>
         </View>
+
+        <Typography p lineHeight={18} center>
+          All your important details are secured. None of your information will
+          be shared from our app!
+        </Typography>
       </View>
     </SafeAreaView>
   );
