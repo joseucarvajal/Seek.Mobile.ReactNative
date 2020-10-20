@@ -10,7 +10,16 @@ export type RootStackParamList = {
   SignUpReady: undefined;
 
   Profile: undefined;
+
+  //Settings screens
   Settings: undefined;
+  HelpFaq: undefined,
+  HelpMenu: undefined,
+  Legal: undefined,
+  TutorialVideo: undefined,
+  Modes: undefined,
+  Notifications: undefined,
+  
   NotFound: undefined;
 };
 

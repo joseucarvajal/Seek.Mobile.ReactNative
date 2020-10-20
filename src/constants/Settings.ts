@@ -1,27 +1,62 @@
-const settings = [
+import Colors from "./Colors";
+
+const SettingsItems = [
   {
-    text: 'Profile',
-    icon: 'angle-left.svg',
+    title: 'Profile',
+    id: 'profile', 
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Profile',
   },
   {
-    text: 'Notifications',
-    icon: 'angle-left.svg',
+    title: 'Notifications',
+    id: 'notifications',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Notifications',
   },
   {
-    text: 'Modes',
-    icon: 'angle-left.svg',
+    title: 'Modes',
+    id: 'modes',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Modes',
   },
   {
-    text: 'Account Information',
-    icon: 'angle-left.svg',
+    title: 'Account Information',
+    id: 'accountInformation',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Legal',
   },
   {
-    text: 'Invite',
-    icon: 'angle-left.svg',
+    title: 'Invite',
+    id: 'invite',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Legal',
   },
   {
-    text: 'Upgrate',
-    icon: 'angle-left.svg',
+    title: 'Upgrate to premium',
+    id: 'upgrate',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Legal',
   },
+  {
+    title: 'Help',
+    id: 'help',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'HelpMenu',
+  },
+  {
+    title: 'Logout',
+    id: 'logout',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Profile',
+  }
 ];
-export default Settings;
+
+export default SettingsItems;

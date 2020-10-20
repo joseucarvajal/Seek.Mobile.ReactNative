@@ -1,60 +1,79 @@
 import React from "react";
-
-import { Text, ScrollView, FlatList, View } from "react-native";
+import { View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Images } from '../../../constants';
 import SettingsItems from "../../../constants/Settings";
-import { MenuItem } from "../../../shared";
-import styles from './settings.screen.styles';
+import { MenuItem, Image } from "../../../shared";
+import styles from './settings.style';
 
-export type SettingItem = {
-  text: undefined;
-  icon: undefined;
-};
+import Home from '../../home/home-screen';
+import Profile from '../../profile/profile/profile.screen';
 
-export interface IRenderItemProps {
-  item: undefined;
-};
+const Tab = createBottomTabNavigator();
+
+export type TabParamList = {
+  Home: undefined
+  Chat: undefined
+  Contacts: undefined
+  Settings: undefined
+}
 
 export interface ISettingsProps {}
 
 const Settings: React.FC<ISettingsProps> = ({}) => {
-
-  const renderItem = (item: IRenderItemProps) => {
-    /*
-    switch(item.type) {
-      case 'switch': 
-        return (
-          <MenuItem {...item} />
-        );
-      case 'button': {
-        return (
-          <MenuItem {...item} />
-        );
-      }
-    }
-    */
-  }
-
   return (
-    <SafeAreaView>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-      >
-        {/* 
-        <FlatList
-          data={SettingsItems}
-          keyExtractor={(item: any, index: any) => `${item.text}`}
-          renderItem={renderItem}
-          ListHeaderComponent={
-            <View style={styles.container}>
-              <Text style={styles.title}>
-                Settings
-              </Text>
-            </View>
-          }
-        />
-        */}
-      </ScrollView>
+    <SafeAreaView style={styles.areaView}>
+      <View style={styles.container}>
+        <View style={styles.body}>
+          <MenuItem items={SettingsItems} />
+        </View>
+        <View style={styles.footerView}>
+          <Tab.Navigator>
+            <Tab.Screen
+              name="Home"
+              component={Home}
+              options={{
+                tabBarLabel: () => null,
+                tabBarIcon: () => (
+                  <Image width={26} source={Images.ContactsSvg} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Chat"
+              component={Home}
+              options={{
+                tabBarLabel: () => null,
+                tabBarIcon: () => (
+                  <Image width={26}  source={Images.ChatSvg} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Contacts"
+              component={Profile}
+              options={{
+                tabBarLabel: () => null,
+                tabBarIcon: () => (
+                  <Image width={26} source={Images.ContactsSvg} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={Home}
+              options={{
+                tabBarLabel: () => null,
+                tabBarIcon: () => (
+                  <Image width={26} source={Images.SettingsSvg} />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        </View>
+      </View>
     </SafeAreaView>
   );
 };

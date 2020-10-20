@@ -1,16 +1,28 @@
 import React from "react";
-
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import LegalItems from "../../../constants/Legals";
+import styles from './legal.style';
 
-export interface ISettingsProps {}
+export interface ILegalProps {}
 
-const Settings: React.FC<ISettingsProps> = ({}) => {
+const Legal: React.FC<ILegalProps> = ({}) => {
   return (
-    <SafeAreaView>
-      <Text>Notifications settings nested</Text>
+    <SafeAreaView style={styles.areaView}>
+      <View style={styles.container}>
+        {LegalItems.map((legal) => (
+          <Text key={legal.id} onPress={() => legal.action()}>
+            {legal.title}
+          </Text>
+        ))}
+      </View>
+      <View style={styles.body}>
+        <Text>
+          Something text...
+        </Text>
+      </View>
     </SafeAreaView>
   );
 };
 
-export default Settings;
+export default Legal;

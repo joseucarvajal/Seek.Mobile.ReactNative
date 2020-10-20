@@ -1,16 +1,10 @@
 import { StyleSheet } from 'react-native';
-import FontNames from "../../../constants/Fonts";
-
-const colors = {
-  text: '#4f4f4f99',
-  container: '#fff',
-};
+import { getFontStyle, Colors } from '../../../constants';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontFamily: FontNames.Campton,
-    backgroundColor: colors.container,
+    backgroundColor: Colors.white,
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 30,
@@ -18,8 +12,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: '500',
-    fontSize: 16,
-    color: colors.text,
+    ...getFontStyle('font14Line16Centered'),
+    color: Colors.dark.menuItem,
   },
   icon: {
     width: 9,

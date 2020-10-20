@@ -43,6 +43,8 @@
     "react-native-swiper": "^1.6.0",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
+    "react-native-webview": "10.7.0",
+    "react-native-youtube": "^2.0.1",
     "react-query": "^2.23.1",
     "react-query-native-devtools": "^0.3.2"
   },

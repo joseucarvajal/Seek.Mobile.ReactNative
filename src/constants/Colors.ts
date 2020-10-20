@@ -35,5 +35,11 @@ export default {
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
+    menuItem: '#e2e3e459',
   },
+  title: '#00B5D2',
+  settings: {
+    boxShadowColor: '#00000040',
+    background: '#F6F6F6',
+  }
 };

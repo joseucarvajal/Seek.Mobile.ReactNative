@@ -12,47 +12,34 @@ interface IMenuItemProps {
   props?: any;
 }
 
-interface IMenuItemState {
-  value: any;
-}
+const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
+  const navigation = useNavigation();
 
-class MenuItem extends React.Component<IMenuItemProps, IMenuItemState> {
-constructor(props: IMenuItemProps) {
-  super(props);
-
-  this.state = {
-      value: 1,
-  };
-
-}
-
-renderItem = ({ item }: { item: any }) => (
-  <>
-    {
-      item.type === 'toggle' ?
-        <View style={[styles.container, { backgroundColor: item.color }]}>
-          <Text fontSize={16}>{item.title}</Text>
-          <ToggleButton color='primary' value={true}/>
-        </View>
-      : 
-        <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]}>
+  const renderItem = ({ item }: { item: any }) => (
+    <>
+      {
+        item.type === 'toggle' ?
+          <View style={[styles.container, { backgroundColor: item.color }]}>
             <Text fontSize={16}>{item.title}</Text>
-            <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
-        </TouchableOpacity>
-    }
-  </>
-);
+            <ToggleButton color='primary' value={item?.value} onValueChange={() => item?.action && item.action(!item?.value) } />
+          </View>
+        : 
+          <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]} onPress={() => item?.navigate && navigation.navigate(item.navigate)}>
+              <Text fontSize={16}>{item.title}</Text>
+              <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
+          </TouchableOpacity>
+      }
+    </>
+  );
 
-render() {
   return (
-      <FlatList
-        data={this.props.items}
-        keyExtractor={(item, index) => item.id}
-        renderItem={this.renderItem}
-      />
-  )
-}
-}
+    <FlatList
+      data={items}
+      keyExtractor={(item, _) => item.id}
+      renderItem={renderItem}
+    />
+  );
+};
 
 export default MenuItem;
 

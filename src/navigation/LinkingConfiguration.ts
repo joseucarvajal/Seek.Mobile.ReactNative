@@ -33,7 +33,12 @@ export default {
 
       //Settings screens
       Settings: {},
-
+      HelpFaq: {},
+      HelpMenu: {},
+      Legal: {},
+      TutorialVideo: {},
+      Modes: {},
+      Notifications: {},
 
       NotFound: '*',
     },

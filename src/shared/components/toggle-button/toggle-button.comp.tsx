@@ -10,6 +10,7 @@ export interface IToggleButtonProps extends ViewProps {
     children?: React.ReactNode;
     props?: any;
     onPress?: any;
+    onValueChange?: any;
 }
 
 export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
@@ -21,6 +22,7 @@ const ToggleButton: React.FC<IToggleButtonProps> = ({
     disabled,
     children,
     onPress,
+    onValueChange,
     ...props
 }) => {
 
