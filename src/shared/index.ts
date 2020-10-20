@@ -9,6 +9,7 @@ import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
 import Icon from './components/icons/icon.comp'
 import ButtonPrimary from './components/button-primary/button-primary.comp';
 import Header from './components/header/header.comp'
+import Tabs from './components/tabs/tabs.comp'
 
 export {
     Button,
@@ -18,8 +19,9 @@ export {
     ToggleButton,
     Input,
     MenuItem,
-    Select,
     Image,
+    Select,
     Icon,
-    Header
+    Header,
+    Tabs
 }

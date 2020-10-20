@@ -25,6 +25,7 @@ export default {
   transparent: 'transparent',
   header: '#F6F6F6',
   block: '#808080',
+  tabs: '#E5E6F2',
   light: {
     text: '#000',
     background: '#fff',

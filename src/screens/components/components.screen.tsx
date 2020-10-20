@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs } from '../../shared';
 
 export interface IProfileProps { }
 
@@ -13,6 +13,11 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       {/* <MenuItem items={items} /> */}
       <View style={styles.container}>
         <Steper />
+        <Text />
+        <Tabs
+          initialIndex={'terms'}
+          backgroundless
+        />
         <Text />
         <Select
           small
