@@ -27,6 +27,7 @@ export interface ITextProp {
   styles?: any;
   theme?: any;
   fontFamily?: string;
+  letterSpacing?: number;
 }
 
 const Typography: React.FC<ITextProp> = (
@@ -43,7 +44,7 @@ const Typography: React.FC<ITextProp> = (
     small,
     muted,
     neutral,
-    fontSize,
+    fontSize: size,
     lineHeight,
     color,
     bold,
@@ -52,6 +53,7 @@ const Typography: React.FC<ITextProp> = (
     underline,
     children,
     fontFamily,
+    letterSpacing,
   },
   props
 ) => {
@@ -69,11 +71,13 @@ const Typography: React.FC<ITextProp> = (
         small && { fontSize: 12 },
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
-        fontSize && { fontSize },
+        size && { fontSize: size },
         lineHeight && { lineHeight: lineHeight },
         color && { color },
         italic && { fontStyle: 'italic' },
         bold && { fontFamily: FontNames.CamptonBold },
+        fontFamily && { fontFamily },
+        letterSpacing && { letterSpacing },
         center && { textAlign: 'center' },
         underline && { textDecorationLine: 'underline' },
         style && style,
