@@ -8,6 +8,7 @@ import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
 import Icon from './components/icons/icon.comp'
 import ButtonPrimary from './components/button-primary/button-primary.comp';
+import Header from './components/header/header.comp'
 
 export {
     Button,
@@ -19,5 +20,6 @@ export {
     MenuItem,
     Select,
     Image,
-    Icon
+    Icon,
+    Header
 }

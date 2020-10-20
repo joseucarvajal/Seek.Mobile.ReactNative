@@ -23,15 +23,9 @@ export type RootStackParamList = {
   NotFound: undefined;
 };
 
-export type BottomTabParamList = {
-  Settings: undefined;
-  TabTwo: undefined;
-};
-
-export type TabOneParamList = {
-  TabOneScreen: undefined;
-};
-
-export type TabTwoParamList = {
-  TabTwoScreen: undefined;
-};
+export type TabParamList = {
+  Home: undefined
+  Chat: undefined
+  Contacts: undefined
+  Settings: undefined
+}

@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NavigationBar from 'react-native-navbar';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { Layout, Colors, HeaderHeight } from '../../../constants'
 import Text from '../text/text.comp'
 import Image from '../image/image.comp'
+import Icon from '../icons/icon.comp'
 
 export interface IHeaderProps {
     back?: any;
@@ -37,8 +37,8 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
         return (
             <TouchableOpacity>
                 <Icon
-                    size={32}
-                    name={'chevron-right'}
+                    size={24}
+                    name={'caret_right'}
                     color={Colors.primary}
                 />
             </TouchableOpacity>
@@ -60,8 +60,8 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
         return (
             <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Icon
-                    size={32}
-                    name={'chevron-left'}
+                    size={24}
+                    name={'caret_left'}
                     color={Colors.primary}
                 />
             </TouchableOpacity>
@@ -78,11 +78,11 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
     }
 
     renderLeft = () => {
-        const { back, home, index } = this.props
+        const { back, avatar } = this.props
         return (
             <View style={styles.left}>
                 {back && this.renderBack()}
-                {home && this.renderAvatar()}
+                {avatar && this.renderAvatar()}
             </View>
         );
     }
