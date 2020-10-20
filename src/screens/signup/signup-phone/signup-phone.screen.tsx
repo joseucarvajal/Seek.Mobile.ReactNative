@@ -6,7 +6,14 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 import { useNavigation } from "@react-navigation/native";
 
-import { Button, ButtonTertiary, Text, Select, Input } from "../../../shared";
+import {
+  Button,
+  ButtonTertiary,
+  Text,
+  Select,
+  Input,
+  ButtonPrimary,
+} from "../../../shared";
 
 import { Colors, FontNames, getFontStyle, Layout } from "../../../constants";
 
@@ -38,7 +45,11 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
         <View style={styles.phoneForm}>
           <View style={styles.phoneIndicativeView}>
-            <Text fontSize={12} style={{marginBottom: 10}}>
+            <Text
+              fontSize={12}
+              style={{ marginBottom: 10 }}
+              color={Colors.fontSoft1}
+            >
               Enter phone
             </Text>
             <Select
@@ -59,6 +70,14 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
             />
           </View>
         </View>
+
+        <ButtonPrimary
+          onPress={() => {
+            console.log('continue');
+          }}
+        >
+          CONTINUE
+        </ButtonPrimary>
 
         <Button
           type="link"
