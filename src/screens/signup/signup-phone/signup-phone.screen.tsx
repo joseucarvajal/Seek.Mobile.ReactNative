@@ -38,6 +38,9 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
         <View style={styles.phoneForm}>
           <View style={styles.phoneIndicativeView}>
+            <Text fontSize={12} style={{marginBottom: 10}}>
+              Enter phone
+            </Text>
             <Select
               defaultValue={"1"}
               items={[{ label: "1", value: "1" }]}
