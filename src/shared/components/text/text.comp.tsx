@@ -63,8 +63,8 @@ const Typography: React.FC<ITextProp> = (
     <Text
       style={[{fontFamily: FontNames.Campton, color: Colors.fontNormal},
         h1 && { fontSize: 28 },
-        h2 && { fontSize: 38 },
-        h3 && { fontSize: 30 },
+        h2 && { fontSize: 24 },
+        h3 && { fontSize: 16 },
         h4 && { fontSize: 24 },
         h5 && { fontSize: 21 },
         h6 && { fontSize: 28 },

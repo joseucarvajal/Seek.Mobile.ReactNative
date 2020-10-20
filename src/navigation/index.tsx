@@ -127,7 +127,7 @@ function HomeTabs() {
 function RootNavigator() {
   return (
     <Stack.Navigator mode="card" headerMode="screen">
-      <Stack.Screen name="Home" component={HomeTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="Home" component={HomeTabs} />
 
       {/*Profile screens*/}
       <Stack.Screen
@@ -165,7 +165,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -182,7 +181,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -199,7 +197,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -216,7 +213,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -233,7 +229,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -250,7 +245,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),
@@ -267,7 +261,6 @@ function RootNavigator() {
               navigation={navigation}
               scene={scene}
               back
-              next
               bgColor={Colors.header}
             />
           ),

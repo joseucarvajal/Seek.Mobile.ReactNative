@@ -4,7 +4,6 @@ import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Layout } from "../../constants";
 import { Button, Input, Select, ToggleButton, Text, Icon } from '../../shared';
-import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 export interface IProfileProps { }
 
@@ -47,7 +46,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconColor={Colors.quaternary}
           iconSize={18}
         >
-          <Text style={styles.textButton}>Continue with Facebook</Text>
+          <Text h3 center>Continue with Facebook</Text>
         </Button>
         <Text />
         <Button
@@ -57,13 +56,13 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconContent={
             <Icon
               name={'email_phone'}
-              size={18}
+              size={22}
               style={{ marginRight: 30 }}
               color={Colors.quaternary}
             />
           }
         >
-          <Text style={styles.textButton}>User Email Phone</Text>
+          <Text h3 center>User Email Phone</Text>
         </Button>
         <Text />
         <Button
@@ -75,17 +74,17 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconColor={Colors.white}
           iconSize={18}
         >
-          <Text style={styles.textLabel}>Continue with Google</Text>
+          <Text h3 center color={Colors.white}>Continue with Google</Text>
         </Button>
         <Text />
         <Button type='backgroundless'>
-          <Text style={styles.loginButton}>LOGIN</Text>
+          <Text h2 center color={Colors.primary}>LOGIN</Text>
         </Button>
         <Button type='link'>
-          <Text underline bold style={styles.linkButton}>Continue using email Instead</Text>
+          <Text h3 center underline bold color={Colors.primary}>Continue using email Instead</Text>
         </Button>
         <Button type='gradient' shadow>
-          <Text style={styles.textLabel}>CONTINUE</Text>
+          <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>
       </View>
     </ScrollView>
@@ -150,12 +149,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#4aae4f',
   },
-  textLabel: {
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: '500',
-    color: Colors.white,
-  },
   textInput: {
     fontSize: 22,
     fontWeight: '500',
@@ -165,20 +158,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     color: Colors.black,
-  },
-  textButton: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: Colors.black,
-  },
-  loginButton: {
-    fontSize: 24,
-    textAlign: 'center',
-    color: Colors.primary,
-  },
-  linkButton: {
-    fontSize: 17,
-    textAlign: 'center',
-    color: Colors.primary,
   }
 });
