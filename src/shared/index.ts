@@ -6,11 +6,8 @@ import MenuItem from './components/menu-item/menu-item.comp';
 import Select from './components/select/select.comp';
 import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
-<<<<<<< HEAD
 import Icon from './components/icons/icon.comp'
-=======
 import ButtonPrimary from './components/button-primary/button-primary.comp';
->>>>>>> 4097f6b9e854ffbc0446ca1f0d74694303267278
 
 export {
     Button,
