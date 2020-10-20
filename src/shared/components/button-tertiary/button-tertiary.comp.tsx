@@ -7,6 +7,7 @@ import Typography from '../text/text.comp';
 export interface IButtonTertiary extends ViewProps {
     icon?: any;
     onPress?: any;
+    iconSize?: number
 }
 
 const ButtonTertiary: React.FC<IButtonTertiary> = ({      
@@ -14,6 +15,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
     onPress,
     style,
     children,
+    iconSize,
     ...props
 }) => {
 
@@ -23,7 +25,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
         type="social"
         icon={icon}
         iconColor={Colors.quaternary}
-        iconSize={18}
+        iconSize={iconSize ?? 18}
         style={style}
         onPress={onPress}
       >

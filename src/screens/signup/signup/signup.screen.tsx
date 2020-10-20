@@ -4,7 +4,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import { useNavigation } from "@react-navigation/native";
 
-//import FontNames from "../../../constants/Fonts";
 import { 
   Button, 
   ButtonTertiary,
@@ -31,6 +30,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={signUpStyles.screenContainer}>
+
         <SeekQLogo />
 
         <Typography p lineHeight={18} center>
@@ -50,6 +50,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </ButtonTertiary>
           <ButtonTertiary
             icon="mobile"
+            iconSize={25}
             style={styles.socialButton}
             onPress={() => {
               navigation.navigate("SignUpPhone");
@@ -102,6 +103,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             </Button>
           </Text>
         </View>
+
         <Button 
           type="link"
           onPress={()=>{
