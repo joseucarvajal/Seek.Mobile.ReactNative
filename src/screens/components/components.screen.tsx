@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar } from '../../shared';
 
 export interface IProfileProps { }
 
@@ -25,6 +25,8 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconColor={Colors.quaternary}
           iconSize={28}
         />
+        <Text />
+        <Calendar />
         <Text />
         <Checkbox label='Art' iconColor={Colors.primary} />
         <Checkbox label='Beauty' iconColor={Colors.primary} />

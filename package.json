@@ -36,6 +36,7 @@
     "expo-status-bar": "~1.0.2",
     "expo-web-browser": "~8.5.0",
     "metro-config": "^0.63.0",
+    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
