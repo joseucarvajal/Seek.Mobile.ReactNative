@@ -5,19 +5,6 @@ import Text from "../text/text.comp"
 import Icon from "react-native-vector-icons/MaterialIcons";
 import Block from "../block/block.comp";
 
-// interface IAccordionProps {
-//     title?: string,
-//     items?: any;
-//     shadow?: any;
-//     props?: any;
-//     style?: ViewStyle;
-// }
-
-// interface IAccordionState {
-//     items: any;
-//     expanded: any
-// }
-
 interface IAccordion {
     title?: string,
     items?: any;
@@ -62,43 +49,6 @@ const Accordion: React.FC<IAccordion> = ({
       </Block>
     );
 };
-
-// class Accordion extends React.Component<IAccordionProps, IAccordionState> {
-//     constructor(props: IAccordionProps) {
-//         super(props);
-//         this.state = {
-//             items: this.props.items,
-//             expanded: false,
-//         }
-//         if (Platform.OS === 'android') {
-//             UIManager.setLayoutAnimationEnabledExperimental(true);
-//         }
-//     }
-
-//     toggleExpand = () => {
-//         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-//         this.setState({ expanded: !this.state.expanded })
-//     }
-
-//     render() {
-//         return (
-//             <Block shadow={this.props.shadow}>
-//                 <TouchableOpacity style={styles.row} onPress={() => this.toggleExpand()}>
-//                     <Text h3 style={styles.title}>{this.props.title}</Text>
-//                     <Icon name={this.state.expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.black} />
-//                 </TouchableOpacity>
-//                 <View style={styles.parent} />
-//                 {
-//                     this.state.expanded &&
-//                     <Block shadow={this.props.shadow} style={styles.child}>
-//                         <Text h3 style={styles.title}>{this.props.items}</Text>
-//                     </Block>
-//                 }
-//             </Block>
-//         )
-//     }
-// }
-
 
 export default Accordion;
 
