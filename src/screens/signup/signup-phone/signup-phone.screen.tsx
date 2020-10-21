@@ -1,14 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import DropDownPicker from "react-native-dropdown-picker";
 
 import { useNavigation } from "@react-navigation/native";
 
 import {
-  Button,
-  ButtonTertiary,
   Text,
   Select,
   Input,
@@ -17,9 +12,9 @@ import {
   Block,
 } from "../../../shared";
 
-import { Colors, FontNames, getFontStyle, Layout } from "../../../constants";
+import { Colors, FontNames, Layout } from "../../../constants";
 
-import { signUpStyles, SeekQLogo } from "../../../components/signup/";
+import { SeekQLogo } from "../../../components/signup/";
 
 export interface ISignUpPhoneProps {}
 
@@ -38,7 +33,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           Wellcome back!
         </Text>
 
-        <Text p lineHeight={18} center>
+        <Text p center>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
@@ -87,7 +82,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
         <LinkButton
           onPress={() => {
-            console.log("Continue using email Instead");
+            navigation.navigate('SignUpEmail');
           }}
         >
           Continue using email Instead
@@ -108,7 +103,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 const styles = StyleSheet.create({
   phoneForm: {
     width: Layout.window.width,
-    height: 50,
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",

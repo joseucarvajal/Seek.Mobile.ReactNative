@@ -73,7 +73,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             }}
           >
             <Text underline style={styles.smallActionLink} small center>
-              Out terms of service
+              Our terms of service
             </Text>
           </Button>
           <Text>
