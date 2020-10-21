@@ -16,6 +16,7 @@ import Checkbox from './components/checkbox/checkbox.comp';
 import LinkButton from './components/link-button/link-button.comp';
 import Card from './components/card/card.comp';
 import Calendar from './components/calendar/calendar.comp';
+import Video from './components/video/video.comp';
 
 export {
     Button,
@@ -35,5 +36,6 @@ export {
     Checkbox,
     LinkButton,
     Card,
-    Calendar
+    Calendar,
+    Video
 }

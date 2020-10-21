@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video } from '../../shared';
 
 export interface IProfileProps { }
 
@@ -17,6 +17,8 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Tabs
           initialIndex={'terms'}
         />
+        <Text />
+        <Video videoId='M1mL-reid3M' />
         <Text />
         <Card
           full
