@@ -10,7 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RootStackParamList } from "../types";
 
-import { Layout, Colors } from "../constants";
+import { Colors } from "../constants";
 import { Icon, Header } from "../shared";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -84,6 +84,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
+              family='seekQ'
               name={"home"}
               size={18}
               style={{ marginRight: 30 }}
@@ -99,6 +100,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
+              family='seekQ'
               name={"chat"}
               size={18}
               style={{ marginRight: 30 }}
@@ -114,6 +116,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
+              family='seekQ'
               name={"contacts"}
               size={18}
               style={{ marginRight: 30 }}
@@ -129,6 +132,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
+              family='seekQ'
               name={"settings"}
               size={18}
               style={{ marginRight: 30 }}

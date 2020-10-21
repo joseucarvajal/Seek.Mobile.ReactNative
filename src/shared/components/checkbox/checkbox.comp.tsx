@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, TouchableWithoutFeedback, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from '../icons/icon.comp';
 import Text from '../text/text.comp'
 
 export interface ICheckboxProps {
@@ -34,6 +34,7 @@ const Checkbox: React.FC<ICheckboxProps> = ({
         style={styles.checkboxContainer}
       >
         <Icon
+          family='FontAwesome'
           name={checked ? 'check-square' : 'square-o'}
           size={20}
           color={iconColor}

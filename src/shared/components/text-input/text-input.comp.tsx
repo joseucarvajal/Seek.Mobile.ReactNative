@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, ViewProps } from "react-native";
 import { Colors, Layout } from '../../../constants';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from '../icons/icon.comp';
 
 export interface IInputProps extends ViewProps {
   textInputStyle?: any;
@@ -76,8 +76,8 @@ const Input: React.FC<IInputProps> = ({
     styles.inputContainer,
     bgColor && { backgroundColor: bgColor },
     rounded && styles.rounded,
-    borderless && [{ borderColor: Colors[color]}, styles.borderless],
-    error && { borderColor: Colors.danger},
+    borderless && [{ borderColor: Colors[color] }, styles.borderless],
+    error && { borderColor: Colors.danger },
     style,
   ];
 
@@ -91,18 +91,20 @@ const Input: React.FC<IInputProps> = ({
 
   const iconInstance = icon ? (
     <Icon
+      family='FontAwesome'
       name={icon}
       size={iconSize || Layout.base * 1.0625}
       style={{ marginRight: left && !right ? 2 : 0 }}
       color={(error && Colors.danger) || iconColor || placeholderTextColor || Colors.placeholder}
     />
   ) : (
-    iconContent
-  );
+      iconContent
+    );
 
   const viewPassElement = password && viewPass && (
     <TouchableOpacity style={{ marginLeft: 2 }} onPress={() => setIsPassword(!isPassword)}>
       <Icon
+        family='FontAwesome'
         size={iconSize || Layout.base * 1.0625}
         color={iconColor || Colors.muted}
         name="eye"
@@ -143,47 +145,47 @@ const Input: React.FC<IInputProps> = ({
 export default Input;
 
 const styles = StyleSheet.create({
-    inputStyle: {
-      backgroundColor: Colors.white,
-      borderRadius: Layout.input_radius,
-      borderWidth: Layout.input_border_width,
-      height: Layout.input_height,
-      width: Layout.window.width - Layout.base*2,
-    },
-    inputText: {
-      color: Colors.black,
-      fontSize: Layout.input_text_size,
-      textDecorationColor: 'transparent',
-      textShadowColor: 'transparent',
-    },
-    inputContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    inputView: {
-      flex: 1,
-    },
-    inputIcon: {
-      marginHorizontal: Layout.base,
-    },
-    label: {
-      fontWeight: '500',
-      fontSize: Layout.input_label_text_size,
-      marginVertical: Layout.input_vertical_label,
-      paddingHorizontal: Layout.base
-    },
-    helpText: {
-      color: Colors.secondary,
-      fontSize: Layout.input_help_text,
-      marginVertical: 8,
-      paddingHorizontal: 16
-    },
-    rounded: {
-      borderRadius: Layout.input_rounded,
-    },
-    borderless: {
-      borderWidth: 0,
-      borderBottomWidth: Layout.input_border_width,
-    },
+  inputStyle: {
+    backgroundColor: Colors.white,
+    borderRadius: Layout.input_radius,
+    borderWidth: Layout.input_border_width,
+    height: Layout.input_height,
+    width: Layout.window.width - Layout.base * 2,
+  },
+  inputText: {
+    color: Colors.black,
+    fontSize: Layout.input_text_size,
+    textDecorationColor: 'transparent',
+    textShadowColor: 'transparent',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputView: {
+    flex: 1,
+  },
+  inputIcon: {
+    marginHorizontal: Layout.base,
+  },
+  label: {
+    fontWeight: '500',
+    fontSize: Layout.input_label_text_size,
+    marginVertical: Layout.input_vertical_label,
+    paddingHorizontal: Layout.base
+  },
+  helpText: {
+    color: Colors.secondary,
+    fontSize: Layout.input_help_text,
+    marginVertical: 8,
+    paddingHorizontal: 16
+  },
+  rounded: {
+    borderRadius: Layout.input_rounded,
+  },
+  borderless: {
+    borderWidth: 0,
+    borderBottomWidth: Layout.input_border_width,
+  },
 });

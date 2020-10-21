@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 import Text from '../text/text.comp'
+import Icon from '../icons/icon.comp'
 import ToggleButton from '../../components/toggle-button/toggle-button.comp'
 import { Layout, Colors } from '../../../constants'
 
@@ -26,7 +26,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
           : 
             <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]} onPress={() => item?.navigate && navigation.navigate(item.navigate)}>
                 <Text fontSize={16}>{item.title}</Text>
-                <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
+                <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
             </TouchableOpacity>
         }
       </>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, ViewStyle } from "react-native";
 import { Colors, Layout } from "../../../constants";
 import Text from "../text/text.comp"
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "../icons/icon.comp";
 import Block from "../block/block.comp";
 
 interface IAccordion {
@@ -38,7 +38,7 @@ const Accordion: React.FC<IAccordion> = ({
       <Block shadow={shadow}>
         <TouchableOpacity style={styles.row} onPress={() => toggleExpand()}>
             <Text h3 style={styles.title}>{title}</Text>
-            <Icon name={expanded ? 'keyboard-arrow-up' : 'keyboard-arrow-down'} size={30} color={Colors.black} />
+            <Icon family='FontAwesome' name={expanded ? 'chevron-up' : 'chevron-down'} size={30} color={Colors.black} />
         </TouchableOpacity>
         <View style={styles.parent} />
         {expanded && (

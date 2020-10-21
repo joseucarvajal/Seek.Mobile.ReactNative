@@ -48,7 +48,7 @@ const Card: React.FC<ICardProps> = ({
       <TouchableWithoutFeedback onPress={() => console.log("")}>
         <Block flex style={imgContainer}>
           <Block right>
-            <Icon name={icon} size={iconSize} color={iconColor} style={[{ position: 'absolute', zIndex: 1, top: Layout.base, right: Layout.base }]} />
+            <Icon family='seekQ' name={icon} size={iconSize} color={iconColor} style={[{ position: 'absolute', zIndex: 1, top: Layout.base, right: Layout.base }]} />
           </Block>
           <Block center>
             <Image resizeMode="contain" source={item.image} style={imageStyles} />

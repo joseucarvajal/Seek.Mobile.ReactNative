@@ -1,9 +1,9 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, ViewProps } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
 import Block from "../block/block.comp";
+import Icon from "../icons/icon.comp";
 
 export interface IArButtonProps extends ViewProps {
   type?: ButtonType;
@@ -49,6 +49,7 @@ const ArButton: React.FC<IArButtonProps> = ({
 }) => {
   const iconInstance = icon ? (
     <Icon
+      family='FontAwesome'
       name={icon}
       size={iconSize || Layout.base * 1.0625}
       style={{ paddingLeft: left && Layout.base, paddingRight: right && Layout.base }}

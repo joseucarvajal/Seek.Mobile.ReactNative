@@ -90,6 +90,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           icon="facebook"
           iconColor={Colors.quaternary}
           iconSize={18}
+          onPress={() => console.log("")}
         >
           <Text h3 center>Continue with Facebook</Text>
         </Button>
@@ -100,12 +101,14 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           shadow
           iconContent={
             <Icon
+              family='seekQ'
               name={'email_phone'}
               size={22}
               style={{ paddingLeft: Layout.base }}
               color={Colors.quaternary}
             />
           }
+          onPress={() => console.log("")}
         >
           <Text h3 center>User Email Phone</Text>
         </Button>
@@ -113,13 +116,13 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button
           left
           type='social'
-          color='quaternary'
           shadow
           icon="google"
-          iconColor={Colors.white}
+          iconColor={Colors.quaternary}
           iconSize={18}
+          onPress={() => console.log("")}
         >
-          <Text h3 center color={Colors.white}>Continue with Google</Text>
+          <Text h3 center>Continue with Google</Text>
         </Button>
         <Text />
         <Button type='backgroundless'>
@@ -128,7 +131,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button type='link'>
           <Text h3 center underline bold color={Colors.primary}>Continue using email Instead</Text>
         </Button>
-        <Button type='gradient' shadow>
+        <Button type='gradient' onPress={() => console.log("")} shadow>
           <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>
       </View>
