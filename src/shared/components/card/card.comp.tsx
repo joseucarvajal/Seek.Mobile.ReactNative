@@ -64,7 +64,7 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: Colors.tabs,
+    backgroundColor: Colors.upload,
     marginVertical: Layout.base,
     borderWidth: 0,
     minHeight: 114,

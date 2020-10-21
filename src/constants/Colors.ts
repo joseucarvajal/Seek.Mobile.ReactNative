@@ -32,6 +32,7 @@ export default {
   inactiveTab: '#9E9E9E',
   gray: '#EAEAEA',
   icon: '#000000',
+  upload: '#F5F5F6',
   light: {
     text: '#000',
     background: '#fff',
