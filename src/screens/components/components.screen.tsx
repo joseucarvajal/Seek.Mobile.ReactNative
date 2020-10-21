@@ -2,8 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
-import { Colors, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox } from '../../shared';
+import { Colors, Images, Layout } from "../../constants";
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card } from '../../shared';
 
 export interface IProfileProps { }
 
@@ -18,14 +18,22 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           initialIndex={'terms'}
         />
         <Text />
+        <Card
+          full
+          item={ {image: Images.UploadPhoto}}
+          icon="edit_1"
+          iconColor={Colors.quaternary}
+          iconSize={28}
+        />
+        <Text />
         <Checkbox label='Art' iconColor={Colors.primary} />
-        <Checkbox label='Beauty' iconColor={Colors.primary}/>
-        <Checkbox label='Cosplay' iconColor={Colors.primary}/>
-        <Checkbox label='Fishing' iconColor={Colors.primary}/>
+        <Checkbox label='Beauty' iconColor={Colors.primary} />
+        <Checkbox label='Cosplay' iconColor={Colors.primary} />
+        <Checkbox label='Fishing' iconColor={Colors.primary} />
         <Text />
         <Accordion
-          title = {accordion[0].title}
-          items = {accordion[0].data}
+          title={accordion[0].title}
+          items={accordion[0].data}
           shadow
         />
         <Text />
@@ -54,7 +62,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Input color='quaternary' borderless placeholder='Last Name' />
         <Input color='quaternary' borderless placeholder='Password' password viewPass />
         <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass />
-        <ToggleButton color='primary' value={true}/>
+        <ToggleButton color='primary' value={true} />
         <ToggleButton color='primary' />
         <Text />
         <Select

@@ -14,6 +14,7 @@ import Block from './components/block/block.comp';
 import Accordion from './components/accordion/accordion.comp';
 import Checkbox from './components/checkbox/checkbox.comp';
 import LinkButton from './components/link-button/link-button.comp';
+import Card from './components/card/card.comp';
 
 export {
     Button,
@@ -31,5 +32,6 @@ export {
     Block,
     Accordion,
     Checkbox,
-    LinkButton
+    LinkButton,
+    Card
 }

@@ -1,55 +1,62 @@
 import React from 'react';
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
 import { Colors, FontNames, Layout } from '../../../constants';
 import Block from '../block/block.comp'
+import Icon from '../icons/icon.comp'
+import Text from '../text/text.comp'
 
 export interface ICardProps {
-  avatar?: any;
-  borderless?: any;
-  caption?: any;
-  captionColor?: any;
-  card?: any;
-  children?: any;
-  footerStyle?: any;
-  image?: any;
-  imageBlockStyle?: any;
-  imageStyle?: any;
-  location?: any;
-  locationColor?: any;
-  shadow?: any;
+  navigation?: any;
+  item?: any;
+  icon: any;
+  iconSize: any;
+  iconColor: any;
+  horizontal?: any;
+  full?: any;
   style?: any;
-  styles?: any;
-  title?: any;
-  titleColor?: any;
-  theme?: any;
-  props?: any;
+  ctaColor?: any;
+  imageStyle?: any;
+  ctaRight?: any;
+  titleStyle?: any;
 }
 
 const Card: React.FC<ICardProps> = ({
-  avatar,
-  borderless,
-  caption,
-  captionColor,
-  card,
-  children,
-  footerStyle,
-  image,
-  imageBlockStyle,
-  imageStyle,
-  location,
-  locationColor,
-  shadow,
+  navigation,
+  item,
+  icon,
+  iconSize,
+  iconColor,
+  horizontal,
+  full,
   style,
-  styles,
-  title,
-  titleColor,
-  theme,
-  ...props
+  ctaColor,
+  imageStyle,
+  ctaRight,
+  titleStyle
 }) => {
-  return (
-    <div>
 
-    </div>
+  const imageStyles = [full ? styles.fullImage : styles.horizontalImage, imageStyle];
+  const titleStyles = [styles.cardTitle, titleStyle];
+  const cardContainer = [styles.card, styles.shadow, style];
+  const imgContainer = [
+    styles.imageContainer,
+    horizontal ? styles.horizontalStyles : styles.verticalStyles,
+    styles.shadow
+  ];
+
+  return (
+    <Block row={horizontal} card flex style={cardContainer}>
+      <TouchableWithoutFeedback onPress={() => console.log("")}>
+        <Block flex style={imgContainer}>
+          <Block right>
+            <Icon name={icon} size={iconSize} color={iconColor} style={[{ position: 'absolute', zIndex: 1, top: Layout.base, right: Layout.base }]} />
+          </Block>
+          <Block center>
+            <Image resizeMode="contain" source={item.image} style={imageStyles} />
+          </Block>
+        </Block>
+      </TouchableWithoutFeedback>
+    </Block>
   );
 }
 
@@ -57,39 +64,48 @@ export default Card;
 
 const styles = StyleSheet.create({
   card: {
+    backgroundColor: Colors.tabs,
+    marginVertical: Layout.base,
     borderWidth: 0,
-    backgroundColor: Colors.white,
-    width: Layout.card_width,
-    marginVertical: Layout.card_margin_vertical,
+    minHeight: 114,
+    marginBottom: 4
   },
-  footer: {
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingHorizontal: Layout.card_footer_horizontal,
-    paddingVertical: Layout.card_footer_vertical,
-    backgroundColor: Colors.transparent,
-    zIndex: 1,
+  cardTitle: {
+    paddingHorizontal: 9,
+    paddingTop: 7,
+    paddingBottom: 15
   },
-  avatar: {
-    width: Layout.card_avatar_width,
-    height: Layout.card_avatar_height,
-    borderRadius: Layout.card_avatar_radius,
+  cardDescription: {
+    padding: Layout.base / 2
   },
-  title: {
-    justifyContent: 'center',
-  },
-  imageBlock: {
-    borderWidth: 0,
-    overflow: 'hidden',
+  imageContainer: {
+    borderRadius: 3,
+    elevation: 1,
+    overflow: 'hidden'
   },
   image: {
-    width: 'auto',
-    height: Layout.card_image_height,
+    borderRadius: 3,
   },
-  round: {
-    borderRadius: Layout.card_round,
+  horizontalImage: {
+    height: 122,
+    width: 'auto'
   },
-  rounded: {
-    borderRadius: Layout.card_rounded,
+  horizontalStyles: {
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0
   },
+  verticalStyles: {
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0
+  },
+  fullImage: {
+    height: 330
+  },
+  shadow: {
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    elevation: Layout.android_elevation,
+  }
 });
