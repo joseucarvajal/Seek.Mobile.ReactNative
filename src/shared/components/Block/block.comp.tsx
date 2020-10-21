@@ -120,13 +120,10 @@ const styles = StyleSheet.create({
         borderColor: Colors.block,
     },
     shadow: {
-        shadowColor: Colors.block,
-        shadowOffset: {
-            width: 0,
-            height: 3,
-        },
-        shadowOpacity: Layout.block_shadow_opacity,
-        shadowRadius: Layout.block_shadow_opacity,
+        shadowColor: Colors.black,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        shadowOpacity: 0.2,
         elevation: Layout.android_elevation,
     },
     fluid: {

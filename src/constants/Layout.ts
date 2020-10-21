@@ -39,8 +39,10 @@ export default {
   // Block styles
   block_shadow_opacity: 0.15,
   block_shadow_radius: 8,
-  android_elevation: 1,
+  android_elevation: 3,
   // card styles
   card_border_radius: base * 0.4,
   card_border_width: base * 0.05,
+  // accordion styles
+  accordion_border_radius: 3,
 };

@@ -28,6 +28,7 @@ export default {
   tabs: '#E5E6F2',
   activeTab: '#B7BBDA',
   inactiveTab: '#9E9E9E',
+  gray: '#EAEAEA',
   light: {
     text: '#000',
     background: '#fff',

@@ -37,21 +37,21 @@ class Select extends React.Component<ISelectProps, ISelectState> {
   render() {
 
     const containerStyle = [
-      styles.dropdown, 
+      styles.dropdown,
       this.props.shadow && styles.shadow
     ];
 
     const style = [
-      { backgroundColor: Colors.neutral }, 
-      this.props.borderless && styles.backgroundless, 
-      this.props.small && styles.smallDropdown, 
+      { backgroundColor: Colors.neutral },
+      this.props.borderless && styles.backgroundless,
+      this.props.small && styles.smallDropdown,
       this.props.style
     ];
 
     const dropDownStyle = [
-      { backgroundColor: Colors.neutral }, 
-      this.props.borderless && { backgroundColor: Colors.white }, 
-      this.props.small && styles.smallDropdown, 
+      { backgroundColor: Colors.neutral },
+      this.props.borderless && { backgroundColor: Colors.white },
+      this.props.small && styles.smallDropdown,
       this.props.style
     ]
 
@@ -87,11 +87,11 @@ const styles = StyleSheet.create({
     width: Layout.window.width * .2
   },
   shadow: {
-    shadowColor: 'black',
+    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 2,
     shadowOpacity: 0.2,
-    elevation: 3
+    elevation: Layout.android_elevation,
   },
   backgroundless: {
     width: Layout.window.width - Layout.base * 2,

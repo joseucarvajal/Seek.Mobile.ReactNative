@@ -65,7 +65,7 @@ const Typography: React.FC<ITextProp> = (
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
         h3 && { fontSize: 16 },
-        h4 && { fontSize: 24 },
+        h4 && { fontSize: 12 },
         h5 && { fontSize: 21 },
         h6 && { fontSize: 28 },
         p && { fontSize: 16 },

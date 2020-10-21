@@ -141,9 +141,9 @@ const styles = StyleSheet.create({
     shadow: {
         shadowColor: Colors.black,
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 8,
+        shadowRadius: 2,
         shadowOpacity: 0.2,
-        elevation: 4,
+        elevation: Layout.android_elevation,
     },
     menu: {
         paddingHorizontal: Layout.base * 2.5,
@@ -161,9 +161,9 @@ const styles = StyleSheet.create({
     containerShadow: {
         shadowColor: Colors.black,
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4,
-        shadowOpacity: 0.1,
-        elevation: 1,
+        shadowRadius: 2,
+        shadowOpacity: 0.2,
+        elevation: Layout.android_elevation,
     },
     menuTitle: {
         fontWeight: '600',

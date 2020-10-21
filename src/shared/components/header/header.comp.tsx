@@ -163,11 +163,10 @@ const styles = StyleSheet.create({
         height: HeaderHeight,
     },
     shadow: {
-        backgroundColor: Colors.white,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 1 },
-        shadowRadius: 5,
-        shadowOpacity: 0.1,
-        elevation: 1
+        shadowColor: Colors.black,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 2,
+        shadowOpacity: 0.2,
+        elevation: Layout.android_elevation,
     }
 });

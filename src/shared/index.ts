@@ -11,6 +11,7 @@ import ButtonPrimary from './components/button-primary/button-primary.comp';
 import Header from './components/header/header.comp'
 import Tabs from './components/tabs/tabs.comp'
 import Block from './components/block/block.comp';
+import Accordion from './components/accordion/accordion.comp';
 
 export {
     Button,
@@ -25,5 +26,6 @@ export {
     Icon,
     Header,
     Tabs,
-    Block
+    Block,
+    Accordion
 }

@@ -159,11 +159,11 @@ const styles = StyleSheet.create({
     borderRadius: Layout.button_radius,
   },
   shadow: {
-    shadowColor: "black",
+    shadowColor: Colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 2,
     shadowOpacity: 0.2,
-    elevation: 3,
+    elevation: Layout.android_elevation,
   },
   disabled: {
     backgroundColor: Colors.muted,

@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion } from '../../shared';
 
 export interface IProfileProps { }
 
@@ -16,6 +16,12 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Text />
         <Tabs
           initialIndex={'terms'}
+        />
+        <Text />
+        <Accordion
+          title = {accordion[0].title}
+          items = {accordion[0].data}
+          shadow
         />
         <Text />
         <Select
@@ -116,6 +122,25 @@ const items = [
   { title: "Incoming Chat", id: "incomingChat", type: "toggle", color: Colors.neutral },
   { title: "Temperature meter change", id: "temperatureMeter", type: "toggle", color: Colors.white },
 ];
+
+const accordion = [
+  {
+    title: 'How to Upgrade?',
+    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+  },
+  {
+    title: 'Etiam integer ornare',
+    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+  },
+  {
+    title: 'Purus dictum',
+    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+  },
+  {
+    title: 'Dolor velit lacus',
+    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+  },
+]
 
 const styles = StyleSheet.create({
   container: {
