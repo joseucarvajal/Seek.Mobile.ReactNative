@@ -55,13 +55,18 @@ const Typography: React.FC<ITextProp> = (
     children,
     fontFamily,
     letterSpacing,
-    extraSmall
+    extraSmall,
   },
   props
 ) => {
   return (
     <Text
-      style={[{fontFamily: FontNames.Campton, color: Colors.fontNormal},
+      style={[ //Default font, do not change it, this is the most common one
+        {
+          fontFamily: FontNames.CamptonLight,
+          color: Colors.fontNormal,
+          fontSize: 16,
+        },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
         h3 && { fontSize: 16 },
@@ -77,12 +82,12 @@ const Typography: React.FC<ITextProp> = (
         size && { fontSize: size },
         lineHeight && { lineHeight: lineHeight },
         color && { color },
-        italic && { fontStyle: 'italic' },
+        italic && { fontStyle: "italic" },
         bold && { fontFamily: FontNames.CamptonBold },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },
-        center && { textAlign: 'center' },
-        underline && { textDecorationLine: 'underline' },
+        center && { textAlign: "center" },
+        underline && { textDecorationLine: "underline" },
         style && style,
       ]}
       {...props}

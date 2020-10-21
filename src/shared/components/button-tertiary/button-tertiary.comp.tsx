@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewProps } from "react-native";
-import { Colors } from "../../../constants";
+import { Colors, FontNames } from "../../../constants";
 import Button from "../button/button.comp";
 import Text from "../text/text.comp";
 import Icon from "../icons/icon.comp";
@@ -47,7 +47,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
       iconContent={iconContent}
       onPress={onPress}
     >
-      <Text fontSize={16} letterSpacing={0.24}>
+      <Text fontSize={16} letterSpacing={0.24} fontFamily={FontNames.CamptonMedium}>
         {children}
       </Text>
     </Button>

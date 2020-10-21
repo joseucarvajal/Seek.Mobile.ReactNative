@@ -51,8 +51,8 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             <Text>Continue with Google</Text>
           </ButtonTertiary>
           <ButtonTertiary
-            customIcon={Icons.settings}
-            customIconSize={50}
+            icon="mobile"                        
+            iconSize={28}
             style={styles.socialButton}
             onPress={() => {
               navigation.navigate("SignUpPhone");
