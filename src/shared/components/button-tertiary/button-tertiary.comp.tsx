@@ -47,7 +47,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
       iconContent={iconContent}
       onPress={onPress}
     >
-      <Text fontSize={16} letterSpacing={0.24} fontFamily={FontNames.CamptonMedium}>
+      <Text fontSize={16} fontFamily={FontNames.CamptonMedium}>
         {children}
       </Text>
     </Button>

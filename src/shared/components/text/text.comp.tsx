@@ -84,7 +84,6 @@ const Typography: React.FC<ITextProp> = (
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
         size && { fontSize: size },
-        lineHeight && { lineHeight: lineHeight },
         color && { color },
         italic && { fontStyle: "italic" },
         bold && { fontFamily: FontNames.CamptonBold },

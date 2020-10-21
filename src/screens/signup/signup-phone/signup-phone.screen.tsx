@@ -14,6 +14,7 @@ import {
   Input,
   ButtonPrimary,
   LinkButton,
+  Block,
 } from "../../../shared";
 
 import { Colors, FontNames, getFontStyle, Layout } from "../../../constants";
@@ -26,15 +27,13 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={signUpStyles.screenContainer}>
+    <Block safe flex space='evenly' center>   
         <SeekQLogo />
 
         <Text
           h1
           center
           fontFamily={FontNames.CamptonSemiBold}
-          letterSpacing={-0.408}
         >
           Wellcome back!
         </Text>
@@ -48,7 +47,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           <View style={styles.phoneIndicativeView}>
             <Text
               fontSize={12}
-              style={{ marginBottom: 10 }}
               color={Colors.fontSoft1}
             >
               Enter phone
@@ -62,8 +60,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           </View>
           <View style={styles.phoneNumberView}>
           <Text
-              fontSize={12}
-              style={{ marginBottom: 10 }}
+              fontSize={12}              
               color={Colors.fontSoft1}
             >
                
@@ -104,8 +101,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
         >
           LOGIN
         </LinkButton>
-      </View>
-    </SafeAreaView>
+    </Block>
   );
 };
 
