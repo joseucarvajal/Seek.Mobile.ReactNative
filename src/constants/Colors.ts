@@ -31,6 +31,7 @@ export default {
   activeTab: '#B7BBDA',
   inactiveTab: '#9E9E9E',
   gray: '#EAEAEA',
+  icon: '#000000',
   light: {
     text: '#000',
     background: '#fff',

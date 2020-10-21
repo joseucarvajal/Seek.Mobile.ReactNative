@@ -4,7 +4,7 @@ import { Colors } from "../../../constants";
 import FontNames from "../../../constants/Fonts";
 
 export interface ITextProp {
-  style?: TextStyle;
+  style?: any;
   h1?: any;
   h2?: any;
   h3?: any;
@@ -66,7 +66,6 @@ const Typography: React.FC<ITextProp> = (
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
-          lineHeight: 18
         },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
@@ -78,7 +77,6 @@ const Typography: React.FC<ITextProp> = (
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
-          lineHeight: 18
         },
         body && { fontSize: 14 },
         small && { fontSize: 14 },
