@@ -61,7 +61,7 @@ const Typography: React.FC<ITextProp> = (
 ) => {
   return (
     <Text
-      style={[ //Default font, do not change it, this is the most common one
+      style={[
         {
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
@@ -74,7 +74,12 @@ const Typography: React.FC<ITextProp> = (
         h4 && { fontSize: 12 },
         h5 && { fontSize: 21 },
         h6 && { fontSize: 28 },
-        p && { fontSize: 16 },
+        p && { 
+          fontFamily: FontNames.CamptonLight,
+          color: Colors.fontNormal,
+          fontSize: 16,
+          lineHeight: 18
+        },
         body && { fontSize: 14 },
         small && { fontSize: 14 },
         extraSmall && { fontSize: 12 },

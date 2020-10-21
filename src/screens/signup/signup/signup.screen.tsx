@@ -35,7 +35,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
 
         <SeekQLogo />
 
-        <Text p lineHeight={18} center>
+        <Text p center>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit.
         </Text>
