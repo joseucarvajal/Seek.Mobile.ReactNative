@@ -4,6 +4,7 @@ export default {
   caret_down: 'caret_down',
   caret_left: 'caret_left',
   caret_up: 'caret_up',
+  caret_right: 'caret_right',
   chat: 'chat',
   contacts: 'contacts',
   check1: 'check-1',

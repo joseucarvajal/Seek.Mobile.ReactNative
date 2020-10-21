@@ -8,7 +8,8 @@ import {
   Button, 
   ButtonTertiary,
   Text,
-  LinkButton
+  LinkButton,
+  Block
 } from "../../../shared";
 
 import { 
@@ -28,9 +29,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={signUpStyles.screenContainer}>
-
+    <Block safe flex space='evenly' center>
         <SeekQLogo />
 
         <Text p center>
@@ -108,8 +107,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           Having trouble logging in?
         </LinkButton>
 
-      </View>
-    </SafeAreaView>
+      </Block>
   );
 };
 

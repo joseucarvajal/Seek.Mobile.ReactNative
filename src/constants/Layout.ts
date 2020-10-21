@@ -43,6 +43,16 @@ export default {
   // card styles
   card_border_radius: base * 0.4,
   card_border_width: base * 0.05,
+  card_width: width - (base * 2),
+  card_margin_vertical: base * 0.875,
+  card_footer_horizontal: base * 0.75,
+  card_footer_vertical: base * 0.75,
+  card_avatar_width: base * 2.5,
+  card_avatar_height: base * 2.5,
+  card_avatar_radius: base * 1.25,
+  card_image_height: base * 12.5,
+  card_round: base * 0.1875,
+  card_rounded: base * 0.5,
   // accordion styles
   accordion_border_radius: 3,
 };

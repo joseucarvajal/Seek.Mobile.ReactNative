@@ -4,7 +4,7 @@ import { Colors } from "../../../constants";
 import FontNames from "../../../constants/Fonts";
 
 export interface ITextProp {
-  style?: TextStyle;
+  style?: any;
   h1?: any;
   h2?: any;
   h3?: any;
