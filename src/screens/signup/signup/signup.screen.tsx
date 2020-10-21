@@ -22,6 +22,7 @@ import {
   signUpStyles, 
   SeekQLogo 
 } from "../../../components/signup/";
+import { getCustomTabsSupportingBrowsersAsync } from "expo-web-browser";
 
 export interface ISignUpProps {}
 
@@ -68,14 +69,14 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
         </Text>
 
         <View>
-          <Text center style={styles.link}>By registering, you agree to</Text>
+          <Text center style={styles.smallText}>By registering, you agree to</Text>
           <Button
             type="text-link"
             onPress={() => {
               console.log("Terms of service");
             }}
           >
-            <Text underline style={styles.actionLink} small center>
+            <Text underline style={styles.smallActionLink} small center>
               Out terms of service
             </Text>
           </Button>
@@ -86,12 +87,12 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
                 console.log("Privacy Policy");
               }}
             >
-              <Text underline style={styles.actionLink} small center>
+              <Text underline style={styles.smallActionLink} small center>
                 Privacy Policy
               </Text>
             </Button>
             <Button type="text-link">
-              <Text small style={styles.link}> and </Text>
+              <Text small style={styles.smallText}> and </Text>
             </Button>
             <Button
               type="text-link"
@@ -99,7 +100,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
                 console.log("Cookie Policy");
               }}
             >
-              <Text underline style={styles.actionLink} small center>
+              <Text underline style={styles.smallActionLink} small center>
                 Cookie Policy
               </Text>
             </Button>
@@ -112,7 +113,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
             console.log('having trouble logging in?');
           }}
         >
-          <Text underline bold style={styles.linkButtonPrimary} fontSize={17} lineHeight={22}>
+          <Text underline style={styles.linkButtonPrimary} lineHeight={22}>
             Having trouble logging in?
           </Text>
         </Button>
@@ -130,16 +131,19 @@ const styles = StyleSheet.create({
     ...getFontStyle("tertiaryButton"),
     marginVertical: 10,
   },
-  link:{
-    color: Colors.fontSoft
+  smallText:{
+    fontFamily: FontNames.CamptonLight,
+    fontSize: 14
   },
-  actionLink: {
-    fontFamily: FontNames.CamptonSemiBoldItalic,
-    color: Colors.fontSoft,
+  smallActionLink: {
+    fontFamily: FontNames.CamptonMediumItalic,
+    fontSize: 14,
     margin: 0,
   },
   linkButtonPrimary: {    
-    color: Colors.primary,
+    color: Colors.primaryFont,
+    fontFamily: FontNames.CamptonBold,
+    fontSize: 17
   }  
 });
 

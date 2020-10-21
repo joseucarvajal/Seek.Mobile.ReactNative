@@ -8,6 +8,7 @@ export default {
   success: '#18ce0f',
   danger: '#FF3636',
   primary: "#00C1DE",
+  primaryFont: "#1BBED8",
   secondary: "#60D8EA",
   tertiary: "#e1e4e8",
   quaternary: "#9E9E9E",
