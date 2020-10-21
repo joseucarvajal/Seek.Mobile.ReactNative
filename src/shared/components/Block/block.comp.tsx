@@ -47,10 +47,12 @@ const Block: React.FC<IBlockProps> = ({
     width,
     safe,
     children,
-    padding = Layout.base,
+    padding,
     style,
     ...props
 }) => {
+
+    const realPadding = safe ? Layout.base : padding;
 
     const styleBlock = [
         styles.block,
@@ -69,7 +71,7 @@ const Block: React.FC<IBlockProps> = ({
         height && { height },
         width && { width },
         shadowColor && { shadowColor },
-        padding && { padding } as ViewStyle,
+        realPadding && { padding: realPadding } as ViewStyle,
         style,
     ];
 

@@ -14,6 +14,7 @@ import {
   Input,
   ButtonPrimary,
   LinkButton,
+  Block,
 } from "../../../shared";
 
 import { Colors, FontNames, getFontStyle, Layout } from "../../../constants";
@@ -26,8 +27,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={signUpStyles.screenContainer}>
+    <Block safe flex space='evenly' center>   
         <SeekQLogo />
 
         <Text
@@ -101,8 +101,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
         >
           LOGIN
         </LinkButton>
-      </View>
-    </SafeAreaView>
+    </Block>
   );
 };
 
