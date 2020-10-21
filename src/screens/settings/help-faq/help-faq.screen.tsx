@@ -5,11 +5,9 @@ import styles from './help-faq.style';
 
 const HelpFaq: React.FC = () => {
   return (
-    <SafeAreaView>
       <View style={ styles.container }>
-        <Text style={ styles.title }>help-faq</Text>
+        <Text style={ styles.body }>help-faq</Text>
       </View>
-    </SafeAreaView>
   );
 }
 

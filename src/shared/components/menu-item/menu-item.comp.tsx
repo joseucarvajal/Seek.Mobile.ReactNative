@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,23 +14,24 @@ interface IMenuItemProps {
 
 const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
   const navigation = useNavigation();
-
-  const renderItem = ({ item }: { item: any }) => (
-    <>
-      {
-        item.type === 'toggle' ?
-          <View style={[styles.container, { backgroundColor: item.color }]}>
-            <Text fontSize={16}>{item.title}</Text>
-            <ToggleButton color='primary' value={item?.value} onValueChange={() => item?.action && item.action(!item?.value) } />
-          </View>
-        : 
-          <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]} onPress={() => item?.navigate && navigation.navigate(item.navigate)}>
+  const renderItem = ({ item }: { item: any }) => {
+    return (
+      <>
+        {
+          item.type === 'toggle' ?
+            <View style={[styles.container, { backgroundColor: item.color }]}>
               <Text fontSize={16}>{item.title}</Text>
-              <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
-          </TouchableOpacity>
-      }
-    </>
-  );
+              <ToggleButton color='primary' value={item.value} onValueChange={() => item?.action && item.action(!item.value) } />
+            </View>
+          : 
+            <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]} onPress={() => item?.navigate && navigation.navigate(item.navigate)}>
+                <Text fontSize={16}>{item.title}</Text>
+                <Icon name="angle-right" size={32} style={{ paddingRight: 5 }} />
+            </TouchableOpacity>
+        }
+      </>
+    );
+  };
 
   return (
     <FlatList

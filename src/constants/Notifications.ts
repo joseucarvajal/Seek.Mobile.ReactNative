@@ -6,7 +6,7 @@ const NotificationsItems = [
     id: 'incomingDiscreetHello', 
     type: 'toggle', 
     color: Colors.white,
-    action: (val: any) => console.log(`Incoming discreet hello...${val}`),
+    action: (val?: any) => console.log(`Incoming discreet hello...${val}`),
     value: true,
   },
   {

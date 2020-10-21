@@ -9,13 +9,11 @@ export interface IHelpMenuProps {}
 
 const HelpMenu: React.FC<IHelpMenuProps> = ({}) => {
   return (
-    <SafeAreaView style={styles.areaView}>
-      <View style={styles.container}>
-        <View style={styles.body}>
-          <MenuItem items={HelpMenusItems} />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.body}>
+        <MenuItem items={HelpMenusItems} />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -10,19 +10,17 @@ import styles from './tutorial-video.style';
 
 const TutorialVideo: React.FC = () => {
   return (
-    <SafeAreaView style={styles.areaView}>
-      <View style={ styles.container }>
-        {isIOS ? (
-          <YouTube videoId={TutorialVideoView} style={styles.video}/>
-        ) : (
-          <WebView
-            style={{ width: '100%', height: 200, alignSelf: 'stretch' }}
-            javaScriptEnabled={true}
-            source={{ uri: `https://www.youtube.com/embed/${TutorialVideoView}?controls=0&showinfo=0` }}
-          />
-        )}
-      </View>
-    </SafeAreaView>
+    <View style={ styles.container }>
+      {isIOS ? (
+        <YouTube videoId={TutorialVideoView} style={styles.video}/>
+      ) : (
+        <WebView
+          style={styles.videoWeb}
+          javaScriptEnabled={true}
+          source={{ uri: `https://www.youtube.com/embed/${TutorialVideoView}?controls=1&showinfo=1` }}
+        />
+      )}
+    </View>
   );
 };
 

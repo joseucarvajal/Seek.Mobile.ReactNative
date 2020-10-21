@@ -7,13 +7,11 @@ import styles from './modes.style';
 
 const modes: React.FC = () => {
   return (
-    <SafeAreaView style={styles.areaView}>
-      <View style={styles.container}>
-        <View style={styles.body}>
-          <MenuItem items={ModesItems} />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.body}>
+        <MenuItem items={ModesItems} />
       </View>
-    </SafeAreaView>  
+    </View>
   );
 };
 

@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
-import FontNames from "../../../constants/Fonts";
+import { Colors } from '../../../constants';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#312e38',
+    backgroundColor: Colors.white,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
   },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 22,
-    color: '#fff',
+  body: {
+    width: '100%', 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    position: 'absolute',
   },
 });
 

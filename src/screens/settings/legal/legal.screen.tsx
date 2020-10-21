@@ -8,7 +8,7 @@ export interface ILegalProps {}
 
 const Legal: React.FC<ILegalProps> = ({}) => {
   return (
-    <SafeAreaView style={styles.areaView}>
+    <View style={styles.container}>
       <View style={styles.container}>
         {LegalItems.map((legal) => (
           <Text key={legal.id} onPress={() => legal.action()}>
@@ -21,7 +21,7 @@ const Legal: React.FC<ILegalProps> = ({}) => {
           Something text...
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

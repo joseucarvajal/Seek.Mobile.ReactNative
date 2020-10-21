@@ -6,13 +6,11 @@ import styles from './notifications.style';
 
 const notifications: React.FC = () => {
   return (    
-    <SafeAreaView style={styles.areaView}>
-      <View style={styles.container}>
-        <View style={styles.body}>
-          <MenuItem items={NotificationsItems} />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.body}>
+        <MenuItem items={NotificationsItems} />
       </View>
-    </SafeAreaView>  
+    </View>
   );
 };
 

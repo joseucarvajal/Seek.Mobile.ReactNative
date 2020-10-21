@@ -107,7 +107,7 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Settings"
-        component={Home}
+        component={Settings}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (

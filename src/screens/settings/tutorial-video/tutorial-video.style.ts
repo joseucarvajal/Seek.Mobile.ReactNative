@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
-    flex: 1,
     marginTop: 20,
+    height: 182,
   },
   title: {
     fontWeight: 'bold',
@@ -17,7 +17,11 @@ const styles = StyleSheet.create({
   video: {
     alignSelf: 'stretch',
     height: 200,
-  }
+  },
+  videoWeb: {
+    flex: 1,
+    marginTop: 20,
+  },
 });
 
 export default styles;
