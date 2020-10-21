@@ -66,6 +66,7 @@ const Typography: React.FC<ITextProp> = (
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
+          lineHeight: 18
         },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
