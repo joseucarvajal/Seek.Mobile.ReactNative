@@ -13,7 +13,7 @@ export interface IBlockProps {
     right?: any;
     left?: any;
     shadow?: any;
-    space?: any;
+    space?: SpaceType;
     fluid?: any;
     height?: any;
     shadowColor?: any;
@@ -25,6 +25,8 @@ export interface IBlockProps {
     styles?: any;
     props?: any;
 }
+
+export type SpaceType = "evenly" | "between" | "around";
 
 const Block: React.FC<IBlockProps> = ({
     row,
@@ -98,6 +100,8 @@ const styles = StyleSheet.create({
     },
     center: {
         alignItems: 'center',
+    },
+    alignSelf: {
         alignSelf: 'center',
     },
     left: {
