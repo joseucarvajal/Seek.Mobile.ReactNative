@@ -11,7 +11,7 @@ interface IAccordion {
     shadow?: any;
     props?: any;
     style?: ViewStyle;
-    expanded: any;
+    expanded?: any;
 }
 
 const Accordion: React.FC<IAccordion> = ({ 

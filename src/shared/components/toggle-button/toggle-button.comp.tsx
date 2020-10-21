@@ -32,9 +32,10 @@ const ToggleButton: React.FC<IToggleButtonProps> = ({
       <Switch
         value={value}
         thumbColor={thumbColor}
+        ios_backgroundColor={Colors.neutral}
         trackColor={{
-          true: "#d3d3d3",
-          false: Colors.muted
+          true: Colors.gray,
+          false: Colors.gray
         }}
         {...props}
       />

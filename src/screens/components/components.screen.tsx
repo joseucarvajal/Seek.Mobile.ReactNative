@@ -54,8 +54,8 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Input color='quaternary' borderless placeholder='Last Name' />
         <Input color='quaternary' borderless placeholder='Password' password viewPass />
         <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass />
-        <ToggleButton color='primary' value={true} />
-        <ToggleButton color='primary' value={false} />
+        <ToggleButton color='primary' value={true}/>
+        <ToggleButton color='primary' />
         <Text />
         <Select
           defaultValue={'f'}
