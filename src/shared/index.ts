@@ -15,6 +15,7 @@ import Accordion from './components/accordion/accordion.comp';
 import Checkbox from './components/checkbox/checkbox.comp';
 import LinkButton from './components/link-button/link-button.comp';
 import Card from './components/card/card.comp';
+import Calendar from './components/calendar/calendar.comp';
 
 export {
     Button,
@@ -33,5 +34,6 @@ export {
     Accordion,
     Checkbox,
     LinkButton,
-    Card
+    Card,
+    Calendar
 }
