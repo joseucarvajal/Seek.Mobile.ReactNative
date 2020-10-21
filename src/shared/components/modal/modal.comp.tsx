@@ -1,74 +1,120 @@
 import React, { useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from "react-native";
+import { Alert, Modal, StyleSheet, TouchableOpacity } from "react-native";
+import { Colors, Images, Layout } from "../../../constants";
+import Block from "../block/block.comp";
+import Text from "../text/text.comp";
+import Button from "../button/button.comp";
+import Image from "../image/image.comp";
 
 export interface IArModalProps {
-
+  backgroundless?: any;
 }
 
 const ArModal: React.FC<IArModalProps> = ({
-
+  backgroundless
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
+
+  function renderModal() {
+    return (
+      <Block center middle style={styles.modalView}>
+        <Image resizeMode="contain" source={Images.Location_1} style={styles.horizontalImage} />
+        <Text h2 bold>Allow SeekQ</Text>
+        <Text h2>to access your location</Text>
+        <Button
+          type='text-link'
+          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Text h5 center color={Colors.option}>Allow While Using App</Text>
+        </Button>
+        <Button
+          type='text-link'
+          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Text h5 center color={Colors.option}>Always Allow</Text>
+        </Button>
+        <Button
+          type='text-link'
+          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
+          onPress={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <Text h5 center color={Colors.option}>Don't Allow</Text>
+        </Button>
+      </Block>
+    );
+  }
+
+  function renderModalWithoutBackground() {
+    return (
+      <Block center middle safe>
+        <Image resizeMode="contain" source={Images.Location_2} style={styles.horizontalImage} />
+        <Text h5 color={Colors.white}>We prefer to go with Always Allow option for better user experience!</Text>
+        <Block safe center>
+          <Button
+            type='gradient'
+            style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <Text h5 bold center color={Colors.white}>ALWAYS ALLOW</Text>
+          </Button>
+          <Text />
+          <Button
+            type='text-link'
+            style={{ top: Layout.base * 3 }}
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}
+          >
+            <Text h5 bold center color={Colors.primary}>Skip now</Text>
+          </Button>
+        </Block>
+      </Block>
+    );
+  }
+
   return (
-    <View style={styles.centeredView}>
+    <Block flex center>
       <Modal
         animationType="slide"
         transparent={true}
         visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
+        onRequestClose={() => { Alert.alert("Modal has been closed."); }}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
-
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
+        <Block flex middle style={{ backgroundColor: Colors.modal }}>
+          {backgroundless ? renderModalWithoutBackground() : renderModal()}
+        </Block>
       </Modal>
 
-      <TouchableHighlight
-        style={styles.openButton}
+      <TouchableOpacity
+        style={styles.button}
         onPress={() => {
           setModalVisible(true);
         }}
       >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </TouchableHighlight>
-    </View>
+        <Text h3 bold color={Colors.white}>Show Modal</Text>
+      </TouchableOpacity>
+    </Block>
   );
 }
 
 export default ArModal;
 
 const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
-  },
   modalView: {
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -79,18 +125,18 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 20,
+    backgroundColor: Colors.transparent,
     padding: 10,
     elevation: 2
   },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+  button: {
+    backgroundColor: Colors.primary,
+    padding: 10,
+    borderRadius: 20,
+    elevation: 2
   },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+  horizontalImage: {
+    height: 120,
+    width: 'auto'
   }
 });

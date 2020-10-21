@@ -17,6 +17,7 @@ import LinkButton from './components/link-button/link-button.comp';
 import Card from './components/card/card.comp';
 import Calendar from './components/calendar/calendar.comp';
 import Video from './components/video/video.comp';
+import Modal from './components/modal/modal.comp';
 
 export {
     Button,
@@ -37,5 +38,6 @@ export {
     LinkButton,
     Card,
     Calendar,
-    Video
+    Video,
+    Modal
 }

@@ -36,7 +36,6 @@ const Card: React.FC<ICardProps> = ({
 }) => {
 
   const imageStyles = [full ? styles.fullImage : styles.horizontalImage, imageStyle];
-  const titleStyles = [styles.cardTitle, titleStyle];
   const cardContainer = [styles.card, styles.shadow, style];
   const imgContainer = [
     styles.imageContainer,

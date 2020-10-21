@@ -71,7 +71,7 @@ const Typography: React.FC<ITextProp> = (
         h2 && { fontSize: 24 },
         h3 && { fontSize: 16 },
         h4 && { fontSize: 12 },
-        h5 && { fontSize: 21 },
+        h5 && { fontSize: 20 },
         h6 && { fontSize: 28 },
         p && { 
           fontFamily: FontNames.CamptonLight,

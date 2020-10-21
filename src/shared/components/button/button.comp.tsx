@@ -60,7 +60,6 @@ const ArButton: React.FC<IArButtonProps> = ({
 
   const styleButton = [
     styles.button,
-    style,
     type === "chip" && styles.smallButton,
     type === "large" && styles.largeButton,
     type === "social" && styles.socialButton,
@@ -70,6 +69,7 @@ const ArButton: React.FC<IArButtonProps> = ({
     disabled && styles.disabled,
     shadow && styles.shadow,
     color && { backgroundColor: Colors[color] },
+    style
   ];
 
   return (
@@ -101,7 +101,7 @@ const ArButton: React.FC<IArButtonProps> = ({
           </LinearGradient>
         </Block>
       ) : type === "text-link" ? (
-        <TouchableOpacity
+        <TouchableOpacity style={style}
           onPress={disabled ? null : onPress}
         >
           {children}

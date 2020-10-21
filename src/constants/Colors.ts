@@ -33,6 +33,8 @@ export default {
   gray: '#EAEAEA',
   icon: '#000000',
   upload: '#F5F5F6',
+  modal: 'rgba(52, 52, 52, 0.8)',
+  option: '#4A5CA5',
   light: {
     text: '#000',
     background: '#fff',
