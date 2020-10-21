@@ -1,5 +1,5 @@
 import React from "react";
-import { ViewProps, StyleSheet } from "react-native";
+import { ViewProps, StyleSheet, TextStyle } from "react-native";
 import { Colors, FontNames } from "../../../constants";
 import Button from "../button/button.comp";
 import Text from "../text/text.comp";
@@ -21,14 +21,9 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
   ...props
 }) => {
 
-  let fontFamily = FontNames.CamptonBold;
+  let linkStyle = styles.normalLinkStyle;  
   if(upper){
-    fontFamily = FontNames.CamptonLight;
-  }
-
-  let color = Colors.primaryFont;
-  if(upper){
-    color = Colors.primaryFontLight;
+    linkStyle = styles.upperCaseLinkStyle;
   }
 
   let realUnderline = !upper && underline;
@@ -39,12 +34,8 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
       onPress={onPress}
     >
       <Text 
-        style={{
-          color: color,
-          fontFamily: fontFamily
-        }}
+        style={linkStyle}
         underline = {realUnderline}
-        lineHeight={22}
       >
         {children}
       </Text>
@@ -55,10 +46,15 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
 export default LinkButton;
 
 const styles = StyleSheet.create({
-  linkButtonPrimary: {    
-    color: Colors.primaryFont,
-    fontFamily: FontNames.CamptonBold,
+  normalLinkStyle: {
+    fontFamily:FontNames.CamptonBold,
+    color:Colors.primaryFont,
     fontSize: 17
-  }  
+  },
+  upperCaseLinkStyle: {
+    fontFamily:FontNames.CamptonLight,
+    color:Colors.primaryFontLight,
+    fontSize: 22
+  }
 });
 

@@ -11,7 +11,7 @@ export default {
   primaryFont: "#1BBED8",
   primaryFontLight: "#75CFDD",
   secondary: "#60D8EA",
-  tertiary: "#e1e4e8",
+  tertiary: "#E2E3E4",
   quaternary: "#9E9E9E",
   black: '#000000',
   white: '#ffffff',

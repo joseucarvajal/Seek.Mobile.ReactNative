@@ -66,7 +66,6 @@ const Typography: React.FC<ITextProp> = (
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
-          lineHeight: 18
         },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
@@ -78,7 +77,6 @@ const Typography: React.FC<ITextProp> = (
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
-          lineHeight: 18
         },
         body && { fontSize: 14 },
         small && { fontSize: 14 },
@@ -86,7 +84,6 @@ const Typography: React.FC<ITextProp> = (
         muted && { color: Colors.muted },
         neutral && { color: Colors.neutral },
         size && { fontSize: size },
-        lineHeight && { lineHeight: lineHeight },
         color && { color },
         italic && { fontStyle: "italic" },
         bold && { fontFamily: FontNames.CamptonBold },

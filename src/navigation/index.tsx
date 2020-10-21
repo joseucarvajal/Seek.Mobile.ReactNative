@@ -1,27 +1,31 @@
-import * as React from 'react';
-import { ColorSchemeName } from 'react-native';
+import * as React from "react";
+import { ColorSchemeName } from "react-native";
 
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { RootStackParamList } from '../types';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { RootStackParamList } from "../types";
 
-import { Layout, Colors } from '../constants';
-import { Icon, Header } from '../shared';
+import { Layout, Colors } from "../constants";
+import { Icon, Header } from "../shared";
 
-import NotFoundScreen from '../screens/NotFoundScreen';
-import LinkingConfiguration from './LinkingConfiguration';
-import Profile from '../screens/profile/profile/profile.screen';
-import Components from '../screens/components/components.screen';
-import Home from '../screens/home/home-screen';
+import NotFoundScreen from "../screens/NotFoundScreen";
+import LinkingConfiguration from "./LinkingConfiguration";
+import Profile from "../screens/profile/profile/profile.screen";
+import Components from "../screens/components/components.screen";
+import Home from "../screens/home/home-screen";
 
 import {
   SignUp,
   SignUpEmail,
   SignUpPhone,
   SignUpVerificationCode,
-  SignUpReady
-} from '../screens/signup';
+  SignUpReady,
+} from "../screens/signup";
 
 import {
   Settings,
@@ -30,16 +34,29 @@ import {
   Legal,
   TutorialVideo,
   Modes,
-  Notifications
-} from '../screens/settings';
+  Notifications,
+} from "../screens/settings";
+
+const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: Colors.white,
+  },
+};
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      theme={colorScheme === "dark" ? DarkTheme : MyTheme}
+    >
       <RootNavigator />
     </NavigationContainer>
   );
@@ -57,7 +74,7 @@ function HomeTabs() {
     <Tab.Navigator
       tabBarOptions={{
         activeTintColor: activeTab,
-        inactiveTintColor: inactiveTab
+        inactiveTintColor: inactiveTab,
       }}
     >
       <Tab.Screen
@@ -67,7 +84,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              name={'home'}
+              name={"home"}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -82,7 +99,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              name={'chat'}
+              name={"chat"}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -97,7 +114,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              name={'contacts'}
+              name={"contacts"}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -112,7 +129,7 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              name={'settings'}
+              name={"settings"}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -143,16 +160,36 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
 
       {/*Signup screens*/}
-      <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
-      <Stack.Screen name="SignUpEmail" component={SignUpEmail} options={{ headerShown: false }} />
-      <Stack.Screen name="SignUpPhone" component={SignUpPhone} options={{ headerShown: false }} />
-      <Stack.Screen name="SignUpVerificationCode" component={SignUpVerificationCode} options={{ headerShown: false }} />
-      <Stack.Screen name="SignUpReady" component={SignUpReady} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUpEmail"
+        component={SignUpEmail}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUpPhone"
+        component={SignUpPhone}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUpVerificationCode"
+        component={SignUpVerificationCode}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SignUpReady"
+        component={SignUpReady}
+        options={{ headerShown: false }}
+      />
 
       {/*Settings screens*/}
       <Stack.Screen
@@ -168,7 +205,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -184,7 +221,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -200,7 +237,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -216,7 +253,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -232,7 +269,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -248,7 +285,7 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
       <Stack.Screen
@@ -264,11 +301,15 @@ function RootNavigator() {
               bgColor={Colors.header}
             />
           ),
-          cardStyle: { backgroundColor: Colors.header }
+          cardStyle: { backgroundColor: Colors.header },
         }}
       />
 
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: "Oops!" }}
+      />
     </Stack.Navigator>
   );
 }

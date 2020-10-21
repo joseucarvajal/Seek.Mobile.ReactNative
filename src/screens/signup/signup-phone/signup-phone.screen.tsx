@@ -34,7 +34,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           h1
           center
           fontFamily={FontNames.CamptonSemiBold}
-          letterSpacing={-0.408}
         >
           Wellcome back!
         </Text>
@@ -48,7 +47,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           <View style={styles.phoneIndicativeView}>
             <Text
               fontSize={12}
-              style={{ marginBottom: 10 }}
               color={Colors.fontSoft1}
             >
               Enter phone
@@ -62,8 +60,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           </View>
           <View style={styles.phoneNumberView}>
           <Text
-              fontSize={12}
-              style={{ marginBottom: 10 }}
+              fontSize={12}              
               color={Colors.fontSoft1}
             >
                
