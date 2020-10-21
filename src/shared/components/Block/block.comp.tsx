@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ViewStyle } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors, Layout } from '../../../constants';
 
@@ -24,6 +24,7 @@ export interface IBlockProps {
     style?: any;
     styles?: any;
     props?: any;
+    padding?: number;
 }
 
 export type SpaceType = "evenly" | "between" | "around";
@@ -46,6 +47,7 @@ const Block: React.FC<IBlockProps> = ({
     width,
     safe,
     children,
+    padding = Layout.base,
     style,
     ...props
 }) => {
@@ -67,6 +69,7 @@ const Block: React.FC<IBlockProps> = ({
         height && { height },
         width && { width },
         shadowColor && { shadowColor },
+        padding && { padding } as ViewStyle,
         style,
     ];
 
