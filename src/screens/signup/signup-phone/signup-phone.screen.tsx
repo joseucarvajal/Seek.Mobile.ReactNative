@@ -13,6 +13,7 @@ import {
   Select,
   Input,
   ButtonPrimary,
+  LinkButton,
 } from "../../../shared";
 
 import { Colors, FontNames, getFontStyle, Layout } from "../../../constants";
@@ -79,22 +80,9 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           CONTINUE
         </ButtonPrimary>
 
-        <Button
-          type="link"
-          onPress={() => {
-            console.log("having trouble logging in?");
-          }}
-        >
-          <Text
-            underline
-            bold
-            style={styles.linkButtonPrimary}
-            fontSize={17}
-            lineHeight={22}
-          >
-            Continue using email Instead
-          </Text>
-        </Button>
+        <LinkButton>
+          Continue using email Instead
+        </LinkButton>
 
         <Button type="link">
           <Text color={Colors.primary}>LOGIN</Text>

@@ -8,7 +8,8 @@ import {
   Button, 
   ButtonTertiary,
   Text,
-  Icon
+  Icon,
+  LinkButton
 } from "../../../shared";
 
 import { 
@@ -107,16 +108,10 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </Text>
         </View>
 
-        <Button 
-          type="link"
-          onPress={()=>{
-            console.log('having trouble logging in?');
-          }}
-        >
-          <Text underline style={styles.linkButtonPrimary} lineHeight={22}>
-            Having trouble logging in?
-          </Text>
-        </Button>
+        <LinkButton>
+          Having trouble logging in?
+        </LinkButton>
+
       </View>
     </SafeAreaView>
   );

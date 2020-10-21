@@ -13,6 +13,7 @@ import Tabs from './components/tabs/tabs.comp'
 import Block from './components/block/block.comp';
 import Accordion from './components/accordion/accordion.comp';
 import Checkbox from './components/checkbox/checkbox.comp';
+import LinkButton from './components/link-button/link-button.comp';
 
 export {
     Button,
@@ -29,5 +30,6 @@ export {
     Tabs,
     Block,
     Accordion,
-    Checkbox
+    Checkbox,
+    LinkButton
 }
