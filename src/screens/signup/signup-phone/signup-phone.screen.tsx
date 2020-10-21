@@ -74,19 +74,28 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
         <ButtonPrimary
           onPress={() => {
-            console.log('continue');
+            console.log("continue");
           }}
         >
           CONTINUE
         </ButtonPrimary>
 
-        <LinkButton>
+        <LinkButton
+          onPress={() => {
+            console.log("Continue using email Instead");
+          }}
+        >
           Continue using email Instead
         </LinkButton>
 
-        <Button type="link">
-          <Text color={Colors.primary}>LOGIN</Text>
-        </Button>
+        <LinkButton
+          upper
+          onPress={() => {
+            console.log("LOGIN");
+          }}
+        >
+          LOGIN
+        </LinkButton>
       </View>
     </SafeAreaView>
   );

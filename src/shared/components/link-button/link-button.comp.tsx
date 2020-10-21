@@ -5,24 +5,47 @@ import Button from "../button/button.comp";
 import Text from "../text/text.comp";
 
 export interface ILinkButtonProps extends ViewProps {
-  small?: any;
+  upper?: boolean;
+  underline?: boolean;
   onPress?: any;
   iconSize?: number;
 }
 
 const LinkButton: React.FC<ILinkButtonProps> = ({
+  upper,
+  underline = true,
   onPress,
   style,
   iconSize,
   children,
   ...props
 }) => {
+
+  let fontFamily = FontNames.CamptonBold;
+  if(upper){
+    fontFamily = FontNames.CamptonLight;
+  }
+
+  let color = Colors.primaryFont;
+  if(upper){
+    color = Colors.primaryFontLight;
+  }
+
+  let realUnderline = !upper && underline;
+
   return (
     <Button
       type="link"
       onPress={onPress}
     >
-      <Text underline style={styles.linkButtonPrimary} lineHeight={22}>
+      <Text 
+        style={{
+          color: color,
+          fontFamily: fontFamily
+        }}
+        underline = {realUnderline}
+        lineHeight={22}
+      >
         {children}
       </Text>
     </Button>
