@@ -54,12 +54,20 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
               Enter phone
             </Text>
             <Select
-              defaultValue={"1"}
-              items={[{ label: "1", value: "1" }]}
+              borderless
+              defaultValue={"+1"}
+              items={[{ label: "+1", value: "+1" }]}
               style={styles.phoneIndicative}
             />
           </View>
           <View style={styles.phoneNumberView}>
+          <Text
+              fontSize={12}
+              style={{ marginBottom: 10 }}
+              color={Colors.fontSoft1}
+            >
+               
+            </Text>            
             <Input
               color="primary"
               style={styles.phoneNumber}
@@ -125,9 +133,6 @@ const styles = StyleSheet.create({
   phoneNumber: {
     width: "100%",
     backgroundColor: Colors.transparent,
-  },
-  linkButtonPrimary: {
-    color: Colors.primary,
   },
 });
 

@@ -8,22 +8,18 @@ import {
   Button, 
   ButtonTertiary,
   Text,
-  Icon,
   LinkButton
 } from "../../../shared";
 
 import { 
-  Colors,
   FontNames,
   getFontStyle,
-  Icons, 
 } from "../../../constants";
 
 import { 
   signUpStyles, 
   SeekQLogo 
 } from "../../../components/signup/";
-import { getCustomTabsSupportingBrowsersAsync } from "expo-web-browser";
 
 export interface ISignUpProps {}
 
@@ -134,12 +130,7 @@ const styles = StyleSheet.create({
     fontFamily: FontNames.CamptonMediumItalic,
     fontSize: 14,
     margin: 0,
-  },
-  linkButtonPrimary: {    
-    color: Colors.primaryFont,
-    fontFamily: FontNames.CamptonBold,
-    fontSize: 17
-  }  
+  }
 });
 
 export default SignUp;
