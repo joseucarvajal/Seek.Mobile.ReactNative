@@ -59,7 +59,7 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
           </ButtonTertiary>
         </View>
 
-        <Text p lineHeight={18} center>
+        <Text p center>
           All your important details are secured. None of your information will
           be shared from our app!
         </Text>
