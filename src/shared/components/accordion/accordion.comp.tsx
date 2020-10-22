@@ -1,53 +1,44 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, ViewStyle, FlatList } from "react-native";
+import { View, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, ViewStyle } from "react-native";
 import { Colors, Layout } from "../../../constants";
 import Text from "../text/text.comp"
-import Icon from '../icons/icon.comp'
+import Icon from "../icons/icon.comp";
 import Block from "../block/block.comp";
 
 interface IAccordion {
-    // title?: string,
-    items?: any;
-    // shadow?: any;
-    props?: any;
-    style?: ViewStyle;
-    // expanded?: any;
+  title?: string,
+  items?: any;
+  shadow?: any;
+  style?: ViewStyle;
+  expanded?: any;
 }
 
-interface IBlockAccordion {
-  title: string,
-  id: string,
-  expanded: boolean,
-  shadow: boolean,
-  items: any
-}
-
-const BlockAccordion: React.FC<IBlockAccordion> = ({
+const Accordion: React.FC<IAccordion> = ({
   title,
-  expanded,
+  items,
   shadow,
-  items
+  style,
+  expanded: expandedProps
 }) => {
-  const [expandedItem, setExpanded] = useState(expanded);
-  const [extendPadding, setExpandedPadding] = useState(expandedItem);
+  const [expanded, setExpanded] = useState(expandedProps);
+
   const toggleExpand = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    setExpanded(!expandedItem);
-    setExpandedPadding(!extendPadding);
+    setExpanded(!expanded);
   }
-  
+
   if (Platform.OS === 'android') {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
   return (
-    <Block shadow={shadow} style={[styles.block, extendPadding && { paddingBottom: 16 } ]}>
+    <Block shadow={shadow} style={style}>
       <TouchableOpacity style={styles.row} onPress={() => toggleExpand()}>
         <Text h3 style={styles.title}>{title}</Text>
-        <Icon family='FontAwesome' name={expandedItem ? 'chevron-up' : 'chevron-down'} size={30} color={Colors.black} />
+        <Icon family='FontAwesome' name={expanded ? 'chevron-up' : 'chevron-down'} size={30} color={Colors.black} />
       </TouchableOpacity>
       <View style={styles.parent} />
-      {expandedItem && (
+      {expanded && (
         <Block shadow={shadow} style={styles.child}>
           <Text h3 style={styles.title}>{items}</Text>
         </Block>
@@ -56,53 +47,30 @@ const BlockAccordion: React.FC<IBlockAccordion> = ({
   );
 };
 
-const Accordion: React.FC<IAccordion> = ({ 
-  items,
-  props,
-  style
-}) => {
-    const renderItem = ({ item }: { item: any }) => (
-      <BlockAccordion {...item} />
-    );
-    return (
-      <FlatList
-        data={items}
-        keyExtractor={(item, _) => item.id}
-        renderItem={renderItem}
-      />
-    );
-};
-
 export default Accordion;
 
 const styles = StyleSheet.create({
-    block: {
-      flex: 1,
-      width: '100%',
-    },
-    title: {
-        fontWeight: '500',
-    },
-    row: {
-        flex: 1,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        height: 56,
-        paddingLeft: 25,
-        paddingRight: 18,
-        alignItems: 'center',
-        backgroundColor: Colors.tabs,
-        borderRadius: Layout.accordion_border_radius
-    },
-    parent: {
-        height: Layout.base,
-        color: Colors.white,
-        width: '100%',
-        flex: 1,
-    },
-    child: {
-        backgroundColor: Colors.gray,
-        padding: 16,
-        borderRadius: Layout.accordion_border_radius
-    }
+  title: {
+    fontWeight: '500',
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 56,
+    paddingLeft: 25,
+    paddingRight: 18,
+    alignItems: 'center',
+    backgroundColor: Colors.tabs,
+    borderRadius: Layout.accordion_border_radius
+  },
+  parent: {
+    height: Layout.base,
+    color: Colors.white,
+    width: '100%'
+  },
+  child: {
+    backgroundColor: Colors.gray,
+    padding: 16,
+    borderRadius: Layout.accordion_border_radius
+  }
 });
