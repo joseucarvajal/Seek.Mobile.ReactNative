@@ -64,12 +64,198 @@ export default function Navigation({
 
 // A root stack navigator is often used for displaying modals on top of all other content
 // Read more here: https://reactnavigation.org/docs/modal
-const Stack = createStackNavigator<RootStackParamList>();
+const MainStack = createStackNavigator<RootStackParamList>();
+const RootStack = createStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 const activeTab = Colors.primary;
 const inactiveTab = Colors.muted;
 
-function HomeTabs() {
+function HomeStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      <MainStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Home"
+              navigation={navigation}
+              scene={scene}
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
+function ChatStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      <MainStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Chat"
+              navigation={navigation}
+              scene={scene}
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
+function ContactsStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      <MainStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Contacts"
+              navigation={navigation}
+              scene={scene}
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
+function SettingsStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      {/*Settings screens*/}
+      <MainStack.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Settings"
+              navigation={navigation}
+              scene={scene}
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="HelpFaq"
+        component={HelpFaq}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="FAQ"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="HelpMenu"
+        component={HelpMenu}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Help"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="Legal"
+        component={Legal}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Legal"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="TutorialVideo"
+        component={TutorialVideo}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Tutorial Video"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="Modes"
+        component={Modes}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Modes"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Notifications"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
+function RootTabs() {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -79,7 +265,7 @@ function HomeTabs() {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
@@ -95,7 +281,7 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Chat"
-        component={Home}
+        component={ChatStack}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
@@ -111,7 +297,7 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Contacts"
-        component={Profile}
+        component={ContactsStack}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
@@ -127,7 +313,7 @@ function HomeTabs() {
       />
       <Tab.Screen
         name="Settings"
-        component={Settings}
+        component={SettingsStack}
         options={{
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
@@ -147,11 +333,19 @@ function HomeTabs() {
 
 function RootNavigator() {
   return (
-    <Stack.Navigator mode="card" headerMode="screen">
-      <Stack.Screen name="Home" component={HomeTabs} />
+    <RootStack.Navigator mode="modal" headerMode="none">      
+        <RootStack.Screen name="Home" component={RootTabs} />
+        <RootStack.Screen name='Profile' component={MainNavigator} />
+    </RootStack.Navigator>
+  )
+}
+
+function MainNavigator() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
 
       {/*Profile screens*/}
-      <Stack.Screen
+      <MainStack.Screen
         name="Profile"
         component={Components}
         options={{
@@ -168,152 +362,38 @@ function RootNavigator() {
         }}
       />
 
-      {/*Signup screens*/}
-      <Stack.Screen
+      {/*Sign Up/Sign In screens*/}
+      <MainStack.Screen
         name="SignUp"
         component={SignUp}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      <MainStack.Screen
         name="SignUpEmail"
         component={SignUpEmail}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      <MainStack.Screen
         name="SignUpPhone"
         component={SignUpPhone}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      <MainStack.Screen
         name="SignUpVerificationCode"
         component={SignUpVerificationCode}
         options={{ headerShown: false }}
       />
-      <Stack.Screen
+      <MainStack.Screen
         name="SignUpReady"
         component={SignUpReady}
         options={{ headerShown: false }}
       />
 
-      {/*Settings screens*/}
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Settings"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="HelpFaq"
-        component={HelpFaq}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="FAQ"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="HelpMenu"
-        component={HelpMenu}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Help"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="Legal"
-        component={Legal}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Legal"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="TutorialVideo"
-        component={TutorialVideo}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Tutorial Video"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="Modes"
-        component={Modes}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Modes"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-      <Stack.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Notifications"
-              navigation={navigation}
-              scene={scene}
-              back
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-
-      <Stack.Screen
+      <MainStack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
-    </Stack.Navigator>
+    </MainStack.Navigator>
   );
 }
