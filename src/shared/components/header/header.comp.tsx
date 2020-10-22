@@ -28,12 +28,24 @@ interface ISelectState {
 
 }
 
-class Header extends React.Component<IHeaderProps, ISelectState> {
-  constructor(props: IHeaderProps) {
-    super(props);
-  }
+const Header: React.FC<IHeaderProps> = ({
+  back,
+  home,
+  index,
+  title,
+  save,
+  next,
+  avatar,
+  navigation,
+  scene,
+  props,
+  titleStyle,
+  shadowless,
+  transparent,
+  bgColor
+}) => {
 
-  renderNext = () => {
+  const renderNext = () => {
     return (
       <TouchableOpacity>
         <Icon
@@ -44,20 +56,17 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
         />
       </TouchableOpacity>
     )
-  }
+  };
 
-  renderTitle = () => {
-    const { title } = this.props;
+  const renderTitle = () => {
     return (
       <View style={styles.center}>
         <Text bold h1 color={Colors.primary}>{title}</Text>
       </View>
     )
-  }
+  };
 
-  renderBack = () => {
-    const { navigation } = this.props;
-
+  const renderBack = () => {
     return (
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Icon
@@ -68,69 +77,62 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
         />
       </TouchableOpacity>
     )
-  }
+  };
 
-  renderAvatar = () => {
+  const renderAvatar = () => {
     return (
       <Image
         size="avatar"
-        source={this.props.avatar}
+        source={avatar}
       />
     )
-  }
+  };
 
-  renderLeft = () => {
-    const { back, avatar } = this.props
+  const renderLeft = () => {
     return (
       <View style={styles.left}>
-        {back && this.renderBack()}
-        {avatar && this.renderAvatar()}
+        {back && renderBack()}
+        {avatar && renderAvatar()}
       </View>
     );
-  }
+  };
 
-  renderCenter = () => {
-    const { title } = this.props
+  const renderCenter = () => {
     return (
       <View>
-        {title && this.renderTitle()}
+        {title && renderTitle()}
       </View>
     );
-  }
+  };
 
-  renderRight = () => {
-    const { next } = this.props
+  const renderRight = () => {
     return (
       <View style={styles.right}>
-        {next && this.renderNext()}
+        {next && renderNext()}
       </View>
     );
-  }
+  };
 
-  render() {
-    const { shadowless, transparent, bgColor } = this.props
+  const headerStyles = [
+    !shadowless && styles.shadow,
+    transparent && { backgroundColor: Colors.transparent }
+  ];
 
-    const headerStyles = [
-      !shadowless && styles.shadow,
-      transparent && { backgroundColor: Colors.transparent }
-    ];
+  const navbarStyles = [styles.navbar, bgColor && { backgroundColor: bgColor }];
 
-    const navbarStyles = [styles.navbar, bgColor && { backgroundColor: bgColor }];
-
-    return (
-      <SafeAreaView edges={['right', 'top', 'left']}>
-        <View style={[headerStyles, navbarStyles]}>
-          <NavigationBar
-            title={this.renderCenter()}
-            rightButton={this.renderRight()}
-            leftButton={this.renderLeft()}
-            tintColor={transparent ? Colors.transparent : bgColor}
-          />
-        </View>
-      </SafeAreaView>
-    )
-  }
-}
+  return (
+    <SafeAreaView edges={['right', 'top', 'left']}>
+      <View style={[headerStyles, navbarStyles]}>
+        <NavigationBar
+          title={renderCenter()}
+          rightButton={renderRight()}
+          leftButton={renderLeft()}
+          tintColor={transparent ? Colors.transparent : bgColor}
+        />
+      </View>
+    </SafeAreaView>
+  );
+};
 
 export default Header;
 
