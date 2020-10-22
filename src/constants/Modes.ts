@@ -6,7 +6,7 @@ const ModesItems = [
     id: 'receptivityMode', 
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('Receptivity mode...'),
+    action: (val: any = null) => console.log(`Receptivity mode... ${val && val}`),
     value: true,
   },
   {
@@ -14,7 +14,7 @@ const ModesItems = [
     id: 'incognitoMode',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('Incognito mode...'),
+    action: (val: any = null) => console.log(`Incognito mode... ${val && val}`),
     value: false,
   }
 ];

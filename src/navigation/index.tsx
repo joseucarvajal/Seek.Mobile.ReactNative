@@ -84,8 +84,8 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family='seekQ'
-              name={"home"}
+              family="FontAwesome"
+              name="home"
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -100,8 +100,8 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family='seekQ'
-              name={"chat"}
+              family="FontAwesome"
+              name="wechat"
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -116,8 +116,8 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family='seekQ'
-              name={"contacts"}
+              family="FontAwesome"
+              name="users"
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -132,8 +132,8 @@ function HomeTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family='seekQ'
-              name={"settings"}
+              family="FontAwesome"
+              name="cog"
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}

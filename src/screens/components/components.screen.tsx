@@ -41,9 +41,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Checkbox label='Fishing' iconColor={Colors.primary} />
         <Text />
         <Accordion
-          title={accordion[0].title}
-          items={accordion[0].data}
-          shadow
+          items={accordion}
         />
         <Text />
         <Select
@@ -150,21 +148,31 @@ const items = [
 
 const accordion = [
   {
+    title: 'Elit commodo fringilla',
+    id: 'elitCommodoFringilla',
+    color: Colors.neutral,
+    expanded: false,
+    shadow: true,
+    items: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
     title: 'How to Upgrade?',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
-  },
-  {
-    title: 'Etiam integer ornare',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
-  },
-  {
-    title: 'Purus dictum',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
-  },
-  {
-    title: 'Dolor velit lacus',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
-  },
+    id: 'howToUpgradeTwo',
+    color: Colors.neutral,
+    expanded: false,
+    shadow: true,
+    items: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  }
 ]
 
 const styles = StyleSheet.create({

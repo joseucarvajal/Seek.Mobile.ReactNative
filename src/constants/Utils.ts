@@ -21,3 +21,10 @@ export function capitalize(word: string) {
 export const removeNonNumber = (string = "") => string.replace(/[^\d]/g, "");
 
 export const removeLeadingSpaces = (string = "") => string.replace(/^\s+/g, "");
+
+export const wait = (ms = 2000) =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });

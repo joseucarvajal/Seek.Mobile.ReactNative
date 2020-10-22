@@ -87,7 +87,7 @@ class Tabs extends React.Component<ITabsProps, ITabsState> {
         ];
 
         return (
-            <Block style={containerStyles}>
+            <Block style={containerStyles} flex>
                 <Animated.Text
                     style={[
                         styles.menuTitle,
@@ -133,10 +133,11 @@ export default Tabs;
 
 const styles = StyleSheet.create({
     container: {
-        width: Layout.window.width,
+        flex: 1,
+        width: '100%',
         backgroundColor: Colors.tabs,
         zIndex: 2,
-        marginLeft: -Layout.base
+        // marginLeft: -Layout.base
     },
     shadow: {
         shadowColor: Colors.black,
@@ -155,8 +156,8 @@ const styles = StyleSheet.create({
         backgroundColor: Colors.tabs,
         borderRadius: 21,
         marginRight: 9,
-        paddingHorizontal: 10,
-        paddingVertical: 3,
+        paddingHorizontal: 5,
+        paddingVertical: 5,
     },
     containerShadow: {
         shadowColor: Colors.black,
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 14,
         paddingVertical: 8,
-        paddingHorizontal: 12,
+        paddingHorizontal: 0,
         color: Colors.black
     },
     backgroundless: {

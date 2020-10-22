@@ -7,7 +7,7 @@ import { RootStackParamList } from "../../types";
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Profile'  
+  'Profile'
 >;
 
 export interface IHomeProps {

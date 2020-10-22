@@ -37,9 +37,9 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
     return (
       <TouchableOpacity>
         <Icon
-          family='seekQ'
+          family="FontAwesome"
+          name="chevron-right"
           size={24}
-          name={'caret_right'}
           color={Colors.primary}
         />
       </TouchableOpacity>
@@ -61,9 +61,9 @@ class Header extends React.Component<IHeaderProps, ISelectState> {
     return (
       <TouchableOpacity onPress={() => navigation.goBack()}>
         <Icon
-          family='seekQ'
+          family="FontAwesome"
+          name="chevron-left"
           size={24}
-          name={'caret_left'}
           color={Colors.primary}
         />
       </TouchableOpacity>
