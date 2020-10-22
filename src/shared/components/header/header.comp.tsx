@@ -45,71 +45,62 @@ const Header: React.FC<IHeaderProps> = ({
   bgColor
 }) => {
 
-  const renderNext = () => {
-    return (
-      <TouchableOpacity>
-        <Icon
-          family="FontAwesome"
-          name="chevron-right"
-          size={24}
-          color={Colors.primary}
-        />
-      </TouchableOpacity>
-    )
-  };
-
-  const renderTitle = () => {
-    return (
-      <View style={styles.center}>
-        <Text bold h1 color={Colors.primary}>{title}</Text>
-      </View>
-    )
-  };
-
-  const renderBack = () => {
-    return (
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Icon
-          family="FontAwesome"
-          name="chevron-left"
-          size={24}
-          color={Colors.primary}
-        />
-      </TouchableOpacity>
-    )
-  };
-
-  const renderAvatar = () => {
-    return (
-      <Image
-        size="avatar"
-        source={avatar}
-      />
-    )
-  };
-
   const renderLeft = () => {
     return (
-      <View style={styles.left}>
-        {back && renderBack()}
-        {avatar && renderAvatar()}
-      </View>
+      <>
+        {back &&
+          <View style={styles.left}>
+
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Icon
+                family="FontAwesome"
+                name="chevron-left"
+                size={24}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
+          </View>
+        }
+        {avatar &&
+          <View style={styles.left}>
+            <Image
+              size="avatar"
+              source={avatar}
+            />
+          </View>
+        }
+      </>
     );
   };
 
   const renderCenter = () => {
     return (
-      <View>
-        {title && renderTitle()}
-      </View>
+      <>
+        {title &&
+          <View style={[styles.center, !back && { width: '100%', paddingLeft: Layout.base }]}>
+            <Text bold h1 color={Colors.primary}>{title}</Text>
+          </View>
+        }
+      </>
     );
   };
 
   const renderRight = () => {
     return (
-      <View style={styles.right}>
-        {next && renderNext()}
-      </View>
+      <>
+        {next &&
+          <View style={styles.right}>
+            <TouchableOpacity>
+              <Icon
+                family="FontAwesome"
+                name="chevron-right"
+                size={24}
+                color={Colors.primary}
+              />
+            </TouchableOpacity>
+          </View>
+        }
+      </>
     );
   };
 
@@ -124,8 +115,8 @@ const Header: React.FC<IHeaderProps> = ({
     <SafeAreaView edges={['right', 'top', 'left']}>
       <View style={[headerStyles, navbarStyles]}>
         <NavigationBar
-          title={renderCenter()}
           rightButton={renderRight()}
+          title={renderCenter()}
           leftButton={renderLeft()}
           tintColor={transparent ? Colors.transparent : bgColor}
         />
@@ -145,7 +136,7 @@ const styles = StyleSheet.create({
   navbar: {
     justifyContent: "center",
     width: Layout.window.width,
-    height: HeaderHeight * 2.5
+    height: HeaderHeight * 2
   },
   right: {
     justifyContent: 'center',
@@ -154,11 +145,10 @@ const styles = StyleSheet.create({
     height: HeaderHeight,
   },
   center: {
-    top: 3,
+    bottom: 3,
     justifyContent: 'center',
     alignItems: 'flex-start',
     width: Layout.window.width * .7,
-    height: HeaderHeight
   },
   left: {
     justifyContent: 'center',
