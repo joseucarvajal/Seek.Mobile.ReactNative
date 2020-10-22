@@ -3,7 +3,7 @@ import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Steper } from '../../../components/profile';
 import { Colors } from "../../../constants";
-import { Button, Input, Select, ToggleButton, Text, MenuItem } from '../../../shared';
+import { Button, Text } from '../../../shared';
 
 export interface IProfileProps {}
 
@@ -15,61 +15,6 @@ const Profile: React.FC<IProfileProps> = ({}) => {
           <Steper />
         </View>
         <View style={styles.body}>
-          <MenuItem items={items} />
-          {/* <Input 
-            left
-            color='primary'
-            borderless 
-            placeholder='Nickname'
-            icon="user"
-            iconColor={Colors.primary}
-            iconSize={24}
-            textInputStyle={styles.textInput}
-          />
-          <Input color='quaternary' borderless placeholder='First Name' textInputStyle={styles.textFisrtNameInput}/>
-          <Input color='quaternary' borderless placeholder='Last Name'/>
-          <Input color='quaternary' borderless placeholder='Password' password viewPass/>
-          <Input color='quaternary' borderless placeholder='Confirm Password' password viewPass/>
-          <ToggleButton color='primary' value={true}/>
-          <Text />
-          <Select
-            defaultValue={'f'}
-            items={[
-              {label: 'Male', value: 'm'},
-              {label: 'Female', value: 'f'},
-            ]}
-            shadow
-          />
-          <Text />
-          <Button 
-            left
-            type='social' 
-            shadow
-            icon="facebook"
-            iconColor={Colors.quaternary}
-            iconSize={18}
-            >
-            <Text style={styles.textButton}>Continue with Facebook</Text> 
-          </Button>
-          <Text />
-          <Button
-            left
-            type='social' 
-            color='quaternary'
-            shadow
-            icon="google"
-            iconColor={Colors.white}
-            iconSize={18}
-            >
-            <Text style={styles.textLabel}>Continue with Google</Text> 
-          </Button>
-          <Text />
-          <Button type='backgroundless'>
-            <Text style={styles.loginButton}>LOGIN</Text> 
-          </Button>
-          <Button type='link'>
-            <Text underline bold style={styles.linkButton}>Continue using email Instead</Text> 
-          </Button> */}
         </View>
         <View style={styles.footerView}>
           <Button type='gradient' shadow>
@@ -82,16 +27,6 @@ const Profile: React.FC<IProfileProps> = ({}) => {
 };
 
 export default Profile;
-
-const items = [
-  { title: "Edit Basic Info", id: "editBasicInfo", type: "button", color: Colors.neutral },
-  { title: "Profile", id: "profile", type: "button", color: Colors.white },
-  { title: "Notifications", id: "notifications", type: "button", color: Colors.neutral },
-  { title: "Modes", id: "modes", type: "button", color: Colors.white },
-  { title: "Incoming Chat", id: "incomingChat", type: "toggle", color: Colors.neutral },
-  { title: "Temperature meter change", id: "temperatureMeter", type: "toggle", color: Colors.white },
-  { title: "In app vibrations", id: "vibration", type: "toggle", color: Colors.neutral },
-];
 
 const styles = StyleSheet.create({
   container: {

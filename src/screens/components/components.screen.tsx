@@ -3,14 +3,18 @@ import { View, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Modal, Block, Chips } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Modal, Block, Chips, MenuItem } from '../../shared';
 
 export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
     <ScrollView style={{ paddingTop: 1 }}>
-      {/* <MenuItem items={items} /> */}
+      <MenuItem title={items[0].title} type='Button' color={Colors.neutral}/>
+      <MenuItem title={items[1].title} type='Button' color={Colors.white}/>
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral}/>
+      <MenuItem title={items[3].title} type='toggle' color={Colors.white}/>
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral}/>
       <View style={styles.container}>
         <Steper />
         <Text />
@@ -43,11 +47,10 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Checkbox label='Cosplay' iconColor={Colors.primary} />
         <Checkbox label='Fishing' iconColor={Colors.primary} />
         <Text />
-        <Accordion
-          title={accordion[0].title}
-          items={accordion[0].data}
-          shadow
-        />
+        <Accordion title={accordion[0].title} text={accordion[0].text} shadow />
+        <Text />
+        <Text />
+        <Accordion title={accordion[1].title} text={accordion[1].text} shadow />
         <Text />
         <Select
           small
@@ -154,19 +157,19 @@ const items = [
 const accordion = [
   {
     title: 'How to Upgrade?',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Etiam integer ornare',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Purus dictum',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Dolor velit lacus',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
 ]
 

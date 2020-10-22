@@ -4,7 +4,7 @@ import { Layout } from "../../../constants";
 import { Accordion, Block } from "../../../shared";
 
 interface IAccordion {
-  items?: any;
+  items: any;
   style?: ViewStyle;
 }
 

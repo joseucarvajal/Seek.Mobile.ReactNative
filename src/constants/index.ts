@@ -4,6 +4,7 @@ import Images from "./Images";
 import Icons from "./Icons";
 import { FontNames, getFontStyle } from "./Fonts";
 import { thumbMeasure, HeaderHeight, iPhoneX, isIOS } from './Utils';
+import Faqtext from './Faqs'
 
 export { 
     Colors, 
@@ -15,5 +16,6 @@ export {
     HeaderHeight,
     Icons,
     iPhoneX,
-    isIOS
+    isIOS,
+    Faqtext
 };

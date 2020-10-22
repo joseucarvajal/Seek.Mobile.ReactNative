@@ -1,5 +1,3 @@
-import Colors from "./Colors";
-
 const Faqtext = [
   {
     id: 'howToUpgrade',
