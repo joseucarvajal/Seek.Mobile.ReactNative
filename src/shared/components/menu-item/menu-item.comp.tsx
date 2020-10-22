@@ -13,6 +13,7 @@ interface IMenuItemProps {
   color?: any;
   value?: any;
   onPress?: any;
+  onValueChange?: any;
   style?: any;
 }
 
@@ -24,6 +25,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
   color,
   value,
   onPress,
+  onValueChange,
   style
 }) => {
   return (
@@ -32,7 +34,7 @@ const MenuItem: React.FC<IMenuItemProps> = ({
         type === 'toggle' ?
           <Block style={[styles.container, { backgroundColor: color }, style]}>
             <Text fontSize={Layout.fontSize}>{title}</Text>
-            <ToggleButton color='primary' value={value} />
+            <ToggleButton color='primary' value={value} onValueChange={onValueChange} />
           </Block>
           :
           <TouchableOpacity onPress={onPress} style={[styles.container, { backgroundColor: color }, style]}>

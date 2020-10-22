@@ -10,11 +10,11 @@ export interface IProfileProps { }
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
     <ScrollView style={{ paddingTop: 1 }}>
-      <MenuItem title={items[0].title} type='Button' color={Colors.neutral}/>
-      <MenuItem title={items[1].title} type='Button' color={Colors.white}/>
-      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral}/>
-      <MenuItem title={items[3].title} type='toggle' color={Colors.white}/>
-      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral}/>
+      <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title) }/>
+      <MenuItem title={items[1].title} type='Button' color={Colors.white} onValueChange={() => console.log(items[1].title) }/>
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
+      <MenuItem title={items[3].title} type='toggle' color={Colors.white} onValueChange={() => console.log(items[3].title) }/>
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
       <View style={styles.container}>
         <Steper />
         <Text />
