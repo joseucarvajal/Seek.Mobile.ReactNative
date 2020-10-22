@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Switch, ViewProps } from "react-native";
 import { Colors } from '../../../constants';
 
@@ -16,7 +16,7 @@ export interface IToggleButtonProps extends ViewProps {
 export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 
 const ToggleButton: React.FC<IToggleButtonProps> = ({
-    value,
+    value: initValue,
     color,
     shadow,
     disabled,
@@ -25,14 +25,19 @@ const ToggleButton: React.FC<IToggleButtonProps> = ({
     onValueChange,
     ...props
 }) => {
-
+    const [value, setValue] = useState(initValue);
     const thumbColor = value === true ? Colors[color] : Colors.muted
+    const handleChangeValue = () => {
+      setValue(!value);
+      onValueChange(!value);
+    };
 
     return (
       <Switch
         value={value}
         thumbColor={thumbColor}
         ios_backgroundColor={Colors.neutral}
+        onValueChange={handleChangeValue}
         trackColor={{
           true: Colors.gray,
           false: Colors.gray

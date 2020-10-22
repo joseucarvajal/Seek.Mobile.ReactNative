@@ -1,42 +1,84 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, FlatList, TouchableHighlight, Switch } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import Text from '../text/text.comp'
+import Text from '../text/text.comp';
 import Icon from '../icons/icon.comp'
-import ToggleButton from '../../components/toggle-button/toggle-button.comp'
-import { Layout, Colors } from '../../../constants'
+import Block from '../block/block.comp';
+
+import ToggleButton from '../../components/toggle-button/toggle-button.comp';
+import { Layout, Colors, FontNames } from '../../../constants';
+import { wait } from '../../../constants/Utils';
 
 interface IMenuItemProps {
   items: any;
   props?: any;
+};
+
+interface IBlockMenuItem {
+  title: string;
+  id: string;
+  type: string;
+  color: any;
+  action?: any;
+  navigate?: any;
+  value?: any;
 }
 
-const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
+const BlockMenuItem: React.FC<IBlockMenuItem> = ({
+  title,
+  id,
+  type,
+  color,
+  action,
+  navigate,
+  value
+}) => {
+  const [touchable, setTouchable] = useState(false);
   const navigation = useNavigation();
-  const renderItem = ({ item }: { item: any }) => {
-    return (
-      <>
-        {
-          item.type === 'toggle' ?
-            <View style={[styles.container, { backgroundColor: item.color }]}>
-              <Text fontSize={16}>{item.title}</Text>
-              <ToggleButton color='primary' value={item.value} onValueChange={() => item?.action && item.action(!item.value) } />
-            </View>
-          : 
-            <TouchableOpacity style={[styles.container, { backgroundColor: item.color }]} onPress={() => item?.navigate && navigation.navigate(item.navigate)}>
-                <Text fontSize={16}>{item.title}</Text>
-                <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
-            </TouchableOpacity>
-        }
-      </>
-    );
+  
+  const handleChangeValue = (valueChanged: any) => {
+    action(valueChanged);
   };
+
+  const handlePressTouchable = () => {
+    setTouchable(!touchable);
+    if(navigate) {
+      navigation.navigate(navigate);
+    }
+  };
+
+  return (
+    <Block>
+      {
+        type === 'toggle' ?
+          <Block flex style={[styles.container, { backgroundColor: color, width: '100%' }]}>
+            <Block style={[styles.container, { backgroundColor: color, width: '100%' }]} flex>
+              <Text fontSize={16} style={[ styles.noTouchableText ]} >{title}</Text>
+              <ToggleButton color='primary' value={value} onValueChange={handleChangeValue} />
+            </Block>
+          </Block>
+        : 
+        <TouchableHighlight style={[ styles.container, touchable ? styles.touchableIn : styles.touchableOut ]} onPress={() => handlePressTouchable()}>
+          <Block style={styles.container}>
+            <Text fontSize={16} style={[ touchable ? styles.touchableText : styles.noTouchableText ]}>{title}</Text>
+            <Icon family="FontAwesome" name="angle-right" color={touchable ? Colors.fontNormal : Colors.noTouchableIcon} size={32} style={[{ paddingRight: 5 }]} />
+          </Block>
+        </TouchableHighlight>
+      }
+    </Block>
+  );
+};
+
+const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
+  const renderItem = ({ item }: { item: IBlockMenuItem }) => (
+    <BlockMenuItem {...item} />
+  );
 
   return (
     <FlatList
       data={items}
-      keyExtractor={(item, _) => item.id}
+      keyExtractor={(item) => item.id}
       renderItem={renderItem}
     />
   );
@@ -51,8 +93,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: Layout.base,
-    backgroundColor: Colors.neutral,
-    width: Layout.window.width,
+    // backgroundColor: Colors.white,
+    width: '100%',
     height: Layout.menu_item_height,
+  },
+  touchableIn: {
+    backgroundColor: Colors.neutral,
+  },
+  touchableOut: {
+    backgroundColor: Colors.white,
+  },
+  noTouchableText: {
+    color: Colors.noTouchableText,
+    fontFamily: FontNames.CamptonSemiBold
+  },
+  touchableText: {
+    color: Colors.fontNormal,
+    fontFamily: FontNames.CamptonSemiBold
   }
 });
