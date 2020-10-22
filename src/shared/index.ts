@@ -18,6 +18,7 @@ import Card from './components/card/card.comp';
 import Calendar from './components/calendar/calendar.comp';
 import Video from './components/video/video.comp';
 import Modal from './components/modal/modal.comp';
+import Chips from './components/chips/chips.comp';
 
 export {
     Button,
@@ -39,5 +40,6 @@ export {
     Card,
     Calendar,
     Video,
-    Modal
+    Modal,
+    Chips
 }

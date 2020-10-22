@@ -45,13 +45,6 @@ const MenuItem: React.FC<IMenuItemProps> = ({ items }) => {
 export default MenuItem;
 
 const styles = StyleSheet.create({
-  settings: {
-    paddingVertical: Layout.base / 3,
-  },
-  title: {
-    paddingTop: Layout.base,
-    paddingBottom: Layout.base / 2,
-  },
   container: {
     flex: 1,
     flexDirection: "row",

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Layout, Colors, FontNames } from '../../../constants';
@@ -9,71 +9,55 @@ interface ISelectProps {
   small?: any;
   shadow?: any;
   borderless?: any;
-  props?: any;
-  style?: ViewStyle
+  style?: any,
 }
 
-interface ISelectState {
-  value: any;
-}
+const Select: React.FC<ISelectProps> = ({
+  items,
+  defaultValue,
+  small,
+  shadow,
+  borderless,
+  style
+}) => {
 
-class Select extends React.Component<ISelectProps, ISelectState> {
-  constructor(props: ISelectProps) {
-    super(props);
+  const containerStyle = [
+    styles.dropdown,
+    shadow && styles.shadow
+  ];
 
-    this.state = {
-      value: 1,
-    };
+  const styleDropDownPicker = [
+    { backgroundColor: Colors.neutral },
+    borderless && styles.backgroundless,
+    small && styles.smallDropdown,
+    style
+  ];
 
-    this.handleOnSelect = this.handleOnSelect.bind(this);
-  }
+  const dropDownStyle = [
+    { backgroundColor: Colors.neutral },
+    borderless && { backgroundColor: Colors.white },
+    small && styles.smallDropdown,
+    style
+  ]
 
-  handleOnSelect() {
-    this.setState((previousState, props) => ({
-      value: !previousState.value,
-    }));
-  }
-
-  render() {
-
-    const containerStyle = [
-      styles.dropdown,
-      this.props.shadow && styles.shadow
-    ];
-
-    const style = [
-      { backgroundColor: Colors.neutral },
-      this.props.borderless && styles.backgroundless,
-      this.props.small && styles.smallDropdown,
-      this.props.style
-    ];
-
-    const dropDownStyle = [
-      { backgroundColor: Colors.neutral },
-      this.props.borderless && { backgroundColor: Colors.white },
-      this.props.small && styles.smallDropdown,
-      this.props.style
-    ]
-
-    return (
-      <DropDownPicker
-        items={this.props.items}
-        defaultValue={this.props.defaultValue}
-        containerStyle={containerStyle}
-        style={style}
-        itemStyle={{
-          justifyContent: 'flex-start',
-        }}
-        dropDownStyle={dropDownStyle}
-        labelStyle={{
-          fontSize: 22,
-          textAlign: 'left',
-          color: Colors.default,
-          fontFamily: FontNames.CamptonMedium
-        }}
-      />
-    )
-  }
+  return (
+    <DropDownPicker
+      items={items}
+      defaultValue={defaultValue}
+      containerStyle={containerStyle}
+      style={styleDropDownPicker}
+      itemStyle={{
+        justifyContent: 'flex-start',
+      }}
+      dropDownStyle={dropDownStyle}
+      labelStyle={{
+        fontSize: 22,
+        textAlign: 'left',
+        color: Colors.default,
+        fontFamily: FontNames.CamptonMedium
+      }}
+    />
+  )
 }
 
 export default Select;

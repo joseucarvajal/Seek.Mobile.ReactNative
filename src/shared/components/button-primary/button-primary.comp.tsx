@@ -24,7 +24,7 @@ const ButtonPrimary: React.FC<IButtonPrimaryProps> = ({
       style={style}
       onPress={onPress}
     >
-      <Text fontSize={20} lineHeight={22} color={Colors.white} center>
+      <Text fontSize={20} color={Colors.white} center>
         {children}
       </Text>
     </Button>

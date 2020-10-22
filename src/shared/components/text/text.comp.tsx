@@ -16,7 +16,6 @@ export interface ITextProp {
   small?: any;
   muted?: any;
   neutral?: any;
-  lineHeight?: number;
   fontSize?: any;
   color?: any;
   bold?: any;
@@ -46,7 +45,6 @@ const Typography: React.FC<ITextProp> = (
     muted,
     neutral,
     fontSize: size,
-    lineHeight,
     color,
     bold,
     italic,
