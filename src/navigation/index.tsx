@@ -88,6 +88,33 @@ function HomeStack() {
           cardStyle: { backgroundColor: Colors.header },
         }}
       />
+
+      {/*Sign Up/Sign In screens*/}
+      <MainStack.Screen
+        name="SignUp"
+        component={SignUp}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="SignUpEmail"
+        component={SignUpEmail}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="SignUpPhone"
+        component={SignUpPhone}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="SignUpVerificationCode"
+        component={SignUpVerificationCode}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="SignUpReady"
+        component={SignUpReady}
+        options={{ headerShown: false }}
+      />
     </MainStack.Navigator>
   )
 }
@@ -333,9 +360,9 @@ function RootTabs() {
 
 function RootNavigator() {
   return (
-    <RootStack.Navigator mode="modal" headerMode="none">      
-        <RootStack.Screen name="Home" component={RootTabs} />
-        <RootStack.Screen name='Profile' component={MainNavigator} />
+    <RootStack.Navigator mode="modal" headerMode="none">
+      <RootStack.Screen name="Home" component={RootTabs} />
+      <RootStack.Screen name='Profile' component={MainNavigator} />
     </RootStack.Navigator>
   )
 }
@@ -360,33 +387,6 @@ function MainNavigator() {
           ),
           cardStyle: { backgroundColor: Colors.header },
         }}
-      />
-
-      {/*Sign Up/Sign In screens*/}
-      <MainStack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ headerShown: false }}
-      />
-      <MainStack.Screen
-        name="SignUpEmail"
-        component={SignUpEmail}
-        options={{ headerShown: false }}
-      />
-      <MainStack.Screen
-        name="SignUpPhone"
-        component={SignUpPhone}
-        options={{ headerShown: false }}
-      />
-      <MainStack.Screen
-        name="SignUpVerificationCode"
-        component={SignUpVerificationCode}
-        options={{ headerShown: false }}
-      />
-      <MainStack.Screen
-        name="SignUpReady"
-        component={SignUpReady}
-        options={{ headerShown: false }}
       />
 
       <MainStack.Screen
