@@ -1,8 +1,6 @@
 import React from "react";
-import { ScrollView } from "react-native";
 import HelpMenusItems from "../../../constants/HelpMenus";
 import { Block, Menu } from "../../../shared";
-import styles from './help-menu.style';
 
 export interface IHelpMenuProps {}
 

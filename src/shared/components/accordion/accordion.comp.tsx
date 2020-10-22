@@ -32,7 +32,7 @@ const Accordion: React.FC<IAccordion> = ({
   }
 
   return (
-    <Block shadow={shadow} style={style}>
+    <Block shadow={shadow} style={[style, expanded && { paddingBottom: Layout.base }]}>
       <TouchableOpacity style={styles.row} onPress={() => toggleExpand()}>
         <Text h3 style={styles.title}>{title}</Text>
         <Icon family='FontAwesome' name={expanded ? 'chevron-up' : 'chevron-down'} size={30} color={Colors.black} />
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 56,
-    paddingLeft: 25,
-    paddingRight: 18,
+    paddingLeft: Layout.base,
+    paddingRight: Layout.base,
     alignItems: 'center',
     backgroundColor: Colors.tabs,
     borderRadius: Layout.accordion_border_radius

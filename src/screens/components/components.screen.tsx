@@ -15,15 +15,13 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
       <MenuItem title={items[3].title} type='toggle' color={Colors.white} onValueChange={() => console.log(items[3].title) }/>
       <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
+      <Tabs initialIndex={'terms'} />
       <View style={styles.container}>
         <Steper />
         <Text />
         <Chips />
         <Text />
         <Text />
-        <Tabs
-          initialIndex={'terms'}
-        />
         <Text />
         <Video videoId='M1mL-reid3M' />
         <Text />

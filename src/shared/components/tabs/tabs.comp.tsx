@@ -135,8 +135,7 @@ const styles = StyleSheet.create({
   container: {
     width: Layout.window.width,
     backgroundColor: Colors.tabs,
-    zIndex: 2,
-    marginLeft: -Layout.base
+    zIndex: 2
   },
   shadow: {
     shadowColor: Colors.black,

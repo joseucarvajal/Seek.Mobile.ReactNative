@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {  StyleSheet, ViewStyle, FlatList } from "react-native";
+import React from "react";
+import {  ViewStyle, FlatList } from "react-native";
 import { Layout } from "../../../constants";
 import { Accordion, Block } from "../../../shared";
 
@@ -8,13 +8,12 @@ interface IAccordion {
   style?: ViewStyle;
 }
 
-
 const AccordionSettings: React.FC<IAccordion> = ({ 
   items,
   style
 }) => {
     const renderItem = ({ item }: { item: any }) => (
-      <Block style={styles.blockAccordion}>
+      <Block>
         <Accordion text={item.text} title={item.title} style={style} shadow/>
       </Block>
     );
@@ -28,9 +27,3 @@ const AccordionSettings: React.FC<IAccordion> = ({
 };
 
 export default AccordionSettings;
-
-const styles = StyleSheet.create({
-  blockAccordion: {
-    paddingBottom: Layout.base,
-  }
-});
