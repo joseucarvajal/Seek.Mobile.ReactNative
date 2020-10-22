@@ -1,78 +1,58 @@
 import Colors from "./Colors";
 
-const FaqItems = [
+const Faqtext = [
   {
-    title: 'How to Upgrade?',
     id: 'howToUpgrade',
-    color: Colors.neutral,
-    expanded: false,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
-      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
-      in non lorem. Donec interdum, lectus in convallis
-      pulvinar, enim elit porta sapien, vel finibus erat felis
-      sed neque.
-    `,
-  },
-  {
-    title: 'Etiam integer ornare',
-    id: 'etiamIntegerOrnare',
-    color: Colors.neutral,
-    expanded: true,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
-      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
-      in non lorem. Donec interdum, lectus in convallis
-      pulvinar, enim elit porta sapien, vel finibus erat felis
-      sed neque.
-    `,
-  },
-  {
-    title: 'Purus dictum',
-    id: 'purusDictum',
-    color: Colors.neutral,
-    expanded: false,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
-      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
-      in non lorem. Donec interdum, lectus in convallis
-      pulvinar, enim elit porta sapien, vel finibus erat felis
-      sed neque.
-    `,
-  },
-  {
-    title: 'Dolor velit lacus',
-    id: 'dolorVelitLacus',
-    color: Colors.neutral,
-    expanded: false,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
-      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
-      in non lorem. Donec interdum, lectus in convallis
-      pulvinar, enim elit porta sapien, vel finibus erat felis
-      sed neque.
-    `,
-  },
-  {
-    title: 'Elit commodo fringilla',
-    id: 'elitCommodoFringilla',
-    color: Colors.neutral,
-    expanded: false,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
-      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
-      in non lorem. Donec interdum, lectus in convallis
-      pulvinar, enim elit porta sapien, vel finibus erat felis
-      sed neque.
-    `,
-  },
-  {
     title: 'How to Upgrade?',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
+    id: 'etiamIntegerOrnare',
+    title: 'Etiam integer ornare',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
+    id: 'purusDictum',
+    title: 'Purus dictum',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
+    id: 'dolorVelitLacus',
+    title: 'Dolor velit lacus',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio
+      imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
+      in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
+    id: 'elitCommodoFringilla',
+    title: 'Elit commodo fringilla',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis
+      pulvinar, enim elit porta sapien, vel finibus erat felis
+      sed neque.
+    `,
+  },
+  {
     id: 'howToUpgradeTwo',
-    color: Colors.neutral,
-    expanded: false,
-    shadow: true,
-    items: `Nulla eleifend pulvinar purus, molestie uismod odio
+    title: 'How to Upgrade?',
+    text: `Nulla eleifend pulvinar purus, molestie uismod odio
       imperdiet ac. Ut sit amet erat nec nibh rhoncus varius
       in non lorem. Donec interdum, lectus in convallis
       pulvinar, enim elit porta sapien, vel finibus erat felis
@@ -81,4 +61,4 @@ const FaqItems = [
   }
 ];
 
-export default FaqItems;
+export default Faqtext;

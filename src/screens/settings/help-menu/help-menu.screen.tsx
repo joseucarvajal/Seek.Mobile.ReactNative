@@ -9,9 +9,7 @@ export interface IHelpMenuProps {}
 const HelpMenu: React.FC<IHelpMenuProps> = ({}) => {
   return (
     <Block flex>
-      <ScrollView style={styles.container}>
-        <MenuItem items={HelpMenusItems} />
-      </ScrollView>
+      <MenuItem items={HelpMenusItems} />
     </Block>
   );
 };

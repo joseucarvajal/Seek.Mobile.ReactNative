@@ -1,16 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleSheet } from "react-native";
 import FaqItems from "../../../constants/Faqs";
-import { Accordion } from "../../../shared";
-import styles from './help-faq.style';
+import { Accordion }  from '../../../components/settings';
+import { Block } from '../../../shared';
+import { Colors } from '../../../constants';
 
 const HelpFaq: React.FC = () => {
   return (
-    <ScrollView style={styles.container}>
+    <Block style={styles.container}>
       <Accordion items={FaqItems} />
-    </ScrollView>
+    </Block>
   );
 };
 
 export default HelpFaq;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+    justifyContent: 'center',
+    backgroundColor: Colors.white,
+  }
+});

@@ -6,8 +6,8 @@ import Icon from "../icons/icon.comp";
 import Block from "../block/block.comp";
 
 interface IAccordion {
-  title?: string,
-  items?: any;
+  title: string,
+  text: any;
   shadow?: any;
   style?: ViewStyle;
   expanded?: any;
@@ -15,7 +15,7 @@ interface IAccordion {
 
 const Accordion: React.FC<IAccordion> = ({
   title,
-  items,
+  text,
   shadow,
   style,
   expanded: expandedProps
@@ -40,7 +40,7 @@ const Accordion: React.FC<IAccordion> = ({
       <View style={styles.parent} />
       {expanded && (
         <Block shadow={shadow} style={styles.child}>
-          <Text h3 style={styles.title}>{items}</Text>
+          <Text h3 style={styles.title}>{text}</Text>
         </Block>
       )}
     </Block>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   },
   child: {
     backgroundColor: Colors.gray,
-    padding: 16,
+    padding: Layout.base,
     borderRadius: Layout.accordion_border_radius
   }
 });

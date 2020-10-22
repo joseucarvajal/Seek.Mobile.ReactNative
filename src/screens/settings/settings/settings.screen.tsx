@@ -9,10 +9,8 @@ export interface ISettingsProps { }
 
 const Settings: React.FC<ISettingsProps> = ({ }) => {
   return (
-    <Block flex>
-      <ScrollView style={styles.container}>
-        <MenuItem items={SettingsItems} />
-      </ScrollView>
+    <Block safe>
+      <MenuItem items={SettingsItems} />
     </Block>
   );
 };
