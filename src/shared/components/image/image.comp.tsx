@@ -42,8 +42,6 @@ const Img: React.FC<IImgProps> = ({
     size === 'full' && styles.FullStyle
   ];
 
-  
-
   return(
     <View style={[ViewStyles, shadow && styles.shadow]}>
       <TouchableWithoutFeedback onPress={onPress}>

@@ -3,6 +3,7 @@ import Text from './components/text/text.comp';
 import ToggleButton from './components/toggle-button/toggle-button.comp';
 import Input from './components/text-input/text-input.comp';
 import MenuItem from './components/menu-item/menu-item.comp';
+import Menu from './components/menu/menu.comp';
 import Select from './components/select/select.comp';
 import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
@@ -17,6 +18,8 @@ import LinkButton from './components/link-button/link-button.comp';
 import Card from './components/card/card.comp';
 import Calendar from './components/calendar/calendar.comp';
 import Video from './components/video/video.comp';
+import Modal from './components/modal/modal.comp';
+import Chips from './components/chips/chips.comp';
 
 export {
     Button,
@@ -26,6 +29,7 @@ export {
     ToggleButton,
     Input,
     MenuItem,
+    Menu,
     Image,
     Select,
     Icon,
@@ -37,5 +41,7 @@ export {
     LinkButton,
     Card,
     Calendar,
-    Video
+    Video,
+    Modal,
+    Chips
 }

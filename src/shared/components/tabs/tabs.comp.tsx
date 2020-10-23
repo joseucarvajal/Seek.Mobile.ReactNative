@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, FlatList, Animated } from 'react-native';
 import { Colors, FontNames, Layout } from '../../../constants';
 import Block from '../block/block.comp'
 
 export interface ITabsProps {
-    initialIndex?: any;
-    onChange?: any;
-    backgroundless?: any;
-    data?: any;
+  initialIndex?: any;
+  onChange?: any;
+  backgroundless?: any;
+  data?: any;
 }
 
 interface ITabsState {
@@ -15,164 +15,259 @@ interface ITabsState {
 }
 
 const defaultMenu = [
-    { id: 'terms', title: 'Terms of service', },
-    { id: 'privacy', title: 'Privacy policy', },
-    { id: 'cookies', title: 'Cookie policy', }
+  { id: 'terms', title: 'Terms of service', },
+  { id: 'privacy', title: 'Privacy policy', },
+  { id: 'cookies', title: 'Cookie policy', }
 ];
 
-class Tabs extends React.Component<ITabsProps, ITabsState> {
-    constructor(props: ITabsProps) {
-        super(props);
+const Tabs: React.FC<ITabsProps> = ({
+  initialIndex,
+  onChange,
+  backgroundless,
+  data: dataTabs
+}, props) => {
+  const [initialIndexDefault, setInitialIndexDefault] = useState(null);
+  const [data, _] = useState(dataTabs ? dataTabs : defaultMenu);
+  const [active, setActive] = useState(null);
+  const menuRef:any = useRef();
+  const animatedValue = new Animated.Value(1);
+
+  const onScrollToIndexFailed = () => {
+    menuRef.current.scrollToIndex({
+      index: 0,
+      viewPosition: 0.5
+    });
+  };
+
+  const animate = () => {
+    animatedValue.setValue(0);
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
+  };
+
+  const selectMenu = (id: any) => {
+    setActive(id);
+
+    menuRef.current.scrollToIndex({
+      index: data.findIndex((item: any) => item.id === id),
+      viewPosition: 0.5
+    });
+
+    animate();
+    onChange && onChange(id);
+  };
+
+  const renderItem = (item: any) => {
+    const isActive = active === item.id;
+
+    const textColor = animatedValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [Colors.inactiveTab, isActive ? Colors.activeTab : Colors.inactiveTab],
+      extrapolate: 'clamp',
+    });
+
+    const containerStyles = [
+      styles.titleContainer,
+      !isActive && { backgroundColor: Colors.tabs },
+      isActive && backgroundless && styles.shadow
+    ];
+
+    return (
+      <Block style={containerStyles}>
+        <Animated.Text
+          style={[
+            styles.menuTitle,
+            { color: textColor },
+            { fontFamily: FontNames.CamptonMedium },
+          ]}
+          onPress={() => selectMenu(item.id)}>
+          {item.title}
+        </Animated.Text>
+      </Block>
+    )
+  };
+
+  const renderMenu = () => {
+    return (
+      <FlatList
+        {...props}
+        data={data}
+        horizontal={true}
+        ref={menuRef}
+        extraData={active}
+        keyExtractor={(item) => item.id}
+        showsHorizontalScrollIndicator={false}
+        onScrollToIndexFailed={onScrollToIndexFailed}
+        renderItem={({ item }) => renderItem(item)}
+        contentContainerStyle={styles.menu}
+      />
+    )
+  };
+
+  const updateInitialIndex = useCallback(() => {
+    if(initialIndexDefault === null) {
+      console.log('entro', initialIndex);
+      selectMenu(initialIndex);
+      setInitialIndexDefault(initialIndex);
     }
+  }, [initialIndex, selectMenu]);
 
-    static defaultProps = {
-        data: defaultMenu,
-        initialIndex: null,
-    }
+  useEffect(() => {
+    updateInitialIndex();
+  }, [updateInitialIndex])
 
-    state = {
-        active: null,
-    }
+  return (
+    <Block style={[styles.container, backgroundless && { backgroundColor: Colors.transparent }]}>
+      {renderMenu()}
+    </Block>
+  );
+};
 
-    componentDidMount() {
-        const { initialIndex } = this.props;
-        initialIndex && this.selectMenu(initialIndex);
-    }
+// class Tabs extends React.Component<ITabsProps, ITabsState> {
+//   constructor(props: ITabsProps) {
+//     super(props);
+//   }
 
-    animatedValue = new Animated.Value(1);
+//   static defaultProps = {
+//     data: defaultMenu,
+//     initialIndex: null,
+//   }
 
-    animate() {
-        this.animatedValue.setValue(0);
-        Animated.timing(this.animatedValue, {
-            toValue: 1,
-            duration: 300,
-            useNativeDriver: false,
-        }).start()
-    }
+//   state = {
+//     active: null,
+//   }
 
-    menuRef: any = React.createRef();
+//   componentDidMount() {
+//     const { initialIndex } = this.props;
+//     initialIndex && this.selectMenu(initialIndex);
+//   }
 
-    onScrollToIndexFailed = () => {
-        this.menuRef.current.scrollToIndex({
-            index: 0,
-            viewPosition: 0.5
-        });
-    }
+//   animatedValue = new Animated.Value(1);
 
-    selectMenu = (id: any) => {
-        this.setState({ active: id });
+//   animate() {
+//     this.animatedValue.setValue(0);
+//     Animated.timing(this.animatedValue, {
+//       toValue: 1,
+//       duration: 300,
+//       useNativeDriver: false,
+//     }).start()
+//   }
 
-        this.menuRef.current.scrollToIndex({
-            index: this.props.data.findIndex((item: any) => item.id === id),
-            viewPosition: 0.5
-        });
+//   menuRef: any = React.createRef();
 
-        this.animate();
-        this.props.onChange && this.props.onChange(id);
-    }
+//   onScrollToIndexFailed = () => {
+//     this.menuRef.current.scrollToIndex({
+//       index: 0,
+//       viewPosition: 0.5
+//     });
+//   }
 
-    renderItem = (item: any) => {
-        const isActive = this.state.active === item.id;
+//   selectMenu = (id: any) => {
+//     this.setState({ active: id });
 
-        const textColor = this.animatedValue.interpolate({
-            inputRange: [0, 1],
-            outputRange: [Colors.inactiveTab, isActive ? Colors.activeTab : Colors.inactiveTab],
-            extrapolate: 'clamp',
-        });
+//     this.menuRef.current.scrollToIndex({
+//       index: this.props.data.findIndex((item: any) => item.id === id),
+//       viewPosition: 0.5
+//     });
 
-        const containerStyles = [
-            styles.titleContainer,
-            !isActive && { backgroundColor: Colors.tabs },
-            isActive && this.props.backgroundless && styles.containerShadow
-        ];
+//     this.animate();
+//     this.props.onChange && this.props.onChange(id);
+//   }
 
-        return (
-            <Block style={containerStyles}>
-                <Animated.Text
-                    style={[
-                        styles.menuTitle,
-                        { color: textColor },
-                        { fontFamily: FontNames.CamptonMedium },
-                    ]}
-                    onPress={() => this.selectMenu(item.id)}>
-                    {item.title}
-                </Animated.Text>
-            </Block>
-        )
-    }
+//   renderItem = (item: any) => {
+//     const isActive = this.state.active === item.id;
 
-    renderMenu = () => {
-        const { data, ...props } = this.props;
+//     const textColor = this.animatedValue.interpolate({
+//       inputRange: [0, 1],
+//       outputRange: [Colors.inactiveTab, isActive ? Colors.activeTab : Colors.inactiveTab],
+//       extrapolate: 'clamp',
+//     });
 
-        return (
-            <FlatList
-                {...props}
-                data={data}
-                horizontal={true}
-                ref={this.menuRef}
-                extraData={this.state}
-                keyExtractor={(item) => item.id}
-                showsHorizontalScrollIndicator={false}
-                onScrollToIndexFailed={this.onScrollToIndexFailed}
-                renderItem={({ item }) => this.renderItem(item)}
-                contentContainerStyle={styles.menu}
-            />
-        )
-    }
+//     const containerStyles = [
+//       styles.titleContainer,
+//       !isActive && { backgroundColor: Colors.tabs },
+//       isActive && this.props.backgroundless && styles.shadow
+//     ];
 
-    render() {
-        return (
-            <Block style={[styles.container, this.props.backgroundless && { backgroundColor: Colors.transparent }]}>
-                {this.renderMenu()}
-            </Block>
-        )
-    }
-}
+//     return (
+//       <Block style={containerStyles}>
+//         <Animated.Text
+//           style={[
+//             styles.menuTitle,
+//             { color: textColor },
+//             { fontFamily: FontNames.CamptonMedium },
+//           ]}
+//           onPress={() => this.selectMenu(item.id)}>
+//           {item.title}
+//         </Animated.Text>
+//       </Block>
+//     )
+//   }
+
+//   renderMenu = () => {
+//     const { data, ...props } = this.props;
+
+//     return (
+//       <FlatList
+//         {...props}
+//         data={data}
+//         horizontal={true}
+//         ref={this.menuRef}
+//         extraData={this.state}
+//         keyExtractor={(item) => item.id}
+//         showsHorizontalScrollIndicator={false}
+//         onScrollToIndexFailed={this.onScrollToIndexFailed}
+//         renderItem={({ item }) => this.renderItem(item)}
+//         contentContainerStyle={styles.menu}
+//       />
+//     )
+//   }
+
+//   render() {
+//     return (
+//       <Block style={[styles.container, this.props.backgroundless && { backgroundColor: Colors.transparent }]}>
+//         {this.renderMenu()}
+//       </Block>
+//     )
+//   }
+// }
 
 export default Tabs;
 
 const styles = StyleSheet.create({
-    container: {
-        width: Layout.window.width,
-        backgroundColor: Colors.tabs,
-        zIndex: 2,
-        marginLeft: -Layout.base
-    },
-    shadow: {
-        shadowColor: Colors.black,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 2,
-        shadowOpacity: 0.2,
-        elevation: Layout.android_elevation,
-    },
-    menu: {
-        paddingHorizontal: Layout.base * 2.5,
-        paddingTop: 8,
-        paddingBottom: 16,
-    },
-    titleContainer: {
-        alignItems: 'center',
-        backgroundColor: Colors.tabs,
-        borderRadius: 21,
-        marginRight: 9,
-        paddingHorizontal: 10,
-        paddingVertical: 3,
-    },
-    containerShadow: {
-        shadowColor: Colors.black,
-        shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 2,
-        shadowOpacity: 0.2,
-        elevation: Layout.android_elevation,
-    },
-    menuTitle: {
-        fontWeight: '600',
-        fontSize: 14,
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-        color: Colors.black
-    },
-    backgroundless: {
-        
-    }
+  container: {
+    width: Layout.window.width,
+    backgroundColor: Colors.tabs,
+    zIndex: 2
+  },
+  shadow: {
+    shadowColor: Colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 2,
+    shadowOpacity: 0.2,
+    elevation: Layout.android_elevation,
+  },
+  menu: {
+    paddingHorizontal: Layout.base * 2.5,
+    paddingTop: 8,
+    paddingBottom: 16,
+  },
+  titleContainer: {
+    alignItems: 'center',
+    backgroundColor: Colors.tabs,
+    borderRadius: 21,
+    marginRight: 9,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
+  },
+  menuTitle: {
+    fontWeight: '600',
+    fontSize: 14,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    color: Colors.black
+  }
 });

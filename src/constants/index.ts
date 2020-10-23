@@ -3,7 +3,8 @@ import Layout from "./Layout";
 import Images from "./Images";
 import Icons from "./Icons";
 import { FontNames, getFontStyle } from "./Fonts";
-import { thumbMeasure, HeaderHeight, iPhoneX, isIOS } from './Utils';
+import { thumbMeasure, HeaderHeight, iPhoneX, isIOS, removeLeadingSpaces } from './Utils';
+import Faqtext from './Faqs'
 
 export { 
     Colors, 
@@ -15,5 +16,7 @@ export {
     HeaderHeight,
     Icons,
     iPhoneX,
-    isIOS
+    isIOS,
+    Faqtext,
+    removeLeadingSpaces
 };

@@ -1,32 +1,41 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Modal, Block, Chips, MenuItem } from '../../shared';
 
 export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
     <ScrollView style={{ paddingTop: 1 }}>
-      {/* <MenuItem items={items} /> */}
-      <View style={styles.container}>
+      <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title)} />
+      <MenuItem title={items[1].title} type='Button' color={Colors.white} onValueChange={() => console.log(items[1].title)} />
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
+      <MenuItem title={items[3].title} type='toggle' color={Colors.white} onValueChange={() => console.log(items[3].title)} />
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
+      <Tabs initialIndex={'terms'} />
+      <Block style={styles.container}>
         <Steper />
         <Text />
-        <Tabs
-          initialIndex={'terms'}
-        />
+        <Chips initialChips={["React", "Native"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />
-        <Video videoId='M1mL-reid3M' />
-        <Text />
+        <Block flex >
+          <Video videoId='M1mL-reid3M' />
+        </Block>
         <Card
           full
-          item={ {image: Images.UploadPhoto}}
+          item={{ image: Images.UploadPhoto }}
           icon="edit_1"
           iconColor={Colors.quaternary}
           iconSize={28}
         />
+        <Text />
+        <Block flex row>
+          <Modal />
+          <Modal backgroundless />
+        </Block>
         <Text />
         <Calendar />
         <Text />
@@ -35,11 +44,10 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Checkbox label='Cosplay' iconColor={Colors.primary} />
         <Checkbox label='Fishing' iconColor={Colors.primary} />
         <Text />
-        <Accordion
-          title={accordion[0].title}
-          items={accordion[0].data}
-          shadow
-        />
+        <Accordion title={accordion[0].title} text={accordion[0].text} shadow />
+        <Text />
+        <Text />
+        <Accordion title={accordion[1].title} text={accordion[1].text} shadow />
         <Text />
         <Select
           small
@@ -85,6 +93,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           icon="facebook"
           iconColor={Colors.quaternary}
           iconSize={18}
+          onPress={() => console.log("")}
         >
           <Text h3 center>Continue with Facebook</Text>
         </Button>
@@ -95,12 +104,14 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           shadow
           iconContent={
             <Icon
+              family='seekQ'
               name={'email_phone'}
               size={22}
               style={{ paddingLeft: Layout.base }}
               color={Colors.quaternary}
             />
           }
+          onPress={() => console.log("")}
         >
           <Text h3 center>User Email Phone</Text>
         </Button>
@@ -108,13 +119,13 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button
           left
           type='social'
-          color='quaternary'
           shadow
           icon="google"
-          iconColor={Colors.white}
+          iconColor={Colors.quaternary}
           iconSize={18}
+          onPress={() => console.log("")}
         >
-          <Text h3 center color={Colors.white}>Continue with Google</Text>
+          <Text h3 center>Continue with Google</Text>
         </Button>
         <Text />
         <Button type='backgroundless'>
@@ -123,10 +134,10 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button type='link'>
           <Text h3 center underline bold color={Colors.primary}>Continue using email Instead</Text>
         </Button>
-        <Button type='gradient' shadow>
+        <Button type='gradient' onPress={() => console.log("")} shadow>
           <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>
-      </View>
+      </Block>
     </ScrollView>
   );
 };
@@ -143,19 +154,19 @@ const items = [
 const accordion = [
   {
     title: 'How to Upgrade?',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Etiam integer ornare',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Purus dictum',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
   {
     title: 'Dolor velit lacus',
-    data: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
+    text: 'Nulla eleifend pulvinar purus, molestie uismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.',
   },
 ]
 

@@ -67,6 +67,7 @@ const NavBar: React.FC<INavBarProps> = ({
           <View style={[styles.left, leftStyle]}>
             <TouchableOpacity onPress={() => onLeftPress && onLeftPress()} hitSlop={leftHitSlop}>
               <Icon
+                family='seekQ'
                 color={leftIconColor || Colors.primary}
                 size={leftIconSize || Layout.base * 1.0625}
                 name={leftIconName || (back ? Icons.caret_left : Icons.caret_right)}

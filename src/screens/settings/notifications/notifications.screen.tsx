@@ -1,16 +1,12 @@
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
 import NotificationsItems from '../../../constants/Notifications';
-import { MenuItem } from '../../../shared';
-import styles from './notifications.style';
+import { Block, Menu } from '../../../shared';
 
 const notifications: React.FC = () => {
   return (    
-    <View style={styles.container}>
-      <View style={styles.body}>
-        <MenuItem items={NotificationsItems} />
-      </View>
-    </View>
+    <Block flex center>
+      <Menu items={NotificationsItems} />
+    </Block>
   );
 };
 

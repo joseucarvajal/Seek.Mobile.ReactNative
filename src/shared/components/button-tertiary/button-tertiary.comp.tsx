@@ -29,6 +29,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
 }) => {
   const iconContent = customIcon && (
     <Icon
+      family='seekQ'
       name={customIcon}
       size={customIconSize}
       color={customIconColor}

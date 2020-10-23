@@ -1,16 +1,16 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { SafeAreaView } from "react-native-safe-area-context";
-import styles from './help-faq.style';
+import { StyleSheet } from "react-native";
+import FaqItems from "../../../constants/Faqs";
+import { Accordion } from '../../../components/settings';
+import { Block } from '../../../shared';
+import { Layout } from '../../../constants';
 
 const HelpFaq: React.FC = () => {
   return (
-      <View style={ styles.container }>
-        <Text style={ styles.body }>help-faq</Text>
-      </View>
+    <Block style={{ paddingTop: Layout.base }}>
+      <Accordion items={FaqItems} style={{ paddingLeft: Layout.base, paddingRight: Layout.base }} />
+    </Block>
   );
-}
-
-
+};
 
 export default HelpFaq;

@@ -6,7 +6,7 @@ const NotificationsItems = [
     id: 'incomingDiscreetHello', 
     type: 'toggle', 
     color: Colors.white,
-    action: (val?: any) => console.log(`Incoming discreet hello...${val}`),
+    action: (val: any = null) => console.log(`Incoming discreet hello... ${val && val}`),
     value: true,
   },
   {
@@ -14,7 +14,7 @@ const NotificationsItems = [
     id: 'incomingGestures',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('Incoming gestures...'),
+    action: (val: any = null) => console.log(`Incoming gestures... ${val && val}`),
     value: false,
   },
   {
@@ -22,7 +22,7 @@ const NotificationsItems = [
     id: 'incomingChat',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('Incoming chat...'),
+    action: (val: any = null) => console.log(`Incoming chat... ${val && val}`),
     value: true,
   },
   {
@@ -30,7 +30,7 @@ const NotificationsItems = [
     id: 'temperatureMeterChange',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('Temperature meter change...'),
+    action: (val: any = null) => console.log(`Temperature meter change... ${val && val}`),
     value: false,
   },
   {
@@ -38,7 +38,7 @@ const NotificationsItems = [
     id: 'inAppVibrations',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('In app vibrations..'),
+    action: (val: any = null) => console.log(`In app vibrations.. ${val && val}`),
     value: true,
   },
   {
@@ -46,7 +46,7 @@ const NotificationsItems = [
     id: 'inAppSounds',
     type: 'toggle', 
     color: Colors.white,
-    action: () => console.log('In app sounds...'),
+    action: (val: any = null) => console.log(`In app sounds... ${val && val}`),
     value: false,
   }
 ];

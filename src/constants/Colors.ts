@@ -33,6 +33,10 @@ export default {
   gray: '#EAEAEA',
   icon: '#000000',
   upload: '#F5F5F6',
+  modal: 'rgba(52, 52, 52, 0.8)',
+  option: '#4A5CA5',
+  noTouchableText: '#4f4f4f99',
+  noTouchableIcon: '#95959599',
   light: {
     text: '#000',
     background: '#fff',

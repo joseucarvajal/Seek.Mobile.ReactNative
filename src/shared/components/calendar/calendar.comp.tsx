@@ -44,7 +44,7 @@ const Calendar: React.FC<ICalendarProps> = ({
             <Text h2 bold>{moment(value).format('DD/MM/YYYY')}</Text>
           </Block>
           <Block flex right>
-            <Icon name={'calendar_1'} size={24} color={Colors.black} />
+            <Icon family='seekQ' name={'calendar_1'} size={24} color={Colors.black} />
           </Block>
         </Block>
       </Button>
