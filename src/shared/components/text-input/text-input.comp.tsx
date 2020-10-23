@@ -31,6 +31,10 @@ export interface IInputProps extends ViewProps {
   password?: any;
   onRef?: any;
   error?: any;
+  onFocus?: any;
+  onChangeText?: any;
+  onSubmitEditing?: any;
+  value?: any;
   props?: any;
 }
 
@@ -62,7 +66,11 @@ const Input: React.FC<IInputProps> = ({
   iconContent,
   password,
   onRef,
-  error,
+  error, 
+  onFocus, 
+  onChangeText, 
+  onSubmitEditing, 
+  value,
   ...props
 }) => {
 
@@ -132,6 +140,10 @@ const Input: React.FC<IInputProps> = ({
           placeholderTextColor={placeholderTextColor}
           placeholder={placeholder}
           underlineColorAndroid="transparent"
+          onFocus={onFocus}
+          onChangeText={onChangeText}
+          onSubmitEditing={onSubmitEditing}
+          value={value}
           {...props}
         />
         {right && iconInstance}

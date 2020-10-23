@@ -25,6 +25,7 @@ export interface IBlockProps {
   styles?: any;
   props?: any;
   padding?: number;
+  wrap?: any;
 }
 
 export type SpaceType = "evenly" | "between" | "around";
@@ -48,6 +49,7 @@ const Block: React.FC<IBlockProps> = ({
   safe,
   children,
   padding,
+  wrap,
   style,
   ...props
 }) => {
@@ -72,6 +74,7 @@ const Block: React.FC<IBlockProps> = ({
     width && { width },
     shadowColor && { shadowColor },
     realPadding && { padding: realPadding } as ViewStyle,
+    wrap && styles.wrap,
     style,
   ];
 
@@ -138,4 +141,7 @@ const styles = StyleSheet.create({
   fluid: {
     width: 'auto',
   },
+  wrap: {
+    flexWrap: 'wrap'
+  }
 });

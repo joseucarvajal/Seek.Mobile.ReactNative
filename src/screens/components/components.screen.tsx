@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
 import { Colors, Images, Layout } from "../../constants";
@@ -10,21 +10,20 @@ export interface IProfileProps { }
 const Profile: React.FC<IProfileProps> = ({ }) => {
   return (
     <ScrollView style={{ paddingTop: 1 }}>
-      <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title) }/>
-      <MenuItem title={items[1].title} type='Button' color={Colors.white} onValueChange={() => console.log(items[1].title) }/>
-      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
-      <MenuItem title={items[3].title} type='toggle' color={Colors.white} onValueChange={() => console.log(items[3].title) }/>
-      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title) }/>
+      <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title)} />
+      <MenuItem title={items[1].title} type='Button' color={Colors.white} onValueChange={() => console.log(items[1].title)} />
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
+      <MenuItem title={items[3].title} type='toggle' color={Colors.white} onValueChange={() => console.log(items[3].title)} />
+      <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
       <Tabs initialIndex={'terms'} />
-      <View style={styles.container}>
+      <Block style={styles.container}>
         <Steper />
         <Text />
-        <Chips />
+        <Chips initialChips={["Oracle", "Java", "Javascript", "Oracle", "Java", "Javascript", "Oracle", "Java", "Javascript"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />
-        <Text />
-        <Text />
-        <Video videoId='M1mL-reid3M' />
-        <Text />
+        <Block flex >
+          <Video videoId='M1mL-reid3M' />
+        </Block>
         <Card
           full
           item={{ image: Images.UploadPhoto }}
@@ -138,7 +137,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button type='gradient' onPress={() => console.log("")} shadow>
           <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>
-      </View>
+      </Block>
     </ScrollView>
   );
 };

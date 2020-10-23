@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import Chip from './chip.comp';
-import Text from '../text/text.comp';
+import Input from '../text-input/text-input.comp';
+import Block from '../block/block.comp';
+import { removeLeadingSpaces } from '../../../constants';
 
 export interface IChipsProps {
   initialChips?: any;
-  isFocused?: any;
   chips?: any;
   inputText?: any;
   label?: any;
@@ -17,60 +18,39 @@ export interface IChipsProps {
 
 const Chips: React.FC<IChipsProps> = ({
   initialChips,
-  isFocused = false,
-  chips = (initialChips) ? initialChips : [],
   inputText = '',
-  label,
   style,
-  inputStyle,
   alertRequired,
   onChangeChips
 }) => {
 
-  const [chipsState, setChips] = useState(chips)
-  const [focusedState, setFocused] = useState(isFocused)
+  const [chipsState, setChips] = useState(initialChips)
   const [inputTextState, setInputText] = useState(inputText)
 
-  const handleFocus = () => { setFocused(true) }
   const handleChangeText = (text: any) => { setInputText(text) }
 
   const removeChip = (index: any) => {
-    const newArray = [chipsState]
+    const newArray = [...chipsState]
     newArray.splice(index, 1);
-
     setChips(newArray);
-    // onChangeChips(chipsState)
-
+    onChangeChips(chipsState)
     if (alertRequired) Alert.alert('', 'Removed Successfully')
   }
 
   const handleBlur = () => {
-    if (inputTextState !== '' && chipsState.indexOf(inputTextState) === -1) {
-
-      setChips([chipsState, inputTextState]);
+    if (removeLeadingSpaces(inputTextState) !== '' && chipsState.indexOf(inputTextState) === -1) {
+      chipsState.push(inputTextState)
+      setChips(chipsState);
       setInputText("")
-      setFocused(false)
-      // onChangeChips(chipsState)
-
+      onChangeChips(chipsState)
       if (alertRequired) Alert.alert('', 'Added Successfully');
     } else {
-
       setInputText("")
-      setFocused(false)
-      // onChangeChips(chipsState)
-
+      onChangeChips(chipsState)
       if (alertRequired) Alert.alert('Added Successfully', 'Chip Element already present');
     }
   }
 
-  const inputLabel = (label) ? label : 'Enter your text'
-  const labelStyle = {
-    position: 'absolute',
-    left: 5,
-    top: !focusedState ? 12 : 1,
-    fontSize: !focusedState ? 20 : 14,
-    color: !focusedState ? '#aaa' : '#000',
-  }
   const chipsList = chipsState.map((item: any, index: any) => (
     <Chip
       key={index}
@@ -80,21 +60,22 @@ const Chips: React.FC<IChipsProps> = ({
   ));
 
   return (
-    <View>
-      <View style={{ paddingTop: 18, marginTop: 15 }}>
-        <Text style={labelStyle}> {inputLabel} </Text>
-        <TextInput
-          style={[styles.textInput, inputStyle]}
-          onFocus={handleFocus}
-          onChangeText={(text) => handleChangeText(text)}
+    <Block>
+      <Block>
+        <Input
+          color='primary'
+          borderless
+          placeholder='Start typing an interest'
+          textInputStyle={{ color: 'black' }}
+          onChangeText={(text: string) => handleChangeText(text)}
           onSubmitEditing={handleBlur}
           value={inputTextState}
         />
-      </View>
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center' }}>
+      </Block>
+      <Block row center wrap>
         {chipsList}
-      </View>
-    </View>
+      </Block>
+    </Block>
   );
 }
 
