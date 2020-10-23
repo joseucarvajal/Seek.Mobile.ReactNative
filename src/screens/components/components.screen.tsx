@@ -19,7 +19,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       <Block style={styles.container}>
         <Steper />
         <Text />
-        <Chips initialChips={["Oracle", "Java", "Javascript", "Oracle", "Java", "Javascript", "Oracle", "Java", "Javascript"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
+        <Chips initialChips={["React", "Native"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />
         <Block flex >
           <Video videoId='M1mL-reid3M' />

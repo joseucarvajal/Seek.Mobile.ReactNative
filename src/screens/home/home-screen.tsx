@@ -1,44 +1,56 @@
 import React from "react";
-import { Button } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
-
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from "../../types";
+import { Button, Text, Block } from "../../shared";
+import { Colors } from "../../constants";
 
 type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Profile'
+  RootStackParamList
 >;
 
 export interface IHomeProps {
-    navigation: ProfileScreenNavigationProp;
+  navigation: ProfileScreenNavigationProp;
 }
 
-const Home: React.FC<IHomeProps> = ({navigation}) => {
+const Home: React.FC<IHomeProps> = ({ navigation }) => {
   return (
-    <SafeAreaView>
+    <Block safe flex>
       <Button
-        icon="camera"
-        mode="contained"
+        left
+        type='social'
+        shadow
+        icon="apple"
+        iconColor={Colors.quaternary}
+        iconSize={18}
         onPress={() => navigation.navigate('SignUp')}
       >
-        Signup
+        <Text h3 center>Continue with Apple</Text>
       </Button>
+      <Text />
       <Button
-        icon="camera"
-        mode="contained"
+        left
+        type='social'
+        shadow
+        icon="facebook"
+        iconColor={Colors.quaternary}
+        iconSize={18}
         onPress={() => navigation.navigate('Profile')}
       >
-        Profile
+        <Text h3 center>Continue with Facebook</Text>
       </Button>
+      <Text />
       <Button
-        icon="camera"
-        mode="contained"
+        left
+        type='social'
+        shadow
+        icon="google"
+        iconColor={Colors.quaternary}
+        iconSize={18}
         onPress={() => navigation.navigate('Settings')}
       >
-        Settings
+        <Text h3 center>Continue with Google</Text>
       </Button>
-    </SafeAreaView>
+    </Block>
   );
 };
 

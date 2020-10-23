@@ -1,26 +1,9 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
 import { useNavigation } from "@react-navigation/native";
-
-import { 
-  Button, 
-  ButtonTertiary,
-  Text,
-  LinkButton,
-  Block
-} from "../../../shared";
-
-import { 
-  FontNames,
-  getFontStyle,
-} from "../../../constants";
-
-import { 
-  signUpStyles, 
-  SeekQLogo 
-} from "../../../components/signup/";
+import {  Button, ButtonTertiary,  Text, LinkButton, Block } from "../../../shared";
+import { FontNames, getFontStyle } from "../../../constants";
+import { SeekQLogo } from "../../../components/signup/";
 
 export interface ISignUpProps {}
 
@@ -38,13 +21,31 @@ const SignUp: React.FC<ISignUpProps> = ({}) => {
         </Text>
 
         <View style={styles.socialButtonsGroup}>
-          <ButtonTertiary icon="apple" style={styles.socialButton}>
+          <ButtonTertiary 
+            icon="apple" 
+            style={styles.socialButton}
+            onPress={() => {
+              navigation.navigate("SignUpPhone");
+            }}
+          >
             <Text>Continue with Apple</Text>
           </ButtonTertiary>
-          <ButtonTertiary icon="facebook" style={styles.socialButton}>
+          <ButtonTertiary 
+            icon="facebook" 
+            style={styles.socialButton}
+            onPress={() => {
+              navigation.navigate("SignUpPhone");
+            }}
+          >
             <Text>Continue with Facebook</Text>
           </ButtonTertiary>
-          <ButtonTertiary icon="google" style={styles.socialButton}>
+          <ButtonTertiary 
+            icon="google" 
+            style={styles.socialButton}
+            onPress={() => {
+              navigation.navigate("SignUpPhone");
+            }}
+          >
             <Text>Continue with Google</Text>
           </ButtonTertiary>
           <ButtonTertiary
