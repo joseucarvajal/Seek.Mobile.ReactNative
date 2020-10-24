@@ -17,7 +17,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
       <Tabs initialIndex={'terms'} />
       <Block style={styles.container}>
-        <Steper />
+        <Steper stepCount={4} currentPage={0}/>
         <Text />
         <Chips initialChips={["React", "Native", "Javascript", "Visual Studio"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />

@@ -10,7 +10,7 @@ const UploadPhoto: React.FC<IUPloadPhotoProps> = ({
 
 }) => {
   return (
-    <>
+    <Block flex>
       <Block flex>
         <Card
           full
@@ -23,7 +23,7 @@ const UploadPhoto: React.FC<IUPloadPhotoProps> = ({
       <Block flex style={{ paddingTop: Layout.base * 2, backgroundColor: Colors.transparent, justifyContent: 'center' }}>
         <Text h3 center>Don’t worry, you can always change this later</Text>
       </Block>
-    </>
+    </Block>
   );
 }
 

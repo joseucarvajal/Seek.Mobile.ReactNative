@@ -3,21 +3,23 @@ import StepIndicator from 'react-native-step-indicator';
 import Colors from '../../../constants/Colors';
 
 export interface IProfileProps {
-  viewPagerOne?: any;
-  viewPagerTwo?: any;
-  viewPagerThree?: any;
+  currentPage: number,
+  stepCount: number;
+  onIndexChanged?: any;
 }
 
-const Steper: React.FC<IProfileProps> = ({ }) => {
-  const [currentPage, setCurrentPage] = React.useState<number>(0);
-
+const Steper: React.FC<IProfileProps> = ({
+  currentPage,
+  stepCount,
+  onIndexChanged,
+}) => {
   const onStepPress = (position: number) => {
-    setCurrentPage(position);
+    onIndexChanged(position);
   };
 
   return (
     <StepIndicator
-      stepCount={4}
+      stepCount={stepCount}
       customStyles={indicatorStyles}
       currentPosition={currentPage}
       onPress={onStepPress}

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, ViewProps } from "react-native";
+import { StyleSheet, TouchableOpacity, ViewProps, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
 import Block from "../block/block.comp";
@@ -109,9 +109,10 @@ const ArButton: React.FC<IArButtonProps> = ({
         </TouchableOpacity>
       ) : (
             <Block style={styleButton}>
-              <TouchableOpacity
+              <TouchableHighlight
                 onPress={disabled ? null : onPress}
-                style={{ flex: 1 }}
+                style={[{ flex: 1 }, styleButton]}
+                underlayColor={Colors.active}
               >
                 <Block flex row middle center>
                   {left && !right && iconInstance}
@@ -120,7 +121,7 @@ const ArButton: React.FC<IArButtonProps> = ({
                   </Block>
                   {right && iconInstance}
                 </Block>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </Block>
           )}
     </>
@@ -136,10 +137,12 @@ const styles = StyleSheet.create({
     height: 40,
   },
   smallButton: {
-    width: 100,
-    backgroundColor: Colors.active,
+    backgroundColor: Colors.tertiary,
+    borderRadius: 15,
     height: 32,
-    borderRadius: Layout.chips_radius,
+    width: 100,
+    alignSelf:"flex-start",
+    alignContent: "flex-start"
   },
   largeButton: {
     width: Layout.window.width - Layout.base * 2,

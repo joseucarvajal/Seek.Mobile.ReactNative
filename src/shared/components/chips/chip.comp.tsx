@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import { StyleSheet, TouchableHighlight } from 'react-native'
 import { Colors } from '../../../constants';
 import Block from '../block/block.comp';
 import Text from '../text/text.comp';
@@ -16,8 +16,8 @@ const Chip: React.FC<IChipsProps> = ({
   style
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Block center middle row space='between' style={[styles.chip, style]}>
+    <TouchableHighlight onPress={onPress} underlayColor={Colors.active} style={styles.container}>
+      <Block center middle row space='between' style={style}>
         <Block center middle style={{ paddingLeft: 8, paddingRight: 8 }}>
           <Text h3 center>{value}</Text>
         </Block>
@@ -25,14 +25,14 @@ const Chip: React.FC<IChipsProps> = ({
           <Text h3 center>x</Text>
         </Block>
       </Block>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 }
 
 export default Chip;
 
 const styles = StyleSheet.create({
-  chip: {
+  container: {
     backgroundColor: Colors.tertiary,
     margin: 4,
     paddingVertical: 5,
