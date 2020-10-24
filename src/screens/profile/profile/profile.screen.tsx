@@ -10,16 +10,29 @@ import EnterAdditionalInfo from '../enter-additional-info/enter-additional-info'
 export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
+
+  const [currentPage, setCurrentPage] = React.useState<number>(0);
+
   return (
     <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
       <Block style={{ backgroundColor: Colors.white }}>
         <Steper />
       </Block>
-      <Block flex >
-        {/* <UploadPhoto /> */}
-        {/* <EnterInfo /> */}
+      <Block flex>
+        {/* <Swiper
+          loop={true}
+          index={currentPage}
+          autoplay={false}
+          showsPagination={false}
+          removeClippedSubviews={false}
+          onIndexChanged={(page) => setCurrentPage(page)}
+        >
+          <UploadPhoto />
+          <EnterInfo />
+          <EnterAdditionalInfo />
+        </Swiper> */}
         <EnterAdditionalInfo />
-        <Block flex row bottom>
+        <Block row bottom>
           <Button type='gradient' shadow>
             <Text h2 bold color={Colors.white}>CONTINUE</Text>
           </Button>

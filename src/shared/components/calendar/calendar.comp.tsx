@@ -49,17 +49,15 @@ const Calendar: React.FC<ICalendarProps> = ({
         </Block>
       </Button>
       {isShow &&
-        <Block style={styles.containerDataPicker}>
-          <DateTimePicker
-            value={moment(value).toDate()}
-            mode={'date'}
-            display="default"
-            locale="es-ES"
-            onChange={onChange}
-            minimumDate={new Date(1920, 0, 1)}
-            maximumDate={new Date()}
-          />
-        </Block>
+        <DateTimePicker
+          value={moment(value).toDate()}
+          mode={'date'}
+          display="default"
+          locale="es-ES"
+          onChange={onChange}
+          minimumDate={new Date(1920, 0, 1)}
+          maximumDate={new Date()}
+        />
       }
     </Block>
   );
