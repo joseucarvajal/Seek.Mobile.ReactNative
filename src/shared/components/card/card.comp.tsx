@@ -18,6 +18,7 @@ export interface ICardProps {
   imageStyle?: any;
   ctaRight?: any;
   titleStyle?: any;
+  onPress?: any;
 }
 
 const Card: React.FC<ICardProps> = ({
@@ -32,12 +33,14 @@ const Card: React.FC<ICardProps> = ({
   ctaColor,
   imageStyle,
   ctaRight,
-  titleStyle
+  titleStyle,
+  onPress
 }) => {
 
   const imageStyles = [full ? styles.fullImage : styles.horizontalImage, imageStyle];
   const cardContainer = [styles.card, styles.shadow, style];
   const imgContainer = [
+    imageStyles,
     styles.imageContainer,
     horizontal ? styles.horizontalStyles : styles.verticalStyles,
     styles.shadow
@@ -45,7 +48,7 @@ const Card: React.FC<ICardProps> = ({
 
   return (
     <Block row={horizontal} card flex style={cardContainer}>
-      <TouchableWithoutFeedback onPress={() => console.log("")}>
+      <TouchableWithoutFeedback onPress={onPress}>
         <Block flex style={imgContainer}>
           <Block right>
             <Icon family='seekQ' name={icon} size={iconSize} color={iconColor} style={[{ position: 'absolute', zIndex: 1, top: Layout.base, right: Layout.base }]} />
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.upload,
     marginVertical: Layout.base,
     borderWidth: 0,
-    minHeight: 114,
+    minHeight: 330,
     marginBottom: 4
   },
   cardTitle: {

@@ -35,6 +35,7 @@ export interface IInputProps extends ViewProps {
   onChangeText?: any;
   onSubmitEditing?: any;
   value?: any;
+  children?: any;
   props?: any;
 }
 
@@ -71,6 +72,7 @@ const Input: React.FC<IInputProps> = ({
   onChangeText, 
   onSubmitEditing, 
   value,
+  children,
   ...props
 }) => {
 
@@ -148,6 +150,7 @@ const Input: React.FC<IInputProps> = ({
         />
         {right && iconInstance}
         {viewPassElement}
+        {children}
       </View>
       {bottomHelp && helpContent}
     </View>

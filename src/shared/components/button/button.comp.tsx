@@ -76,7 +76,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   return (
     <>
       {type === "gradient" ? (
-        <Block style={{ borderRadius: Layout.button_radius }}>
+        <Block style={[{ borderRadius: Layout.button_radius }, shadow && styles.shadow]}>
           <LinearGradient
             colors={
               disabled

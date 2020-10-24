@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextStyle } from "react-native";
+import { Text } from "react-native";
 import { Colors } from "../../../constants";
 import FontNames from "../../../constants/Fonts";
 
@@ -67,10 +67,10 @@ const Typography: React.FC<ITextProp> = (
         },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
-        h3 && { fontSize: 16 },
-        h4 && { fontSize: 12 },
-        h5 && { fontSize: 20 },
-        h6 && { fontSize: 28 },
+        h3 && { fontSize: 20 },
+        h4 && { fontSize: 16 },
+        h5 && { fontSize: 14 },
+        h6 && { fontSize: 12 },
         p && { 
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,

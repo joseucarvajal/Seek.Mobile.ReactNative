@@ -374,11 +374,11 @@ function MainNavigator() {
       {/*Profile screens*/}
       <MainStack.Screen
         name="Profile"
-        component={Components}
+        component={Profile}
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Components"
+              title="Upload Photo"
               navigation={navigation}
               scene={scene}
               back

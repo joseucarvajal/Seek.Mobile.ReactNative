@@ -17,7 +17,7 @@ const Chip: React.FC<IChipsProps> = ({
 }) => {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Block flex center middle row space='between' style={[styles.chip, style]}>
+      <Block center middle row space='between' style={[styles.chip, style]}>
         <Block center middle style={{ paddingLeft: 8, paddingRight: 8 }}>
           <Text h3 center>{value}</Text>
         </Block>
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 32,
     alignSelf:"flex-start",
+    alignContent: "flex-start"
   },
   button: {
     borderRadius: 20,
