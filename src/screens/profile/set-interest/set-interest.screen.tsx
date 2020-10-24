@@ -1,6 +1,7 @@
 import React from "react";
 import { Colors, Images, Layout } from "../../../constants";
 import { Text, Block, Button } from '../../../shared';
+import Chip from "../../../shared/components/chips/chip.comp";
 
 export interface ISetIntetestProps {
 
@@ -11,10 +12,11 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
 }) => {
 
   const chipsList = interests.map((item: any, index: any) => (
-    <Block key={item.id} style={{ paddingTop: Layout.base }}>
-      <Button type='chip' onPress={() => console.log(item.text)}>
-        <Text h4 color={Colors.black}>{item.text}</Text>
-      </Button>
+    <Block key={item.id}>
+      <Chip
+        key={item.id}
+        value={item.text}
+      />
     </Block>
   ));
 
@@ -26,7 +28,7 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
       <Block left style={{ paddingTop: Layout.base, paddingBottom: Layout.base }}>
         <Text h3>Please pick at least 3 public interests to get started</Text>
       </Block>
-      <Block row center wrap space='around'>
+      <Block row center wrap>
         {chipsList}
       </Block>
     </Block>

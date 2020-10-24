@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, ViewProps, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
@@ -47,6 +47,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   style,
   ...props
 }) => {
+
   const iconInstance = icon ? (
     <Icon
       family='FontAwesome'
@@ -107,10 +108,11 @@ const ArButton: React.FC<IArButtonProps> = ({
         >
           {children}
         </TouchableOpacity>
-      ) : (
+      )
+          : (
             <Block style={styleButton}>
               <TouchableHighlight
-                onPress={disabled ? null : onPress}
+                onPress={onPress}
                 style={[{ flex: 1 }, styleButton]}
                 underlayColor={Colors.active}
               >
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 32,
     width: 100,
-    alignSelf:"flex-start",
+    alignSelf: "flex-start",
     alignContent: "flex-start"
   },
   largeButton: {

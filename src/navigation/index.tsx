@@ -124,7 +124,7 @@ function ChatStack() {
     <MainStack.Navigator mode="card" headerMode="screen">
       <MainStack.Screen
         name="Home"
-        component={Home}
+        component={Components}
         options={{
           header: ({ navigation, scene }) => (
             <Header

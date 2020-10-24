@@ -20,19 +20,23 @@ const Profile: React.FC<IProfileProps> = ({
     setCurrentPage(position);
   };
 
+  console.log(currentPage)
+
   return (
     <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
       <Block style={{ backgroundColor: Colors.white }}>
         <Steper stepCount={4} currentPage={currentPage} onIndexChanged={(position: any) => onStepPress(position)} />
       </Block>
       <Block flex>
-        {/* <Swiper
+        <Swiper
           index={currentPage}
+          loop={false}
           showsButtons={false}
           autoplay={false}
           showsPagination={false}
+          loadMinimal={true}
         >
-          <Block flex center middle>
+          <Block flex style={{ paddingLeft: 5, paddingRight: 5 }}>
             <UploadPhoto />
           </Block>
           <Block flex center middle>
@@ -41,8 +45,10 @@ const Profile: React.FC<IProfileProps> = ({
           <Block flex center middle>
             <EnterAdditionalInfo />
           </Block>
-        </Swiper> */}
-        <SetInterest />
+          <Block flex center middle>
+            <SetInterest />
+          </Block>
+        </Swiper>
         <Block row bottom>
           <Button type='gradient' shadow onPress={() => onStepPress(currentPage)}>
             <Text h2 bold color={Colors.white}>CONTINUE</Text>

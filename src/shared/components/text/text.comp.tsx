@@ -28,6 +28,8 @@ export interface ITextProp {
   fontFamily?: string;
   letterSpacing?: number;
   extraSmall?: boolean;
+  boldItalic?: any;
+  onPress?: any;
 }
 
 const Typography: React.FC<ITextProp> = (
@@ -54,6 +56,8 @@ const Typography: React.FC<ITextProp> = (
     fontFamily,
     letterSpacing,
     extraSmall,
+    boldItalic,
+    onPress
   },
   props
 ) => {
@@ -83,14 +87,16 @@ const Typography: React.FC<ITextProp> = (
         neutral && { color: Colors.neutral },
         size && { fontSize: size },
         color && { color },
-        italic && { fontStyle: "italic" },
+        italic && { fontFamily: FontNames.CamptonLightItalic },
         bold && { fontFamily: FontNames.CamptonBold },
+        boldItalic && { fontFamily: FontNames.CamptonBoldItalic },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },
         center && { textAlign: "center" },
         underline && { textDecorationLine: "underline" },
         style && style,
       ]}
+      onPress={onPress}
       {...props}
     >
       {children}

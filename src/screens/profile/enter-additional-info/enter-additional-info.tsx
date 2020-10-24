@@ -1,5 +1,5 @@
 import React from "react";
-import { Colors, Images, Layout } from "../../../constants";
+import { Colors, Layout } from "../../../constants";
 import { Select, Block, Calendar, Text, ToggleButton } from '../../../shared';
 
 export interface IUPloadPhotoProps {
@@ -20,7 +20,7 @@ const EnterAddionalInfo: React.FC<IUPloadPhotoProps> = ({
       <Block center style={{ paddingTop: Layout.base, backgroundColor: Colors.white }}>
         <Calendar />
       </Block>
-      <Block style={{ paddingTop: Layout.base * 2 }}>
+      <Block center middle style={{ paddingTop: Layout.base * 2 }}>
         <Select
           defaultValue={'f'}
           items={[
@@ -28,6 +28,7 @@ const EnterAddionalInfo: React.FC<IUPloadPhotoProps> = ({
             { label: 'Female', value: 'f' },
           ]}
           shadow
+          style={{ width:'99%' }}
         />
       </Block>
     </Block>

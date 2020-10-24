@@ -11,11 +11,13 @@ import Icon from '../icons/icon.comp';
 export interface ICalendarProps {
   date?: any;
   show?: any;
+  style?: any;
 }
 
 const Calendar: React.FC<ICalendarProps> = ({
   date,
-  show
+  show,
+  style
 }) => {
 
   const [value, SetDate] = useState(date)
@@ -36,10 +38,10 @@ const Calendar: React.FC<ICalendarProps> = ({
   return (
     <Block>
       <Button
-        style={styles.buttonDataPicker}
+        style={[styles.buttonDataPicker]}
         onPress={() => SetShow(!isShow)}
       >
-        <Block flex row center>
+        <Block flex row center style={style}>
           <Block flex left>
             <Text h2 bold>{moment(value).format('DD/MM/YYYY')}</Text>
           </Block>

@@ -128,7 +128,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           <Text h3 center>Continue with Google</Text>
         </Button>
         <Text />
-        <Button type='backgroundless'>
+        <Button type='backgroundless' onPress={() => console.log('LOGIN')}>
           <Text h2 center color={Colors.primary}>LOGIN</Text>
         </Button>
         <Button type='link'>

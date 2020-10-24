@@ -23,7 +23,8 @@ const Select: React.FC<ISelectProps> = ({
 
   const containerStyle = [
     styles.dropdown,
-    shadow && styles.shadow
+    shadow && styles.shadow,
+    style
   ];
 
   const styleDropDownPicker = [
