@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
-import { Colors, FontNames, Layout } from '../../../constants';
+import { Colors, Layout } from '../../../constants';
 import Block from '../block/block.comp'
 import Icon from '../icons/icon.comp'
-import Text from '../text/text.comp'
 
 export interface ICardProps {
   navigation?: any;
@@ -69,24 +68,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.upload,
     marginVertical: Layout.base,
     borderWidth: 0,
-    minHeight: 330,
-    marginBottom: 4
-  },
-  cardTitle: {
-    paddingHorizontal: 9,
-    paddingTop: 7,
-    paddingBottom: 15
-  },
-  cardDescription: {
-    padding: Layout.base / 2
+    minHeight: 330
   },
   imageContainer: {
     borderRadius: 3,
     elevation: 1,
     overflow: 'hidden'
-  },
-  image: {
-    borderRadius: 3,
   },
   horizontalImage: {
     height: 122,

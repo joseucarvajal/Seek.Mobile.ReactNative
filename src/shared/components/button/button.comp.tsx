@@ -22,7 +22,7 @@ export interface IArButtonProps extends ViewProps {
 }
 
 export type ButtonType =
-  | "chip"
+  | "small"
   | "social"
   | "large"
   | "link"
@@ -62,7 +62,7 @@ const ArButton: React.FC<IArButtonProps> = ({
 
   const styleButton = [
     styles.button,
-    type === "chip" && styles.smallButton,
+    type === "small" && styles.smallButton,
     type === "large" && styles.largeButton,
     type === "social" && styles.socialButton,
     type === "gradient" && styles.largeButton,

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Swiper from 'react-native-swiper';
+import { ScrollView } from 'react-native'
 import { Steper } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
-import { Button, Text, Block } from '../../../shared';
+import { Button, Text, Block, Swiper } from '../../../shared';
 import UploadPhoto from '../upload-photo/upload-photo.screen';
 import EnterInfo from '../enter-info/enter-info.screen';
 import EnterAdditionalInfo from '../enter-additional-info/enter-additional-info'
@@ -20,7 +20,7 @@ const Profile: React.FC<IProfileProps> = ({
     setCurrentPage(position);
   };
 
-  console.log(currentPage)
+  const buttonText = (currentPage != 3) ? 'CONTINUE' : 'START SEARCHING'
 
   return (
     <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
@@ -28,30 +28,23 @@ const Profile: React.FC<IProfileProps> = ({
         <Steper stepCount={4} currentPage={currentPage} onIndexChanged={(position: any) => onStepPress(position)} />
       </Block>
       <Block flex>
-        <Swiper
-          index={currentPage}
-          loop={false}
-          showsButtons={false}
-          autoplay={false}
-          showsPagination={false}
-          loadMinimal={true}
-        >
-          <Block flex style={{ paddingLeft: 5, paddingRight: 5 }}>
+        <Swiper pagination onPageChange={(position: any) => onStepPress(position)}>
+          <Block flex style={{ width: Layout.window.width }}>
             <UploadPhoto />
           </Block>
-          <Block flex center middle>
+          <Block flex style={{ width: Layout.window.width }}>
             <EnterInfo />
           </Block>
-          <Block flex center middle>
+          <Block flex style={{ width: Layout.window.width }}>
             <EnterAdditionalInfo />
           </Block>
-          <Block flex center middle>
+          <Block flex style={{ width: Layout.window.width }}>
             <SetInterest />
           </Block>
         </Swiper>
         <Block row bottom>
           <Button type='gradient' shadow onPress={() => onStepPress(currentPage)}>
-            <Text h2 bold color={Colors.white}>CONTINUE</Text>
+            <Text h2 bold color={Colors.white}>{buttonText}</Text>
           </Button>
         </Block>
       </Block>

@@ -50,7 +50,6 @@ const Header: React.FC<IHeaderProps> = ({
       <>
         {back &&
           <View style={styles.left}>
-
             <TouchableOpacity onPress={() => navigation.goBack()}>
               <Icon
                 family="FontAwesome"
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
   navbar: {
     justifyContent: "center",
     width: Layout.window.width,
-    height: HeaderHeight * 2
+    height: HeaderHeight * 1.5
   },
   right: {
     justifyContent: 'center',
@@ -153,8 +152,10 @@ const styles = StyleSheet.create({
   left: {
     justifyContent: 'center',
     alignItems: "center",
-    marginLeft: Layout.base,
+    paddingLeft: Layout.base,
+    paddingRight: Layout.base * 2,
     height: HeaderHeight,
+    zIndex: 1,
   },
   shadow: {
     shadowColor: Colors.black,

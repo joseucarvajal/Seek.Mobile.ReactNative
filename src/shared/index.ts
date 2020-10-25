@@ -20,6 +20,7 @@ import Calendar from './components/calendar/calendar.comp';
 import Video from './components/video/video.comp';
 import Modal from './components/modal/modal.comp';
 import Chips from './components/chips/chips.comp';
+import Swiper from './components/swiper/swiper.comp';
 
 export {
     Button,
@@ -43,5 +44,6 @@ export {
     Calendar,
     Video,
     Modal,
-    Chips
+    Chips,
+    Swiper
 }

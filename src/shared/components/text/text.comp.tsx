@@ -29,6 +29,7 @@ export interface ITextProp {
   letterSpacing?: number;
   extraSmall?: boolean;
   boldItalic?: any;
+  numberOfLines?: any,
   onPress?: any;
 }
 
@@ -57,12 +58,14 @@ const Typography: React.FC<ITextProp> = (
     letterSpacing,
     extraSmall,
     boldItalic,
+    numberOfLines,
     onPress
   },
   props
 ) => {
   return (
     <Text
+      numberOfLines={numberOfLines}
       style={[
         {
           fontFamily: FontNames.CamptonLight,
@@ -75,7 +78,7 @@ const Typography: React.FC<ITextProp> = (
         h4 && { fontSize: 16 },
         h5 && { fontSize: 14 },
         h6 && { fontSize: 12 },
-        p && { 
+        p && {
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,

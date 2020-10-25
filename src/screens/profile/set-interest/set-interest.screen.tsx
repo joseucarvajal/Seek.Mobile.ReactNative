@@ -25,8 +25,10 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
       <Block left style={{ paddingTop: Layout.base * 2 }}>
         <Text h2 bold>Set Your Public interests</Text>
       </Block>
-      <Block left style={{ paddingTop: Layout.base, paddingBottom: Layout.base }}>
-        <Text h3>Please pick at least 3 public interests to get started</Text>
+      <Block style={{ paddingTop: Layout.base, paddingBottom: Layout.base }}>
+        <Text h3 numberOfLines={2} style={{ width: Layout.window.width - Layout.base }}>
+          Please pick at least 3 public interests to get started.
+        </Text>
       </Block>
       <Block row center wrap>
         {chipsList}

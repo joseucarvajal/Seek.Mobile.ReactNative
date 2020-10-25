@@ -10,14 +10,14 @@ const EnterAddionalInfo: React.FC<IUPloadPhotoProps> = ({
 
 }) => {
   return (
-    <Block flex>
+    <Block flex style={{ paddingRight: Layout.base * 2 }}>
       <Block right style={{ paddingTop: Layout.base }}>
         <Block row center middle>
           <Text h4 color={Colors.placeholder}>Make Public  </Text>
           <ToggleButton color='primary' onValueChange={() => { }} />
         </Block>
       </Block>
-      <Block center style={{ paddingTop: Layout.base, backgroundColor: Colors.white }}>
+      <Block center style={{ paddingTop: Layout.base }}>
         <Calendar />
       </Block>
       <Block center middle style={{ paddingTop: Layout.base * 2 }}>
@@ -28,7 +28,6 @@ const EnterAddionalInfo: React.FC<IUPloadPhotoProps> = ({
             { label: 'Female', value: 'f' },
           ]}
           shadow
-          style={{ width:'99%' }}
         />
       </Block>
     </Block>
