@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react';
+import { StyleSheet, TouchableHighlight, TouchableOpacity } from 'react-native'
 import { Colors } from '../../../constants';
 import Block from '../block/block.comp';
 import Text from '../text/text.comp';
@@ -15,31 +15,55 @@ const Chip: React.FC<IChipsProps> = ({
   onPress,
   style
 }) => {
+
+  const [active, setActive] = useState(false);
+
+  const hanlerActiveChip = () => {
+    setActive(!active);
+  };
+
+  const styleChip = [
+    styles.container,
+    active && { backgroundColor: Colors.active },
+    !active && { backgroundColor: Colors.tertiary }
+  ]
+
+  const styleTextChip = [
+    active && { color: Colors.white },
+    !active && { color: Colors.black, top: 3 }
+  ]
+
   return (
-    <TouchableOpacity onPress={onPress}>
-      <Block flex center middle row space='between' style={[styles.chip, style]}>
+    <TouchableHighlight onPress={hanlerActiveChip} underlayColor={Colors.active} style={styleChip}>
+      <Block center middle row space='between' style={style}>
         <Block center middle style={{ paddingLeft: 8, paddingRight: 8 }}>
-          <Text h3 center>{value}</Text>
+          <Text h3 center style={styleTextChip}>{value}</Text>
         </Block>
-        <Block center middle style={styles.button}>
-          <Text h3 center>x</Text>
-        </Block>
+        {active &&
+          <TouchableOpacity onPress={onPress}>
+            <Block center middle style={styles.button}>
+              <Text h3 center>x</Text>
+            </Block>
+          </TouchableOpacity>
+        }
       </Block>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 }
 
 export default Chip;
 
 const styles = StyleSheet.create({
-  chip: {
+  container: {
     backgroundColor: Colors.tertiary,
     margin: 4,
     paddingVertical: 5,
     paddingHorizontal: 5,
     borderRadius: 15,
     height: 32,
-    alignSelf:"flex-start",
+    alignSelf: "flex-start",
+    alignContent: "flex-start",
+    alignItems: "flex-start"
   },
   button: {
     borderRadius: 20,

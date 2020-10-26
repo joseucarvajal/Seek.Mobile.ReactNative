@@ -17,9 +17,9 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
       <Tabs initialIndex={'terms'} />
       <Block style={styles.container}>
-        <Steper />
+        <Steper stepCount={4} currentPage={0}/>
         <Text />
-        <Chips initialChips={["React", "Native"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
+        <Chips initialChips={["React", "Native", "Javascript", "Visual Studio"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />
         <Block flex >
           <Video videoId='M1mL-reid3M' />
@@ -128,7 +128,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           <Text h3 center>Continue with Google</Text>
         </Button>
         <Text />
-        <Button type='backgroundless'>
+        <Button type='backgroundless' onPress={() => console.log('LOGIN')}>
           <Text h2 center color={Colors.primary}>LOGIN</Text>
         </Button>
         <Button type='link'>

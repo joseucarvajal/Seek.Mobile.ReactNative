@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, ViewStyle } from "react-native";
+import { TouchableOpacity, StyleSheet, LayoutAnimation, Platform, UIManager, ViewStyle } from "react-native";
 import { Colors, Layout } from "../../../constants";
 import Text from "../text/text.comp"
 import Icon from "../icons/icon.comp";
@@ -37,7 +37,7 @@ const Accordion: React.FC<IAccordion> = ({
         <Text h3 style={styles.title}>{title}</Text>
         <Icon family='FontAwesome' name={expanded ? 'chevron-up' : 'chevron-down'} size={30} color={Colors.black} />
       </TouchableOpacity>
-      <View style={styles.parent} />
+      <Block style={styles.parent} />
       {expanded && (
         <Block shadow={shadow} style={styles.child}>
           <Text h3 style={styles.title}>{text}</Text>

@@ -20,7 +20,7 @@ export default {
   active: '#9E9E9E',
   background: '#ffffff',
   fontNormal: '#252525',
-  placeholder: '#e1e4e8',
+  placeholder: '#979797',
   fontSoft: '#4F4F4F',
   fontSoft1:'#979797',
   border: '#C4C4C4',
@@ -37,6 +37,7 @@ export default {
   option: '#4A5CA5',
   noTouchableText: '#4f4f4f99',
   noTouchableIcon: '#95959599',
+  input: '#F5F5F6',
   light: {
     text: '#000',
     background: '#fff',

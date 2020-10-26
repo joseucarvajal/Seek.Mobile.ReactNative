@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity, ViewProps } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, TouchableOpacity, ViewProps, TouchableHighlight } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
 import Block from "../block/block.comp";
@@ -22,7 +22,7 @@ export interface IArButtonProps extends ViewProps {
 }
 
 export type ButtonType =
-  | "chip"
+  | "small"
   | "social"
   | "large"
   | "link"
@@ -47,6 +47,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   style,
   ...props
 }) => {
+
   const iconInstance = icon ? (
     <Icon
       family='FontAwesome'
@@ -61,7 +62,7 @@ const ArButton: React.FC<IArButtonProps> = ({
 
   const styleButton = [
     styles.button,
-    type === "chip" && styles.smallButton,
+    type === "small" && styles.smallButton,
     type === "large" && styles.largeButton,
     type === "social" && styles.socialButton,
     type === "gradient" && styles.largeButton,
@@ -76,7 +77,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   return (
     <>
       {type === "gradient" ? (
-        <Block style={{ borderRadius: Layout.button_radius }}>
+        <Block style={[{ borderRadius: Layout.button_radius }, shadow && styles.shadow]}>
           <LinearGradient
             colors={
               disabled
@@ -107,11 +108,13 @@ const ArButton: React.FC<IArButtonProps> = ({
         >
           {children}
         </TouchableOpacity>
-      ) : (
+      )
+          : (
             <Block style={styleButton}>
-              <TouchableOpacity
-                onPress={disabled ? null : onPress}
-                style={{ flex: 1 }}
+              <TouchableHighlight
+                onPress={onPress}
+                style={[{ flex: 1 }, styleButton]}
+                underlayColor={Colors.active}
               >
                 <Block flex row middle center>
                   {left && !right && iconInstance}
@@ -120,7 +123,7 @@ const ArButton: React.FC<IArButtonProps> = ({
                   </Block>
                   {right && iconInstance}
                 </Block>
-              </TouchableOpacity>
+              </TouchableHighlight>
             </Block>
           )}
     </>
@@ -136,10 +139,12 @@ const styles = StyleSheet.create({
     height: 40,
   },
   smallButton: {
-    width: 100,
-    backgroundColor: Colors.active,
+    backgroundColor: Colors.tertiary,
+    borderRadius: 15,
     height: 32,
-    borderRadius: Layout.chips_radius,
+    width: 100,
+    alignSelf: "flex-start",
+    alignContent: "flex-start"
   },
   largeButton: {
     width: Layout.window.width - Layout.base * 2,

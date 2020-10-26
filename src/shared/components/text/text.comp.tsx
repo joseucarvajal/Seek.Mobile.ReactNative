@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TextStyle } from "react-native";
+import { Text } from "react-native";
 import { Colors } from "../../../constants";
 import FontNames from "../../../constants/Fonts";
 
@@ -28,6 +28,9 @@ export interface ITextProp {
   fontFamily?: string;
   letterSpacing?: number;
   extraSmall?: boolean;
+  boldItalic?: any;
+  numberOfLines?: any,
+  onPress?: any;
 }
 
 const Typography: React.FC<ITextProp> = (
@@ -54,11 +57,15 @@ const Typography: React.FC<ITextProp> = (
     fontFamily,
     letterSpacing,
     extraSmall,
+    boldItalic,
+    numberOfLines,
+    onPress
   },
   props
 ) => {
   return (
     <Text
+      numberOfLines={numberOfLines}
       style={[
         {
           fontFamily: FontNames.CamptonLight,
@@ -67,11 +74,11 @@ const Typography: React.FC<ITextProp> = (
         },
         h1 && { fontSize: 28 },
         h2 && { fontSize: 24 },
-        h3 && { fontSize: 16 },
-        h4 && { fontSize: 12 },
-        h5 && { fontSize: 20 },
-        h6 && { fontSize: 28 },
-        p && { 
+        h3 && { fontSize: 20 },
+        h4 && { fontSize: 16 },
+        h5 && { fontSize: 14 },
+        h6 && { fontSize: 12 },
+        p && {
           fontFamily: FontNames.CamptonLight,
           color: Colors.fontNormal,
           fontSize: 16,
@@ -83,14 +90,16 @@ const Typography: React.FC<ITextProp> = (
         neutral && { color: Colors.neutral },
         size && { fontSize: size },
         color && { color },
-        italic && { fontStyle: "italic" },
+        italic && { fontFamily: FontNames.CamptonLightItalic },
         bold && { fontFamily: FontNames.CamptonBold },
+        boldItalic && { fontFamily: FontNames.CamptonBoldItalic },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },
         center && { textAlign: "center" },
         underline && { textDecorationLine: "underline" },
         style && style,
       ]}
+      onPress={onPress}
       {...props}
     >
       {children}

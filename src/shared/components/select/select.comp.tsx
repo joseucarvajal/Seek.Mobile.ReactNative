@@ -23,7 +23,8 @@ const Select: React.FC<ISelectProps> = ({
 
   const containerStyle = [
     styles.dropdown,
-    shadow && styles.shadow
+    shadow && styles.shadow,
+    style
   ];
 
   const styleDropDownPicker = [
@@ -34,7 +35,7 @@ const Select: React.FC<ISelectProps> = ({
   ];
 
   const dropDownStyle = [
-    { backgroundColor: Colors.neutral },
+    { backgroundColor: Colors.input },
     borderless && { backgroundColor: Colors.white },
     small && styles.smallDropdown,
     style
