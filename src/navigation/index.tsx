@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ColorSchemeName } from "react-native";
+import { ColorSchemeName, Platform } from "react-native";
 
 import {
   NavigationContainer,
@@ -297,7 +297,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family="FontAwesome"
+              family={Platform.OS ? "seekQ" : "FontAwesome"}
               name="home"
               size={18}
               style={{ marginRight: 30 }}
@@ -313,7 +313,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family="FontAwesome"
+              family={Platform.OS ? "seekQ" : "FontAwesome"}
               name="wechat"
               size={18}
               style={{ marginRight: 30 }}
@@ -329,7 +329,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family="FontAwesome"
+              family={Platform.OS ? "seekQ" : "FontAwesome"}
               name="users"
               size={18}
               style={{ marginRight: 30 }}
@@ -345,7 +345,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family="FontAwesome"
+              family={Platform.OS ? "seekQ" : "FontAwesome"}
               name="cog"
               size={18}
               style={{ marginRight: 30 }}
@@ -378,7 +378,7 @@ function MainNavigator() {
         options={{
           header: ({ navigation, scene }) => (
             <Header
-              title="Upload Photo"
+              title="Enter Info"
               navigation={navigation}
               scene={scene}
               back

@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   buttonDataPicker: {
     borderWidth: 0,
     backgroundColor: "white",
-    borderBottomColor: Colors.tertiary,
-    borderBottomWidth: Layout.input_border_width
+    borderBottomColor: Colors.muted,
+    borderBottomWidth: Layout.input_calendar_border_width
   }
 }); 

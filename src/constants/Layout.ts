@@ -55,4 +55,6 @@ export default {
   card_rounded: base * 0.5,
   // accordion styles
   accordion_border_radius: 3,
+  // input calentar
+  input_calendar_border_width: 1,
 };

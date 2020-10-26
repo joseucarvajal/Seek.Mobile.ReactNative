@@ -1,5 +1,5 @@
 import React from "react";
-import { Colors, Layout } from "../../../constants";
+import { Colors } from "../../../constants";
 import { Text, Block, Input, ToggleButton } from '../../../shared';
 
 export interface IProfileProps {

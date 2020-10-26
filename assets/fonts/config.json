@@ -78,7 +78,7 @@
     },
     {
       "uid": "2961e8cf6bf20fd5fea318389aa53b04",
-      "css": "chat",
+      "css": "wechat",
       "code": 59397,
       "src": "custom_icons",
       "selected": true,
@@ -87,12 +87,12 @@
         "width": 1120
       },
       "search": [
-        "chat"
+        "wechat"
       ]
     },
     {
       "uid": "89ca349c5b346587bccc62ba19afbb45",
-      "css": "contacts",
+      "css": "users",
       "code": 59399,
       "src": "custom_icons",
       "selected": true,
@@ -101,7 +101,7 @@
         "width": 1214
       },
       "search": [
-        "contacts"
+        "users"
       ]
     },
     {
@@ -162,7 +162,7 @@
     },
     {
       "uid": "5c3f250ec0ca11e30f7edb276c8ff709",
-      "css": "settings",
+      "css": "cog",
       "code": 59403,
       "src": "custom_icons",
       "selected": true,
@@ -171,7 +171,7 @@
         "width": 1000
       },
       "search": [
-        "settings"
+        "cog"
       ]
     },
     {
