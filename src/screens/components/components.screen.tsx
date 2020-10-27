@@ -3,13 +3,39 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper, ModalBackground, ModalNoBackground } from '../../components/profile';
 import { Colors, Icons, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Block, Chips, MenuItem } from '../../shared';
+
+import {
+  Button,
+  Input,
+  Select,
+  ToggleButton,
+  Text,
+  Icon,
+  Tabs,
+  Accordion,
+  Checkbox,
+  Card,
+  Calendar,
+  Video,
+  Block,
+  Chips,
+  MenuItem,
+  Spinner
+} from '../../shared';
 
 export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
+
   const [modalVisibleBackground, setModalVisibleBackground] = React.useState(false);
   const [modalVisible, setModalVisible] = React.useState(false);
+  const [spinnerVisible, setSpinnerVisible] = React.useState(false);
+
+  const setSpinner = (visible: boolean) => {
+    setSpinnerVisible(visible)
+    setTimeout(() => { setSpinnerVisible(false) }, 5000)
+  }
+
   return (
     <ScrollView style={{ paddingTop: 1 }}>
       <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title)} />
@@ -36,16 +62,25 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Text />
 
         <Block flex center row space='around'>
-          <TouchableOpacity style={styles.button} onPress={() => setModalVisibleBackground(true)}>
+          <TouchableOpacity style={styles.button} onPress={() => setModalVisibleBackground(!modalVisibleBackground)}>
             <Text h3 bold color={Colors.white}>Show Modal</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
+          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(!modalVisible)}>
             <Text h3 bold color={Colors.white}>Show Modal</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => setSpinner(!spinnerVisible)}>
+            <Text h3 bold color={Colors.white}>Show Spinner</Text>
           </TouchableOpacity>
         </Block>
 
         <ModalBackground visible={modalVisibleBackground} onVisibleChange={(visible: any) => setModalVisibleBackground(visible)} />
-        <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)}/>
+        <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)} />
+
+        <Spinner
+          visible={spinnerVisible}
+          textContent={"Loading..."}
+          animation="fade"
+        />
 
         <Text />
         <Calendar />
@@ -188,49 +223,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: Layout.base
   },
-  headerView: {
-    width: '100%',
-    backgroundColor: Colors.white,
-    justifyContent: 'flex-start',
-    position: 'absolute',
-    top: 5
-  },
-  body: {
-    width: '100%',
-    top: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-  },
-  footerView: {
-    width: '100%',
-    height: 40,
-    backgroundColor: Colors.white,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 0
-  },
-  stepIndicator: {
-    marginVertical: 50,
-  },
-  page: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  stepLabel: {
-    fontSize: 12,
-    textAlign: 'center',
-    fontWeight: '500',
-    color: '#999999',
-  },
-  stepLabelSelected: {
-    fontSize: 12,
-    textAlign: 'center',
-    fontWeight: '500',
-    color: '#4aae4f',
-  },
   textInput: {
     fontSize: 22,
     fontWeight: '500',
@@ -241,33 +233,10 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     color: Colors.black,
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-  },
-  openButton: {
-    backgroundColor: Colors.transparent,
-    padding: 10,
-    elevation: 2
-  },
   button: {
     backgroundColor: Colors.primary,
     padding: 10,
     borderRadius: 20,
     elevation: 2
-  },
-  horizontalImage: {
-    height: 120,
-    width: 'auto'
   }
 });
