@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper, ModalBackground, ModalNoBackground } from '../../components/profile';
 import { Colors, Icons, Images, Layout } from "../../constants";
@@ -20,7 +20,9 @@ import {
   Block,
   Chips,
   MenuItem,
-  Spinner
+  Spinner,
+  Background,
+  Image
 } from '../../shared';
 
 export interface IProfileProps { }
@@ -184,6 +186,19 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button type='gradient' onPress={() => console.log("")} shadow>
           <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>
+
+        <Block style={{ width: Layout.window.width, height: Layout.window.height, paddingTop: Layout.base * 2, marginLeft: -Layout.base }}>
+          <Background image={Images.Background_1}>
+            <Block style={{ position: 'absolute', bottom: 0, alignSelf: 'center', margin: Layout.window.width / 3 }}>
+              <Image source={Images.LogoWhite} />
+            </Block>
+          </Background>
+        </Block>
+
+        <Block style={{ width: Layout.window.width, height: Layout.window.height, paddingTop: Layout.base * 2, marginLeft: -Layout.base }}>
+          <Background image={Images.Background_2} />
+        </Block>
+
       </Block>
     </ScrollView>
   );

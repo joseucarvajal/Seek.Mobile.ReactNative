@@ -106,7 +106,7 @@
     },
     {
       "uid": "d6cbcc77dc2251f6dfdcce639777168c",
-      "css": "check",
+      "css": "check-circle",
       "code": 59398,
       "src": "custom_icons",
       "selected": true,
@@ -115,7 +115,7 @@
         "width": 1000
       },
       "search": [
-        "check"
+        "check-circle"
       ]
     },
     {

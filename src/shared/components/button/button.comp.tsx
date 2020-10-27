@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   largeButton: {
     width: Layout.window.width - Layout.base * 2,
-    backgroundColor: Colors.primary,
+    backgroundColor: Colors.white,
     height: 50,
     borderRadius: Layout.button_radius,
   },

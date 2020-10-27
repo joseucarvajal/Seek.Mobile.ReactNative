@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ColorSchemeName, Platform } from "react-native";
+import { ColorSchemeName } from "react-native";
 
 import {
   NavigationContainer,
@@ -10,7 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RootStackParamList } from "../types";
 
-import { Colors, Icons } from "../constants";
+import { Colors, Icons, isIOS } from "../constants";
 import { Icon, Header } from "../shared";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -18,6 +18,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import Profile from "../screens/profile/profile/profile.screen";
 import Components from "../screens/components/components.screen";
 import Home from "../screens/home/home-screen";
+import Congrats from "../screens/profile/congrats-profile/congrats-profile.screen";
 
 import {
   SignUp,
@@ -297,7 +298,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family={Platform.OS ? "seekQ" : "FontAwesome"}
+              family={isIOS ? "seekQ" : "FontAwesome"}
               name={Icons.home}
               size={18}
               style={{ marginRight: 30 }}
@@ -313,7 +314,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family={Platform.OS ? "seekQ" : "FontAwesome"}
+              family={isIOS ? "seekQ" : "FontAwesome"}
               name={Icons.chat}
               size={18}
               style={{ marginRight: 30 }}
@@ -329,7 +330,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family={Platform.OS ? "seekQ" : "FontAwesome"}
+              family={isIOS ? "seekQ" : "FontAwesome"}
               name={Icons.contacts}
               size={18}
               style={{ marginRight: 30 }}
@@ -345,7 +346,7 @@ function RootTabs() {
           tabBarLabel: () => null,
           tabBarIcon: ({ focused }) => (
             <Icon
-              family={Platform.OS ? "seekQ" : "FontAwesome"}
+              family={isIOS ? "seekQ" : "FontAwesome"}
               name={Icons.settings}
               size={18}
               style={{ marginRight: 30 }}

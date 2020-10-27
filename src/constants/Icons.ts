@@ -7,7 +7,7 @@ export default {
   caret_right: 'caret_right',
   chat: 'wechat',
   contacts: 'users',
-  check: 'check',
+  check: 'check-circle',
   edit: 'edit',
   home:'home',
   settings:'cog',

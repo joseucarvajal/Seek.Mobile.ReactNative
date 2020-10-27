@@ -1,5 +1,4 @@
 import React from "react";
-import { FlatList } from "react-native";
 import { Steper } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
 import { Button, Text, Block, Swiper } from '../../../shared';

@@ -5,15 +5,17 @@ import Block from '../block/block.comp'
 export interface ISpinnerProps {
   image?: any
   children?: any
+  style?: any
 }
 
 const Background: React.FC<ISpinnerProps> = ({
   image,
-  children
+  children,
+  style
 }) => {
   return (
     <Block flex>
-      <ImageBackground source={image} style={styles.image}>
+      <ImageBackground source={image} style={[styles.image, style]} resizeMode='cover'>
         {children}
       </ImageBackground>
     </Block>
