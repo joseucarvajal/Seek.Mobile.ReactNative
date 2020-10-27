@@ -1,13 +1,15 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { Steper } from '../../components/profile';
+import { Steper, ModalBackground, ModalNoBackground } from '../../components/profile';
 import { Colors, Icons, Images, Layout } from "../../constants";
-import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Modal, Block, Chips, MenuItem } from '../../shared';
+import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Block, Chips, MenuItem } from '../../shared';
 
 export interface IProfileProps { }
 
 const Profile: React.FC<IProfileProps> = ({ }) => {
+  const [modalVisibleBackground, setModalVisibleBackground] = React.useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
   return (
     <ScrollView style={{ paddingTop: 1 }}>
       <MenuItem title={items[0].title} type='Button' color={Colors.neutral} onValueChange={() => console.log(items[0].title)} />
@@ -17,7 +19,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
       <MenuItem title={items[2].title} type='toggle' color={Colors.neutral} onValueChange={() => console.log(items[2].title)} />
       <Tabs initialIndex={'terms'} />
       <Block style={styles.container}>
-        <Steper stepCount={4} currentPage={0}/>
+        <Steper stepCount={4} currentPage={0} />
         <Text />
         <Chips initialChips={["React", "Native", "Javascript", "Visual Studio"]} onChangeChips={(chips: any) => console.log(chips)} alertRequired={false} />
         <Text />
@@ -32,10 +34,19 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconSize={28}
         />
         <Text />
-        <Block flex row>
-          <Modal />
-          <Modal backgroundless />
+
+        <Block flex center row space='around'>
+          <TouchableOpacity style={styles.button} onPress={() => setModalVisibleBackground(true)}>
+            <Text h3 bold color={Colors.white}>Show Modal</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
+            <Text h3 bold color={Colors.white}>Show Modal</Text>
+          </TouchableOpacity>
         </Block>
+
+        <ModalBackground visible={modalVisibleBackground} onVisibleChange={(visible: any) => setModalVisibleBackground(visible)} />
+        <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)}/>
+
         <Text />
         <Calendar />
         <Text />
@@ -229,5 +240,34 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     color: Colors.black,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: Colors.transparent,
+    padding: 10,
+    elevation: 2
+  },
+  button: {
+    backgroundColor: Colors.primary,
+    padding: 10,
+    borderRadius: 20,
+    elevation: 2
+  },
+  horizontalImage: {
+    height: 120,
+    width: 'auto'
   }
 });

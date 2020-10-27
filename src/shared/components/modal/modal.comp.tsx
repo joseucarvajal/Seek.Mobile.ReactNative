@@ -1,109 +1,32 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, TouchableOpacity } from "react-native";
-import { Colors, Images, Layout } from "../../../constants";
+import React from "react";
+import { Alert, Modal, StyleSheet } from "react-native";
+import { Colors } from "../../../constants";
 import Block from "../block/block.comp";
-import Text from "../text/text.comp";
-import Button from "../button/button.comp";
-import Image from "../image/image.comp";
 
 export interface IArModalProps {
   backgroundless?: any;
+  children?: any;
+  visible?: any;
 }
 
 const ArModal: React.FC<IArModalProps> = ({
-  backgroundless
+  backgroundless,
+  children,
+  visible
 }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-
-  function renderModal() {
-    return (
-      <Block center middle style={styles.modalView}>
-        <Image resizeMode="contain" source={Images.Location_1} style={styles.horizontalImage} />
-        <Text h2 bold>Allow SeekQ</Text>
-        <Text h2>to access your location</Text>
-        <Button
-          type='text-link'
-          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
-          onPress={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <Text h5 center color={Colors.option}>Allow While Using App</Text>
-        </Button>
-        <Button
-          type='text-link'
-          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
-          onPress={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <Text h5 center color={Colors.option}>Always Allow</Text>
-        </Button>
-        <Button
-          type='text-link'
-          style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
-          onPress={() => {
-            setModalVisible(!modalVisible);
-          }}
-        >
-          <Text h5 center color={Colors.option}>Don't Allow</Text>
-        </Button>
-      </Block>
-    );
-  }
-
-  function renderModalWithoutBackground() {
-    return (
-      <Block center middle safe>
-        <Image resizeMode="contain" source={Images.Location_2} style={styles.horizontalImage} />
-        <Text h5 color={Colors.white}>We prefer to go with Always Allow option for better user experience!</Text>
-        <Block safe center>
-          <Button
-            type='gradient'
-            style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <Text h5 bold center color={Colors.white}>ALWAYS ALLOW</Text>
-          </Button>
-          <Text />
-          <Button
-            type='text-link'
-            style={{ top: Layout.base * 3 }}
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-          >
-            <Text h5 bold center color={Colors.primary}>Skip now</Text>
-          </Button>
-        </Block>
-      </Block>
-    );
-  }
-
   return (
-    <Block flex center>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => { Alert.alert("Modal has been closed."); }}
-      >
-        <Block flex middle style={{ backgroundColor: Colors.modal }}>
-          {backgroundless ? renderModalWithoutBackground() : renderModal()}
+    <Modal
+      animationType="slide"
+      transparent={true}
+      visible={visible}
+      onRequestClose={() => { Alert.alert("Modal has been closed."); }}
+    >
+      <Block flex middle style={{ backgroundColor: Colors.modal }}>
+        <Block center middle style={!backgroundless && styles.modalView}>
+          {children}
         </Block>
-      </Modal>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Text h3 bold color={Colors.white}>Show Modal</Text>
-      </TouchableOpacity>
-    </Block>
+      </Block>
+    </Modal>
   );
 }
 
