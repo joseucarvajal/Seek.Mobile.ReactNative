@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
-import axios from "axios";
-import {
-  useQuery
-} from "react-query";
+import { StyleSheet, View, PickerItemProps } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -19,55 +15,20 @@ import {
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo } from "../../../components/signup/";
+import  { 
+  useRequestVerificationPhoneCode 
+} from "../../../hooks/signup";
 
 export interface ISignUpPhoneProps {}
 
-const getPhoneVerificationCode = async (phoneNumber:string) => {
-  try{
-    const url = `http://192.168.0.101:32700/api/v1/user/requestverificationcode/${phoneNumber}`;
-    console.log({url});
-    const { data } = await axios.get(url);
-    return data;
-  }
-  catch(err){
-    console.error(JSON.stringify(err));
-  }
-};
 
 const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
-
-  
   const navigation = useNavigation();
+  const [phoneIndicative, setPhoneIndicative] = useState("+1");
   const [phoneNumber, setPhoneNumber] = useState("");
   
-  const { status, data, error, isFetching, refetch } = useQuery(phoneNumber, getPhoneVerificationCode, {
-    refetchOnWindowFocus: false,
-    enabled: false, // turned off by default, manual refetch is needed
-    cacheTime: 0
-  });
-  
-
-  const testFetch = async () => {
-    let response = await fetch('https://pokeapi.co/api/v2/pokemon/ditto');
-    let responseJson = await response.json();
-    console.log(JSON.stringify(responseJson));
-  };
-
-  const testFetch2 = async () => {
-    try{
-      const url = `http://192.168.0.101:32700/api/v1/user/hello`;
-      console.log({url});
-      let response = await fetch(url, {
-        method: 'GET',
-      });
-      console.log('fetch 1', JSON.stringify(response));
-      let responseJson = await response.text();
-      console.log(responseJson);
-    }
-    catch(err){
-      console.log('error 1', JSON.stringify(err));
-    }
-  };
+  const getPhoneNumber = () => `${phoneIndicative}${phoneNumber}`;
+  const { status, data, error, isFetching, refetch } = useRequestVerificationPhoneCode(getPhoneNumber());
 
   return (
     <Block safe flex space="evenly" center>
@@ -89,7 +50,10 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           </Text>
           <Select
             borderless
-            defaultValue={"+1"}
+            defaultValue={phoneIndicative}
+            onChangeItem = {(item: PickerItemProps)=>{
+              setPhoneIndicative(item.value);              
+            }}
             items={[
               { label: "+1", value: "+1" },
               { label: "+57", value: "+57" },
@@ -115,11 +79,11 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
       <ButtonPrimary
         onPress={() => {
-          console.log('Click on continue');
+          console.log("Click on continue");
           refetch();
         }}
       >
-        CONTINUE 1
+        CONTINUE
       </ButtonPrimary>
 
       <LinkButton
@@ -152,10 +116,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: Layout.base,
   },
   phoneIndicativeView: {
-    width: Layout.window.width * 0.2,
+    
   },
   phoneIndicative: {
-    width: Layout.window.width * 0.2,
+    width: Layout.window.width * 0.22,
   },
   phoneNumberView: {
     flex: 1,

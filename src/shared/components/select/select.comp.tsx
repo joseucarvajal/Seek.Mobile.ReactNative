@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { StyleSheet, ViewStyle } from 'react-native';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { Layout, Colors, FontNames } from '../../../constants';
+import React, { useState } from "react";
+import { StyleSheet, ViewStyle } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
+import { Layout, Colors, FontNames } from "../../../constants";
 
 interface ISelectProps {
   items?: any;
@@ -9,7 +9,8 @@ interface ISelectProps {
   small?: any;
   shadow?: any;
   borderless?: any;
-  style?: any,
+  onChangeItem?: (item: any, index: number) => void;
+  style?: any;
 }
 
 const Select: React.FC<ISelectProps> = ({
@@ -18,28 +19,24 @@ const Select: React.FC<ISelectProps> = ({
   small,
   shadow,
   borderless,
-  style
+  onChangeItem,
+  style,
 }) => {
-
-  const containerStyle = [
-    styles.dropdown,
-    shadow && styles.shadow,
-    style
-  ];
+  const containerStyle = [styles.dropdown, shadow && styles.shadow, style];
 
   const styleDropDownPicker = [
     { backgroundColor: Colors.neutral },
     borderless && styles.backgroundless,
     small && styles.smallDropdown,
-    style
+    style,
   ];
 
   const dropDownStyle = [
     { backgroundColor: Colors.input },
     borderless && { backgroundColor: Colors.white },
     small && styles.smallDropdown,
-    style
-  ]
+    style,
+  ];
 
   return (
     <DropDownPicker
@@ -47,29 +44,30 @@ const Select: React.FC<ISelectProps> = ({
       defaultValue={defaultValue}
       containerStyle={containerStyle}
       style={styleDropDownPicker}
+      onChangeItem={onChangeItem}
       itemStyle={{
-        justifyContent: 'flex-start',
+        justifyContent: "flex-start",
       }}
       dropDownStyle={dropDownStyle}
       labelStyle={{
         fontSize: 22,
-        textAlign: 'left',
+        textAlign: "left",
         color: Colors.default,
-        fontFamily: FontNames.CamptonMedium
+        fontFamily: FontNames.CamptonMedium,
       }}
     />
-  )
-}
+  );
+};
 
 export default Select;
 
 const styles = StyleSheet.create({
   dropdown: {
     width: Layout.window.width - Layout.base * 2,
-    height: Layout.select_height
+    height: Layout.select_height,
   },
   smallDropdown: {
-    width: Layout.window.width * .2
+    width: Layout.window.width * 0.2,
   },
   shadow: {
     shadowColor: Colors.black,
@@ -85,6 +83,6 @@ const styles = StyleSheet.create({
     borderRadius: Layout.button_radius,
     borderWidth: 0,
     borderBottomWidth: Layout.select_border_width,
-    borderBottomColor: Colors.primary
-  }
+    borderBottomColor: Colors.primary,
+  },
 });
