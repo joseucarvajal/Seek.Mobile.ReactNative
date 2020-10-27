@@ -25,7 +25,7 @@ const ModalBackground: React.FC<IModalProps> = ({
       <Block center middle>
         <Image resizeMode="contain" source={Images.Location_1} style={styles.horizontalImage} />
         <Text h2 bold>Allow SeekQ</Text>
-        <Text h2>to access your location</Text>
+        <Text h3>to access your location</Text>
         <Button
           type='text-link'
           style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}

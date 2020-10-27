@@ -21,29 +21,33 @@ import Video from './components/video/video.comp';
 import Modal from './components/modal/modal.comp';
 import Chips from './components/chips/chips.comp';
 import Swiper from './components/swiper/swiper.comp';
+import Background from './components/background/background.comp';
+import Spinner from './components/spinner/spinner.comp';
 
 export {
-    Button,
-    ButtonTertiary,
-    ButtonPrimary,
-    Text,
-    ToggleButton,
-    Input,
-    MenuItem,
-    Menu,
-    Image,
-    Select,
-    Icon,
-    Header,
-    Tabs,
-    Block,
-    Accordion,
-    Checkbox,
-    LinkButton,
-    Card,
-    Calendar,
-    Video,
-    Modal,
-    Chips,
-    Swiper
+  Button,
+  ButtonTertiary,
+  ButtonPrimary,
+  Text,
+  ToggleButton,
+  Input,
+  MenuItem,
+  Menu,
+  Image,
+  Select,
+  Icon,
+  Header,
+  Tabs,
+  Block,
+  Accordion,
+  Checkbox,
+  LinkButton,
+  Card,
+  Calendar,
+  Video,
+  Modal,
+  Chips,
+  Swiper,
+  Background,
+  Spinner
 }
