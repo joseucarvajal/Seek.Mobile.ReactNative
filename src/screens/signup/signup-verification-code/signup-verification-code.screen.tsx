@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 
 import {
   Text,
@@ -15,24 +15,37 @@ import {
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo } from "../../../components/signup/";
+import { RootStackParamList } from "../../../types";
 
-export interface ISignUpEmailProps {}
+type SignUPVerificationCodeRouteProp = RouteProp<
+  RootStackParamList,
+  "SignUpVerificationCode"
+>;
 
-const SignUpEmail: React.FC<ISignUpEmailProps> = ({}) => {
+export interface IVerificationCodeProps {}
+
+const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
   const navigation = useNavigation();
+
+  const route = useRoute<SignUPVerificationCodeRouteProp>();
+  const { phoneNumberOrEmail } = route.params;
 
   return (
     <Block safe flex space="evenly" center>
       <SeekQLogo />
 
       <Text h1 center fontFamily={FontNames.CamptonSemiBold}>
-        Wellcome back!
+        Enter verification code
       </Text>
 
-      <Text p center>
-        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-        sint. Velit officia consequat duis enim velit mollit.
-      </Text>
+      <View>
+        <Text p center>
+          A verification code we send to
+        </Text>
+        <Text p center>
+          {phoneNumberOrEmail}
+        </Text>
+      </View>
 
       <View style={styles.emailForm}>
         <View style={styles.emailNumberView}>
@@ -41,7 +54,7 @@ const SignUpEmail: React.FC<ISignUpEmailProps> = ({}) => {
           </Text>
           <Input
             color="primary"
-            style={styles.email}
+            style={styles.codeDigit}
             borderless
             textInputStyle={{
               fontFamily: FontNames.CamptonSemiBold,
@@ -86,12 +99,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    paddingHorizontal: Layout.base,    
+    paddingHorizontal: Layout.base,
   },
   emailNumberView: {
     flex: 1,
   },
-  email: {
+  codeDigit: {
     top: -7,
     width: "100%",
     backgroundColor: Colors.transparent,
