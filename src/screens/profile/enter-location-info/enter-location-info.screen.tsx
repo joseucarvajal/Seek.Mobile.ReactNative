@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import Swiper from 'react-native-swiper';
-import { Steper } from '../../../components/profile';
+import React from "react";
 import { Colors, Layout } from "../../../constants";
 import { Button, Text, Block, Select, Input } from '../../../shared';
 

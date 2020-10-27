@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { ScrollView, Text, StyleSheet, FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
+import { Text, StyleSheet, FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
 import { Layout, Colors } from '../../../constants';
 import Block from '../block/block.comp';
 

@@ -15,7 +15,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -37,6 +39,9 @@
         "wasm",
         "svg"
       ]
+    },
+    "android": {
+      "package": "com.oiga.seekQMobile"
     }
   }
 }
