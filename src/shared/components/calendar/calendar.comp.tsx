@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment'
 import Block from '../block/block.comp';
-import { Colors, isIOS, Layout } from '../../../constants';
+import { Colors, Icons, isIOS, Layout } from '../../../constants';
 import Button from '../button/button.comp';
 import Text from '../text/text.comp';
 import Icon from '../icons/icon.comp';
@@ -46,7 +46,7 @@ const Calendar: React.FC<ICalendarProps> = ({
             <Text h2 bold>{moment(value).format('DD/MM/YYYY')}</Text>
           </Block>
           <Block flex right>
-            <Icon family='seekQ' name={'calendar_1'} size={24} color={Colors.black} />
+            <Icon family='seekQ' name={Icons.calendar} size={24} color={Colors.black} />
           </Block>
         </Block>
       </Button>

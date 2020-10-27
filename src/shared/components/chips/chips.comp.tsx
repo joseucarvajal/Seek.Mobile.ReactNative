@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import Chip from './chip.comp';
 import Input from '../text-input/text-input.comp';
 import Block from '../block/block.comp';
@@ -80,12 +80,3 @@ const Chips: React.FC<IChipsProps> = ({
 }
 
 export default Chips;
-
-const styles = StyleSheet.create({
-  textInput: {
-    height: 32,
-    fontSize: 20,
-    padding: 7,
-    color: '#000'
-  }
-});

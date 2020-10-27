@@ -1,5 +1,5 @@
 import React from "react";
-import { Colors, Images, Layout } from "../../../constants";
+import { Colors, Icons, Images, Layout } from "../../../constants";
 import { Text, Block, Card } from '../../../shared';
 
 export interface IUPloadPhotoProps {
@@ -15,7 +15,7 @@ const UploadPhoto: React.FC<IUPloadPhotoProps> = ({
         <Card
           full
           item={{ image: Images.UploadPhoto }}
-          icon="edit_1"
+          icon={Icons.edit}
           iconColor={Colors.quaternary}
           iconSize={28}
         />

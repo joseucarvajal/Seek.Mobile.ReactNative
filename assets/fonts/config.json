@@ -8,7 +8,7 @@
   "glyphs": [
     {
       "uid": "aef6449dd24389ad42b654772b494305",
-      "css": "calendar_1",
+      "css": "calendar",
       "code": 59392,
       "src": "custom_icons",
       "selected": true,
@@ -17,7 +17,7 @@
         "width": 1000
       },
       "search": [
-        "calendar_1"
+        "calendar"
       ]
     },
     {
@@ -106,7 +106,7 @@
     },
     {
       "uid": "d6cbcc77dc2251f6dfdcce639777168c",
-      "css": "check-1",
+      "css": "check",
       "code": 59398,
       "src": "custom_icons",
       "selected": true,
@@ -115,12 +115,12 @@
         "width": 1000
       },
       "search": [
-        "check-1"
+        "check"
       ]
     },
     {
       "uid": "e7ba7c6ace4631b9c30d0ea66e4cb6c7",
-      "css": "edit_1",
+      "css": "edit",
       "code": 59400,
       "src": "custom_icons",
       "selected": true,
@@ -129,7 +129,7 @@
         "width": 1000
       },
       "search": [
-        "edit_1"
+        "edit"
       ]
     },
     {
@@ -176,7 +176,7 @@
     },
     {
       "uid": "e0980227af8ba464a8c6cff6a8147efa",
-      "css": "user-1",
+      "css": "user",
       "code": 59404,
       "src": "custom_icons",
       "selected": true,
@@ -185,7 +185,7 @@
         "width": 688
       },
       "search": [
-        "user-1"
+        "user"
       ]
     }
   ]

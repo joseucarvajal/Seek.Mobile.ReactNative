@@ -10,7 +10,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { RootStackParamList } from "../types";
 
-import { Colors } from "../constants";
+import { Colors, Icons } from "../constants";
 import { Icon, Header } from "../shared";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -298,7 +298,7 @@ function RootTabs() {
           tabBarIcon: ({ focused }) => (
             <Icon
               family={Platform.OS ? "seekQ" : "FontAwesome"}
-              name="home"
+              name={Icons.home}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -314,7 +314,7 @@ function RootTabs() {
           tabBarIcon: ({ focused }) => (
             <Icon
               family={Platform.OS ? "seekQ" : "FontAwesome"}
-              name="wechat"
+              name={Icons.chat}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -330,7 +330,7 @@ function RootTabs() {
           tabBarIcon: ({ focused }) => (
             <Icon
               family={Platform.OS ? "seekQ" : "FontAwesome"}
-              name="users"
+              name={Icons.contacts}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}
@@ -346,7 +346,7 @@ function RootTabs() {
           tabBarIcon: ({ focused }) => (
             <Icon
               family={Platform.OS ? "seekQ" : "FontAwesome"}
-              name="cog"
+              name={Icons.settings}
               size={18}
               style={{ marginRight: 30 }}
               color={focused ? activeTab : inactiveTab}

@@ -101,7 +101,7 @@ const Input: React.FC<IInputProps> = ({
 
   const iconInstance = icon ? (
     <Icon
-      family='FontAwesome'
+      family={family}
       name={icon}
       size={iconSize || Layout.base * 1.0625}
       style={{ marginRight: left && !right ? 2 : 0 }}

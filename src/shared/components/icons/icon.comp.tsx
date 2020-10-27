@@ -12,7 +12,7 @@ export interface IIconProps {
   style?: any; 
 }
 
-export type FamilyType = "seekQ" | "FontAwesome" | "MaterialIcons";
+export type FamilyType = "seekQ" | "FontAwesome";
 
 const ArIcon: React.FC<IIconProps> = ({
   name,

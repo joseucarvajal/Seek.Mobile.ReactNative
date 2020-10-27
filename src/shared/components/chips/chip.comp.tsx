@@ -18,8 +18,11 @@ const Chip: React.FC<IChipsProps> = ({
 
   const [active, setActive] = useState(false);
 
-  const hanlerActiveChip = () => {
-    setActive(!active);
+  const hanlerActiveChip = () => setActive(!active)
+  
+  const hanlerCloseChip = () => {
+    setActive(false);
+    onPress && active && onPress()
   };
 
   const styleChip = [
@@ -30,7 +33,7 @@ const Chip: React.FC<IChipsProps> = ({
 
   const styleTextChip = [
     active && { color: Colors.white },
-    !active && { color: Colors.black, top: 3 }
+    !active && { color: Colors.black }
   ]
 
   return (
@@ -39,13 +42,11 @@ const Chip: React.FC<IChipsProps> = ({
         <Block center middle style={{ paddingLeft: 8, paddingRight: 8 }}>
           <Text h3 center style={styleTextChip}>{value}</Text>
         </Block>
-        {active &&
-          <TouchableOpacity onPress={onPress}>
-            <Block center middle style={styles.button}>
-              <Text h3 center>x</Text>
+          <TouchableOpacity onPress={hanlerCloseChip}>
+            <Block center middle style={[styles.button, !active && { backgroundColor: Colors.transparent }]}>
+              <Text h3 center style={!active && { color: Colors.transparent }}>x</Text>
             </Block>
           </TouchableOpacity>
-        }
       </Block>
     </TouchableHighlight>
   );

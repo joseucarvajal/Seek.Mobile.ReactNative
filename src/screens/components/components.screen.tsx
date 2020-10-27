@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { Steper } from '../../components/profile';
-import { Colors, Images, Layout } from "../../constants";
+import { Colors, Icons, Images, Layout } from "../../constants";
 import { Button, Input, Select, ToggleButton, Text, Icon, Tabs, Accordion, Checkbox, Card, Calendar, Video, Modal, Block, Chips, MenuItem } from '../../shared';
 
 export interface IProfileProps { }
@@ -27,7 +27,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Card
           full
           item={{ image: Images.UploadPhoto }}
-          icon="edit_1"
+          icon={Icons.edit}
           iconColor={Colors.quaternary}
           iconSize={28}
         />
@@ -65,9 +65,10 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           color='primary'
           borderless
           placeholder='Nickname'
-          icon="user"
+          family='seekQ'
+          icon={Icons.user}
           iconColor={Colors.primary}
-          iconSize={24}
+          iconSize={30}
           textInputStyle={styles.textInput}
         />
         <Input color='quaternary' borderless placeholder='First Name' textInputStyle={styles.textFisrtNameInput} />
@@ -105,7 +106,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
           iconContent={
             <Icon
               family='seekQ'
-              name={'email_phone'}
+              name={Icons.email_phone}
               size={22}
               style={{ paddingLeft: Layout.base }}
               color={Colors.quaternary}
