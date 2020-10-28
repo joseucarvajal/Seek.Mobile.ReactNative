@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import { Colors } from "../../../../constants";
+import { Colors, Layout } from "../../../../constants";
 import Block from "../../block/block.comp";
 import Text from "../../text/text.comp";
 import Modal from "../../modal/modal.comp";
@@ -8,7 +8,7 @@ import LinkButton from "../../link-button/link-button.comp";
 import { IErrorResponse } from "../../..";
 
 export interface IDisplayErrorProps {
-  errorResponse?:IErrorResponse | null;
+  errorResponse?: IErrorResponse | null;
   message?: string;
   visible?: any;
   onClose?: () => void;
@@ -24,20 +24,21 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
 
   useEffect(() => {
     const displayModal = visible || errorResponse ? true : false;
-    console.log({displayModal});
+    console.log({ displayModal });
     setShowModal(displayModal);
   }, [visible, errorResponse]);
 
   return (
     <Modal visible={showModal}>
-      <Block center middle>
+      <Block center middle space='between'>
         <Text h3 color={Colors.black}>
-          { errorResponse ?
-            errorResponse?.response?.data?.Title 
+          {errorResponse ?
+            errorResponse?.response?.data?.Title
             : message ? message : 'There was an error'}
         </Text>
-        <Block safe center>
+        <Block style={{ top: Layout.base }}>
           <LinkButton
+            underline
             onPress={() => {
               console.log("visible to false");
               setShowModal(false);
@@ -53,13 +54,5 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
     </Modal>
   );
 };
-
-const styles = StyleSheet.create({
-  openButton: {
-    backgroundColor: Colors.transparent,
-    padding: 10,
-    elevation: 2,
-  },
-});
 
 export default DisplayError;

@@ -22,7 +22,8 @@ import {
   MenuItem,
   Spinner,
   Background,
-  Image
+  Image,
+  DisplayError
 } from '../../shared';
 
 export interface IProfileProps { }
@@ -79,6 +80,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)} />
 
         <Spinner visible={spinnerVisible}/>
+        <DisplayError visible={true}/>
 
         <Text />
         <Calendar />
@@ -185,7 +187,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
 
         <Block style={{ width: Layout.window.width, height: Layout.window.height, paddingTop: Layout.base * 2, marginLeft: -Layout.base }}>
           <Background image={Images.Background_1}>
-            <Block style={{ position: 'absolute', bottom: 0, alignSelf: 'center', margin: Layout.window.width / 3 }}>
+            <Block absolute style={{ bottom: 0, alignSelf: 'center', margin: Layout.window.width / 3 }}>
               <Image source={Images.LogoWhite} />
             </Block>
           </Background>

@@ -1,7 +1,8 @@
 import React, { ReactNode, useState } from 'react';
-import { Text, StyleSheet, FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
 import { Layout, Colors } from '../../../constants';
 import Block from '../block/block.comp';
+import Text from '../text/text.comp'
 
 export interface IProfileProps {
   index?: number
@@ -133,7 +134,7 @@ const Swiper: React.FC<IProfileProps> = ({
       autoplayTimer = setTimeout(() => {
         const nextIncrement = autoplayInvertDirection ? -1 : +1;
 
-        let nextIndex = (paginationIndex?? + nextIncrement) % _data.length;
+        let nextIndex = (paginationIndex ?? + nextIncrement) % _data.length;
         if (autoplayInvertDirection && nextIndex < 0) {
           nextIndex = _data.length - 1;
         }
@@ -158,10 +159,12 @@ const Swiper: React.FC<IProfileProps> = ({
 
   const renderDots = () => {
     const dotList = []
-    for (let i = 0; i <= elements - 1; i++)
-      dotList.push(<Text key={i} style={[styles.dotStyle, i == paginationIndex ? styles.dotActiveStyle : styles.dotStyle]}>•</Text>)
+    for (let i = 0; i <= elements - 1; i++) {
+      let color = i == paginationIndex ? { color: Colors.primary } : { color: Colors.quaternary }
+      dotList.push(<Text key={i} fontSize={40} style={color}>•</Text>)
+    }
     return (
-      <Block row style={{ alignSelf: 'center', position: 'absolute', bottom: 0 }}>
+      <Block absolute row style={{ alignSelf: 'center', bottom: 0 }}>
         {dotList}
       </Block>
     )
@@ -193,14 +196,3 @@ const Swiper: React.FC<IProfileProps> = ({
 }
 
 export default Swiper;
-
-const styles = StyleSheet.create({
-  dotStyle: {
-    fontSize: 40,
-    color: Colors.quaternary
-  },
-  dotActiveStyle: {
-    fontSize: 40,
-    color: Colors.primary
-  }
-})

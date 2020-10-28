@@ -1,12 +1,10 @@
 import React from "react";
 import { Colors, Layout } from "../../../constants";
-import { Button, Text, Block, Select, Input } from '../../../shared';
+import { Button, Text, Block, Select } from '../../../shared';
 
 export interface IProfileProps { }
 
-const EnterLocationInfo: React.FC<IProfileProps> = ({
-
-}) => {
+const EnterLocationInfo: React.FC<IProfileProps> = ({ }) => {
   return (
     <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
       <Block flex>
