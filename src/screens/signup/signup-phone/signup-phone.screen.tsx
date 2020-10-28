@@ -10,6 +10,8 @@ import {
   ButtonPrimary,
   LinkButton,
   Block,
+  Spinner,
+  DisplayError
 } from "../../../shared";
 
 import { Colors, FontNames, Layout } from "../../../constants";
@@ -26,12 +28,22 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
   const [phoneIndicative, setPhoneIndicative] = useState("+1");
   const [phoneNumber, setPhoneNumber] = useState("");
-  
+  const [modalVisible, setModalVisible] = useState(true);
+
   const getPhoneNumber = () => `${phoneIndicative}${phoneNumber}`;
-  const { status, data, error, isFetching, refetch } = useRequestVerificationPhoneCode(getPhoneNumber());
+  const request = useRequestVerificationPhoneCode(getPhoneNumber());
+  const { status, data, error, isLoading, isError, isFetching, refetch } = request;
 
   return (
     <Block safe flex space="evenly" center>
+      <Spinner
+        visible={isLoading || status === 'loading'}
+        textContent={"Loading..."}
+        animation="fade"
+      />
+      {(isError || status === 'error') && (
+        <DisplayError visible={modalVisible} title={error.response.data.error} onVisibleChange={(visible: any) => setModalVisible(visible)} />
+      )}
       <SeekQLogo />
 
       <Text h1 center fontFamily={FontNames.CamptonSemiBold}>

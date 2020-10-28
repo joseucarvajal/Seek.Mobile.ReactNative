@@ -23,6 +23,8 @@ import Chips from './components/chips/chips.comp';
 import Swiper from './components/swiper/swiper.comp';
 import Background from './components/background/background.comp';
 import Spinner from './components/spinner/spinner.comp';
+import { IError } from './types';
+import DisplayError from './components/modal/display-error/display-error.comp';
 
 export {
   Button,
@@ -49,5 +51,7 @@ export {
   Chips,
   Swiper,
   Background,
-  Spinner
+  Spinner,
+  IError,
+  DisplayError
 }

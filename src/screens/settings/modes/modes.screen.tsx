@@ -2,7 +2,7 @@ import React from 'react';
 import ModesItems from '../../../constants/Modes';
 import { Block, Menu } from '../../../shared';
 
-const modes: React.FC = () => {
+const Modes: React.FC = () => {
   return (
     <Block flex center>
       <Menu items={ModesItems} />
@@ -10,4 +10,4 @@ const modes: React.FC = () => {
   );
 };
 
-export default modes;
+export default Modes;

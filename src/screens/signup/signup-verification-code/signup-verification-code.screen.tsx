@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
@@ -26,9 +26,15 @@ export interface IVerificationCodeProps {}
 
 const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
   const navigation = useNavigation();
-
+  
   const route = useRoute<SignUPVerificationCodeRouteProp>();
   const { phoneNumberOrEmail } = route.params;
+  const [phoneNumber, setPhoneNumber] = useState(phoneNumberOrEmail.split(''));
+
+  const handleChangeDigit = (digit: any, index: any) => {
+    phoneNumber[index] = digit;
+    setPhoneNumber(phoneNumber);
+  };
 
   return (
     <Block safe flex space="evenly" center>
@@ -47,7 +53,24 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
         </Text>
       </View>
 
-      <View style={styles.emailForm}>
+      <View style={styles.phoneForm}>
+        {phoneNumber.map((digit, index) =>
+          <Input
+            key={index}
+            value={digit}
+            onChangeText={(text: string) => handleChangeDigit(text, index)}
+            color="primary"
+            style={styles.phoneIndicative}
+            borderless
+            textInputStyle={{
+              fontFamily: FontNames.CamptonSemiBold,
+              color: Colors.fontNormal,
+            }}
+          />
+        )}
+      </View>
+
+      {/* <View style={styles.emailForm}>
         <View style={styles.emailNumberView}>
           <Text fontSize={12} color={Colors.fontSoft1}>
             Enter Email
@@ -62,7 +85,7 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
             }}
           />
         </View>
-      </View>
+      </View> */}
 
       <ButtonPrimary
         onPress={() => {
@@ -108,6 +131,22 @@ const styles = StyleSheet.create({
     top: -7,
     width: "100%",
     backgroundColor: Colors.transparent,
+  },
+  phoneForm: {
+    width: Layout.window.width,
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: Layout.base,
+  },
+  phoneIndicativeView: {
+    display: "flex",
+    textAlign: "center",
+    alignContent: "center"
+  },
+  phoneIndicative: {
+    width: Layout.window.width * 0.10,
   },
 });
 
