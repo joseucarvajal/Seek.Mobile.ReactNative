@@ -38,6 +38,7 @@ export default {
   noTouchableText: '#4f4f4f99',
   noTouchableIcon: '#95959599',
   input: '#F5F5F6',
+  overlayColor:'rgba(0, 0, 0, 0.25)',
   light: {
     text: '#000',
     background: '#fff',

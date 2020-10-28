@@ -78,10 +78,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <ModalBackground visible={modalVisibleBackground} onVisibleChange={(visible: any) => setModalVisibleBackground(visible)} />
         <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)} />
 
-        <Spinner
-          visible={spinnerVisible}
-          imageIndicator={Images.SeekQLoading}
-        />
+        <Spinner visible={spinnerVisible}/>
 
         <Text />
         <Calendar />
