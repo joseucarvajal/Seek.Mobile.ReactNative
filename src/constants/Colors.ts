@@ -39,6 +39,9 @@ export default {
   noTouchableIcon: '#95959599',
   input: '#F5F5F6',
   overlayColor:'rgba(0, 0, 0, 0.25)',
+  google: '#CF4332',
+  facebook: '#4267B2',
+  apple: '#252525',
   light: {
     text: '#000',
     background: '#fff',
