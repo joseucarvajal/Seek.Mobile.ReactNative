@@ -14,7 +14,7 @@ export interface IImgProps {
 
 export type SizeType = "avatar" | "logo" | "small" | "full" | "background";
 
-const Img: React.FC<IImgProps> = ({ 
+const Img: React.FC<IImgProps> = ({
   width,
   style,
   source,
@@ -23,10 +23,10 @@ const Img: React.FC<IImgProps> = ({
   shadow,
   resizeMode
 }) => {
-  
+
   const ViewStyles = [
     size === 'avatar' && styles.avatarStyle,
-    size === 'logo' && [styles.logoStyle, {flex: 0.1*(width/30)}],
+    size === 'logo' && [styles.logoStyle, { flex: 0.1 * (width / 30) }],
     size === 'small' && styles.smallStyle,
     size === 'background' && styles.FullStyle,
     size === 'full' && styles.FullStyle,
@@ -36,13 +36,13 @@ const Img: React.FC<IImgProps> = ({
 
   const ImageStyles = [
     size === 'avatar' && styles.avatarStyle,
-    size === 'logo' && {width:`${width}%`, height:'100%'},
+    size === 'logo' && { width: `${width}%`, height: '100%' },
     size === 'small' && styles.smallStyle,
     size === 'background' && styles.FullStyle,
     size === 'full' && styles.FullStyle
   ];
 
-  return(
+  return (
     <View style={[ViewStyles, shadow && styles.shadow]}>
       <TouchableWithoutFeedback onPress={onPress}>
         <Image
@@ -83,8 +83,8 @@ const styles = StyleSheet.create({
   },
   logoStyle: {
     width: '100%',
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   avatarStyle: {
     borderRadius: 50,

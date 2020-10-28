@@ -3,6 +3,7 @@ import { StyleSheet, Modal, ActivityIndicator } from 'react-native';
 import { Colors } from '../../../constants';
 import Text from '../text/text.comp'
 import Block from '../block/block.comp'
+import Image from '../image/image.comp'
 
 export type AnimationType = 'none' | 'slide' | 'fade'
 export type SizeType = 'small' | 'large'
@@ -18,6 +19,7 @@ interface ISpinnerProps {
   visible?: boolean,
   indicatorStyle?: object,
   customIndicator?: any,
+  imageIndicator?: string,
   children?: any,
   spinnerKey?: string
 }
@@ -25,6 +27,7 @@ interface ISpinnerProps {
 const Spinner: React.FC<ISpinnerProps> = ({
   textStyle,
   indicatorStyle,
+  imageIndicator,
   customIndicator,
   children,
   spinnerKey,
@@ -46,15 +49,20 @@ const Spinner: React.FC<ISpinnerProps> = ({
   const renderDefaultContent = () => {
     return (
       <Block style={styles.background}>
-        {customIndicator ? (
-          customIndicator
-        ) : (
-            <ActivityIndicator
-              color={color}
-              size={size}
-              style={[styles.activityIndicator, indicatorStyle ? indicatorStyle : styles.indicatorStyle]}
-            />
-          )}
+        {customIndicator ? (customIndicator)
+          : imageIndicator ?
+            (
+              <Block flex center middle style={{ backgroundColor: 'red' }}>
+                <Image size='full' source={imageIndicator} style={[indicatorStyle ? indicatorStyle : styles.indicatorImageStyle]} />
+              </Block>
+            )
+            : (
+              <ActivityIndicator
+                color={color}
+                size={size}
+                style={[styles.activityIndicator, indicatorStyle ? indicatorStyle : styles.indicatorStyle]}
+              />
+            )}
         <Block style={[styles.textContainer]}>
           <Text style={[styles.textContent, textStyle ? textStyle : styles.defaultTextStyle]}>
             {textContent}
@@ -138,5 +146,15 @@ const styles = StyleSheet.create({
   defaultTextStyle: {
     color: '#FFF',
     marginBottom: 60
+  },
+  indicatorImageStyle: {
+    flex: 1,
+    width: 170,
+    height: 170,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    position: 'absolute',
+    borderRadius: 14,
+    alignItems: 'center'
   }
 });

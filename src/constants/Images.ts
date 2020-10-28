@@ -6,6 +6,7 @@ const Location_1 = require('../../assets/images/location_1.png');
 const Location_2 = require('../../assets/images/location_2.png');
 const Background_1 = require('../../assets/images/background_1.png');
 const Background_2 = require('../../assets/images/background_2.png');
+const SeekQLoading = require('../../assets/images/SeekQ_loading-1.gif');
 
 export default {
   Logo,
@@ -14,5 +15,6 @@ export default {
   Location_1,
   Location_2,
   Background_1,
-  Background_2
+  Background_2,
+  SeekQLoading
 }

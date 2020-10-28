@@ -80,8 +80,7 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
 
         <Spinner
           visible={spinnerVisible}
-          textContent={"Loading..."}
-          animation="fade"
+          imageIndicator={Images.SeekQLoading}
         />
 
         <Text />
