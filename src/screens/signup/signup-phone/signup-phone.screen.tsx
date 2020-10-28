@@ -37,8 +37,8 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   return (
     <Block safe flex space="evenly" center>
 
-      <Spinner visible={isLoading} textContent={"Loading..."} animation="fade" />
-      <DisplayError visible={error} message={error?.response.data.Title} />
+      <Spinner visible={isLoading} />
+      <DisplayError errorResponse={error} />
 
       <SeekQLogo />
 

@@ -5,14 +5,17 @@ import Block from "../../block/block.comp";
 import Text from "../../text/text.comp";
 import Modal from "../../modal/modal.comp";
 import LinkButton from "../../link-button/link-button.comp";
+import { IErrorResponse } from "../../..";
 
-interface IDisplayErrorProps {
-  message: string;
-  visible: any;
+export interface IDisplayErrorProps {
+  errorResponse?:IErrorResponse | null;
+  message?: string;
+  visible?: any;
   onClose?: () => void;
 }
 
 const DisplayError: React.FC<IDisplayErrorProps> = ({
+  errorResponse,
   message,
   visible,
   onClose,
@@ -20,14 +23,18 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
   const [showModal, setShowModal] = useState(visible);
 
   useEffect(() => {
-    setShowModal(visible ? true : false);
-  }, [visible]);
+    const displayModal = visible || errorResponse ? true : false;
+    console.log({displayModal});
+    setShowModal(displayModal);
+  }, [visible, errorResponse]);
 
   return (
     <Modal visible={showModal}>
       <Block center middle>
         <Text h3 color={Colors.black}>
-          {message}
+          { errorResponse ?
+            errorResponse?.response?.data?.Title 
+            : message ? message : 'There was an error'}
         </Text>
         <Block safe center>
           <LinkButton
