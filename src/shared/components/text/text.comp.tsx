@@ -33,6 +33,9 @@ export interface ITextProp {
   boldItalic?: any;
   numberOfLines?: any;
   fontWeight?: any;
+  uppercase?: boolean;
+  capitalize?: boolean;
+  lowercase?: boolean;
   onPress?: any;
 }
 
@@ -65,6 +68,9 @@ const Typography: React.FC<ITextProp> = (
     boldItalic,
     numberOfLines,
     fontWeight = 'normal',
+    uppercase,
+    capitalize,
+    lowercase,
     onPress
   },
   props
@@ -102,6 +108,9 @@ const Typography: React.FC<ITextProp> = (
         letterSpacing && { letterSpacing },
         center && { textAlign: "center" },
         underline && { textDecorationLine: "underline" },
+        uppercase && { textTransform: "uppercase" },
+        capitalize && { textTransform: "capitalize" },
+        lowercase && { textTransform: "lowercase" },
         style && style,
       ]}
       onPress={onPress}
