@@ -1,6 +1,6 @@
-import useRequestVerificationPhoneCode from "./useRequestVerificationPhoneCode";
+import useRequestVerificationPhoneEmailCode from "./useRequestVerificationPhoneEmailCode";
 
 export {    
     //Hooks
-    useRequestVerificationPhoneCode,
+    useRequestVerificationPhoneEmailCode,
 };

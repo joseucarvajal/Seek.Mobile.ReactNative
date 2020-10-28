@@ -24,7 +24,10 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
 
   useEffect(() => {
     const displayModal = visible || errorResponse ? true : false;
+<<<<<<< HEAD
     console.log({ displayModal });
+=======
+>>>>>>> bfc2dcf911792262ef4187e0959bda5849f97feb
     setShowModal(displayModal);
   }, [visible, errorResponse]);
 
@@ -40,7 +43,6 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
           <LinkButton
             underline
             onPress={() => {
-              console.log("visible to false");
               setShowModal(false);
               if (onClose && typeof onClose === "function") {
                 onClose();
