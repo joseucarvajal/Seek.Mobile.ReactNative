@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, ViewProps } from "react-native";
+import { View, TextInput, StyleSheet, TouchableOpacity, ViewProps } from "react-native";
 import { Colors, Layout } from '../../../constants';
 import Icon from '../icons/icon.comp';
+import Text from '../text/text.comp'
 
 export interface IInputProps extends ViewProps {
   textInputStyle?: any;
