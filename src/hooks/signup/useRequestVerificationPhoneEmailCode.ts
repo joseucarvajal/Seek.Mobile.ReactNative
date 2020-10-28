@@ -14,7 +14,7 @@ const getPhoneVerificationCode = async (phoneNumberOrEmail: string) => {
   return data;
 };
 
-export default function useRequestVerificationPhoneCode(phoneNumberOrEmail: string) {
+export default function useRequestVerificationPhoneEmailCode(phoneNumberOrEmail: string) {
   const navigation = useNavigation();
 
   return useQuery<{}, IErrorResponse>(["codeverification", "Validate", phoneNumberOrEmail], getPhoneVerificationCode, {

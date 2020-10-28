@@ -17,7 +17,7 @@ import {
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo } from "../../../components/signup/";
-import { useRequestVerificationPhoneCode } from "../../../hooks/signup";
+import { useRequestVerificationPhoneEmailCode } from "../../../hooks/signup";
 
 export interface ISignUpPhoneProps {}
 
@@ -32,7 +32,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
     error,
     isLoading,
     refetch: getVerificationCode,
-  } = useRequestVerificationPhoneCode(getPhoneNumber());
+  } = useRequestVerificationPhoneEmailCode(getPhoneNumber());
 
   return (
     <Block safe flex space="evenly" center>
