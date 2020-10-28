@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Modal, ActivityIndicator } from 'react-native';
-import { Colors } from '../../../constants';
+import { Colors, Images } from '../../../constants';
 import Text from '../text/text.comp'
 import Block from '../block/block.comp'
 import Image from '../image/image.comp'
@@ -27,7 +27,7 @@ interface ISpinnerProps {
 const Spinner: React.FC<ISpinnerProps> = ({
   textStyle,
   indicatorStyle,
-  imageIndicator,
+  imageIndicator = Images.SeekQLoading,
   customIndicator,
   children,
   spinnerKey,
@@ -37,7 +37,7 @@ const Spinner: React.FC<ISpinnerProps> = ({
   animation = 'none',
   color = 'white',
   size = 'large',
-  overlayColor = 'rgba(0, 0, 0, 0.25)'
+  overlayColor = Colors.modal
 }) => {
 
   const [isVisible, setActive] = React.useState(visible);
