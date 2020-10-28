@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { Colors, Layout } from '../../../../constants';
-import { Block, Modal, Text, Button, IError } from '../../../index';
+import IError from '../../../types';
+import Block from '../../block/block.comp';
+import Text from '../../text/text.comp';
+import Modal from '../../modal/modal.comp';
+import Button from '../../button/button.comp';
 
 const DisplayError: React.FC<IError> = ({
   visible,
@@ -20,7 +24,7 @@ const DisplayError: React.FC<IError> = ({
       <Block center middle>
         <Text h3 color={Colors.black}>{title}</Text>
         <Block safe center>
-        <Button
+          <Button
             type='text-link'
             style={{ ...styles.openButton, top: Layout.base * 3 }}
             onPress={() => setVisible()}

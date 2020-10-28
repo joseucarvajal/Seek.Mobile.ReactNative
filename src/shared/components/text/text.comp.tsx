@@ -19,6 +19,7 @@ export interface ITextProp {
   fontSize?: any;
   color?: any;
   bold?: any;
+  medium?: any;
   italic?: any;
   center?: any;
   underline?: any;
@@ -52,6 +53,7 @@ const Typography: React.FC<ITextProp> = (
     fontSize: size,
     color,
     bold,
+    medium,
     italic,
     center,
     underline,
@@ -98,6 +100,7 @@ const Typography: React.FC<ITextProp> = (
         color && { color },
         italic && { fontFamily: FontNames.CamptonLightItalic },
         bold && { fontFamily: FontNames.CamptonBold },
+        medium && { fontFamily: FontNames.CamptonMedium },
         boldItalic && { fontFamily: FontNames.CamptonBoldItalic },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },

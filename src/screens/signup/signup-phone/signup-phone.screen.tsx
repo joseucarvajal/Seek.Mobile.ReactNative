@@ -46,7 +46,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
       )}
       <SeekQLogo />
 
-      <Text h1 center fontFamily={FontNames.CamptonSemiBold}>
+      <Text h1 center medium>
         Wellcome back!
       </Text>
 
