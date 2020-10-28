@@ -5,8 +5,8 @@ import { IErrorResponse } from "../../shared";
 
 const getPhoneVerificationCode = async (phoneNumberOrEmail: string) => {
 
-  const url = `http://192.168.0.101:32700/api/v1/CodeVerification/send/${phoneNumberOrEmail}`;
-  //const url = `https://run.mocky.io/v3/1c9d757f-34b2-48a0-9e2f-4bf6cee16537/${phoneNumber}`;    
+  //const url = `http://192.168.0.101:32700/api/v1/CodeVerification/send/${phoneNumberOrEmail}`;
+  const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d`;    
 
   console.log({ url });
 

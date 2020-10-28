@@ -24,7 +24,6 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
 
   useEffect(() => {
     const displayModal = visible || errorResponse ? true : false;
-    console.log({displayModal});
     setShowModal(displayModal);
   }, [visible, errorResponse]);
 
@@ -39,7 +38,6 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
         <Block safe center>
           <LinkButton
             onPress={() => {
-              console.log("visible to false");
               setShowModal(false);
               if (onClose && typeof onClose === "function") {
                 onClose();
