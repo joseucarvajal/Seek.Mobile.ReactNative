@@ -1,5 +1,12 @@
-export default interface IError {
-    title?: any,
-    visible?: boolean,
-    onVisibleChange?: any
+export interface IError {
+    Title?: any,
 };
+
+
+export interface IErrorData {
+    data: IError;
+}
+
+export interface IErrorResponse {
+    response: IErrorData;
+}

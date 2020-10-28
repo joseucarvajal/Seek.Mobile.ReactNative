@@ -11,39 +11,35 @@ import {
   LinkButton,
   Block,
   Spinner,
-  DisplayError
+  DisplayError,
 } from "../../../shared";
 
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo } from "../../../components/signup/";
-import  { 
-  useRequestVerificationPhoneCode 
-} from "../../../hooks/signup";
+import { useRequestVerificationPhoneCode } from "../../../hooks/signup";
 
 export interface ISignUpPhoneProps {}
-
 
 const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
   const [phoneIndicative, setPhoneIndicative] = useState("+1");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [modalVisible, setModalVisible] = useState(true);
 
   const getPhoneNumber = () => `${phoneIndicative}${phoneNumber}`;
-  const request = useRequestVerificationPhoneCode(getPhoneNumber());
-  const { status, data, error, isLoading, isError, isFetching, refetch } = request;
+
+  const {
+    error,
+    isLoading,
+    refetch: getVerificationCode,
+  } = useRequestVerificationPhoneCode(getPhoneNumber());
 
   return (
     <Block safe flex space="evenly" center>
-      <Spinner
-        visible={isLoading || status === 'loading'}
-        textContent={"Loading..."}
-        animation="fade"
-      />
-      {(isError || status === 'error') && (
-        <DisplayError visible={modalVisible} title={error.response.data.error} onVisibleChange={(visible: any) => setModalVisible(visible)} />
-      )}
+
+      <Spinner visible={isLoading} textContent={"Loading..."} animation="fade" />
+      <DisplayError visible={error} message={error?.response.data.Title} />
+
       <SeekQLogo />
 
       <Text h1 center medium>
@@ -63,8 +59,8 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           <Select
             borderless
             defaultValue={phoneIndicative}
-            onChangeItem = {(item: PickerItemProps)=>{
-              setPhoneIndicative(item.value);              
+            onChangeItem={(item: PickerItemProps) => {
+              setPhoneIndicative(item.value);
             }}
             items={[
               { label: "+1", value: "+1" },
@@ -91,8 +87,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
       <ButtonPrimary
         onPress={() => {
-          console.log("Click on continue");
-          refetch();
+          getVerificationCode();
         }}
       >
         CONTINUE
@@ -127,9 +122,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: Layout.base,
   },
-  phoneIndicativeView: {
-    
-  },
+  phoneIndicativeView: {},
   phoneIndicative: {
     width: Layout.window.width * 0.22,
   },

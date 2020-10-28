@@ -1,47 +1,59 @@
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-import { Colors, Layout } from '../../../../constants';
-import IError from '../../../types';
-import Block from '../../block/block.comp';
-import Text from '../../text/text.comp';
-import Modal from '../../modal/modal.comp';
-import Button from '../../button/button.comp';
+import React, { useState, useEffect } from "react";
+import { StyleSheet } from "react-native";
+import { Colors, Layout } from "../../../../constants";
+import Block from "../../block/block.comp";
+import Text from "../../text/text.comp";
+import Modal from "../../modal/modal.comp";
+import Button from "../../button/button.comp";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { LinkButton } from "../../..";
 
-const DisplayError: React.FC<IError> = ({
+interface IDisplayErrorProps {
+  message: string;
+  visible: any;
+  onClose?: () => void;
+}
+
+const DisplayError: React.FC<IDisplayErrorProps> = ({
+  message,
   visible,
-  title = 'Error',
-  onVisibleChange
+  onClose,
 }) => {
-  const [modalVisible, setModalVisible] = useState(visible);
+  const [showModal, setShowModal] = useState(visible);
 
-  const setVisible = () => {
-    setModalVisible(!visible)
-    onVisibleChange && onVisibleChange(!modalVisible)
-  }
+  useEffect(() => {
+    setShowModal(visible ? true : false);
+  }, [visible]);
 
   return (
-    <Modal visible={visible}>
+    <Modal visible={showModal}>
       <Block center middle>
-        <Text h3 color={Colors.black}>{title}</Text>
+        <Text h3 color={Colors.black}>
+          {message}
+        </Text>
         <Block safe center>
-          <Button
-            type='text-link'
-            style={{ ...styles.openButton, top: Layout.base * 3 }}
-            onPress={() => setVisible()}
+          <LinkButton
+            onPress={() => {
+              console.log("visible to false");
+              setShowModal(false);
+              if (onClose && typeof onClose === "function") {
+                onClose();
+              }
+            }}
           >
-            <Text h3 bold center color={Colors.primary}>Close</Text>
-          </Button>
+            Close
+          </LinkButton>
         </Block>
       </Block>
     </Modal>
   );
-}
+};
 
 const styles = StyleSheet.create({
   openButton: {
     backgroundColor: Colors.transparent,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
 });
 
