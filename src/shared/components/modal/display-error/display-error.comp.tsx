@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import { Colors, Layout } from "../../../../constants";
+import { Colors } from "../../../../constants";
 import Block from "../../block/block.comp";
 import Text from "../../text/text.comp";
 import Modal from "../../modal/modal.comp";
-import Button from "../../button/button.comp";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { LinkButton } from "../../..";
+import LinkButton from "../../link-button/link-button.comp";
 
 interface IDisplayErrorProps {
   message: string;
