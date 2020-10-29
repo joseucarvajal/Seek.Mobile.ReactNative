@@ -57,10 +57,6 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
       return;
     }
 
-    if(digit && digit.length != 1){
-      return;
-    }
-
     if(index < codeVerificationCollection.length - 1){
       if(digit){
         inputRefs[index + 1].focus();
@@ -104,6 +100,8 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
             onRef={(inputRef: any) => {
               inputRefs[index] = inputRef;
             }}
+            maxLength={1}
+            keyboardType='phone-pad'
             key={index}
             value={digit}
             onChangeText={(text: string) => handleChangeDigit(text, index)}
