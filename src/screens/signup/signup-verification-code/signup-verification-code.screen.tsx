@@ -53,6 +53,10 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
 
   const handleChangeDigit = (digit: string, index: any) => {
 
+    if(isNaN(+digit)){
+      return;
+    }
+
     if(digit && digit.length != 1){
       return;
     }
