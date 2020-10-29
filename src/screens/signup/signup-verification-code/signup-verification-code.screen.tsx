@@ -10,12 +10,16 @@ import {
   ButtonPrimary,
   LinkButton,
   Block,
+  Spinner,
+  DisplayError,
 } from "../../../shared";
 
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo } from "../../../components/signup/";
 import { RootStackParamList } from "../../../types";
+
+import { useCheckVerificationCode } from "../../../hooks/signup";
 
 type SignUPVerificationCodeRouteProp = RouteProp<
   RootStackParamList,
@@ -25,22 +29,47 @@ type SignUPVerificationCodeRouteProp = RouteProp<
 export interface IVerificationCodeProps {}
 
 const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
-  const navigation = useNavigation();
-  
+  //6 digits
+  const [codeVerificationCollection, setCodeVerificationCollection] = useState([
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+  ]);
+
   const route = useRoute<SignUPVerificationCodeRouteProp>();
   const { phoneNumberOrEmail } = route.params;
-  const [phoneNumber, setPhoneNumber] = useState(phoneNumberOrEmail.split(''));
+  
+  const {
+    error,
+    isLoading,
+    refetch: checkVerificationCode,
+  } = useCheckVerificationCode({
+    phoneOrEmail: phoneNumberOrEmail,
+    codeToVerify: codeVerificationCollection.join("")
+  });
 
   const handleChangeDigit = (digit: any, index: any) => {
-    phoneNumber[index] = digit;
-    setPhoneNumber(phoneNumber);
+    setCodeVerificationCollection(
+      codeVerificationCollection.map((val: String, i: Number) =>
+        i !== index ? val : digit
+      )
+    );
   };
+
+  const navigation = useNavigation();
 
   return (
     <Block safe flex space="evenly" center>
+      
+      <Spinner visible={isLoading} />
+      <DisplayError errorResponse={error} />
+
       <SeekQLogo />
 
-      <Text h1 center fontFamily={FontNames.CamptonSemiBold}>
+      <Text h1 center medium>
         Enter verification code
       </Text>
 
@@ -54,7 +83,7 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
       </View>
 
       <View style={styles.phoneForm}>
-        {phoneNumber.map((digit, index) =>
+        {codeVerificationCollection.map((digit, index) => (
           <Input
             key={index}
             value={digit}
@@ -67,29 +96,12 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
               color: Colors.fontNormal,
             }}
           />
-        )}
+        ))}
       </View>
-
-      {/* <View style={styles.emailForm}>
-        <View style={styles.emailNumberView}>
-          <Text fontSize={12} color={Colors.fontSoft1}>
-            Enter Email
-          </Text>
-          <Input
-            color="primary"
-            style={styles.codeDigit}
-            borderless
-            textInputStyle={{
-              fontFamily: FontNames.CamptonSemiBold,
-              color: Colors.fontNormal,
-            }}
-          />
-        </View>
-      </View> */}
 
       <ButtonPrimary
         onPress={() => {
-          console.log("continue");
+          checkVerificationCode();
         }}
       >
         CONTINUE
@@ -143,10 +155,10 @@ const styles = StyleSheet.create({
   phoneIndicativeView: {
     display: "flex",
     textAlign: "center",
-    alignContent: "center"
+    alignContent: "center",
   },
   phoneIndicative: {
-    width: Layout.window.width * 0.10,
+    width: Layout.window.width * 0.1,
   },
 });
 

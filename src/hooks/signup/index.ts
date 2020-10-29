@@ -1,6 +1,9 @@
-import useRequestVerificationPhoneEmailCode from "./useRequestVerificationPhoneEmailCode";
+import useSendVerificationCode from "./useSendVerificationCode";
+import { ICheckVerificationCodeParams, useCheckVerificationCode } from "./useCheckVerificationCode";
 
 export {    
-    //Hooks
-    useRequestVerificationPhoneEmailCode,
+    useSendVerificationCode,
+
+    ICheckVerificationCodeParams,
+    useCheckVerificationCode,
 };

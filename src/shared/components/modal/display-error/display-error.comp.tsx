@@ -24,17 +24,22 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
 
   useEffect(() => {
     const displayModal = visible || errorResponse ? true : false;
-    console.log({ displayModal });
     setShowModal(displayModal);
   }, [visible, errorResponse]);
 
+  let finalMessage = "There was an error. Please try again later";
+  if(errorResponse?.response?.data?.Title){
+    finalMessage = errorResponse?.response?.data?.Title;
+  }
+  if(message){
+    finalMessage = message;
+  }
+
   return (
     <Modal visible={showModal}>
-      <Block center middle space='between'>
+      <Block center middle space="between">
         <Text h3 color={Colors.black}>
-          {errorResponse ?
-            errorResponse?.response?.data?.Title
-            : message ? message : 'There was an error'}
+          {finalMessage}
         </Text>
         <Block style={{ top: Layout.base }}>
           <LinkButton
