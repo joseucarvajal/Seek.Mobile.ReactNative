@@ -28,11 +28,11 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
   }, [visible, errorResponse]);
 
   let finalMessage = "There was an error. Please try again later";
-  if(errorResponse?.response?.data?.Title){
-    finalMessage = errorResponse?.response?.data?.Title;
-  }
-  if(message){
+  if (message) {
     finalMessage = message;
+  }
+  if (errorResponse?.response?.data?.Title) {
+    finalMessage = errorResponse?.response?.data?.Title;
   }
 
   return (
