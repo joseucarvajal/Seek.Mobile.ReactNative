@@ -1,11 +1,10 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 
 import {
   Text,
-  Select,
   Input,
   ButtonPrimary,
   LinkButton,
@@ -72,7 +71,7 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
 
   const navigation = useNavigation();
 
-  const inputRefs = Array(6);
+  const inputRefs = Array(codeVerificationCollection.length);
 
   return (
     <Block safe flex space="evenly" center>
@@ -102,6 +101,7 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
             }}
             maxLength={1}
             keyboardType='phone-pad'
+            selectTextOnFocus          
             key={index}
             value={digit}
             onChangeText={(text: string) => handleChangeDigit(text, index)}
