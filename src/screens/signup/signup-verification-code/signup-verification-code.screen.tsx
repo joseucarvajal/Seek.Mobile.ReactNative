@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
@@ -41,19 +41,30 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
 
   const route = useRoute<SignUPVerificationCodeRouteProp>();
   const { phoneNumberOrEmail } = route.params;
-  
+
   const {
     error,
     isLoading,
     refetch: checkVerificationCode,
   } = useCheckVerificationCode({
     phoneOrEmail: phoneNumberOrEmail,
-    codeToVerify: codeVerificationCollection.join("")
+    codeToVerify: codeVerificationCollection.join(""),
   });
 
-  const handleChangeDigit = (digit: any, index: any) => {
+  const handleChangeDigit = (digit: string, index: any) => {
+
+    if(digit && digit.length != 1){
+      return;
+    }
+
+    if(index < codeVerificationCollection.length - 1){
+      if(digit){
+        inputRefs[index + 1].focus();
+      }
+    }
+
     setCodeVerificationCollection(
-      codeVerificationCollection.map((val: String, i: Number) =>
+      codeVerificationCollection.map((val: string, i: Number) =>
         i !== index ? val : digit
       )
     );
@@ -61,9 +72,10 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
 
   const navigation = useNavigation();
 
+  const inputRefs = Array(6);
+
   return (
     <Block safe flex space="evenly" center>
-      
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
@@ -85,6 +97,9 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
       <View style={styles.phoneForm}>
         {codeVerificationCollection.map((digit, index) => (
           <Input
+            onRef={(inputRef: any) => {
+              inputRefs[index] = inputRef;
+            }}
             key={index}
             value={digit}
             onChangeText={(text: string) => handleChangeDigit(text, index)}
