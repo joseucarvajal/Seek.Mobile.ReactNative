@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height: Layout.select_height,
   },
   smallDropdown: {
-    width: Layout.window.width * 0.2,
+    width: Layout.window.width * 0.22,
   },
   shadow: {
     shadowColor: Colors.black,
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     width: Layout.window.width - Layout.base * 2,
     backgroundColor: Colors.transparent,
     height: 50,
-    borderRadius: Layout.button_radius,
     borderWidth: 0,
     borderBottomWidth: Layout.select_border_width,
     borderBottomColor: Colors.primary,

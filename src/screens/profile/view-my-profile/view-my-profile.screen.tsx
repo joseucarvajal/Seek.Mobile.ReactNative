@@ -112,12 +112,13 @@ const MyProfile: React.FC<IMyProfileProps> = ({
           )}
         </Swiper>
       </Block>
-      <Block flex>
+      <Block flex style={{ marginTop: -Layout.base * 2 }}>
         <Card
           color={Colors.transparent}
           borderless
           topLeftBorder
           cardContent={renderMyProfileContent()}
+          style={{ backgroundColor: Colors.white }}
         />
       </Block>
     </ScrollView>

@@ -126,11 +126,7 @@ const Input: React.FC<IInputProps> = ({
   const helpContent = help && <Text style={[styles.helpText, helpStyles || {}]}>{help}</Text>;
 
   return (
-    <View
-      style={{
-        marginVertical: Layout.base / 2,
-        alignContent: 'center',
-      }}>
+    <View>
       {labelContent}
       {topHelp && !bottomHelp && helpContent}
       <View style={inputViewStyles}>
