@@ -20,6 +20,7 @@ import Calendar from './components/calendar/calendar.comp';
 import Video from './components/video/video.comp';
 import Modal from './components/modal/modal.comp';
 import Chips from './components/chips/chips.comp';
+import Chip from './components/chips/chip.comp';
 import Swiper from './components/swiper/swiper.comp';
 import Background from './components/background/background.comp';
 import Spinner from './components/spinner/spinner.comp';
@@ -49,6 +50,7 @@ export {
   Video,
   Modal,
   Chips,
+  Chip,
   Swiper,
   Background,
   Spinner,

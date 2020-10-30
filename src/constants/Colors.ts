@@ -24,7 +24,7 @@ export default {
   fontSoft: '#4F4F4F',
   fontSoft1:'#979797',
   border: '#C4C4C4',
-  transparent: 'transparent',
+  transparent: 'rgba(255,255,255,0)',
   header: '#F6F6F6',
   block: '#808080',
   tabs: '#E5E6F2',
@@ -42,6 +42,15 @@ export default {
   google: '#CF4332',
   facebook: '#4267B2',
   apple: '#252525',
+  iconProfile: '#FF4814',
+  chipPrimary: {
+    active: '#5FE9FF',
+    inactive: '#8FF0FF'
+  },
+  chipSecondary: {
+    active: '#FFB094',
+    inactive: '#FFC9B6'
+  },
   light: {
     text: '#000',
     background: '#fff',

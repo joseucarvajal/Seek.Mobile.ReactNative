@@ -1,7 +1,7 @@
 import React from "react";
-import { Colors, Images, Layout } from "../../../constants";
-import { Text, Block, Button } from '../../../shared';
-import Chip from "../../../shared/components/chips/chip.comp";
+import { Layout } from "../../../constants";
+import { Text, Block } from '../../../shared';
+import { Chip } from "../../../shared";
 
 export interface ISetIntetestProps {
 
@@ -11,7 +11,7 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
 
 }) => {
 
-  const chipsList = interests.map((item: any, index: any) => (
+  const chipsList = interests.map((item: any) => (
     <Block key={item.id}>
       <Chip
         key={item.id}

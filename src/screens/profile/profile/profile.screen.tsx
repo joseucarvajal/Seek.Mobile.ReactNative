@@ -1,7 +1,7 @@
 import React from "react";
 import { Steper } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
-import { Button, Text, Block, Swiper } from '../../../shared';
+import { Block, Swiper, ButtonPrimary } from '../../../shared';
 import UploadPhoto from '../upload-photo/upload-photo.screen';
 import EnterInfo from '../enter-info/enter-info.screen';
 import EnterAdditionalInfo from '../enter-additional-info/enter-additional-info'
@@ -57,11 +57,9 @@ const Profile: React.FC<IProfileProps> = ({
       </Block>
       <Block flex>
         <MySwiper ref={scrollRef} />
-        <Block row bottom>
-          <Button type='gradient' shadow onPress={() => nextStep()}>
-            <Text h2 bold color={Colors.white}>{buttonText}</Text>
-          </Button>
-        </Block>
+        <ButtonPrimary onPress={() => { console.log("continue"); }}>
+          {buttonText}
+        </ButtonPrimary>
       </Block>
     </Block>
   );

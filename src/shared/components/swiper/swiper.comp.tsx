@@ -20,7 +20,9 @@ export interface IProfileProps {
   autoplayLoop?: any
   autoplayInvertDirection?: any
   ref?: any
-  style?: ViewStyle
+  style?: ViewStyle,
+  height?: number,
+  width?: number
 }
 
 const Swiper: React.FC<IProfileProps> = ({
@@ -39,7 +41,9 @@ const Swiper: React.FC<IProfileProps> = ({
   autoplayLoop,
   autoplayInvertDirection,
   ref,
-  style
+  style,
+  height = Layout.window.height,
+  width = Layout.window.width
 }) => {
 
   let _data = Array.isArray(children) ? children : [children]
@@ -192,7 +196,7 @@ const Swiper: React.FC<IProfileProps> = ({
         onMomentumScrollEnd={_onMomentumScrollEnd}
         viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100, waitForInteraction: true }}
         onViewableItemsChanged={_onViewableItemsChanged.current}
-        style={[{ width: Layout.window.width, height: Layout.window.height }, style]}
+        style={[{ width: width, height: height }, style]}
       />
       {showPaginationBottom && renderDots({ bottom: 0 })}
       {showPaginationTop && renderDots({ top: 30 } )}

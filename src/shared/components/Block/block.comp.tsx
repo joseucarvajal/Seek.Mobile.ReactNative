@@ -27,6 +27,9 @@ export interface IBlockProps {
   wrap?: any;
   absolute?: boolean;
   order?: number;
+  paddingTop?: number;
+  paddingLeft?: number;
+  box?: boolean;
 }
 
 export type SpaceType = "evenly" | "between" | "around";
@@ -54,6 +57,9 @@ const Block: React.FC<IBlockProps> = ({
   style,
   absolute,
   order,
+  paddingTop,
+  paddingLeft,
+  box,
   ...props
 }) => {
 
@@ -61,6 +67,7 @@ const Block: React.FC<IBlockProps> = ({
 
   const styleBlock = [
     styles.block,
+    box && styles.box,
     row && styles.row,
     flex && { flex: flex === true ? 1 : flex },
     center && styles.center,
@@ -77,6 +84,8 @@ const Block: React.FC<IBlockProps> = ({
     width && { width },
     shadowColor && { shadowColor },
     realPadding && { padding: realPadding } as ViewStyle,
+    paddingTop && { paddingTop },
+    paddingLeft && { paddingLeft },
     wrap && styles.wrap,
     absolute && { position: 'absolute' },
     order && { zIndex: order },
@@ -148,5 +157,12 @@ const styles = StyleSheet.create({
   },
   wrap: {
     flexWrap: 'wrap'
+  },
+  box: {
+    backgroundColor: 'transparent',
+    borderColor: 'white',
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOpacity: 1,
   }
 });

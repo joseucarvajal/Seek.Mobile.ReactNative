@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, ViewStyle } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 import { Layout, Colors, FontNames } from "../../../constants";
 
@@ -41,6 +41,7 @@ const Select: React.FC<ISelectProps> = ({
   return (
     <DropDownPicker
       items={items}
+      placeholder={''}
       defaultValue={defaultValue}
       containerStyle={containerStyle}
       style={styleDropDownPicker}

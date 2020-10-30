@@ -8,12 +8,18 @@ export interface IChipsProps {
   value: any;
   onPress?: any;
   style?: any;
+  activeColor?: any;
+  inactiveColor?: any;
+  textColor?: boolean
 }
 
 const Chip: React.FC<IChipsProps> = ({
   value,
   onPress,
-  style
+  style,
+  activeColor,
+  inactiveColor,
+  textColor
 }) => {
 
   const [active, setActive] = useState(false);
@@ -27,12 +33,12 @@ const Chip: React.FC<IChipsProps> = ({
 
   const styleChip = [
     styles.container,
-    active && { backgroundColor: Colors.active },
-    !active && { backgroundColor: Colors.tertiary }
+    active && { backgroundColor: activeColor ? activeColor : Colors.active },
+    !active && { backgroundColor: inactiveColor ? inactiveColor : Colors.tertiary }
   ]
 
   const styleTextChip = [
-    active && { color: Colors.white },
+    active && { color: textColor ? Colors.black : Colors.white },
     !active && { color: Colors.black }
   ]
 
