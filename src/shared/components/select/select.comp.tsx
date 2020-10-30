@@ -41,7 +41,8 @@ const Select: React.FC<ISelectProps> = ({
   return (
     <DropDownPicker
       items={items}
-      defaultValue={defaultValue}
+      placeholder=""
+      defaultValue={defaultValue ?? null}
       containerStyle={containerStyle}
       style={styleDropDownPicker}
       onChangeItem={onChangeItem}

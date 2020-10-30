@@ -86,8 +86,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                   onChange(item);
                 }}
                 items={indicativeItems}
-                style={styles.phoneIndicative}
-                defaultValue={indicativeItems[0].value}
+                style={styles.phoneIndicative}                
               />
             )}
             name="phoneIndicative"
