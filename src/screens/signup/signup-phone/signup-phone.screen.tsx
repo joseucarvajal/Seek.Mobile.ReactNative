@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, View, PickerItemProps } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
@@ -36,14 +36,11 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
     getVerificationCode();
   });
 
-  const getCompletePhoneNumber = () => {
-    return `${getValues().phoneIndicative?.value}${getValues().phoneNumber}`;
-  };
   const {
     error,
     isLoading,
     refetch: getVerificationCode,
-  } = useSendVerificationCode(getCompletePhoneNumber());
+  } = useSendVerificationCode(`${getValues().phoneIndicative?.value}${getValues().phoneNumber}`);
 
   const indicativeItems = [
     { label: "+1", value: "+1" },
@@ -57,7 +54,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
       <SeekQLogo />
 
-      <HeaderSection>
+      <HeaderSection headerText="Welcome">
         <Text center light p>
           By registering, you agree to Our terms of
         </Text>
@@ -86,7 +83,8 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                   onChange(item);
                 }}
                 items={indicativeItems}
-                style={styles.phoneIndicative}                
+                style={styles.phoneIndicative}
+                defaultValue={indicativeItems[0].value}
               />
             )}
             name="phoneIndicative"

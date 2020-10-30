@@ -15,7 +15,7 @@ import {
 
 import { Colors, FontNames, Layout } from "../../../constants";
 
-import { SeekQLogo } from "../../../components/signup/";
+import { SeekQLogo, HeaderSection } from "../../../components/signup/";
 import { RootStackParamList } from "../../../types";
 
 import { useCheckVerificationCode } from "../../../hooks/signup";
@@ -63,9 +63,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
     }
 
     setCodeVerificationCollection(
-      codeVerificationCollection.map((val, i) =>      
-        i !== index ? val : digit
-      )
+      codeVerificationCollection.map((val, i) => (i !== index ? val : digit))
     );
   };
 
@@ -76,18 +74,29 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
 
       <SeekQLogo />
 
-      <Text h1 center medium>
-        Enter verification code
-      </Text>
+      <HeaderSection headerText="Enter verification code">
+        <View>
+          <Text p center>
+            A verification code we send to
+          </Text>
+          <Text p center>
+            {phoneNumberOrEmail}
+          </Text>
 
-      <View>
-        <Text p center>
-          A verification code we send to
-        </Text>
-        <Text p center>
-          {phoneNumberOrEmail}
-        </Text>
-      </View>
+          <Text center style={{ marginTop: 20 }}>
+            <LinkButton center>{"< "}</LinkButton>
+            <LinkButton
+              underline
+              center
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
+              Edit
+            </LinkButton>
+          </Text>
+        </View>
+      </HeaderSection>
 
       <View style={styles.codeForm}>
         {codeVerificationCollection.map((digit, index) => (
@@ -114,27 +123,21 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
 
       <ButtonPrimary
         onPress={() => {
-          checkVerificationCode();
+          if (codeVerificationCollection.join("").length) {
+            checkVerificationCode();
+          }
         }}
       >
-        CONTINUE
+        VALIDATE
       </ButtonPrimary>
 
       <LinkButton
+        underline
         onPress={() => {
           navigation.navigate("SignUpPhone");
         }}
       >
-        Continue using phone Instead
-      </LinkButton>
-
-      <LinkButton
-        upper
-        onPress={() => {
-          console.log("LOGIN");
-        }}
-      >
-        LOGIN
+        Resend code
       </LinkButton>
     </Block>
   );
