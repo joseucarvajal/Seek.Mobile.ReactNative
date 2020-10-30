@@ -73,23 +73,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: Layout.base,
-    // backgroundColor: Colors.white,
     width: '100%',
     height: Layout.menu_item_height,
-  },
-  touchableIn: {
-    backgroundColor: Colors.neutral,
-  },
-  touchableOut: {
-    backgroundColor: Colors.white,
-  },
-  noTouchableText: {
-    color: Colors.noTouchableText,
-    fontFamily: FontNames.CamptonSemiBold
-  },
-  touchableText: {
-    color: Colors.fontNormal,
-    fontFamily: FontNames.CamptonSemiBold
   },
   flatList: {
     backgroundColor: Colors.white

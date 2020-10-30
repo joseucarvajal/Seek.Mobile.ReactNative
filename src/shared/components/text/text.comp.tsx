@@ -89,7 +89,7 @@ const Typography: React.FC<ITextProp> = (
           fontSize: 16,
           fontWeight: fontWeight
         },
-        h1 && { fontSize: 28, fontFamily: FontNames.CamptonMedium, color: Colors.fontNormal },
+        h1 && { fontSize: 28, fontFamily: FontNames.CamptonMedium },
         h2 && { fontSize: 24 },
         h3 && { fontSize: 20 },
         h4 && { fontSize: 17 },
