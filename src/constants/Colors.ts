@@ -61,5 +61,6 @@ export default {
   settings: {
     boxShadowColor: '#00000040',
     background: '#F6F6F6',
-  }
+  },
+  menuItemEven: '#FAFAFA',
 };
