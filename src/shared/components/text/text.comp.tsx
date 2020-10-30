@@ -37,6 +37,7 @@ export interface ITextProp {
   capitalize?: boolean;
   lowercase?: boolean;
   onPress?: any;
+  light?:any
 }
 
 const Typography: React.FC<ITextProp> = (
@@ -71,7 +72,8 @@ const Typography: React.FC<ITextProp> = (
     uppercase,
     capitalize,
     lowercase,
-    onPress
+    onPress,
+    light
   },
   props
 ) => {
@@ -85,13 +87,13 @@ const Typography: React.FC<ITextProp> = (
           fontSize: 16,
           fontWeight: fontWeight
         },
-        h1 && { fontSize: 28 },
+        h1 && { fontSize: 28, fontFamily: FontNames.CamptonMedium, color: Colors.fontNormal },
         h2 && { fontSize: 24 },
         h3 && { fontSize: 20 },
         h4 && { fontSize: 17 },
         h5 && { fontSize: 16 },
         h6 && { fontSize: 14 },
-        p && { fontSize: 16 },
+        p && { fontSize: 16 },        
         body && { fontSize: 14 },
         small && { fontSize: 14 },
         extraSmall && { fontSize: 12 },
@@ -112,6 +114,7 @@ const Typography: React.FC<ITextProp> = (
         capitalize && { textTransform: "capitalize" },
         lowercase && { textTransform: "lowercase" },
         style && style,
+        light && { fontFamily: FontNames.CamptonLight },
       ]}
       onPress={onPress}
       {...props}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 
@@ -27,7 +27,7 @@ type SignUPVerificationCodeRouteProp = RouteProp<
 
 export interface IVerificationCodeProps {}
 
-const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
+const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
   //6 digits
   const [codeVerificationCollection, setCodeVerificationCollection] = useState([
     "",
@@ -41,6 +41,9 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
   const route = useRoute<SignUPVerificationCodeRouteProp>();
   const { phoneNumberOrEmail } = route.params;
 
+  const navigation = useNavigation();
+  const inputRefs = Array<TextInput>(codeVerificationCollection.length);
+
   const {
     error,
     isLoading,
@@ -51,27 +54,20 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
   });
 
   const handleChangeDigit = (digit: string, index: any) => {
-
-    if(isNaN(+digit)){
+    if (isNaN(+digit)) {
       return;
     }
 
-    if(index < codeVerificationCollection.length - 1){
-      if(digit){
-        inputRefs[index + 1].focus();
-      }
+    if (index < codeVerificationCollection.length - 1) {
+      inputRefs[index + 1].focus();
     }
 
     setCodeVerificationCollection(
-      codeVerificationCollection.map((val: string, i: Number) =>
+      codeVerificationCollection.map((val, i) =>      
         i !== index ? val : digit
       )
     );
   };
-
-  const navigation = useNavigation();
-
-  const inputRefs = Array(codeVerificationCollection.length);
 
   return (
     <Block safe flex space="evenly" center>
@@ -93,20 +89,20 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
         </Text>
       </View>
 
-      <View style={styles.phoneForm}>
+      <View style={styles.codeForm}>
         {codeVerificationCollection.map((digit, index) => (
           <Input
-            onRef={(inputRef: any) => {
+            onRef={(inputRef: TextInput) => {
               inputRefs[index] = inputRef;
             }}
             maxLength={1}
-            keyboardType='phone-pad'
-            selectTextOnFocus          
+            keyboardType="phone-pad"
+            selectTextOnFocus
             key={index}
             value={digit}
             onChangeText={(text: string) => handleChangeDigit(text, index)}
             color="primary"
-            style={styles.phoneIndicative}
+            style={styles.codeDigit}
             borderless
             textInputStyle={{
               fontFamily: FontNames.CamptonSemiBold,
@@ -145,23 +141,7 @@ const SignUpEmail: React.FC<IVerificationCodeProps> = ({}) => {
 };
 
 const styles = StyleSheet.create({
-  emailForm: {
-    width: Layout.window.width,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    paddingHorizontal: Layout.base,
-  },
-  emailNumberView: {
-    flex: 1,
-  },
-  codeDigit: {
-    top: -7,
-    width: "100%",
-    backgroundColor: Colors.transparent,
-  },
-  phoneForm: {
+  codeForm: {
     width: Layout.window.width,
     display: "flex",
     flexDirection: "row",
@@ -169,14 +149,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: Layout.base,
   },
-  phoneIndicativeView: {
-    display: "flex",
-    textAlign: "center",
-    alignContent: "center",
-  },
-  phoneIndicative: {
-    width: Layout.window.width * 0.1,
+  codeDigit: {
+    width: Layout.window.width * 0.13,
   },
 });
 
-export default SignUpEmail;
+export default VerificationCode;

@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewProps } from "react-native";
-import { Colors } from "../../../constants";
+import { Colors, FontNames } from "../../../constants";
 import Text from "../text/text.comp";
 
 export interface ILinkButtonProps extends ViewProps {
@@ -16,20 +16,30 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
   onPress,
   children,
 }) => {
-
   if (!upper) {
     return (
-      <Text h5 bold uppercase={upper} underline={underline} onPress={onPress} style={{ color: Colors.primaryFont }}>
+      <Text
+        fontSize={17}
+        fontFamily={FontNames.CamptonBold}
+        underline={underline}
+        onPress={onPress}
+        style={{ color: Colors.primaryFont }}
+      >
         {children}
       </Text>
-    )
+    );
   }
 
   return (
-    <Text h3 uppercase={upper} underline={underline} onPress={onPress} style={{ color: Colors.primaryFontLight }}>
+    <Text
+      uppercase={upper}
+      underline={underline}
+      onPress={onPress}
+      style={{ color: Colors.primaryFontLight }}
+    >
       {children}
     </Text>
-  )
+  );
 };
 
 export default LinkButton;

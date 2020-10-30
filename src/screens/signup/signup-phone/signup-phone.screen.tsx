@@ -18,34 +18,34 @@ import {
 
 import { Colors, FontNames, Layout } from "../../../constants";
 
-import { SeekQLogo } from "../../../components/signup/";
+import { SeekQLogo, HeaderSection } from "../../../components/signup/";
 import { useSendVerificationCode } from "../../../hooks/signup";
 
 export interface ISignUpPhoneProps {}
 
 const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
-  const [phoneIndicative, setPhoneIndicative] = useState("+1");
 
   type TFormData = {
     phoneIndicative: PickerItemProps;
     phoneNumber: string;
   };
   const { control, handleSubmit, errors, getValues } = useForm<TFormData>();
-  const onSubmit = handleSubmit(({ phoneNumber }) => {
+  const onSubmit = handleSubmit(({ phoneNumber, phoneIndicative }) => {
     console.log(getValues());
     getVerificationCode();
   });
 
-  const getCompletePhoneNumber = () =>
-    `${phoneIndicative}${getValues().phoneNumber}`;
+  const getCompletePhoneNumber = () => {
+    return `${getValues().phoneIndicative?.value}${getValues().phoneNumber}`;
+  };
   const {
     error,
     isLoading,
     refetch: getVerificationCode,
   } = useSendVerificationCode(getCompletePhoneNumber());
 
-  const items = [    
+  const indicativeItems = [
     { label: "+1", value: "+1" },
     { label: "+57", value: "+57" },
   ];
@@ -57,14 +57,20 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
       <SeekQLogo />
 
-      <Text h1 center medium>
-        Wellcome back!
-      </Text>
-
-      <Text p center>
-        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-        sint. Velit officia consequat duis enim velit mollit.
-      </Text>
+      <HeaderSection>
+        <Text center light p>
+          By registering, you agree to Our terms of
+        </Text>
+        <Text center light p>
+          Service<Text>, </Text>
+          <Text center light p>
+            Privacy Policy<Text light>, </Text>
+          </Text>
+          <Text center light p>
+            and Cookie Policy
+          </Text>
+        </Text>
+      </HeaderSection>
 
       <View style={styles.phoneForm}>
         <View style={styles.phoneIndicativeView}>
@@ -79,14 +85,14 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                 onChangeItem={(item: PickerItemProps) => {
                   onChange(item);
                 }}
-                items={items}
+                items={indicativeItems}
                 style={styles.phoneIndicative}
-                defaultValue={items[0].value}
+                defaultValue={indicativeItems[0].value}
               />
             )}
             name="phoneIndicative"
             rules={{ required: true }}
-            defaultValue={items[0]}
+            defaultValue={indicativeItems[0]}
           ></Controller>
         </View>
         <View style={styles.phoneNumberView}>
@@ -108,10 +114,10 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
               />
             )}
             name="phoneNumber"
-            rules={{ required: true }}
+            rules={{ required: true, minLength: 4 }}
             defaultValue=""
           />
-          {errors.phoneNumber && <Text>Phone number is required.</Text>}
+          {errors.phoneNumber && <Text>Enter a phone number</Text>}
         </View>
       </View>
 
@@ -124,20 +130,12 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
       </ButtonPrimary>
 
       <LinkButton
+        underline
         onPress={() => {
           navigation.navigate("SignUpEmail");
         }}
       >
         Continue using email Instead
-      </LinkButton>
-
-      <LinkButton
-        upper
-        onPress={() => {
-          console.log("LOGIN");
-        }}
-      >
-        LOGIN
       </LinkButton>
     </Block>
   );

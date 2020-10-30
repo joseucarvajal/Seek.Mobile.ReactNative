@@ -1,6 +1,6 @@
 import React from "react";
 import { ViewProps } from "react-native";
-import { Colors } from "../../../constants";
+import { Colors, FontNames } from "../../../constants";
 import Button from "../button/button.comp";
 import Text from "../text/text.comp";
 
@@ -24,7 +24,7 @@ const ButtonPrimary: React.FC<IButtonPrimaryProps> = ({
       style={style}
       onPress={onPress}
     >
-      <Text fontSize={20} color={Colors.white} center>
+      <Text fontSize={20} fontFamily={FontNames.CamptonSemiBold} color={Colors.white} center>
         {children}
       </Text>
     </Button>
