@@ -123,7 +123,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
 
       <ButtonPrimary
         onPress={() => {
-          if (codeVerificationCollection.join("").length) {
+          if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
             checkVerificationCode();
           }
         }}

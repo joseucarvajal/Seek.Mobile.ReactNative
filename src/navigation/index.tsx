@@ -26,6 +26,7 @@ import {
   SignUpEmail,
   SignUpPhone,
   SignUpVerificationCode,
+  SignUpCreatePassword,
   SignUpReady,
 } from "../screens/signup";
 
@@ -110,6 +111,11 @@ function HomeStack() {
       <MainStack.Screen
         name="SignUpVerificationCode"
         component={SignUpVerificationCode}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="SignUpCreatePassword"
+        component={SignUpCreatePassword}
         options={{ headerShown: false }}
       />
       <MainStack.Screen

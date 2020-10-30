@@ -7,6 +7,7 @@ export type RootStackParamList = {
   SignUpEmail: undefined;
   SignUpPhone: undefined;
   SignUpVerificationCode: { phoneNumberOrEmail: string };
+  SignUpCreatePassword: { phoneNumberOrEmail: string };
   SignUpReady: undefined;
 
   Profile: undefined;
