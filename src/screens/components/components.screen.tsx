@@ -57,10 +57,11 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         </Block>
         <Card
           full
-          item={{ image: Images.UploadPhoto }}
+          source={Images.UploadPhoto}
           icon={Icons.edit}
           iconColor={Colors.quaternary}
           iconSize={28}
+          shadow
         />
         <Text />
 

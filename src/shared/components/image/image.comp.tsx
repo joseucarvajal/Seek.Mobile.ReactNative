@@ -92,11 +92,9 @@ const styles = StyleSheet.create({
     height: thumbMeasure
   },
   FullStyle: {
-    borderRadius: 50,
-    borderWidth: 0,
     borderColor: Colors.white,
-    width: thumbMeasure * 1.5,
-    height: thumbMeasure * 1.5
+    width: Layout.window.width,
+    height: '100%'
   },
   shadow: {
     width: thumbMeasure,

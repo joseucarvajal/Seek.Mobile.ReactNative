@@ -6,18 +6,19 @@ export interface IUPloadPhotoProps {
 
 }
 
-const UploadPhoto: React.FC<IUPloadPhotoProps> = ({ 
+const UploadPhoto: React.FC<IUPloadPhotoProps> = ({
 
 }) => {
   return (
-    <Block flex style={{ paddingLeft: 5, paddingRight: Layout.base * 2.3 }}>
+    <Block flex style={{ paddingLeft: 5, padding: Layout.base * 2.3 }}>
       <Block flex>
         <Card
           full
-          item={{ image: Images.UploadPhoto }}
+          source={Images.UploadPhoto}
           icon={Icons.edit}
           iconColor={Colors.quaternary}
           iconSize={28}
+          shadow
         />
       </Block>
       <Block flex style={{ backgroundColor: Colors.transparent, justifyContent: 'center' }}>

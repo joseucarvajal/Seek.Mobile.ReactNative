@@ -1,59 +1,75 @@
 import React from 'react';
-import { StyleSheet, Image, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, TouchableWithoutFeedback, Image, ImageProps } from 'react-native'
 import { Colors, Layout } from '../../../constants';
 import Block from '../block/block.comp'
 import Icon from '../icons/icon.comp'
 
 export interface ICardProps {
-  navigation?: any;
-  item?: any;
-  icon: any;
-  iconSize: any;
-  iconColor: any;
+  source?: any;
+  icon?: any;
+  iconSize?: any;
+  iconColor?: any;
   horizontal?: any;
   full?: any;
   style?: any;
-  ctaColor?: any;
   imageStyle?: any;
-  ctaRight?: any;
-  titleStyle?: any;
   onPress?: any;
+  shadow?: boolean;
+  shadowImage?: boolean;
+  shadowIcon?: boolean;
+  borderless?: boolean
 }
 
 const Card: React.FC<ICardProps> = ({
-  navigation,
-  item,
+  source,
   icon,
   iconSize,
   iconColor,
   horizontal,
   full,
   style,
-  ctaColor,
   imageStyle,
-  ctaRight,
-  titleStyle,
-  onPress
+  onPress,
+  shadow,
+  shadowImage,
+  shadowIcon,
+  borderless
 }) => {
 
-  const imageStyles = [full ? styles.fullImage : styles.horizontalImage, imageStyle];
-  const cardContainer = [styles.card, styles.shadow, style];
+  const imageStyles = [
+    full && styles.fullImage,
+    horizontal && styles.horizontalImage, 
+    imageStyle
+  ];
+  
+  const cardContainer = [
+    styles.card, 
+    shadow && styles.shadow, 
+    style
+  ];
+  
   const imgContainer = [
     imageStyles,
     styles.imageContainer,
     horizontal ? styles.horizontalStyles : styles.verticalStyles,
-    styles.shadow
+    shadowImage && styles.shadow
   ];
+  
+  const iconStyle = [ 
+    full && styles.iconFullStyle,
+    horizontal && styles.iconHorizontalStyle,
+    shadowIcon && styles.shadow
+  ]
 
   return (
-    <Block row={horizontal} card flex style={cardContainer}>
+    <Block row={horizontal} card={!borderless} flex style={cardContainer}>
       <TouchableWithoutFeedback onPress={onPress}>
         <Block flex style={imgContainer}>
-          <Block right>
-            <Icon family='seekQ' name={icon} size={iconSize} color={iconColor} style={[{ position: 'absolute', zIndex: 1, top: Layout.base, right: Layout.base }]} />
+          <Block flex order={1} fluid right style={iconStyle}>
+            <Icon family='seekQ' name={icon} size={iconSize} color={iconColor} style={styles.absoluteImage} />
           </Block>
-          <Block center>
-            <Image resizeMode="contain" source={item.image} style={imageStyles} />
+          <Block center middle>
+            <Image resizeMode={full ? "contain" : "cover"} source={source} style={imageStyles} />
           </Block>
         </Block>
       </TouchableWithoutFeedback>
@@ -66,7 +82,6 @@ export default Card;
 const styles = StyleSheet.create({
   card: {
     backgroundColor: Colors.upload,
-    marginVertical: Layout.base,
     borderWidth: 0,
     minHeight: 330
   },
@@ -76,8 +91,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden'
   },
   horizontalImage: {
-    height: 122,
-    width: 'auto'
+    width: Layout.window.width,
+    height: '100%'
   },
   horizontalStyles: {
     borderTopRightRadius: 0,
@@ -96,5 +111,16 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     shadowOpacity: 0.2,
     elevation: Layout.android_elevation,
+  },
+  iconFullStyle: { 
+    top: Layout.base, 
+    right: Layout.base 
+  },
+  iconHorizontalStyle: { 
+    top: Layout.base * 3, 
+    right: Layout.base 
+  },
+  absoluteImage: {
+    position: 'absolute'
   }
 });

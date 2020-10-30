@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent, ViewStyle } from "react-native";
 import { Layout, Colors } from '../../../constants';
 import Block from '../block/block.comp';
 import Text from '../text/text.comp'
@@ -7,7 +7,8 @@ import Text from '../text/text.comp'
 export interface IProfileProps {
   index?: number
   children?: ReactNode
-  showPagination?: any
+  showPaginationTop?: any
+  showPaginationBottom?: any
   vertical?: any
   onChangeIndex?: any
   onViewableItemsChanged?: any
@@ -19,12 +20,14 @@ export interface IProfileProps {
   autoplayLoop?: any
   autoplayInvertDirection?: any
   ref?: any
+  style?: ViewStyle
 }
 
 const Swiper: React.FC<IProfileProps> = ({
   index,
   children,
-  showPagination,
+  showPaginationTop,
+  showPaginationBottom,
   vertical,
   onChangeIndex,
   onViewableItemsChanged,
@@ -35,7 +38,8 @@ const Swiper: React.FC<IProfileProps> = ({
   autoplay,
   autoplayLoop,
   autoplayInvertDirection,
-  ref
+  ref,
+  style
 }) => {
 
   let _data = Array.isArray(children) ? children : [children]
@@ -157,21 +161,21 @@ const Swiper: React.FC<IProfileProps> = ({
     onViewableItemsChanged?.(params);
   })
 
-  const renderDots = () => {
+  const renderDots = (customStyle: ViewStyle) => {
     const dotList = []
     for (let i = 0; i <= elements - 1; i++) {
       let color = i == paginationIndex ? { color: Colors.primary } : { color: Colors.quaternary }
-      dotList.push(<Text key={i} fontSize={40} style={color}>•</Text>)
+      dotList.push(<Text key={i} fontSize={45} style={color}>•</Text>)
     }
     return (
-      <Block absolute row style={{ alignSelf: 'center', bottom: 0 }}>
+      <Block absolute row style={[{ alignSelf: 'center' }, customStyle]}>
         {dotList}
       </Block>
     )
   }
 
   return (
-    <Block flex>
+    <>
       <FlatList
         ref={flatListRef}
         scrollEnabled={scrollEnabled}
@@ -188,10 +192,11 @@ const Swiper: React.FC<IProfileProps> = ({
         onMomentumScrollEnd={_onMomentumScrollEnd}
         viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100, waitForInteraction: true }}
         onViewableItemsChanged={_onViewableItemsChanged.current}
-        style={{ width: Layout.window.width, height: Layout.window.height }}
+        style={[{ width: Layout.window.width, height: Layout.window.height }, style]}
       />
-      {showPagination && renderDots()}
-    </Block>
+      {showPaginationBottom && renderDots({ bottom: 0 })}
+      {showPaginationTop && renderDots({ top: 30 } )}
+    </>
   );
 }
 

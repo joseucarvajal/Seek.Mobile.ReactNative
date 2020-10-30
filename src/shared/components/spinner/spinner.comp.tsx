@@ -53,7 +53,7 @@ const Spinner: React.FC<ISpinnerProps> = ({
           : imageIndicator ?
             (
               <Block flex center middle style={{ backgroundColor: 'red' }}>
-                <Image size='full' source={imageIndicator} style={[indicatorStyle ? indicatorStyle : styles.indicatorImageStyle]} />
+                <Image size="small" source={imageIndicator} style={[indicatorStyle ? indicatorStyle : styles.indicatorImageStyle]} />
               </Block>
             )
             : (

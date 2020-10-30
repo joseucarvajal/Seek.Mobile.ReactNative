@@ -18,11 +18,11 @@ export interface ITextProp {
   neutral?: any;
   fontSize?: any;
   color?: any;
-  bold?: any;
-  medium?: any;
-  italic?: any;
+  bold?: boolean;
+  medium?: boolean;
+  italic?: boolean;
   center?: any;
-  underline?: any;
+  underline?: boolean;
   children?: any;
   styles?: any;
   theme?: any;
@@ -30,7 +30,8 @@ export interface ITextProp {
   letterSpacing?: number;
   extraSmall?: boolean;
   extraLarge?: boolean;
-  boldItalic?: any;
+  boldItalic?: boolean;
+  SemiBold?: boolean;
   numberOfLines?: any;
   fontWeight?: any;
   uppercase?: boolean;
@@ -67,6 +68,7 @@ const Typography: React.FC<ITextProp> = (
     extraSmall,
     extraLarge,
     boldItalic,
+    SemiBold,
     numberOfLines,
     fontWeight = 'normal',
     uppercase,
@@ -105,6 +107,7 @@ const Typography: React.FC<ITextProp> = (
         italic && { fontFamily: FontNames.CamptonLightItalic },
         bold && { fontFamily: FontNames.CamptonBold },
         medium && { fontFamily: FontNames.CamptonMedium },
+        SemiBold && { fontFamily: FontNames.CamptonSemiBold },
         boldItalic && { fontFamily: FontNames.CamptonBoldItalic },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },

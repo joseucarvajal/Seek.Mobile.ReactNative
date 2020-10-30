@@ -22,11 +22,11 @@ export interface IBlockProps {
   safe?: any;
   children?: any;
   style?: any;
-  styles?: any;
   props?: any;
   padding?: number;
   wrap?: any;
   absolute?: boolean;
+  order?: number;
 }
 
 export type SpaceType = "evenly" | "between" | "around";
@@ -53,6 +53,7 @@ const Block: React.FC<IBlockProps> = ({
   wrap,
   style,
   absolute,
+  order,
   ...props
 }) => {
 
@@ -78,6 +79,7 @@ const Block: React.FC<IBlockProps> = ({
     realPadding && { padding: realPadding } as ViewStyle,
     wrap && styles.wrap,
     absolute && { position: 'absolute' },
+    order && { zIndex: order },
     style,
   ];
 

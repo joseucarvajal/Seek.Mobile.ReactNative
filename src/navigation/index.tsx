@@ -19,6 +19,7 @@ import Profile from "../screens/profile/profile/profile.screen";
 import Components from "../screens/components/components.screen";
 import Home from "../screens/home/home-screen";
 import Congrats from "../screens/profile/congrats-profile/congrats-profile.screen";
+import MyProfile from "../screens/profile/view-my-profile/view-my-profile.screen";
 
 import {
   SignUp,
@@ -278,6 +279,11 @@ function SettingsStack() {
           ),
           cardStyle: { backgroundColor: Colors.header },
         }}
+      />
+      <MainStack.Screen
+        name="Profile"
+        component={MyProfile}
+        options={{ headerShown: false }}
       />
     </MainStack.Navigator>
   )
