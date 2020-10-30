@@ -3,6 +3,8 @@ import { StyleSheet, View, PickerItemProps } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
+import { useForm, Controller } from "react-hook-form";
+
 import {
   Text,
   Select,
@@ -24,19 +26,32 @@ export interface ISignUpPhoneProps {}
 const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   const navigation = useNavigation();
   const [phoneIndicative, setPhoneIndicative] = useState("+1");
-  const [phoneNumber, setPhoneNumber] = useState("");
 
-  const getCompletePhoneNumber = () => `${phoneIndicative}${phoneNumber}`;
+  type TFormData = {
+    phoneIndicative: PickerItemProps;
+    phoneNumber: string;
+  };
+  const { control, handleSubmit, errors, getValues } = useForm<TFormData>();
+  const onSubmit = handleSubmit(({ phoneNumber }) => {
+    console.log(getValues());
+    getVerificationCode();
+  });
 
+  const getCompletePhoneNumber = () =>
+    `${phoneIndicative}${getValues().phoneNumber}`;
   const {
     error,
     isLoading,
     refetch: getVerificationCode,
   } = useSendVerificationCode(getCompletePhoneNumber());
 
+  const items = [    
+    { label: "+1", value: "+1" },
+    { label: "+57", value: "+57" },
+  ];
+
   return (
     <Block safe flex space="evenly" center>
-
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
@@ -56,38 +71,53 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
           <Text fontSize={12} color={Colors.fontSoft1}>
             Enter phone
           </Text>
-          <Select
-            borderless
-            defaultValue={phoneIndicative}
-            onChangeItem={(item: PickerItemProps) => {
-              setPhoneIndicative(item.value);
-            }}
-            items={[
-              { label: "+1", value: "+1" },
-              { label: "+57", value: "+57" },
-            ]}
-            style={styles.phoneIndicative}
-          />
+          <Controller
+            control={control}
+            render={({ onChange, value }) => (
+              <Select
+                borderless
+                onChangeItem={(item: PickerItemProps) => {
+                  onChange(item);
+                }}
+                items={items}
+                style={styles.phoneIndicative}
+                defaultValue={items[0].value}
+              />
+            )}
+            name="phoneIndicative"
+            rules={{ required: true }}
+            defaultValue={items[0]}
+          ></Controller>
         </View>
         <View style={styles.phoneNumberView}>
           <Text fontSize={12} color={Colors.fontSoft1}></Text>
-          <Input
-            value={phoneNumber}
-            onChangeText={(text: string) => setPhoneNumber(text)}
-            color="primary"
-            style={styles.phoneNumber}
-            borderless
-            textInputStyle={{
-              fontFamily: FontNames.CamptonSemiBold,
-              color: Colors.fontNormal,
-            }}
+          <Controller
+            control={control}
+            render={({ onChange, value }) => (
+              <Input
+                value={value}
+                onChangeText={(value: string) => onChange(value)}
+                color="primary"
+                keyboardType="phone-pad"
+                style={styles.phoneNumber}
+                borderless
+                textInputStyle={{
+                  fontFamily: FontNames.CamptonSemiBold,
+                  color: Colors.fontNormal,
+                }}
+              />
+            )}
+            name="phoneNumber"
+            rules={{ required: true }}
+            defaultValue=""
           />
+          {errors.phoneNumber && <Text>Phone number is required.</Text>}
         </View>
       </View>
 
       <ButtonPrimary
         onPress={() => {
-          getVerificationCode();
+          onSubmit();
         }}
       >
         CONTINUE
