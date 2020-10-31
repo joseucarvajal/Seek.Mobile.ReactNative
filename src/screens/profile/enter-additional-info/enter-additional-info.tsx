@@ -17,10 +17,10 @@ const EnterAddionalInfo: React.FC<IUPloadPhotoProps> = ({
           <ToggleButton color='primary' onValueChange={() => { }} />
         </Block>
       </Block>
-      <Block center style={{ paddingTop: Layout.base }}>
+      <Block style={{ paddingTop: Layout.base }}>
         <Calendar />
       </Block>
-      <Block center middle style={{ paddingTop: Layout.base * 2 }}>
+      <Block style={{ paddingTop: Layout.base * 2 }}>
         <Select
           defaultValue={'f'}
           items={[

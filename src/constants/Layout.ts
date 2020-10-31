@@ -57,4 +57,7 @@ export default {
   accordion_border_radius: 3,
   // input calentar
   input_calendar_border_width: 1,
+  input_calendar_vertical_label: 8,
+  // select styles
+  select_vertical_label: 8,
 };

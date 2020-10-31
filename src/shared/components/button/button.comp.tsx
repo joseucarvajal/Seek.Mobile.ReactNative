@@ -19,6 +19,7 @@ export interface IArButtonProps extends ViewProps {
   children?: React.ReactNode;
   props?: any;
   onPress?: any;
+  small?: boolean;
 }
 
 export type ButtonType =
@@ -45,6 +46,7 @@ const ArButton: React.FC<IArButtonProps> = ({
   children,
   onPress,
   style,
+  small,
   ...props
 }) => {
 
@@ -62,6 +64,7 @@ const ArButton: React.FC<IArButtonProps> = ({
 
   const styleButton = [
     styles.button,
+    small && styles.smallButton,
     type === "small" && styles.smallButton,
     type === "large" && styles.largeButton,
     type === "social" && styles.socialButton,
@@ -140,11 +143,8 @@ const styles = StyleSheet.create({
   },
   smallButton: {
     backgroundColor: Colors.tertiary,
-    borderRadius: 15,
     height: 32,
-    width: 100,
-    alignSelf: "flex-start",
-    alignContent: "flex-start"
+    width: 'auto',
   },
   largeButton: {
     width: Layout.window.width - Layout.base * 2,

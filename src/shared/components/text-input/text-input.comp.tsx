@@ -122,8 +122,8 @@ const Input: React.FC<IInputProps> = ({
       />
     </TouchableOpacity>
   );
-  const labelContent = label && <Text style={[styles.label, labelStyles || {}]}>{label}</Text>;
-  const helpContent = help && <Text style={[styles.helpText, helpStyles || {}]}>{help}</Text>;
+  const labelContent = label && <Text h6 style={[styles.label, labelStyles || {}]}>{label}</Text>;
+  const helpContent = help && <Text h6 style={[styles.helpText, helpStyles || {}]}>{help}</Text>;
 
   return (
     <View>
@@ -158,11 +158,11 @@ export default Input;
 
 const styles = StyleSheet.create({
   inputStyle: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     borderRadius: Layout.input_radius,
     borderWidth: Layout.input_border_width,
     height: Layout.input_height,
-    width: Layout.window.width - Layout.base * 2,
+    width: Layout.window.width - Layout.base * 2
   },
   inputText: {
     color: Colors.black,
@@ -182,14 +182,10 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.base,
   },
   label: {
-    fontWeight: '500',
-    fontSize: Layout.input_label_text_size,
-    marginVertical: Layout.input_vertical_label,
-    paddingHorizontal: Layout.base
+    paddingVertical: Layout.input_vertical_label,
   },
   helpText: {
     color: Colors.secondary,
-    fontSize: Layout.input_help_text,
     marginVertical: 8,
     paddingHorizontal: 16
   },

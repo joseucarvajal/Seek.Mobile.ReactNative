@@ -80,8 +80,8 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <ModalBackground visible={modalVisibleBackground} onVisibleChange={(visible: any) => setModalVisibleBackground(visible)} />
         <ModalNoBackground visible={modalVisible} onVisibleChange={(visible: any) => setModalVisible(visible)} />
 
-        <Spinner visible={spinnerVisible}/>
-        <DisplayError visible={true}/>
+        <Spinner visible={spinnerVisible} />
+        <DisplayError visible={true} />
 
         <Text />
         <Calendar />
@@ -96,16 +96,18 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Text />
         <Accordion title={accordion[1].title} text={accordion[1].text} shadow />
         <Text />
-        <Select
-          small
-          borderless
-          defaultValue={'usa'}
-          items={[
-            { label: '+1', value: 'usa' },
-            { label: '+57', value: 'colombia' },
-          ]}
-          shadow
-        />
+        <Block order={1}>
+          <Select
+            small
+            borderless
+            defaultValue={'usa'}
+            items={[
+              { label: '+1', value: 'usa' },
+              { label: '+57', value: 'colombia' },
+            ]}
+            shadow
+          />
+        </Block>
         <Text />
         <Input
           left
@@ -125,14 +127,16 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <ToggleButton color='primary' value={true} />
         <ToggleButton color='primary' />
         <Text />
-        <Select
-          defaultValue={'f'}
-          items={[
-            { label: 'Male', value: 'm' },
-            { label: 'Female', value: 'f' },
-          ]}
-          shadow
-        />
+        <Block order={1}>
+          <Select
+            defaultValue={'f'}
+            items={[
+              { label: 'Male', value: 'm' },
+              { label: 'Female', value: 'f' },
+            ]}
+            shadow
+          />
+        </Block>
         <Text />
         <Button
           left

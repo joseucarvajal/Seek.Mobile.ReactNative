@@ -12,12 +12,18 @@ export interface ICalendarProps {
   date?: any;
   show?: any;
   style?: any;
+  label?: any;
+  labelStyles?: any;
+  small?: any;
 }
 
 const Calendar: React.FC<ICalendarProps> = ({
   date,
   show,
-  style
+  style,
+  label,
+  labelStyles,
+  small,
 }) => {
 
   const [value, SetDate] = useState(date)
@@ -35,8 +41,11 @@ const Calendar: React.FC<ICalendarProps> = ({
     }
   };
 
+  const labelContent = label && <Text h6 style={[styles.label, labelStyles || {}]}>{label}</Text>;
+
   return (
     <Block>
+      {labelContent}
       <Button
         style={[styles.buttonDataPicker]}
         onPress={() => SetShow(!isShow)}
@@ -59,6 +68,7 @@ const Calendar: React.FC<ICalendarProps> = ({
           onChange={onChange}
           minimumDate={new Date(1920, 0, 1)}
           maximumDate={new Date()}
+          style={{ width: Layout.window.width - Layout.base * 2 }}
         />
       }
     </Block>
@@ -68,14 +78,15 @@ const Calendar: React.FC<ICalendarProps> = ({
 export default Calendar;
 
 const styles = StyleSheet.create({
-  containerDataPicker: {
-    flex: 1,
-    justifyContent: 'center'
-  },
   buttonDataPicker: {
     borderWidth: 0,
     backgroundColor: "white",
     borderBottomColor: Colors.muted,
-    borderBottomWidth: Layout.input_calendar_border_width
-  }
+    borderBottomWidth: Layout.input_calendar_border_width,
+    height: Layout.input_height,
+    width: 'auto'
+  },
+  label: {
+    paddingVertical: Layout.input_calendar_vertical_label,
+  },
 }); 

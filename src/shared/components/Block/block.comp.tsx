@@ -30,7 +30,9 @@ export interface IBlockProps {
   paddingTop?: number;
   paddingLeft?: number;
   paddingHorizontal?: number;
+  paddingVertical?: number;
   box?: boolean;
+  backgroundColor?: any;
 }
 
 export type SpaceType = "evenly" | "between" | "around";
@@ -62,6 +64,8 @@ const Block: React.FC<IBlockProps> = ({
   paddingLeft,
   box,
   paddingHorizontal,
+  paddingVertical,
+  backgroundColor,
   ...props
 }) => {
 
@@ -88,9 +92,11 @@ const Block: React.FC<IBlockProps> = ({
     realPadding && { padding: realPadding } as ViewStyle,
     paddingTop && { paddingTop },
     paddingLeft && { paddingLeft },
+    paddingVertical && { paddingVertical },
     wrap && styles.wrap,
     absolute && { position: 'absolute' },
     order && { zIndex: order },
+    backgroundColor && { backgroundColor },
     style,
   ];
 

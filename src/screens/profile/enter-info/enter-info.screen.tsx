@@ -1,5 +1,5 @@
 import React from "react";
-import { Colors } from "../../../constants";
+import { Colors, Layout } from "../../../constants";
 import { Text, Block, Input, ToggleButton } from '../../../shared';
 
 export interface IProfileProps {
@@ -10,7 +10,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
 
 }) => {
   return (
-    <Block >
+    <Block flex>
       <Input
         left
         color='primary'
@@ -20,7 +20,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
         iconColor={Colors.primary}
         iconSize={24}
         textInputStyle={{ color: Colors.primary, fontWeight: '500', fontSize: 22 }}
-        style={{ width:'90%' }}
+        style={{ marginVertical: Layout.base }}
       />
       <Input
         color='quaternary'
@@ -28,7 +28,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
         placeholder='First Name'
         placeholderTextColor={Colors.quaternary}
         textInputStyle={{ color: Colors.black, fontWeight: '500', fontSize: 24 }}
-        style={{ width:'90%' }}
+        style={{ marginVertical: Layout.base }}
       >
         <Block row center middle>
           <Text h4 color={Colors.placeholder}>Make Public  </Text>
@@ -40,7 +40,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
         borderless
         placeholder='Last Name'
         placeholderTextColor={Colors.quaternary}
-        style={{ width:'90%' }}
+        style={{ marginVertical: Layout.base }}
       >
         <Block row center middle>
           <Text h4 color={Colors.placeholder}>Make Public  </Text>
@@ -54,7 +54,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
         placeholderTextColor={Colors.quaternary}
         password
         viewPass
-        style={{ width:'90%' }}
+        style={{ marginVertical: Layout.base }}
       />
       <Input
         color='quaternary'
@@ -63,7 +63,7 @@ const EnterInfo: React.FC<IProfileProps> = ({
         placeholderTextColor={Colors.quaternary}
         password
         viewPass
-        style={{ width:'90%' }}
+        style={{ marginVertical: Layout.base }}
       />
     </Block>
   );
