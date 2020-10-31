@@ -2,16 +2,19 @@ export type RootStackParamList = {
   Root: undefined;
   Home: undefined;
 
-  //SignUp screens
+  //SignUp Screens
   SignUp: undefined;
   SignUpEmail: undefined;
   SignUpPhone: undefined;
   SignUpVerificationCode: { phoneNumberOrEmail: string };
   SignUpReady: undefined;
 
+  // Profile Screens
   Profile: undefined;
+  EditProfile: undefined;
+  EditBasicInfo: undefined;
 
-  //Settings screens
+  //Settings Screens
   Settings: undefined;
   HelpFaq: undefined;
   HelpMenu: undefined;

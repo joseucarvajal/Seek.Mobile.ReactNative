@@ -29,6 +29,7 @@ export interface IBlockProps {
   order?: number;
   paddingTop?: number;
   paddingLeft?: number;
+  paddingHorizontal?: number;
   box?: boolean;
 }
 
@@ -60,6 +61,7 @@ const Block: React.FC<IBlockProps> = ({
   paddingTop,
   paddingLeft,
   box,
+  paddingHorizontal,
   ...props
 }) => {
 

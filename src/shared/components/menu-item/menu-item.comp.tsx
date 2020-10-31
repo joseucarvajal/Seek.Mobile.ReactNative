@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableHighlight } from "react-native";
 
 import Text from '../text/text.comp'
 import Icon from '../icons/icon.comp'
@@ -32,15 +32,17 @@ const MenuItem: React.FC<IMenuItemProps> = ({
     <>
       {
         type === 'toggle' ?
-          <Block style={[styles.container, { backgroundColor: color }, style]}>
+          <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
             <Text fontSize={Layout.fontSize}>{title}</Text>
             <ToggleButton color='primary' value={value} onValueChange={onValueChange} />
           </Block>
           :
-          <TouchableOpacity onPress={onPress} style={[styles.container, { backgroundColor: color }, style]}>
-            <Text fontSize={Layout.fontSize}>{title}</Text>
-            <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
-          </TouchableOpacity>
+          <TouchableHighlight underlayColor={Colors.active} onPress={onPress}>
+            <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
+              <Text fontSize={Layout.fontSize}>{title}</Text>
+              <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
+            </Block>
+          </TouchableHighlight>
       }
     </>
   );
@@ -50,10 +52,6 @@ export default MenuItem;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
     paddingHorizontal: Layout.base,
     backgroundColor: Colors.neutral,
     width: Layout.window.width,

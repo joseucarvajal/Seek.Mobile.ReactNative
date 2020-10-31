@@ -3,9 +3,9 @@ import { StyleSheet, Image, TouchableWithoutFeedback, View, ImageResizeMode } fr
 import { Layout, Colors, thumbMeasure } from '../../../constants'
 
 export interface IImgProps {
+  source: any;
   width?: any;
   style?: any;
-  source?: any;
   onPress?: any;
   size?: SizeType;
   shadow?: any;
@@ -15,9 +15,9 @@ export interface IImgProps {
 export type SizeType = "avatar" | "logo" | "small" | "full" | "background";
 
 const Img: React.FC<IImgProps> = ({
+  source,
   width,
   style,
-  source,
   onPress,
   size,
   shadow,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   FullStyle: {
     borderColor: Colors.white,
     width: Layout.window.width,
-    height: '100%'
+    height: Layout.window.height * .4
   },
   shadow: {
     width: thumbMeasure,

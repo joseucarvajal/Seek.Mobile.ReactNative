@@ -20,6 +20,8 @@ import Components from "../screens/components/components.screen";
 import Home from "../screens/home/home-screen";
 import Congrats from "../screens/profile/congrats-profile/congrats-profile.screen";
 import MyProfile from "../screens/profile/view-my-profile/view-my-profile.screen";
+import EditMyProfile from "../screens/profile/view-edit-my-profile/view-edit-my-profile.screen";
+import EditBasicInfo from "../screens/profile/view-edit-basic-info/view-edit-basic-info.screen";
 
 import {
   SignUp,
@@ -285,7 +287,40 @@ function SettingsStack() {
         component={MyProfile}
         options={{ headerShown: false }}
       />
+      <MainStack.Screen
+        name="EditProfile"
+        component={EditMyProfile}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Edit Profile"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="EditBasicInfo"
+        component={EditBasicInfo}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Edit Basic Info"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
     </MainStack.Navigator>
+    
   )
 }
 

@@ -1,14 +1,13 @@
 import React from "react";
 import { ScrollView } from 'react-native'
-import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors, Icons, Layout } from "../../../constants";
 import { Text, Block, Card, Swiper, ButtonPrimary, Icon, Chip } from '../../../shared';
 
-export interface IMyProfileProps { }
+export interface IEditBasicInfoProps { }
 
-const MyProfile: React.FC<IMyProfileProps> = ({ }) => {
-  const navigation = useNavigation();
+const EditBasicInfo: React.FC<IEditBasicInfoProps> = ({ }) => {
+
   const [currentPage, setCurrentPage] = React.useState<number>(0);
 
   const chipsList = (interests: any, color: any) =>
@@ -34,7 +33,7 @@ const MyProfile: React.FC<IMyProfileProps> = ({ }) => {
     return (
       <Block flex padding={Layout.base}>
         <Block flex center middle padding={Layout.base}>
-          <ButtonPrimary onPress={() => navigation.navigate('EditProfile')}>
+          <ButtonPrimary onPress={() => console.log("EDIT PROFILE")}>
             EDIT PROFILE
           </ButtonPrimary>
         </Block>
@@ -118,7 +117,7 @@ const MyProfile: React.FC<IMyProfileProps> = ({ }) => {
   );
 }
 
-export default MyProfile;
+export default EditBasicInfo;
 
 const images = [
   {
