@@ -7,9 +7,11 @@ const disableNotification = async (
   _: any,
   notificationTypeUser: IDisableNotificationParams
 ) => {
-  const url = `${API_URL_DEV}${api.settings.disableNotificationByUser}`;
-  const { data } = await axios.post(url, notificationTypeUser);
-  return data;
+  if(notificationTypeUser.id !== '') {
+    const url = `${API_URL_DEV}${api.settings.disableNotificationByUser}`;
+    const { data } = await axios.post(url, notificationTypeUser);
+    return data;
+  }
 };
 
 export function useDisableNotification(

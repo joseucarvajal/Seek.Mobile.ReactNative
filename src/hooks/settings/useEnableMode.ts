@@ -7,9 +7,11 @@ const enableMode = async (
   _: any,
   modeTypeUser: IEnableModeParams
 ) => {
-  const url = `${API_URL_DEV}${api.settings.enableModeByUser}`;
-  const { data } = await axios.post(url, modeTypeUser);
-  return data;
+  if(modeTypeUser.id !== '') {
+    const url = `${API_URL_DEV}${api.settings.enableModeByUser}`;
+    const { data } = await axios.post(url, modeTypeUser);
+    return data;
+  }
 };
 
 export function useEnableMode(
@@ -17,7 +19,10 @@ export function useEnableMode(
 ) {
   return useQuery<boolean, IErrorResponse>(
     ["/modes/user/enable", data],
-    enableMode
+    enableMode,
+    {
+      cacheTime: 0,
+    }
   );
 }
 

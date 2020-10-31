@@ -17,7 +17,10 @@ export function useGetUserModes(
 ) {
   return useQuery<IMode[], IErrorResponse>(
     ["/notifications/user/", userId],
-    getModes
+    getModes,
+    {
+      cacheTime: 0,
+    }
   );
 }
 
