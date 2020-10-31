@@ -7,9 +7,11 @@ const disableMode = async (
   _: any,
   modeTypeUser: IDisableModeParams
 ) => {
-  const url = `${API_URL_DEV}${api.settings.disableModeByUser}`;
-  const { data } = await axios.post(url, modeTypeUser);
-  return data;
+  if(modeTypeUser.id !== '') {
+    const url = `${API_URL_DEV}${api.settings.disableModeByUser}`;
+    const { data } = await axios.post(url, modeTypeUser);
+    return data;
+  }
 };
 
 export function useDisableMode(
@@ -17,7 +19,10 @@ export function useDisableMode(
 ) {
   return useQuery<boolean, IErrorResponse>(
     ["/modes/user/disable", data],
-    disableMode
+    disableMode,
+    {
+      cacheTime: 0,
+    }
   );
 }
 

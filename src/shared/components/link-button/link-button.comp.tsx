@@ -8,6 +8,8 @@ export interface ILinkButtonProps extends ViewProps {
   underline?: boolean;
   onPress?: any;
   children?: any;
+  center?:any;
+  style?:any;
 }
 
 const LinkButton: React.FC<ILinkButtonProps> = ({
@@ -15,15 +17,19 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
   underline,
   onPress,
   children,
+  center,
+  style
 }) => {
   if (!upper) {
+    
     return (
       <Text
         fontSize={17}
+        center={center}
         fontFamily={FontNames.CamptonBold}
         underline={underline}
         onPress={onPress}
-        style={{ color: Colors.primaryFont }}
+        style={{color: Colors.primaryFont, ...style}}
       >
         {children}
       </Text>

@@ -7,9 +7,11 @@ const enableNotification = async (
   _: any,
   notificationTypeUser: IEnableNotificationParams
 ) => {
-  const url = `${API_URL_DEV}${api.settings.enableNotificationByUser}`;
-  const { data } = await axios.post(url, notificationTypeUser);
-  return data;
+  if(notificationTypeUser.id !== '') {
+    const url = `${API_URL_DEV}${api.settings.enableNotificationByUser}`;
+    const { data } = await axios.post(url, notificationTypeUser);
+    return data;
+  }
 };
 
 export function useEnableNotification(

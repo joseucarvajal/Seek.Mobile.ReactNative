@@ -3,18 +3,18 @@ import { useQuery } from "react-query";
 import { useNavigation } from "@react-navigation/native";
 import { IErrorResponse } from "../../shared";
 
-const verifyCode = async (_: any, data: ICheckVerificationCodeParams) => {
+const verifyCode = async (_: any, data: IUseConfirmPasswordCreateUserParams) => {
   //const url = `http://192.168.0.101:32700/api/v1/verificationcode/check`;
   const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d/`;
   const { responseData } = await axios.post(url, data);
   return responseData;
 };
 
-export function useCheckVerificationCode(data: ICheckVerificationCodeParams) {
+export function useConfirmPasswordCreateUser(data: IUseConfirmPasswordCreateUserParams) {
   const navigation = useNavigation();
 
   return useQuery<{}, IErrorResponse>(
-    ["/verificationcode/check/", data],
+    ["/create/", data],
     verifyCode,
     {
       refetchOnWindowFocus: false,
@@ -29,7 +29,7 @@ export function useCheckVerificationCode(data: ICheckVerificationCodeParams) {
   );
 }
 
-export interface ICheckVerificationCodeParams {
+export interface IUseConfirmPasswordCreateUserParams {
   phoneOrEmail: string;
-  codeToVerify:string;
+  password:string;
 }

@@ -3,18 +3,20 @@ import { Text } from "../../../shared";
 import { View, StyleSheet } from "react-native";
 import { Layout } from "../../../constants";
 
-export interface ISeekQLogoProps {}
+export interface ISeekQLogoProps {
+  headerText: string;
+}
 
-const PolicySection: React.FC<ISeekQLogoProps> = ({children}) => {
+const PolicySection: React.FC<ISeekQLogoProps> = ({children, headerText}) => {
   return (
     <View>
 
       <Text h1 center style={styles.header}>
-        Welcome
+        {headerText}
       </Text>
 
       {children}
-      
+
     </View>
   );
 };

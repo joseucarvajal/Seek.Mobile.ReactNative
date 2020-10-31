@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useState } from 'react';
 import { 
   Block,
   Menu,
@@ -16,6 +16,7 @@ import { Colors } from '../../../constants';
 export interface IModesProps {}
 
 const Modes: React.FC<IModesProps> = () => {
+  const [mode, setMode] = useState({ active: false, id: '' });
   const userId = '545DE66E-19AC-47D2-57F6-08D8715337D7';
   const {
     error,
@@ -23,15 +24,16 @@ const Modes: React.FC<IModesProps> = () => {
     isLoading
   } = useGetUserModes(userId);
 
-  const enableMode = useCallback((id) => {
-    const { data: isEnable } = useEnableMode({ id });
-    console.log(isEnable);
-  }, [useEnableMode]);
+  const { error: isErrorE, data: dataEnableE, isLoading: isLoadingE, refetch: enabledMode } = useEnableMode({
+    id: mode.id
+  });
 
-  const disableMode = useCallback((id) => {
-    const { data: isDisable } = useDisableMode({ id });
-    console.log(isDisable);
-  }, [useDisableMode]);
+  const { error: isErrorD, data: dataEnableD, isLoading: isLoadingD, refetch: disableMode } = useDisableMode({
+    id: mode.id
+  });
+
+  console.log('dataEnableE', dataEnableE);
+  console.log('dataEnableD', dataEnableD);
   
   const mappingData = () => {
     return data?.map(( mode: IMode, index: number ) => ({
@@ -40,13 +42,16 @@ const Modes: React.FC<IModesProps> = () => {
       type: 'toggle',
       color: ((index+1) % 2 === 0) ? Colors.menuItemEven : Colors.white, 
       value: mode.active,
-      action: function(active: boolean) {
-        // if(active) {
-        //   enableMode(mode.idMode);
-        // } else {
-        //   disableMode(mode.idMode);
-        // }
-        console.log(`${mode.modeName} active: ${active}`);
+      action: (active: boolean) => {
+        setMode({ active, id: mode.idMode });
+        if(active) {
+          enabledMode();
+          console.log('active enable', active);
+        }
+        else {
+          disableMode();
+          console.log('active disable', active);
+        }
       },
       block: `
         Amet minim mollit non deserunt ullamco
