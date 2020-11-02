@@ -1,13 +1,12 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useMutation } from "react-query";
 import { useNavigation } from "@react-navigation/native";
 import { IErrorResponse, IApplicationUser } from "../../shared";
 import { useIdentityState } from "../../providers/identity";
 import { ApiEndPoints } from "../../constants";
 
-const verifyCodeFn = async (
-  _: any,
-  requestData: ICheckVerificationCodeParams
+const verifyCodeRequestFn = async (
+  requestData: ICheckVerificationCodeRequestParams
 ) => {
   const url = `http://192.168.0.102:32700/api/v1/${ApiEndPoints.signUp.checkVerificationCode}`;
   //const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d/`;
@@ -15,42 +14,41 @@ const verifyCodeFn = async (
   return data;
 };
 
-export function useCheckVerificationCode(
-  phoneOrEmail: string,
-  codeToVerify: string
-) {
+export function useCheckVerificationCode() {
   const navigation = useNavigation();
   const { applicationUser } = useIdentityState();
 
-  return useQuery<IApplicationUser, IErrorResponse>(
-    [
-      ApiEndPoints.signUp.checkVerificationCode,
-      {
-        userId: applicationUser?.id,
-        phoneOrEmail,
-        codeToVerify,
-      } as ICheckVerificationCodeParams,
-    ],
-    verifyCodeFn,
-    {
-      refetchOnWindowFocus: false,
-      enabled: false, // turned off, manual refetch is needed
-      cacheTime: 0,
-      onSuccess: (responseData: IApplicationUser) => {
-        if (
-          responseData?.emailConfirmed ||
-          responseData?.phoneNumberConfirmed
-        ) {
-          navigation.navigate("SignUpCreatePassword", {
-            phoneNumberOrEmail: applicationUser?.phoneNumber,
-          });
-        }
-      },
-    }
-  );
+  const [mutate, { isLoading, error, data }] = useMutation<
+    IApplicationUser,
+    IErrorResponse,
+    ICheckVerificationCodeRequestParams
+  >(verifyCodeRequestFn, {
+    onSuccess: (responseData: IApplicationUser) => {
+      console.log('mutati dos');
+      console.log({responseData});
+      if (
+        responseData.emailConfirmed ||
+        responseData.phoneNumberConfirmed
+      ) {
+        navigation.navigate("SignUpCreatePassword", {
+          phoneNumberOrEmail: applicationUser?.phoneNumber,
+        });
+      }
+    },
+  });
+
+  const verifyCode = async (phoneOrEmail: string, codeToVerify: string) => {    
+    return mutate({
+      userId: applicationUser?.id,
+      phoneOrEmail,
+      codeToVerify,
+    });
+  };
+
+  return { verifyCode, isLoading, data, error };
 }
 
-interface ICheckVerificationCodeParams {
+interface ICheckVerificationCodeRequestParams {
   userId?: string;
   phoneOrEmail: string;
   codeToVerify: string;

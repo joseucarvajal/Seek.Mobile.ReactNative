@@ -48,13 +48,11 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
   const inputRefs = Array<TextInput>(codeVerificationCollection.length);
 
   const {
+    verifyCode,
+    data,
     error,
-    isLoading,
-    refetch: checkVerificationCode,
-  } = useCheckVerificationCode(
-    phoneNumberOrEmail,
-    codeVerificationCollection.join(""),
-  );
+    isLoading,    
+  } = useCheckVerificationCode( );
 
   const handleChangeDigit = (digit: string, index: any) => {
     if (isNaN(+digit)) {
@@ -130,7 +128,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
             codeVerificationCollection.join("").length ===
             codeVerificationCollection.length
           ) {
-            checkVerificationCode();
+            verifyCode(phoneNumberOrEmail, codeVerificationCollection.join(""));
           }
         }}
       >

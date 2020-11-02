@@ -120,7 +120,6 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
                 message: `Enter at least ${minPasswordLength} characters`,
               },
               validate: (value) => {
-                console.log("comes here", password.current, value);
                 return (
                   value === password.current ||
                   "Please make sure passwords match"
