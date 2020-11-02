@@ -1,12 +1,12 @@
 import useSendVerificationCode from "./useSendVerificationCode";
 import { useCheckVerificationCode } from "./useCheckVerificationCode";
-import { IUseConfirmPasswordCreateUserParams, useConfirmPasswordCreateUser } from "./useConfirmPasswordCreateUser";
+import { IUseSetUserPasswordParams, useSetUserPassword } from "./useSetUserPassword";
 
 export {    
     useSendVerificationCode,
 
     useCheckVerificationCode,
 
-    IUseConfirmPasswordCreateUserParams,
-    useConfirmPasswordCreateUser,
+    IUseSetUserPasswordParams,
+    useSetUserPassword,
 };

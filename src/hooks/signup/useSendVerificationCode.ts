@@ -5,7 +5,7 @@ import { IErrorResponse, IApplicationUser } from "../../shared";
 import { useIdentityActions } from "../../providers/identity";
 import { ApiEndPoints } from "../../constants";
 
-const sendVerificationCode = async (
+const sendVerificationCodeFn = async (
   _: any,
   phoneNumberOrEmail: string
 ) => {
@@ -25,7 +25,7 @@ export default function useSendVerificationCode(
 
   return useQuery<IApplicationUser, IErrorResponse>(
     [ApiEndPoints.signUp.sendVerificationCode, phoneNumberOrEmail],
-    sendVerificationCode,
+    sendVerificationCodeFn,
     {
       refetchOnWindowFocus: false,
       enabled: false, // turned off, manual refetch is needed

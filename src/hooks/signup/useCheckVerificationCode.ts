@@ -5,7 +5,7 @@ import { IErrorResponse, IApplicationUser } from "../../shared";
 import { useIdentityState } from "../../providers/identity";
 import { ApiEndPoints } from "../../constants";
 
-const verifyCode = async (
+const verifyCodeFn = async (
   _: any,
   requestData: ICheckVerificationCodeParams
 ) => {
@@ -31,7 +31,7 @@ export function useCheckVerificationCode(
         codeToVerify,
       } as ICheckVerificationCodeParams,
     ],
-    verifyCode,
+    verifyCodeFn,
     {
       refetchOnWindowFocus: false,
       enabled: false, // turned off, manual refetch is needed

@@ -19,7 +19,7 @@ import {
 import { Colors, FontNames, Layout } from "../../../constants";
 
 import { SeekQLogo, HeaderSection } from "../../../components/signup";
-import { useConfirmPasswordCreateUser } from "../../../hooks/signup";
+import { useSetUserPassword } from "../../../hooks/signup";
 import { RootStackParamList } from "../../../types";
 
 export interface ISignUpCreatePasswordProps {}
@@ -35,6 +35,8 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
   const route = useRoute<SignUpCreatePasswordRouteProps>();
   const { phoneNumberOrEmail } = route.params;
 
+  const {setUserPassword, isLoading, error} = useSetUserPassword();
+
   type TFormData = {
     password: string;
     passwordConfirm: string;
@@ -46,20 +48,10 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
   password.current = watch("password", "");
 
   const onSubmit = handleSubmit(
-    ({ passwordConfirm: phoneNumber, password: phoneIndicative }) => {
-      console.log(getValues());
-      confirmPasswordCreateUser();
+    ({ password, passwordConfirm }) => {
+      setUserPassword(password, passwordConfirm);
     }
   );
-
-  const {
-    error,
-    isLoading,
-    refetch: confirmPasswordCreateUser,
-  } = useConfirmPasswordCreateUser({
-    phoneOrEmail: phoneNumberOrEmail,
-    password: "",
-  });
 
   const minPasswordLength = 4;
 

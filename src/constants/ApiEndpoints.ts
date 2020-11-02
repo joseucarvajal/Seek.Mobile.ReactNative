@@ -12,6 +12,7 @@ const ApiEndPoints = {
   signUp:{
     sendVerificationCode: "verificationcode/send",
     checkVerificationCode: "verificationcode/check",
+    setUserPassword: "set/password"
   }
 };
 
