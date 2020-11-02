@@ -24,8 +24,6 @@ export function useCheckVerificationCode() {
     ICheckVerificationCodeRequestParams
   >(verifyCodeRequestFn, {
     onSuccess: (responseData: IApplicationUser) => {
-      console.log('mutati dos');
-      console.log({responseData});
       if (
         responseData.emailConfirmed ||
         responseData.phoneNumberConfirmed
