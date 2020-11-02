@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { StyleSheet, View, PickerItemProps } from "react-native";
 
 import { useNavigation, RouteProp, useRoute } from "@react-navigation/native";
@@ -30,7 +30,6 @@ type SignUpCreatePasswordRouteProps = RouteProp<
 >;
 
 const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
-  
   const navigation = useNavigation();
 
   const route = useRoute<SignUpCreatePasswordRouteProps>();
@@ -40,11 +39,18 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
     password: string;
     passwordConfirm: string;
   };
-  const { control, handleSubmit, errors, getValues } = useForm<TFormData>();
-  const onSubmit = handleSubmit(({ passwordConfirm: phoneNumber, password: phoneIndicative }) => {
-    console.log(getValues());
-    confirmPasswordCreateUser();
-  });
+  const { control, handleSubmit, errors, getValues, watch, setError } = useForm<
+    TFormData
+  >();
+  const password = useRef({});
+  password.current = watch("password", "");
+
+  const onSubmit = handleSubmit(
+    ({ passwordConfirm: phoneNumber, password: phoneIndicative }) => {
+      console.log(getValues());
+      confirmPasswordCreateUser();
+    }
+  );
 
   const {
     error,
@@ -52,22 +58,21 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
     refetch: confirmPasswordCreateUser,
   } = useConfirmPasswordCreateUser({
     phoneOrEmail: phoneNumberOrEmail,
-    password: ''
+    password: "",
   });
-  
+
+  const minPasswordLength = 4;
+
   return (
     <Block safe flex space="evenly" center>
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
       <SeekQLogo />
-
-      <HeaderSection headerText="Create your password">
-      </HeaderSection>
+      <HeaderSection headerText="Create your password"></HeaderSection>
 
       <View style={styles.passwordForm}>
         <View>
-          <Text fontSize={12} color={Colors.fontSoft1}></Text>
           <Controller
             control={control}
             render={({ onChange, value }) => (
@@ -75,10 +80,10 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
                 value={value}
                 label="Password"
                 onChangeText={(value: string) => onChange(value)}
-                color="primary"
-                keyboardType="phone-pad"
+                color="primary"                
                 borderless
-                password={true}
+                password
+                viewPass
                 textInputStyle={{
                   fontFamily: FontNames.CamptonSemiBold,
                   color: Colors.fontNormal,
@@ -86,13 +91,18 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
               />
             )}
             name="password"
-            rules={{ required: true, minLength: 4 }}
+            rules={{
+              required: "Password is required",
+              minLength: {
+                value: minPasswordLength,
+                message: `Enter at least ${minPasswordLength} characters`,
+              },
+            }}
             defaultValue=""
           />
-          {errors.passwordConfirm && <Text>Enter a phone number</Text>}
+          {errors.password && <Text>{errors.password.message}</Text>}
         </View>
-        <View>
-          <Text fontSize={12} color={Colors.fontSoft1}></Text>
+        <View style={{ marginTop: 45 }}>
           <Controller
             control={control}
             render={({ onChange, value }) => (
@@ -100,10 +110,10 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
                 value={value}
                 label="Confirm password"
                 onChangeText={(value: string) => onChange(value)}
-                color="primary"
-                keyboardType="phone-pad"
+                color="primary"                
                 borderless
                 password
+                viewPass
                 textInputStyle={{
                   fontFamily: FontNames.CamptonSemiBold,
                   color: Colors.fontNormal,
@@ -111,10 +121,25 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
               />
             )}
             name="passwordConfirm"
-            rules={{ required: true, minLength: 4 }}
+            rules={{
+              required: "Password confirm is required",
+              minLength: {
+                value: minPasswordLength,
+                message: `Enter at least ${minPasswordLength} characters`,
+              },
+              validate: (value) => {
+                console.log("comes here", password.current, value);
+                return (
+                  value === password.current ||
+                  "Please make sure passwords match"
+                );
+              },
+            }}
             defaultValue=""
           />
-          {errors.passwordConfirm && <Text>Enter a phone number</Text>}
+          {errors.passwordConfirm && (
+            <Text>{errors.passwordConfirm.message}</Text>
+          )}
         </View>
       </View>
 
@@ -125,14 +150,13 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
       >
         SAVE
       </ButtonPrimary>
-
     </Block>
   );
 };
 
 const styles = StyleSheet.create({
   passwordForm: {
-    width: Layout.window.width,
+    top: -30,
     display: "flex",
     justifyContent: "flex-start",
     alignItems: "center",

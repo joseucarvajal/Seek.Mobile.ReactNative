@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet } from "react-native";
 import { Colors, Layout } from "../../../../constants";
 import Block from "../../block/block.comp";
 import Text from "../../text/text.comp";
@@ -31,8 +30,8 @@ const DisplayError: React.FC<IDisplayErrorProps> = ({
   if (message) {
     finalMessage = message;
   }
-  if (errorResponse?.response?.data?.Title) {
-    finalMessage = errorResponse?.response?.data?.Title;
+  if (errorResponse?.response?.data?.title) {
+    finalMessage = errorResponse?.response?.data?.title;
   }
 
   return (

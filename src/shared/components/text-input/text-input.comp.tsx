@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, TextInputProps } from "react-native";
-import { Colors, Layout } from '../../../constants';
+import { Colors, Layout, FontNames } from '../../../constants';
 import Icon from '../icons/icon.comp';
 import Text from '../text/text.comp'
 
@@ -77,7 +77,7 @@ const Input: React.FC<IInputProps> = ({
   ...props
 }) => {
 
-  const [isPassword, setIsPassword] = React.useState(false);
+  const [isPassword, setIsPassword] = React.useState(password);
   React.useEffect(() => {
     setIsPassword(password);
   }, []);
@@ -132,7 +132,7 @@ const Input: React.FC<IInputProps> = ({
       <View style={inputViewStyles}>
         {left && !right && iconInstance}
         <TextInput
-          ref={onRef}
+          ref={onRef}          
           style={inputStyles}
           keyboardType={type}
           secureTextEntry={isPassword}
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: Layout.input_radius,
     borderWidth: Layout.input_border_width,
     height: Layout.input_height,
-    width: Layout.window.width - Layout.base * 2
+    width: Layout.window.width - Layout.base * 2    
   },
   inputText: {
     color: Colors.black,
@@ -182,7 +182,10 @@ const styles = StyleSheet.create({
     marginHorizontal: Layout.base,
   },
   label: {
-    paddingVertical: Layout.input_vertical_label,
+    paddingVertical: Layout.input_vertical_label - 10,
+    fontSize: Layout.input_label_text_size,
+    fontFamily: FontNames.CamptonBook,
+    color: Colors.fontSoft1
   },
   helpText: {
     color: Colors.secondary,

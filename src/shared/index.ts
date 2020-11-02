@@ -24,7 +24,7 @@ import Chip from './components/chips/chip.comp';
 import Swiper from './components/swiper/swiper.comp';
 import Background from './components/background/background.comp';
 import Spinner from './components/spinner/spinner.comp';
-import { IErrorResponse } from './types';
+import { IErrorResponse, IApplicationUser } from './types';
 import DisplayError from './components/modal/display-error/display-error.comp';
 
 export {
@@ -54,6 +54,9 @@ export {
   Swiper,
   Background,
   Spinner,
+  DisplayError,
+
+  //Types
   IErrorResponse,
-  DisplayError
+  IApplicationUser,
 }

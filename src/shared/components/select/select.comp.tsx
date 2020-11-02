@@ -100,6 +100,9 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.primary,
   },
   label: {
-    paddingVertical: Layout.select_vertical_label,
+    paddingVertical: Layout.select_vertical_label - 10,
+    fontSize: Layout.input_label_text_size,
+    fontFamily: FontNames.CamptonBook,
+    color: Colors.fontSoft1
   },
 });

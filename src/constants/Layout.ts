@@ -25,7 +25,7 @@ export default {
   input_radius: 0,
   input_border_width: 3,
   input_height: 50,
-  input_text_size: 17,
+  input_text_size: 22,
   input_label_text_size: 12,
   input_vertical_text: 14,
   input_vertical_label: 8,

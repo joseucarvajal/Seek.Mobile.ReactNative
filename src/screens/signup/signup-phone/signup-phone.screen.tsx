@@ -71,14 +71,12 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
 
       <View style={styles.phoneForm}>
         <View style={styles.phoneIndicativeView}>
-          <Text fontSize={12} color={Colors.fontSoft1}>
-            Enter phone
-          </Text>
           <Controller
             control={control}
             render={({ onChange, value }) => (
               <Select
                 borderless
+                label="Enter phone"
                 onChangeItem={(item: PickerItemProps) => {
                   onChange(item);
                 }}
@@ -114,7 +112,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
             rules={{ required: true, minLength: 4 }}
             defaultValue=""
           />
-          {errors.phoneNumber && <Text>Enter a phone number</Text>}
+          {errors.phoneNumber && <Text>Enter a valid phone number</Text>}
         </View>
       </View>
 
