@@ -7,7 +7,9 @@ import { Context } from "react";
 
 const initialState = {
   isLoggedIn: false,
-  applicationUser: null,
+  applicationUser: {
+    id: "545DE66E-19AC-47D2-57F6-08D8715337D7"
+  },
 } as IIdentityState;
 export const IdentityStateContext = createContext(initialState);
 

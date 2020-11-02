@@ -8,8 +8,6 @@ import { IErrorResponse } from "../../shared";
 const setUserPasswordRequest = async (requestData: IUseSetUserPasswordParams) => {
   const url = `http://192.168.0.102:32700/api/v1/Profile/${ApiEndPoints.signUp.setUserPassword}`;
   //const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d/`;
-  console.log({requestData});
-  console.log({url});
   const { data } = await axios.post(url, requestData);
   return data;
 };
@@ -23,7 +21,7 @@ export function useSetUserPassword() {
     IUseSetUserPasswordParams
   >(setUserPasswordRequest, {
     onSuccess: () => {
-      console.log("Password added");
+      console.log("Password added successfully");
     },
   });
 
