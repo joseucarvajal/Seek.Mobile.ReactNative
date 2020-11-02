@@ -19,6 +19,7 @@ import { SeekQLogo, HeaderSection } from "../../../components/signup/";
 import { RootStackParamList } from "../../../types";
 
 import { useCheckVerificationCode } from "../../../hooks/signup";
+import { useIdentityState } from "../../../providers/identity";
 
 type SignUPVerificationCodeRouteProp = RouteProp<
   RootStackParamList,
@@ -41,6 +42,8 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
   const route = useRoute<SignUPVerificationCodeRouteProp>();
   const { phoneNumberOrEmail } = route.params;
 
+  const { applicationUser } = useIdentityState();
+
   const navigation = useNavigation();
   const inputRefs = Array<TextInput>(codeVerificationCollection.length);
 
@@ -48,10 +51,10 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
     error,
     isLoading,
     refetch: checkVerificationCode,
-  } = useCheckVerificationCode({
-    phoneOrEmail: phoneNumberOrEmail,
-    codeToVerify: codeVerificationCollection.join(""),
-  });
+  } = useCheckVerificationCode(
+    phoneNumberOrEmail,
+    codeVerificationCollection.join(""),
+  );
 
   const handleChangeDigit = (digit: string, index: any) => {
     if (isNaN(+digit)) {
@@ -80,7 +83,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
             A verification code we send to
           </Text>
           <Text p center>
-            {phoneNumberOrEmail}
+            new: {applicationUser?.phoneNumber}
           </Text>
 
           <Text center style={{ marginTop: 20 }}>
@@ -123,7 +126,10 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
 
       <ButtonPrimary
         onPress={() => {
-          if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
+          if (
+            codeVerificationCollection.join("").length ===
+            codeVerificationCollection.length
+          ) {
             checkVerificationCode();
           }
         }}

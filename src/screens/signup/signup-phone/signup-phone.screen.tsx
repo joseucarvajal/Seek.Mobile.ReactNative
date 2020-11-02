@@ -32,7 +32,6 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   };
   const { control, handleSubmit, errors, getValues } = useForm<TFormData>();
   const onSubmit = handleSubmit(({ phoneNumber, phoneIndicative }) => {
-    console.log(getValues());
     getVerificationCode();
   });
 
@@ -82,12 +81,12 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                 }}
                 items={indicativeItems}
                 style={styles.phoneIndicative}
-                defaultValue={indicativeItems[0].value}
+                defaultValue={indicativeItems[1].value}
               />
             )}
             name="phoneIndicative"
             rules={{ required: true }}
-            defaultValue={indicativeItems[0]}
+            defaultValue={indicativeItems[1]}
           ></Controller>
         </View>
         <View style={styles.phoneNumberView}>

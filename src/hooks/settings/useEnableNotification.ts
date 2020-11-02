@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { api, API_URL_DEV } from '../../constants/Endpoints';
+import { ApiEndPoints, API_URL_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 
 const enableNotification = async (
@@ -8,7 +8,7 @@ const enableNotification = async (
   notificationTypeUser: IEnableNotificationParams
 ) => {
   if(notificationTypeUser.id !== '') {
-    const url = `${API_URL_DEV}${api.settings.enableNotificationByUser}`;
+    const url = `${API_URL_DEV}${ApiEndPoints.settings.enableNotificationByUser}`;
     const { data } = await axios.post(url, notificationTypeUser);
     return data;
   }

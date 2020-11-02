@@ -1,13 +1,13 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { api, API_URL_DEV } from '../../constants/Endpoints';
+import { ApiEndPoints, API_URL_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 
 const getNotifications = async (
   _: any,
   userId: string
 ) => {
-  const url = `${API_URL_DEV}${api.settings.notificationsTypesByUser}/${userId}`;
+  const url = `${API_URL_DEV}${ApiEndPoints.settings.notificationsTypesByUser}/${userId}`;
   const { data } = await axios.get(url);
   return data;
 };

@@ -1,12 +1,12 @@
-import Colors from "./Colors"
-import Layout from "./Layout"
-import Images from "./Images"
-import Icons from "./Icons"
-import { FontNames, getFontStyle } from "./Fonts"
-import { thumbMeasure, HeaderHeight, iPhoneX, isIOS, removeLeadingSpaces } from './Utils'
-import Faqtext from './Faqs'
-import MenuEditProfile from './MenuEditProfile'
-
+import Colors from "./Colors";
+import Layout from "./Layout";
+import Images from "./Images";
+import Icons from "./Icons";
+import { FontNames, getFontStyle } from "./Fonts";
+import { thumbMeasure, HeaderHeight, iPhoneX, isIOS, removeLeadingSpaces } from './Utils';
+import Faqtext from './Faqs';
+import MenuEditProfile from './MenuEditProfile';
+import { ApiEndPoints } from "./ApiEndpoints";
 export { 
     Colors, 
     Layout,
@@ -20,5 +20,6 @@ export {
     isIOS,
     Faqtext,
     removeLeadingSpaces,
-    MenuEditProfile
+    MenuEditProfile,
+    ApiEndPoints
 };

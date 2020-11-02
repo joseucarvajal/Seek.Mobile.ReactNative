@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { api, API_URL_DEV } from '../../constants/Endpoints';
+import { ApiEndPoints, API_URL_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 
 const disableMode = async (
@@ -8,8 +8,8 @@ const disableMode = async (
   modeTypeUser: IDisableModeParams
 ) => {
   if(modeTypeUser.id !== '') {
-    const url = `${API_URL_DEV}${api.settings.disableModeByUser}`;
-    const { data } = await axios.post(url, modeTypeUser);
+    const url = `${API_URL_DEV}${ApiEndPoints.settings.disableModeByUser}`;
+    const { data } = await axios.post(url, modeTypeUser);    
     return data;
   }
 };
