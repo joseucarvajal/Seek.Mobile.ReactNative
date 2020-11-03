@@ -1,13 +1,11 @@
-const API_URL_DEV = 'http://192.168.1.57:32701/api/v1';
+const API_URL_SETTINGS_DEV = 'http://192.168.1.57:32701/api/v1';
 
 const ApiEndPoints = {
   settings: {
     notificationsTypesByUser: '/notifications/user',
     modesTypesByUser: '/modes/user',
-    enableNotificationByUser: '/notifications/user/enable',
-    disableNotificationByUser: '/notifications/user/disable',
-    enableModeByUser: '/modes/user/enable',
-    disableModeByUser: '/modes/user/disable',
+    toggleNotificationByUser: '/notifications/user/toggle',
+    toggleModeByUser: '/modes/user/toggle',
   },
   signUp:{
     sendVerificationCode: "verificationcode/send",
@@ -18,5 +16,5 @@ const ApiEndPoints = {
 
 export {
     ApiEndPoints,
-    API_URL_DEV
+    API_URL_SETTINGS_DEV
 };

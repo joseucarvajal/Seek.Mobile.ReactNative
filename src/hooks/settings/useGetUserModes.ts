@@ -1,22 +1,22 @@
 import { useQuery } from "react-query";
 import axios from "axios";
-import { ApiEndPoints, API_URL_DEV } from '../../constants/ApiEndpoints';
+import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
+import { useIdentityState } from "../../providers/identity";
 
 const getModes = async (
   _: any,
   userId: string
 ) => {
-  const url = `${API_URL_DEV}${ApiEndPoints.settings.modesTypesByUser}/${userId}`;
+  const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.modesTypesByUser}/${userId}`;
   const { data } = await axios.get(url);
   return data;
 };
 
-export function useGetUserModes(
-  userId: string
-) {
+export function useGetUserModes() {
+  const { applicationUser } = useIdentityState();
   return useQuery<IMode[], IErrorResponse>(
-    ["/notifications/user/", userId],
+    ["/notifications/user/", applicationUser?.id],
     getModes,
     {
       cacheTime: 0,
