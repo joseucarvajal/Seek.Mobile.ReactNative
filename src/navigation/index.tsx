@@ -118,6 +118,7 @@ function OnBoarding() {
         component={SignUpReady}
         options={{ headerShown: false }}
       />
+      <RootStack.Screen name="Legal" component={LegalStack} />
     </MainStack.Navigator>
   )
 }
@@ -334,6 +335,29 @@ function SettingsStack() {
   )
 }
 
+function LegalStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      <MainStack.Screen
+        name="Legal"
+        component={Legal}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Legal"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
 function RootTabs() {
   return (
     <Tab.Navigator
@@ -414,8 +438,8 @@ function RootNavigator() {
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
       <RootStack.Screen name="SignUp" component={OnBoarding} />
-      <RootStack.Screen name="Home" component={RootTabs} />
       <RootStack.Screen name='Profile' component={MainNavigator} />
+      <RootStack.Screen name="Home" component={RootTabs} />
     </RootStack.Navigator>
   )
 }
@@ -423,7 +447,6 @@ function RootNavigator() {
 function MainNavigator() {
   return (
     <MainStack.Navigator mode="card" headerMode="screen">
-
       {/*Profile screens*/}
       <MainStack.Screen
         name="Profile"
@@ -441,7 +464,6 @@ function MainNavigator() {
           cardStyle: { backgroundColor: Colors.header },
         }}
       />
-
       <MainStack.Screen
         name="NotFound"
         component={NotFoundScreen}
