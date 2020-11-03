@@ -41,7 +41,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({ }) => {
     }
   );
 
-  const minPasswordLength = 4;
+  const minPasswordLength = 6;
 
   return (
     <Block safe flex>

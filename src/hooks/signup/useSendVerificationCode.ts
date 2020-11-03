@@ -9,7 +9,7 @@ const sendVerificationCodeFn = async (
   _: any,
   phoneNumberOrEmail: string
 ) => {
-  const url = `http://192.168.0.102:32700/api/v1/${ApiEndPoints.signUp.sendVerificationCode}/${phoneNumberOrEmail}`;
+  const url = `http://192.168.0.100:32700/api/v1/${ApiEndPoints.signUp.sendVerificationCode}/${phoneNumberOrEmail}`;
   //const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d/${phoneNumberOrEmail}`;
   const { data } = await axios.post(url);
   return data;
