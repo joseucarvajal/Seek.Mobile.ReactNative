@@ -1,8 +1,9 @@
 import React from "react";
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from "../../types";
-import { Button, Text, Block } from "../../shared";
-import { Colors } from "../../constants";
+import { Block } from "../../shared";
+import { Layout } from "../../constants";
+import { LinearGradient } from "expo-linear-gradient";
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList
@@ -12,45 +13,19 @@ export interface IHomeProps {
   navigation: ProfileScreenNavigationProp;
 }
 
-const Home: React.FC<IHomeProps> = ({ navigation }) => {
+const Home: React.FC<IHomeProps> = ({ }) => {
   return (
-    <Block safe flex>
-      <Button
-        left
-        type='social'
-        shadow
-        icon="apple"
-        iconColor={Colors.quaternary}
-        iconSize={18}
-        onPress={() => navigation.navigate('SignUp')}
-      >
-        <Text h3 center>Continue with Apple</Text>
-      </Button>
-      <Text />
-      <Button
-        left
-        type='social'
-        shadow
-        icon="facebook"
-        iconColor={Colors.quaternary}
-        iconSize={18}
-        onPress={() => navigation.navigate('Profile')}
-      >
-        <Text h3 center>Continue with Facebook</Text>
-      </Button>
-      <Text />
-      <Button
-        left
-        type='social'
-        shadow
-        icon="google"
-        iconColor={Colors.quaternary}
-        iconSize={18}
-        onPress={() => navigation.navigate('Settings')}
-      >
-        <Text h3 center>Continue with Google</Text>
-      </Button>
-    </Block>
+
+    <LinearGradient
+      colors={['#7FE0EE', '#00C1DE']}
+      start={{ x: 1.0, y: 1.0 }}
+      end={{ x: 1.0, y: 0.0 }}
+      style={{ height: Layout.window.height }}
+    >
+      <Block safe flex>
+        
+      </Block>
+    </LinearGradient>
   );
 };
 

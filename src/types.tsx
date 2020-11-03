@@ -3,6 +3,7 @@ export type RootStackParamList = {
   Home: undefined;
 
   //SignUp Screens
+  Onboarding: undefined;
   SignUp: undefined;
   SignUpEmail: undefined;
   SignUpPhone: undefined;

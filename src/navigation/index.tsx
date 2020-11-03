@@ -18,6 +18,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 
 import Components from "../screens/components/components.screen";
 import Home from "../screens/home/home-screen";
+import Onboarding from "../screens/onboarding/onboarding.screen";
 
 import { 
   Profile,
@@ -83,6 +84,11 @@ function OnBoarding() {
   return (
     <MainStack.Navigator mode="card" headerMode="none">
       <MainStack.Screen
+        name="Onboarding"
+        component={Onboarding}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
         name="SignUp"
         component={SignUp}
         options={{ headerShown: false }}
@@ -122,17 +128,7 @@ function HomeStack() {
       <MainStack.Screen
         name="Home"
         component={Home}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Home"
-              navigation={navigation}
-              scene={scene}
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
+        options={{ headerShown: false }}
       />
     </MainStack.Navigator>
   )

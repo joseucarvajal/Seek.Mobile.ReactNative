@@ -4,6 +4,7 @@ import { Layout, Colors, thumbMeasure } from '../../../constants'
 
 export interface IImgProps {
   source: any;
+  height?: any;
   width?: any;
   style?: any;
   onPress?: any;
@@ -17,6 +18,7 @@ export type SizeType = "avatar" | "logo" | "small" | "full" | "background";
 
 const Img: React.FC<IImgProps> = ({
   source,
+  height,
   width,
   style,
   onPress,
@@ -43,6 +45,8 @@ const Img: React.FC<IImgProps> = ({
     size === 'background' && styles.FullStyle,
     size === 'full' && styles.FullStyle,
     round && styles.round,
+    height && { height },
+    width && { width }
   ];
 
   return (
