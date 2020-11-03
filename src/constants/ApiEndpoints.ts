@@ -16,5 +16,5 @@ const ApiEndPoints = {
 
 export {
     ApiEndPoints,
-    API_URL_SETTINGS_DEV
+    API_URL_SETTINGS_DEV,
 };
