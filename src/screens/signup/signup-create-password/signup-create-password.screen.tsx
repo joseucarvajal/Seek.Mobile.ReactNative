@@ -21,7 +21,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({ }) => {
   const navigation = useNavigation();
 
   const route = useRoute<SignUpCreatePasswordRouteProps>();
-  //const { phoneNumberOrEmail } = route.params;
+  const { phoneNumberOrEmail } = route.params;
 
   const { setUserPassword, isLoading, error } = useSetUserPassword();
 
@@ -128,8 +128,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({ }) => {
       </Block>
 
       <Block flex center middle>
-        {/* <ButtonPrimary onPress={() => onSubmit()}>SAVE</ButtonPrimary> */}
-        <ButtonPrimary onPress={() => navigation.navigate('SignUpReady')}>SAVE</ButtonPrimary>
+        <ButtonPrimary onPress={() => onSubmit()}>SAVE</ButtonPrimary>
       </Block>
 
     </Block>
