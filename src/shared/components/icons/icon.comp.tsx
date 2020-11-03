@@ -1,4 +1,5 @@
 import React from "react";
+import { ViewStyle } from "react-native";
 import { createIconSetFromFontello } from 'react-native-vector-icons';
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import fontelloConfig from '../../../../assets/fonts/config.json';
@@ -9,7 +10,7 @@ export interface IIconProps {
   family: FamilyType;
   size: number;
   color: string;
-  style?: any; 
+  style?: ViewStyle; 
 }
 
 export type FamilyType = "seekQ" | "FontAwesome";

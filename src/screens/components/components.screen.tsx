@@ -23,7 +23,8 @@ import {
   Spinner,
   Background,
   Image,
-  DisplayError
+  DisplayError,
+  LinkButton
 } from '../../shared';
 
 export interface IProfileProps { }
@@ -183,9 +184,9 @@ const Profile: React.FC<IProfileProps> = ({ }) => {
         <Button type='backgroundless' onPress={() => console.log('LOGIN')}>
           <Text h2 center color={Colors.primary}>LOGIN</Text>
         </Button>
-        <Button type='link'>
+        <LinkButton>
           <Text h3 center underline bold color={Colors.primary}>Continue using email Instead</Text>
-        </Button>
+        </LinkButton>
         <Button type='gradient' onPress={() => console.log("")} shadow>
           <Text h3 center color={Colors.white}>CONTINUE</Text>
         </Button>

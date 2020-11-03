@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment'
 import Block from '../block/block.comp';
-import { Colors, Icons, isIOS, Layout } from '../../../constants';
+import { Colors, FontNames, Icons, isIOS, Layout } from '../../../constants';
 import Button from '../button/button.comp';
 import Text from '../text/text.comp';
 import Icon from '../icons/icon.comp';
@@ -14,7 +14,7 @@ export interface ICalendarProps {
   style?: any;
   label?: any;
   labelStyles?: any;
-  small?: any;
+  borderBottomColor?: any;
 }
 
 const Calendar: React.FC<ICalendarProps> = ({
@@ -23,7 +23,7 @@ const Calendar: React.FC<ICalendarProps> = ({
   style,
   label,
   labelStyles,
-  small,
+  borderBottomColor,
 }) => {
 
   const [value, SetDate] = useState(date)
@@ -41,13 +41,13 @@ const Calendar: React.FC<ICalendarProps> = ({
     }
   };
 
-  const labelContent = label && <Text h6 style={[styles.label, labelStyles || {}]}>{label}</Text>;
+  const labelContent = label && <Text extraSmall book color={Colors.fontSoft1} style={[styles.label, labelStyles]}>{label}</Text>
 
   return (
     <Block>
       {labelContent}
       <Button
-        style={[styles.buttonDataPicker]}
+        style={[styles.buttonDataPicker, { borderBottomColor }]}
         onPress={() => SetShow(!isShow)}
       >
         <Block flex row center style={style}>
@@ -87,6 +87,6 @@ const styles = StyleSheet.create({
     width: 'auto'
   },
   label: {
-    paddingVertical: Layout.input_calendar_vertical_label,
-  },
+    paddingVertical: Layout.input_vertical_label
+  }
 }); 

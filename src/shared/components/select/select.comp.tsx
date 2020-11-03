@@ -42,11 +42,10 @@ const Select: React.FC<ISelectProps> = ({
   const dropDownStyle = [
     { backgroundColor: Colors.input },
     borderless && { backgroundColor: Colors.white },
-    small && styles.smallDropdown,
-    style,
+    small && styles.smallDropdown
   ];
 
-  const labelContent = label && <Text h6 style={[styles.label, labelStyles || {}]}>{label}</Text>;
+  const labelContent = label && <Text extraSmall book color={Colors.fontSoft1} style={[styles.label, labelStyles]}>{label}</Text>;
 
   return (
     <Block>
@@ -64,7 +63,7 @@ const Select: React.FC<ISelectProps> = ({
         }}
         dropDownStyle={dropDownStyle}
         labelStyle={{
-          fontSize: 22,
+          fontSize: 18,
           textAlign: "left",
           color: Colors.default,
           fontFamily: FontNames.CamptonMedium,
@@ -94,15 +93,13 @@ const styles = StyleSheet.create({
   backgroundless: {
     width: 'auto',
     backgroundColor: Colors.transparent,
+    borderRadius: 0,
     height: 50,
     borderWidth: 0,
     borderBottomWidth: Layout.select_border_width,
     borderBottomColor: Colors.primary,
   },
   label: {
-    paddingVertical: Layout.select_vertical_label - 10,
-    fontSize: Layout.input_label_text_size,
-    fontFamily: FontNames.CamptonBook,
-    color: Colors.fontSoft1
-  },
+    paddingVertical: Layout.input_vertical_label
+  }
 });

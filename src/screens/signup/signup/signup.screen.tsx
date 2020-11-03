@@ -1,135 +1,53 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import {  Button, ButtonTertiary,  Text, LinkButton, Block } from "../../../shared";
-import { FontNames, getFontStyle } from "../../../constants";
+import { ButtonTertiary, Text, LinkButton, Block } from "../../../shared";
 import { SeekQLogo } from "../../../components/signup/";
+import { Layout } from "../../../constants";
 
-export interface ISignUpProps {}
+export interface ISignUpProps { }
 
-const SignUp: React.FC<ISignUpProps> = ({}) => {
+const SignUp: React.FC<ISignUpProps> = ({ }) => {
 
   const navigation = useNavigation();
 
   return (
-    <Block safe flex space='evenly' center>
+    <Block safe flex>
+
+      <Block flex center middle>
         <SeekQLogo />
-
-        <Text p center>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-          sint. Velit officia consequat duis enim velit mollit.
-        </Text>
-
-        <View style={styles.socialButtonsGroup}>
-          <ButtonTertiary 
-            icon="apple" 
-            style={styles.socialButton}
-            onPress={() => {
-              navigation.navigate("SignUpPhone");
-            }}
-          >
-            <Text>Continue with Apple</Text>
-          </ButtonTertiary>
-          <ButtonTertiary 
-            icon="facebook" 
-            style={styles.socialButton}
-            onPress={() => {
-              navigation.navigate("SignUpPhone");
-            }}
-          >
-            <Text>Continue with Facebook</Text>
-          </ButtonTertiary>
-          <ButtonTertiary 
-            icon="google" 
-            style={styles.socialButton}
-            onPress={() => {
-              navigation.navigate("SignUpPhone");
-            }}
-          >
-            <Text>Continue with Google</Text>
-          </ButtonTertiary>
-          <ButtonTertiary
-            icon="mobile"                        
-            iconSize={28}
-            style={styles.socialButton}
-            onPress={() => {
-              navigation.navigate("SignUpPhone");
-            }}
-          >
-            <Text>Use Email / Phone</Text>
-          </ButtonTertiary>
-        </View>
-
-        <Text p center>
-          All your important details are secured. None of your information will
-          be shared from our app!
-        </Text>
-
-        <View>
-          <Text center style={styles.smallText}>By registering, you agree to</Text>
-          <Button
-            type="text-link"
-            onPress={() => {
-              console.log("Terms of service");
-            }}
-          >
-            <Text underline style={styles.smallActionLink} small center>
-              Our terms of service
-            </Text>
-          </Button>
-          <Text>
-            <Button
-              type="text-link"
-              onPress={() => {
-                console.log("Privacy Policy");
-              }}
-            >
-              <Text underline style={styles.smallActionLink} small center>
-                Privacy Policy
-              </Text>
-            </Button>
-            <Button type="text-link">
-              <Text small style={styles.smallText}> and </Text>
-            </Button>
-            <Button
-              type="text-link"
-              onPress={() => {
-                console.log("Cookie Policy");
-              }}
-            >
-              <Text underline style={styles.smallActionLink} small center>
-                Cookie Policy
-              </Text>
-            </Button>
-          </Text>
-        </View>
-
-        <LinkButton>
-          Having trouble logging in?
-        </LinkButton>
-
       </Block>
+
+      <Block flex={3} center middle space='evenly'>
+        <ButtonTertiary icon="apple" onPress={() => navigation.navigate("SignUpPhone")}>
+          Continue with Apple
+        </ButtonTertiary>
+        <ButtonTertiary icon="facebook" onPress={() => navigation.navigate("SignUpPhone")}>
+          Continue with Facebook
+        </ButtonTertiary>
+        <ButtonTertiary icon="google" onPress={() => navigation.navigate("SignUpPhone")}>
+          Continue with Google
+        </ButtonTertiary>
+        <ButtonTertiary icon="mobile" iconSize={28} onPress={() => navigation.navigate("SignUpPhone")}>
+          Use Email / Phone
+        </ButtonTertiary>
+      </Block>
+      
+      <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text>
+      
+      <Block flex row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>
+        <Text small light>By registering, you agree to</Text>
+        <Text small mediumItalic onPress={() => console.log("Terms of service")}>Our terms of service</Text>
+        <Text small mediumItalic onPress={() => console.log("Privacy Policy")}>Privacy Policy</Text>
+        <Text small light> and </Text>
+        <Text small mediumItalic onPress={() => console.log("Cookie Policy")}>Cookie Policy</Text>
+      </Block>
+
+      <Block center middle>
+        <LinkButton>Having trouble logging in?</LinkButton>
+      </Block>
+
+    </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  socialButtonsGroup: {
-    display: "flex",
-    justifyContent: "space-between",
-  },
-  socialButton: {
-    ...getFontStyle("tertiaryButton"),
-    marginVertical: 10,
-  },
-  smallText:{
-    fontFamily: FontNames.CamptonLight,
-    fontSize: 14
-  },
-  smallActionLink: {
-    fontFamily: FontNames.CamptonMediumItalic,
-    fontSize: 14,
-    margin: 0,
-  }
-});
 
 export default SignUp;

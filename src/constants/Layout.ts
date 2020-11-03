@@ -18,12 +18,12 @@ export default {
   // Dropdown styles
   dropdown_radius: 3,
   // Social Button styles
-  socialbutton_radius: 5,
+  socialbutton_radius: 24,
   // Chips styles
   chips_radius: 16,
   // Input styles
   input_radius: 0,
-  input_border_width: 3,
+  input_border_width: 2,
   input_height: 50,
   input_text_size: 22,
   input_label_text_size: 12,
@@ -33,7 +33,7 @@ export default {
   input_rounded: 5,
   // Select styles
   select_height: 50,
-  select_border_width: 3,
+  select_border_width: 2,
   // Menu styles
   menu_item_height: 58,
   // Block styles

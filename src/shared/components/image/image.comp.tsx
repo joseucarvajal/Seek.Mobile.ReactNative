@@ -10,6 +10,7 @@ export interface IImgProps {
   size?: SizeType;
   shadow?: any;
   resizeMode?: ImageResizeMode;
+  round?: boolean;
 }
 
 export type SizeType = "avatar" | "logo" | "small" | "full" | "background";
@@ -21,12 +22,13 @@ const Img: React.FC<IImgProps> = ({
   onPress,
   size,
   shadow,
-  resizeMode
+  resizeMode,
+  round
 }) => {
 
   const ViewStyles = [
     size === 'avatar' && styles.avatarStyle,
-    size === 'logo' && [styles.logoStyle, { flex: 0.1 * (width / 30) }],
+    size === 'logo' && styles.logoStyle,
     size === 'small' && styles.smallStyle,
     size === 'background' && styles.FullStyle,
     size === 'full' && styles.FullStyle,
@@ -36,10 +38,11 @@ const Img: React.FC<IImgProps> = ({
 
   const ImageStyles = [
     size === 'avatar' && styles.avatarStyle,
-    size === 'logo' && { width: `${width}%`, height: '100%' },
+    size === 'logo' && styles.logoStyle,
     size === 'small' && styles.smallStyle,
     size === 'background' && styles.FullStyle,
-    size === 'full' && styles.FullStyle
+    size === 'full' && styles.FullStyle,
+    round && styles.round,
   ];
 
   return (
@@ -63,9 +66,9 @@ const styles = StyleSheet.create({
     marginLeft: Layout.base,
   },
   round: {
-    width: Layout.window.width - Layout.base * 12,
-    height: Layout.window.width - Layout.base * 12,
-    borderRadius: (Layout.window.width - Layout.base * 12) / 2,
+    width: 104,
+    height: 104,
+    borderRadius: 50,
   },
   raised: {
     width: Layout.window.width - Layout.base * 12,
@@ -82,7 +85,8 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   logoStyle: {
-    width: '100%',
+    height: '100%',
+    width: '60%',
     justifyContent: 'center',
     alignItems: 'center'
   },

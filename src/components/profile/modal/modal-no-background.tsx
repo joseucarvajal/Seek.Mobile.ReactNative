@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from "react-native";
 import { Images, Colors, Layout } from '../../../constants';
-import { Block, Modal, Image, Text, Button } from '../../../shared';
+import { Block, Modal, Image, Text, Button, LinkButton } from '../../../shared';
 
 interface IModalProps {
   visible?: any
@@ -34,13 +34,12 @@ const ModalNoBackground: React.FC<IModalProps> = ({
             <Text h3 bold center color={Colors.white}>ALWAYS ALLOW</Text>
           </Button>
           <Text />
-          <Button
-            type='text-link'
+          <LinkButton
             style={{ top: Layout.base * 3 }}
             onPress={() => setVisible()}
           >
             <Text h3 bold center color={Colors.primary}>Skip now</Text>
-          </Button>
+          </LinkButton>
         </Block>
       </Block>
     </Modal>

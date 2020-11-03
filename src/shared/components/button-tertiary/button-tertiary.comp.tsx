@@ -1,12 +1,13 @@
 import React from "react";
 import { ViewProps } from "react-native";
-import { Colors, FontNames } from "../../../constants";
+import { Colors } from "../../../constants";
 import Button from "../button/button.comp";
 import Text from "../text/text.comp";
 import Icon from "../icons/icon.comp";
+import { ColorType } from "../button/button.comp";
 
 export interface IButtonTertiary extends ViewProps {
-  icon?: any;
+  icon: ColorType;
   customIcon?: string;
   customIconSize?: number;
   customIconColor?: string;
@@ -27,6 +28,7 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
   customIconMargin = 30,
   ...props
 }) => {
+
   const iconContent = customIcon && (
     <Icon
       family='seekQ'
@@ -42,13 +44,14 @@ const ButtonTertiary: React.FC<IButtonTertiary> = ({
       left
       type="social"
       icon={icon}
-      iconColor={Colors.quaternary}
+      iconColor={Colors.white}
       iconSize={iconSize ?? 18}
       style={style}
       iconContent={iconContent}
       onPress={onPress}
+      color={icon}
     >
-      <Text fontSize={16} fontFamily={FontNames.CamptonMedium}>
+      <Text h5 medium color={Colors.white}>
         {children}
       </Text>
     </Button>

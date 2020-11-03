@@ -1,34 +1,20 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput } from "react-native";
-
+import { TextInput } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 
-import {
-  Text,
-  Input,
-  ButtonPrimary,
-  LinkButton,
-  Block,
-  Spinner,
-  DisplayError,
-} from "../../../shared";
-
-import { Colors, FontNames, Layout } from "../../../constants";
-
+import { Text, Input, ButtonPrimary, LinkButton, Block, Spinner, DisplayError } from "../../../shared";
+import { Colors, FontNames } from "../../../constants";
 import { SeekQLogo, HeaderSection } from "../../../components/signup/";
 import { RootStackParamList } from "../../../types";
 
 import { useCheckVerificationCode } from "../../../hooks/signup";
 import { useIdentityState } from "../../../providers/identity";
 
-type SignUPVerificationCodeRouteProp = RouteProp<
-  RootStackParamList,
-  "SignUpVerificationCode"
->;
+type SignUPVerificationCodeRouteProp = RouteProp<RootStackParamList, "SignUpVerificationCode">;
 
-export interface IVerificationCodeProps {}
+export interface IVerificationCodeProps { }
 
-const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
+const VerificationCode: React.FC<IVerificationCodeProps> = ({ }) => {
   //6 digits
   const [codeVerificationCollection, setCodeVerificationCollection] = useState([
     "",
@@ -51,8 +37,8 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
     verifyCode,
     data,
     error,
-    isLoading,    
-  } = useCheckVerificationCode( );
+    isLoading,
+  } = useCheckVerificationCode();
 
   const handleChangeDigit = (digit: string, index: any) => {
     if (isNaN(+digit)) {
@@ -69,96 +55,65 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({}) => {
   };
 
   return (
-    <Block safe flex space="evenly" center>
+    <Block safe flex>
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
-      <SeekQLogo />
+      <Block flex center>
+        <SeekQLogo />
+      </Block>
 
-      <HeaderSection headerText="Enter verification code">
-        <View>
-          <Text p center>
-            A verification code we send to
-          </Text>
-          <Text p center>
-            new: {applicationUser?.phoneNumber}
-          </Text>
+      <Block flex>
+        <HeaderSection headerText="Enter verification code">
+          <Text p center>A verification code we send to</Text>
+          <Text p center>{applicationUser?.phoneNumber}</Text>
 
-          <Text center style={{ marginTop: 20 }}>
+          <Text center style={{ paddingTop: 20 }}>
             <LinkButton center>{"< "}</LinkButton>
-            <LinkButton
-              underline
-              center
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              Edit
-            </LinkButton>
+            <LinkButton underline center onPress={() => navigation.goBack()}>Edit</LinkButton>
           </Text>
-        </View>
-      </HeaderSection>
+        </HeaderSection>
+      </Block>
 
-      <View style={styles.codeForm}>
+      <Block flex row top left>
         {codeVerificationCollection.map((digit, index) => (
-          <Input
-            onRef={(inputRef: TextInput) => {
-              inputRefs[index] = inputRef;
-            }}
-            maxLength={1}
-            keyboardType="phone-pad"
-            selectTextOnFocus
-            key={index}
-            value={digit}
-            onChangeText={(text: string) => handleChangeDigit(text, index)}
-            color="primary"
-            style={styles.codeDigit}
-            borderless
-            textInputStyle={{
-              fontFamily: FontNames.CamptonSemiBold,
-              color: Colors.fontNormal,
-            }}
-          />
+          <Block flex key={index} padding={5}>
+            <Input
+              onRef={(inputRef: TextInput) => {
+                inputRefs[index] = inputRef;
+              }}
+              maxLength={1}
+              keyboardType="phone-pad"
+              selectTextOnFocus
+              value={digit}
+              onChangeText={(text: string) => handleChangeDigit(text, index)}
+              color="primary"
+              style={{ width: 'auto' }}
+              borderless
+              textInputStyle={{
+                fontFamily: FontNames.CamptonSemiBold,
+                color: Colors.fontNormal,
+              }}
+            />
+          </Block>
         ))}
-      </View>
+      </Block>
 
-      <ButtonPrimary
-        onPress={() => {
-          if (
-            codeVerificationCollection.join("").length ===
-            codeVerificationCollection.length
-          ) {
-            verifyCode(phoneNumberOrEmail, codeVerificationCollection.join(""));
-          }
-        }}
-      >
-        VALIDATE
-      </ButtonPrimary>
+      <Block flex center middle space='around'>
+        <ButtonPrimary
+          onPress={() => {
+            if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
+              verifyCode(phoneNumberOrEmail, codeVerificationCollection.join(""));
+            }
+          }}
+        >
+          VALIDATE
+        </ButtonPrimary>
 
-      <LinkButton
-        underline
-        onPress={() => {
-          navigation.navigate("SignUpPhone");
-        }}
-      >
-        Resend code
-      </LinkButton>
+        <LinkButton underline onPress={() => navigation.navigate("SignUpPhone")}>Resend code</LinkButton>
+      </Block>
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  codeForm: {
-    width: Layout.window.width,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: Layout.base,
-  },
-  codeDigit: {
-    width: Layout.window.width * 0.13,
-  },
-});
 
 export default VerificationCode;

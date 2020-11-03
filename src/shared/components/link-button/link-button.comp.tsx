@@ -24,9 +24,9 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
     
     return (
       <Text
-        fontSize={17}
+        h4
         center={center}
-        fontFamily={FontNames.CamptonBold}
+        bold
         underline={underline}
         onPress={onPress}
         style={{color: Colors.primaryFont, ...style}}

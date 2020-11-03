@@ -1,101 +1,47 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
+import { Text, Input, ButtonPrimary, LinkButton, Block } from "../../../shared";
+import { Colors, FontNames } from "../../../constants";
+import { HeaderSection, SeekQLogo } from "../../../components/signup/";
 
-import {
-  Text,
-  Select,
-  Input,
-  ButtonPrimary,
-  LinkButton,
-  Block,
-} from "../../../shared";
+export interface ISignUpEmailProps { }
 
-import { Colors, FontNames, Layout } from "../../../constants";
-
-import { SeekQLogo } from "../../../components/signup/";
-
-export interface ISignUpEmailProps {}
-
-const SignUpEmail: React.FC<ISignUpEmailProps> = ({}) => {
+const SignUpEmail: React.FC<ISignUpEmailProps> = ({ }) => {
   const navigation = useNavigation();
 
   return (
-    <Block safe flex space="evenly" center>
-      <SeekQLogo />
+    <Block safe flex>
 
-      <Text h1 center fontFamily={FontNames.CamptonSemiBold}>
-        Wellcome back!
-      </Text>
+      <Block flex center middle>
+        <SeekQLogo />
+      </Block>
 
-      <Text p center>
-        Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-        sint. Velit officia consequat duis enim velit mollit.
-      </Text>
+      <Block flex>
+        <HeaderSection headerText="Wellcome back!">
+          <Text center light p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit.</Text>
+        </HeaderSection>
+      </Block>
 
-      <View style={styles.emailForm}>
-        <View style={styles.emailNumberView}>
-          <Text fontSize={12} color={Colors.fontSoft1}>
-            Enter Email
-          </Text>
+      <Block flex={2} row center middle>
+        <Block flex>
           <Input
+            label='Enter Email'
             color="primary"
-            style={styles.email}
             borderless
             textInputStyle={{
               fontFamily: FontNames.CamptonSemiBold,
               color: Colors.fontNormal,
             }}
           />
-        </View>
-      </View>
+        </Block>
+      </Block>
 
-      <ButtonPrimary
-        onPress={() => {
-          console.log("continue");
-        }}
-      >
-        CONTINUE
-      </ButtonPrimary>
-
-      <LinkButton
-        onPress={() => {
-          navigation.navigate("SignUpPhone");
-        }}
-      >
-        Continue using phone Instead
-      </LinkButton>
-
-      <LinkButton
-        upper
-        onPress={() => {
-          console.log("LOGIN");
-        }}
-      >
-        LOGIN
-      </LinkButton>
+      <Block flex center middle space='evenly'>
+        <ButtonPrimary onPress={() => navigation.navigate("SignUpVerificationCode")}>CONTINUE</ButtonPrimary>
+        <LinkButton underline onPress={() => navigation.navigate("SignUpPhone")}>Continue using phone Instead</LinkButton>
+      </Block>
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  emailForm: {
-    width: Layout.window.width,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    paddingHorizontal: Layout.base,    
-  },
-  emailNumberView: {
-    flex: 1,
-  },
-  email: {
-    top: -7,
-    width: "100%",
-    backgroundColor: Colors.transparent,
-  },
-});
 
 export default SignUpEmail;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Steper } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
 import { Block, Swiper, ButtonPrimary } from '../../../shared';
@@ -12,6 +13,7 @@ export interface IProfileProps { }
 const Profile: React.FC<IProfileProps> = ({
 
 }) => {
+  const navigation = useNavigation();
 
   const scrollRef: any = React.createRef()
 
@@ -28,6 +30,9 @@ const Profile: React.FC<IProfileProps> = ({
     const nextPosition = currentPage + 1
     if (nextPosition < stepCount) {
       setCurrentPage(nextPosition)
+    }
+    else {
+      navigation.navigate('Home')
     }
   };
 
@@ -57,7 +62,7 @@ const Profile: React.FC<IProfileProps> = ({
       </Block>
       <Block flex>
         <MySwiper ref={scrollRef} />
-        <ButtonPrimary onPress={() => { console.log("continue"); }}>
+        <ButtonPrimary onPress={() => nextStep()}>
           {buttonText}
         </ButtonPrimary>
       </Block>

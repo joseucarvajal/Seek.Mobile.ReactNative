@@ -43,6 +43,7 @@ export default {
   facebook: '#4267B2',
   apple: '#252525',
   iconProfile: '#FF4814',
+  mobile: "#1BBED8",
   chipPrimary: {
     active: '#5FE9FF',
     inactive: '#8FF0FF'

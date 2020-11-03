@@ -22,15 +22,8 @@ export interface IArButtonProps extends ViewProps {
   small?: boolean;
 }
 
-export type ButtonType =
-  | "small"
-  | "social"
-  | "large"
-  | "link"
-  | "text-link"
-  | "gradient"
-  | "backgroundless";
-export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
+export type ButtonType = "small" | "social" | "large" | "gradient" | "backgroundless";
+export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary" | "apple" | "facebook" | "mobile" | "google" ;
 
 const ArButton: React.FC<IArButtonProps> = ({
   type,
@@ -70,7 +63,6 @@ const ArButton: React.FC<IArButtonProps> = ({
     type === "social" && styles.socialButton,
     type === "gradient" && styles.largeButton,
     type === "backgroundless" && styles.backgroundless,
-    type === "link" && styles.backgroundless,
     disabled && styles.disabled,
     shadow && styles.shadow,
     color && { backgroundColor: Colors[color] },
@@ -105,30 +97,23 @@ const ArButton: React.FC<IArButtonProps> = ({
             </TouchableOpacity>
           </LinearGradient>
         </Block>
-      ) : type === "text-link" ? (
-        <TouchableOpacity style={style}
-          onPress={disabled ? null : onPress}
-        >
-          {children}
-        </TouchableOpacity>
-      )
-          : (
-            <Block style={styleButton}>
-              <TouchableHighlight
-                onPress={onPress}
-                style={[{ flex: 1 }, styleButton]}
-                underlayColor={Colors.active}
-              >
-                <Block flex row middle center>
-                  {left && !right && iconInstance}
-                  <Block flex middle center >
-                    {children}
-                  </Block>
-                  {right && iconInstance}
+      ) : (
+          <Block style={styleButton}>
+            <TouchableHighlight
+              onPress={onPress}
+              style={[{ flex: 1 }, styleButton]}
+              underlayColor={Colors.active}
+            >
+              <Block flex row middle center>
+                {left && !right && iconInstance}
+                <Block flex middle center >
+                  {children}
                 </Block>
-              </TouchableHighlight>
-            </Block>
-          )}
+                {right && iconInstance}
+              </Block>
+            </TouchableHighlight>
+          </Block>
+        )}
     </>
   );
 };

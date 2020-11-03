@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, TextInputProps } from "react-native";
 import { Colors, Layout, FontNames } from '../../../constants';
+import { ColorType } from '../button/button.comp';
 import Icon from '../icons/icon.comp';
 import Text from '../text/text.comp'
 
@@ -40,8 +41,6 @@ export interface IInputProps extends TextInputProps {
   props?: any;
 }
 
-export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
-
 const Input: React.FC<IInputProps> = ({
   style,
   textInputStyle,
@@ -68,10 +67,10 @@ const Input: React.FC<IInputProps> = ({
   iconContent,
   password,
   onRef,
-  error, 
-  onFocus, 
-  onChangeText, 
-  onSubmitEditing, 
+  error,
+  onFocus,
+  onChangeText,
+  onSubmitEditing,
   value,
   children,
   ...props
@@ -122,8 +121,8 @@ const Input: React.FC<IInputProps> = ({
       />
     </TouchableOpacity>
   );
-  const labelContent = label && <Text h6 style={[styles.label, labelStyles || {}]}>{label}</Text>;
-  const helpContent = help && <Text h6 style={[styles.helpText, helpStyles || {}]}>{help}</Text>;
+  const labelContent = label && <Text extraSmall book color={Colors.fontSoft1} style={[styles.label, labelStyles]}>{label}</Text>;
+  const helpContent = help && <Text extraSmall book color={Colors.secondary} style={helpStyles}>{help}</Text>;
 
   return (
     <View>
@@ -132,7 +131,7 @@ const Input: React.FC<IInputProps> = ({
       <View style={inputViewStyles}>
         {left && !right && iconInstance}
         <TextInput
-          ref={onRef}          
+          ref={onRef}
           style={inputStyles}
           keyboardType={type}
           secureTextEntry={isPassword}
@@ -162,7 +161,7 @@ const styles = StyleSheet.create({
     borderRadius: Layout.input_radius,
     borderWidth: Layout.input_border_width,
     height: Layout.input_height,
-    width: Layout.window.width - Layout.base * 2    
+    width: Layout.window.width - Layout.base * 2
   },
   inputText: {
     color: Colors.black,
@@ -181,17 +180,6 @@ const styles = StyleSheet.create({
   inputIcon: {
     marginHorizontal: Layout.base,
   },
-  label: {
-    paddingVertical: Layout.input_vertical_label - 10,
-    fontSize: Layout.input_label_text_size,
-    fontFamily: FontNames.CamptonBook,
-    color: Colors.fontSoft1
-  },
-  helpText: {
-    color: Colors.secondary,
-    marginVertical: 8,
-    paddingHorizontal: 16
-  },
   rounded: {
     borderRadius: Layout.input_rounded,
   },
@@ -199,4 +187,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderBottomWidth: Layout.input_border_width,
   },
+  label: {
+    paddingTop: Layout.input_vertical_label
+  }
 });

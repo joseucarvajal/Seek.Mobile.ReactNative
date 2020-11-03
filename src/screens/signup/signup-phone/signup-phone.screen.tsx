@@ -1,29 +1,15 @@
 import React from "react";
-import { StyleSheet, View, PickerItemProps } from "react-native";
-
+import { PickerItemProps } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
 import { useForm, Controller } from "react-hook-form";
-
-import {
-  Text,
-  Select,
-  Input,
-  ButtonPrimary,
-  LinkButton,
-  Block,
-  Spinner,
-  DisplayError,
-} from "../../../shared";
-
+import { Text, Select, Input, ButtonPrimary, LinkButton, Block, Spinner, DisplayError } from "../../../shared";
 import { Colors, FontNames, Layout } from "../../../constants";
-
 import { SeekQLogo, HeaderSection } from "../../../components/signup/";
 import { useSendVerificationCode } from "../../../hooks/signup";
 
-export interface ISignUpPhoneProps {}
+export interface ISignUpPhoneProps { }
 
-const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
+const SignUpPhone: React.FC<ISignUpPhoneProps> = ({ }) => {
   const navigation = useNavigation();
 
   type TFormData = {
@@ -47,29 +33,22 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
   ];
 
   return (
-    <Block safe flex space="evenly" center>
+    <Block safe flex>
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
-      <SeekQLogo />
+      <Block flex center middle>
+        <SeekQLogo />
+      </Block>
 
-      <HeaderSection headerText="Welcome">
-        <Text center light p>
-          By registering, you agree to Our terms of
-        </Text>
-        <Text center light p>
-          Service<Text>, </Text>
-          <Text center light p>
-            Privacy Policy<Text light>, </Text>
-          </Text>
-          <Text center light p>
-            and Cookie Policy
-          </Text>
-        </Text>
-      </HeaderSection>
+      <Block flex>
+        <HeaderSection headerText="Welcome">
+          <Text center light p>By registering, you agree to Our terms of Service, Privacy Policy and Cookie Policy</Text>
+        </HeaderSection>
+      </Block>
 
-      <View style={styles.phoneForm}>
-        <View style={styles.phoneIndicativeView}>
+      <Block flex row center middle order={1}>
+        <Block flex>
           <Controller
             control={control}
             render={({ onChange, value }) => (
@@ -80,16 +59,16 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                   onChange(item);
                 }}
                 items={indicativeItems}
-                style={styles.phoneIndicative}
                 defaultValue={indicativeItems[1].value}
+                style={{ width: 'auto' }}
               />
             )}
             name="phoneIndicative"
             rules={{ required: true }}
             defaultValue={indicativeItems[1]}
           ></Controller>
-        </View>
-        <View style={styles.phoneNumberView}>
+        </Block>
+        <Block flex={3} paddingLeft={Layout.base} paddingTop={Layout.input_vertical_label * 1.5}>
           <Text fontSize={12} color={Colors.fontSoft1}></Text>
           <Controller
             control={control}
@@ -99,12 +78,9 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
                 onChangeText={(value: string) => onChange(value)}
                 color="primary"
                 keyboardType="phone-pad"
-                style={styles.phoneNumber}
                 borderless
-                textInputStyle={{
-                  fontFamily: FontNames.CamptonSemiBold,
-                  color: Colors.fontNormal,
-                }}
+                textInputStyle={{ fontFamily: FontNames.CamptonSemiBold, color: Colors.fontNormal }}
+                style={{ width: 'auto' }}
               />
             )}
             name="phoneNumber"
@@ -112,51 +88,15 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({}) => {
             defaultValue=""
           />
           {errors.phoneNumber && <Text>Enter a valid phone number</Text>}
-        </View>
-      </View>
+        </Block>
+      </Block>
 
-      <ButtonPrimary
-        onPress={() => {
-          onSubmit();
-        }}
-      >
-        CONTINUE
-      </ButtonPrimary>
-
-      <LinkButton
-        underline
-        onPress={() => {
-          navigation.navigate("SignUpEmail");
-        }}
-      >
-        Continue using email Instead
-      </LinkButton>
+      <Block flex center middle space='evenly'>
+        <ButtonPrimary onPress={() => onSubmit()}>CONTINUE</ButtonPrimary>
+        <LinkButton underline onPress={() => navigation.navigate("SignUpEmail")}>Continue using email Instead</LinkButton>
+      </Block>
     </Block>
   );
 };
-
-const styles = StyleSheet.create({
-  phoneForm: {
-    width: Layout.window.width,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-    alignItems: "center",
-    paddingHorizontal: Layout.base,
-  },
-  phoneIndicativeView: {},
-  phoneIndicative: {
-    width: Layout.window.width * 0.22,
-  },
-  phoneNumberView: {
-    flex: 1,
-    borderColor: "blue",
-    marginLeft: Layout.base - 5,
-  },
-  phoneNumber: {
-    width: "100%",
-    backgroundColor: Colors.transparent,
-  },
-});
 
 export default SignUpPhone;

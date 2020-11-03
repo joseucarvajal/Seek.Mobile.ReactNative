@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from "react-native";
 import { Images, Colors, Layout } from '../../../constants';
-import { Block, Modal, Image, Text, Button } from '../../../shared';
+import { Block, Modal, Image, Text, Button, LinkButton } from '../../../shared';
 
 interface IModalProps {
   visible?: any;
@@ -26,27 +26,24 @@ const ModalBackground: React.FC<IModalProps> = ({
         <Image resizeMode="contain" source={Images.Location_1} style={styles.horizontalImage} />
         <Text h2 bold>Allow SeekQ</Text>
         <Text h3>to access your location</Text>
-        <Button
-          type='text-link'
+        <LinkButton
           style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
           onPress={() => setVisible()}
         >
           <Text h3 center color={Colors.option}>Allow While Using App</Text>
-        </Button>
-        <Button
-          type='text-link'
+        </LinkButton>
+        <LinkButton
           style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
           onPress={() => setVisible()}
         >
           <Text h3 center color={Colors.option}>Always Allow</Text>
-        </Button>
-        <Button
-          type='text-link'
+        </LinkButton>
+        <LinkButton
           style={{ ...styles.openButton, backgroundColor: Colors.transparent, top: Layout.base }}
           onPress={() => setVisible()}
         >
           <Text h3 center color={Colors.option}>Don't Allow</Text>
-        </Button>
+        </LinkButton>
       </Block>
     </Modal>
   );

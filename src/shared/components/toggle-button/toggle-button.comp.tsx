@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Switch, ViewProps } from "react-native";
 import { Colors } from '../../../constants';
+import { ColorType } from '../button/button.comp';
 
 export interface IToggleButtonProps extends ViewProps {
     value?: any;
@@ -12,8 +13,6 @@ export interface IToggleButtonProps extends ViewProps {
     onPress?: any;
     onValueChange?: any;
 }
-
-export type ColorType = "primary" | "secondary" | "tertiary" | "quaternary";
 
 const ToggleButton: React.FC<IToggleButtonProps> = ({
     value: initValue,
@@ -42,6 +41,7 @@ const ToggleButton: React.FC<IToggleButtonProps> = ({
           true: Colors.gray,
           false: Colors.gray
         }}
+        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
         {...props}
       />
     );

@@ -1,49 +1,37 @@
 import React, { useRef } from "react";
-import { StyleSheet, View, PickerItemProps } from "react-native";
-
+import { StyleSheet } from "react-native";
 import { useNavigation, RouteProp, useRoute } from "@react-navigation/native";
-
 import { useForm, Controller } from "react-hook-form";
 
-import {
-  Text,
-  Select,
-  Input,
-  ButtonPrimary,
-  LinkButton,
-  Block,
-  Spinner,
-  DisplayError,
-} from "../../../shared";
-
+import { Text, Input, ButtonPrimary, Block, Spinner, DisplayError } from "../../../shared";
 import { Colors, FontNames, Layout } from "../../../constants";
-
 import { SeekQLogo, HeaderSection } from "../../../components/signup";
+
 import { useSetUserPassword } from "../../../hooks/signup";
 import { RootStackParamList } from "../../../types";
 
-export interface ISignUpCreatePasswordProps {}
+export interface ISignUpCreatePasswordProps { }
 
 type SignUpCreatePasswordRouteProps = RouteProp<
   RootStackParamList,
   "SignUpCreatePassword"
 >;
 
-const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
+const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({ }) => {
   const navigation = useNavigation();
 
   const route = useRoute<SignUpCreatePasswordRouteProps>();
   const { phoneNumberOrEmail } = route.params;
 
-  const {setUserPassword, isLoading, error} = useSetUserPassword();
+  const { setUserPassword, isLoading, error } = useSetUserPassword();
 
   type TFormData = {
     password: string;
     passwordConfirm: string;
   };
-  const { control, handleSubmit, errors, getValues, watch, setError } = useForm<
-    TFormData
-  >();
+
+  const { control, handleSubmit, errors, getValues, watch, setError } = useForm<TFormData>();
+
   const password = useRef({});
   password.current = watch("password", "");
 
@@ -56,15 +44,20 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
   const minPasswordLength = 4;
 
   return (
-    <Block safe flex space="evenly" center>
+    <Block safe flex>
       <Spinner visible={isLoading} />
       <DisplayError errorResponse={error} />
 
-      <SeekQLogo />
-      <HeaderSection headerText="Create your password"></HeaderSection>
+      <Block flex center middle>
+        <SeekQLogo />
+      </Block>
 
-      <View style={styles.passwordForm}>
-        <View>
+      <Block flex>
+        <HeaderSection headerText="Create your password"></HeaderSection>
+      </Block>
+
+      <Block flex={2} paddingHorizontal={Layout.base}>
+        <Block>
           <Controller
             control={control}
             render={({ onChange, value }) => (
@@ -72,7 +65,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
                 value={value}
                 label="Password"
                 onChangeText={(value: string) => onChange(value)}
-                color="primary"                
+                color="primary"
                 borderless
                 password
                 viewPass
@@ -93,8 +86,8 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
             defaultValue=""
           />
           {errors.password && <Text>{errors.password.message}</Text>}
-        </View>
-        <View style={{ marginTop: 45 }}>
+        </Block>
+        <Block paddingTop={Layout.base * 2}>
           <Controller
             control={control}
             render={({ onChange, value }) => (
@@ -102,7 +95,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
                 value={value}
                 label="Confirm password"
                 onChangeText={(value: string) => onChange(value)}
-                color="primary"                
+                color="primary"
                 borderless
                 password
                 viewPass
@@ -131,16 +124,14 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({}) => {
           {errors.passwordConfirm && (
             <Text>{errors.passwordConfirm.message}</Text>
           )}
-        </View>
-      </View>
+        </Block>
+      </Block>
 
-      <ButtonPrimary
-        onPress={() => {
-          onSubmit();
-        }}
-      >
-        SAVE
-      </ButtonPrimary>
+      <Block flex center middle>
+        {/* <ButtonPrimary onPress={() => onSubmit()}>SAVE</ButtonPrimary> */}
+        <ButtonPrimary onPress={() => navigation.navigate('SignUpReady')}>SAVE</ButtonPrimary>
+      </Block>
+
     </Block>
   );
 };

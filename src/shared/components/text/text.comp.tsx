@@ -32,6 +32,8 @@ export interface ITextProp {
   extraLarge?: boolean;
   boldItalic?: boolean;
   SemiBold?: boolean;
+  mediumItalic?: boolean;
+  book?: boolean;
   numberOfLines?: any;
   fontWeight?: any;
   uppercase?: boolean;
@@ -68,7 +70,9 @@ const Typography: React.FC<ITextProp> = (
     extraSmall,
     extraLarge,
     boldItalic,
+    mediumItalic,
     SemiBold,
+    book,
     numberOfLines,
     fontWeight = 'normal',
     uppercase,
@@ -107,8 +111,11 @@ const Typography: React.FC<ITextProp> = (
         italic && { fontFamily: FontNames.CamptonLightItalic },
         bold && { fontFamily: FontNames.CamptonBold },
         medium && { fontFamily: FontNames.CamptonMedium },
+        mediumItalic && { fontFamily: FontNames.CamptonMediumItalic },
         SemiBold && { fontFamily: FontNames.CamptonSemiBold },
         boldItalic && { fontFamily: FontNames.CamptonBoldItalic },
+        book && { fontFamily: FontNames.CamptonBook },
+        light && { fontFamily: FontNames.CamptonLight },
         fontFamily && { fontFamily },
         letterSpacing && { letterSpacing },
         center && { textAlign: "center" },
@@ -117,7 +124,6 @@ const Typography: React.FC<ITextProp> = (
         capitalize && { textTransform: "capitalize" },
         lowercase && { textTransform: "lowercase" },
         style && style,
-        light && { fontFamily: FontNames.CamptonLight },
       ]}
       onPress={onPress}
       {...props}

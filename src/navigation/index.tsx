@@ -15,13 +15,17 @@ import { Icon, Header } from "../shared";
 
 import NotFoundScreen from "../screens/NotFoundScreen";
 import LinkingConfiguration from "./LinkingConfiguration";
-import Profile from "../screens/profile/profile/profile.screen";
+
 import Components from "../screens/components/components.screen";
 import Home from "../screens/home/home-screen";
-import Congrats from "../screens/profile/congrats-profile/congrats-profile.screen";
-import MyProfile from "../screens/profile/view-my-profile/view-my-profile.screen";
-import EditMyProfile from "../screens/profile/view-edit-my-profile/view-edit-my-profile.screen";
-import EditBasicInfo from "../screens/profile/view-edit-basic-info/view-edit-basic-info.screen";
+
+import { 
+  Profile,
+  MyProfile,
+  EditMyProfile,
+  EditBasicInfo,
+  Congrats
+} from "../screens/profile"
 
 import {
   SignUp,
@@ -75,26 +79,9 @@ const Tab = createBottomTabNavigator();
 const activeTab = Colors.primary;
 const inactiveTab = Colors.muted;
 
-function HomeStack() {
+function OnBoarding() {
   return (
-    <MainStack.Navigator mode="card" headerMode="screen">
-      <MainStack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          header: ({ navigation, scene }) => (
-            <Header
-              title="Home"
-              navigation={navigation}
-              scene={scene}
-              bgColor={Colors.header}
-            />
-          ),
-          cardStyle: { backgroundColor: Colors.header },
-        }}
-      />
-
-      {/*Sign Up/Sign In screens*/}
+    <MainStack.Navigator mode="card" headerMode="none">
       <MainStack.Screen
         name="SignUp"
         component={SignUp}
@@ -129,12 +116,34 @@ function HomeStack() {
   )
 }
 
+function HomeStack() {
+  return (
+    <MainStack.Navigator mode="card" headerMode="screen">
+      <MainStack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Home"
+              navigation={navigation}
+              scene={scene}
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+    </MainStack.Navigator>
+  )
+}
+
 function ChatStack() {
   return (
     <MainStack.Navigator mode="card" headerMode="screen">
       <MainStack.Screen
         name="Home"
-        component={Components}
+        component={NotFoundScreen}
         options={{
           header: ({ navigation, scene }) => (
             <Header
@@ -156,7 +165,7 @@ function ContactsStack() {
     <MainStack.Navigator mode="card" headerMode="screen">
       <MainStack.Screen
         name="Home"
-        component={Home}
+        component={NotFoundScreen}
         options={{
           header: ({ navigation, scene }) => (
             <Header
@@ -326,7 +335,6 @@ function SettingsStack() {
         }}
       />
     </MainStack.Navigator>
-    
   )
 }
 
@@ -409,6 +417,7 @@ function RootTabs() {
 function RootNavigator() {
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
+      <RootStack.Screen name="SignUp" component={OnBoarding} />
       <RootStack.Screen name="Home" component={RootTabs} />
       <RootStack.Screen name='Profile' component={MainNavigator} />
     </RootStack.Navigator>

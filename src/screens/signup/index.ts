@@ -6,10 +6,10 @@ import SignUpReady from './signup-ready/signup-ready.screen';
 import SignUpCreatePassword from './signup-create-password/signup-create-password.screen';
 
 export {
-    SignUp,
-    SignUpEmail,
-    SignUpPhone,
-    SignUpVerificationCode,
-    SignUpCreatePassword,
-    SignUpReady
+  SignUp,
+  SignUpEmail,
+  SignUpPhone,
+  SignUpVerificationCode,
+  SignUpCreatePassword,
+  SignUpReady
 };
