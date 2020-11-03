@@ -24,7 +24,7 @@ export function useSetToggleMode() {
   const setToggleNotification = async (UserModeTypeId: string, active: boolean) => {    
     return mutate({
       id: UserModeTypeId,
-      active,
+      active
     });
   };
 
