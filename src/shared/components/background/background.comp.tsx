@@ -16,7 +16,7 @@ const Background: React.FC<ISpinnerProps> = ({
 }) => {
   return (
     <Block style={{ width: Layout.window.width, height: Layout.window.height }}>
-      <ImageBackground source={image} style={[styles.image, style]} resizeMode='stretch'>
+      <ImageBackground source={image} style={[styles.image, style]} resizeMode='cover'>
         {children}
       </ImageBackground>
     </Block>

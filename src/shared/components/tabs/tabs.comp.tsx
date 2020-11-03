@@ -1,17 +1,18 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { StyleSheet, FlatList, Animated } from 'react-native';
+import { LinearGradient } from "expo-linear-gradient";
 import { Colors, FontNames, Layout } from '../../../constants';
 import Block from '../block/block.comp'
+import Text from '../text/text.comp'
 
 export interface ITabsProps {
   initialIndex?: any;
   onChange?: any;
   backgroundless?: any;
   data?: any;
-}
-
-interface ITabsState {
-
+  customTextColor?: string;
+  gradient?: boolean
+  showSeparator?: boolean
 }
 
 const defaultMenu = [
@@ -24,12 +25,15 @@ const Tabs: React.FC<ITabsProps> = ({
   initialIndex,
   onChange,
   backgroundless,
-  data: dataTabs
+  data: dataTabs,
+  customTextColor,
+  gradient,
+  showSeparator
 }, props) => {
   const [initialIndexDefault, setInitialIndexDefault] = useState(null);
   const [data, _] = useState(dataTabs ? dataTabs : defaultMenu);
   const [active, setActive] = useState(null);
-  const menuRef:any = useRef();
+  const menuRef: any = useRef();
   const animatedValue = new Animated.Value(1);
 
   const onScrollToIndexFailed = () => {
@@ -71,22 +75,43 @@ const Tabs: React.FC<ITabsProps> = ({
 
     const containerStyles = [
       styles.titleContainer,
-      !isActive && { backgroundColor: Colors.tabs },
+      !isActive && { backgroundColor: Colors.transparent },
       isActive && backgroundless && styles.shadow
     ];
 
     return (
-      <Block style={containerStyles}>
-        <Animated.Text
-          style={[
-            styles.menuTitle,
-            { color: textColor },
-            { fontFamily: FontNames.CamptonMedium },
-          ]}
-          onPress={() => selectMenu(item.id)}>
-          {item.title}
-        </Animated.Text>
-      </Block>
+      <>
+        {gradient && isActive ?
+          <LinearGradient
+            colors={[Colors.homeTab.active, Colors.homeTab.inactive]}
+            start={{ x: 0.0, y: 1.0 }}
+            end={{ x: 1.0, y: 1.0 }}
+            style={containerStyles}
+          >
+            <Animated.Text
+              style={[
+                styles.menuTitle,
+                { color: customTextColor ? customTextColor : textColor },
+                { fontFamily: FontNames.CamptonMedium },
+              ]}
+              onPress={() => selectMenu(item.id)}>
+              {item.title}
+            </Animated.Text>
+          </LinearGradient>
+          :
+          <Block style={containerStyles}>
+            <Animated.Text
+              style={[
+                styles.menuTitle,
+                { color: customTextColor ? customTextColor : textColor },
+                { fontFamily: FontNames.CamptonMedium },
+              ]}
+              onPress={() => selectMenu(item.id)}>
+              {item.title}
+            </Animated.Text>
+          </Block>
+        }
+      </>
     )
   };
 
@@ -103,12 +128,19 @@ const Tabs: React.FC<ITabsProps> = ({
         onScrollToIndexFailed={onScrollToIndexFailed}
         renderItem={({ item }) => renderItem(item)}
         contentContainerStyle={styles.menu}
+        ItemSeparatorComponent={showSeparator && FlatListItemSeparator}
       />
     )
   };
 
+  const FlatListItemSeparator = () => {
+    return (
+      <Block backgroundColor={Colors.white} width={1} height={'70%'} style={{ margin: 5, marginRight: Layout.base }} />
+    )
+  }
+
   const updateInitialIndex = useCallback(() => {
-    if(initialIndexDefault === null) {
+    if (initialIndexDefault === null) {
       console.log('entro', initialIndex);
       selectMenu(initialIndex);
       setInitialIndexDefault(initialIndex);
@@ -144,12 +176,12 @@ const styles = StyleSheet.create({
   menu: {
     paddingHorizontal: Layout.base * 2.5,
     paddingTop: 8,
-    paddingBottom: 16,
+    paddingBottom: 8,
   },
   titleContainer: {
     alignItems: 'center',
     backgroundColor: Colors.tabs,
-    borderRadius: 21,
+    borderRadius: 20,
     marginRight: 9,
     paddingHorizontal: 10,
     paddingVertical: 3,

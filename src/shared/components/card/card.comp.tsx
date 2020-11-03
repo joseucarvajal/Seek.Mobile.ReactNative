@@ -1,8 +1,10 @@
+import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback, Image } from 'react-native'
-import { Colors, Layout } from '../../../constants';
+import { Colors, Images, Layout } from '../../../constants';
 import Block from '../block/block.comp'
 import Icon from '../icons/icon.comp'
+import Text from '../text/text.comp'
 
 export interface ICardProps {
   source?: any;
@@ -21,6 +23,8 @@ export interface ICardProps {
   topLeftBorder?: boolean;
   color?: string;
   cardContent?: any;
+  home?: boolean;
+  item?: any;
 }
 
 const Card: React.FC<ICardProps> = ({
@@ -39,7 +43,9 @@ const Card: React.FC<ICardProps> = ({
   borderless,
   topLeftBorder,
   color,
-  cardContent = false
+  cardContent = false,
+  home,
+  item
 }) => {
 
   const imageStyles = [
@@ -82,6 +88,33 @@ const Card: React.FC<ICardProps> = ({
         <TouchableWithoutFeedback onPress={onPress}>
           <Block center middle>
             <Image resizeMode={full ? "contain" : "cover"} source={source} style={imageStyles} />
+            {home &&
+              <>
+                <LinearGradient
+                  colors={["rgba(0, 0, 0, 0)", "rgba(0, 0, 0, 0.3)"]}
+                  style={[{
+                    position:'absolute',
+                  }, imageStyles]}
+                />
+                <Block absolute style={{ bottom: Layout.base, alignSelf: 'center' }}>
+                  <Block row>
+                    <Text extraLarge bold color={Colors.white}>{item.name} </Text>
+                    <Text extraLarge color={Colors.white}>{item.age}</Text>
+                  </Block>
+                  <Block row center middle>
+                    <Text h3 color={Colors.white} style={{ paddingTop: 3 }}>{item.location} </Text>
+                    <Block style={styles.titleContainer}>
+                      <Text h6 color={Colors.black}>{item.miles} Miles</Text>
+                    </Block>
+                  </Block>
+                </Block>
+
+                <Block absolute padding={Layout.base} center style={{ bottom: 0, left: 0 }}>
+                  <Image source={Images.Emoticon} />
+                  <Image source={Images.SayHello} />
+                </Block>
+              </>
+            }
           </Block>
         </TouchableWithoutFeedback>
       )
@@ -154,5 +187,12 @@ const styles = StyleSheet.create({
   },
   absoluteImage: {
     position: 'absolute'
+  },
+  titleContainer: {
+    alignItems: 'center',
+    backgroundColor: Colors.primary,
+    borderRadius: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
   }
 });
