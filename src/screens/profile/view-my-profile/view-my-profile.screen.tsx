@@ -59,23 +59,33 @@ const MyProfile: React.FC<IMyProfileProps> = ({ }) => {
           <Text h2>Pop Singer</Text>
         </Block>
         <Block flex paddingTop={Layout.base}>
-          <Text h2 bold>Public Interest</Text>
+          <Block paddingVertical={Layout.base}>
+            <Text h2 bold>Public Interest</Text>
+          </Block>
           {chipsList(publicInterests, Colors.chipPrimary)}
         </Block>
-        <Block flex paddingTop={Layout.base}>
-          <Text h2 bold>Matching Level Interest</Text>
+        <Block flex>
+          <Block paddingVertical={Layout.base}>
+            <Text h2 bold>Matching Level Interest</Text>
+          </Block>
           {chipsList(matchingLevelInterests, Colors.chipSecondary)}
         </Block>
-        <Block flex paddingTop={Layout.base}>
-          <Text h2 bold>Languages Known</Text>
+        <Block flex>
+          <Block paddingVertical={Layout.base}>
+            <Text h2 bold>Languages Known</Text>
+          </Block>
           {chipsList(lenguagesKnown, Colors.chipSecondary)}
         </Block>
-        <Block flex paddingTop={Layout.base}>
-          <Text h2 bold>About</Text>
+        <Block flex>
+          <Block paddingVertical={Layout.base}>
+            <Text h2 bold>About</Text>
+          </Block>
           <Text h2 light>Hi, everybody! I am vehicula erat vitae ojia ultrices ullamcorper. Nulla a leo nec tellus volutpat vestibulum a eu ligula. Aenean mollis purus a viverra scelerisque.</Text>
         </Block>
-        <Block flex paddingTop={Layout.base}>
-          <Text h2 bold>Inner Thoughts</Text>
+        <Block flex>
+          <Block paddingVertical={Layout.base}>
+            <Text h2 bold>Inner Thoughts</Text>
+          </Block>
           <Text h2 light>Hi, everybody! I am vehicula erat vitae ojia ultrices ullamcorper. Nulla a leo nec tellus volutpat vestibulum a eu ligula. Aenean mollis purus a viverra scelerisque.</Text>
         </Block>
       </Block>

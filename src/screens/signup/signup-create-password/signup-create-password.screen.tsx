@@ -21,7 +21,7 @@ const SignUpCreatePassword: React.FC<ISignUpCreatePasswordProps> = ({ }) => {
   const navigation = useNavigation();
 
   const route = useRoute<SignUpCreatePasswordRouteProps>();
-  const { phoneNumberOrEmail } = route.params;
+  //const { phoneNumberOrEmail } = route.params;
 
   const { setUserPassword, isLoading, error } = useSetUserPassword();
 

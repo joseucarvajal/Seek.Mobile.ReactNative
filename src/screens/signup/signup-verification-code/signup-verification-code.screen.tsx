@@ -26,7 +26,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({ }) => {
   ]);
 
   const route = useRoute<SignUPVerificationCodeRouteProp>();
-  const { phoneNumberOrEmail } = route.params;
+  //const { phoneNumberOrEmail } = route.params;
 
   const { applicationUser } = useIdentityState();
 
@@ -101,10 +101,10 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({ }) => {
 
       <Block flex center middle space='around'>
         <ButtonPrimary
-          onPress={() => {
-            if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
-              verifyCode(phoneNumberOrEmail, codeVerificationCollection.join(""));
-            }
+          onPress={() => { navigation.navigate("SignUpCreatePassword")
+            // if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
+            //   verifyCode(phoneNumberOrEmail, codeVerificationCollection.join(""));
+            // }
           }}
         >
           VALIDATE
