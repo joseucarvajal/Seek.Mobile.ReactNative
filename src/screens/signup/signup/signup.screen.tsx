@@ -36,7 +36,7 @@ const SignUp: React.FC<ISignUpProps> = ({ }) => {
       
       <Block flex row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>
         <Text small light>By registering, you agree to</Text>
-        <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Our terms of service</Text>
+        <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Our terms of service, </Text>
         <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Privacy Policy</Text>
         <Text small light> and </Text>
         <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Cookie Policy</Text>
