@@ -482,6 +482,11 @@ function MainNavigator() {
         }}
       />
       <MainStack.Screen
+        name="Congrats"
+        component={Congrats}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}

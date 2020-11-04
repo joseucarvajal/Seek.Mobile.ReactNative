@@ -16,6 +16,7 @@ export type RootStackParamList = {
   EditProfile: undefined;
   EditBasicInfo: undefined;
   EnterLocationInfo: undefined;
+  Congrats: undefined;
 
   //Settings Screens
   Settings: undefined;

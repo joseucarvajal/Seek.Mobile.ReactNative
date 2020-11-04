@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Steper, ModalBackground, ModalNoBackground } from '../../../components/profile';
+import { Steper, ModalBackground } from '../../../components/profile';
 import { Colors, Layout } from "../../../constants";
 import { Block, Swiper, ButtonPrimary } from '../../../shared';
 import UploadPhoto from '../upload-photo/upload-photo.screen';
@@ -20,7 +20,7 @@ const Profile: React.FC<IProfileProps> = ({
   const stepCount = 3;
   const buttonText = (currentPage != (stepCount - 1)) ? 'CONTINUE' : 'START SEARCHING'
 
-  const [modalVisibleBackground, setModalVisibleBackground] = React.useState(false);
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   const scrollToIndex = (position: number) => {
     setCurrentPage(position);
@@ -33,7 +33,7 @@ const Profile: React.FC<IProfileProps> = ({
       setCurrentPage(nextPosition)
     }
     else {
-      setModalVisibleBackground(!modalVisibleBackground)
+      setModalVisible(!modalVisible)
     }
   };
 
@@ -64,9 +64,9 @@ const Profile: React.FC<IProfileProps> = ({
           {buttonText}
         </ButtonPrimary>
       </Block>
-      <ModalBackground 
-        visible={modalVisibleBackground} 
-        onVisibleChange={(visible: any) => setModalVisibleBackground(visible)}
+      <ModalBackground
+        visible={modalVisible}
+        onVisibleChange={(visible: any) => setModalVisible(visible)}
         onPress={() => navigation.navigate('EnterLocationInfo')}
       />
     </Block>
