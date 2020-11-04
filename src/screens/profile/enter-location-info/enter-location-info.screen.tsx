@@ -1,36 +1,44 @@
 import React from "react";
 import { Colors, Layout } from "../../../constants";
-import { Button, Text, Block, Select } from '../../../shared';
+import { Button, Text, Block, Select, Input } from '../../../shared';
 
 export interface IProfileProps { }
 
 const EnterLocationInfo: React.FC<IProfileProps> = ({ }) => {
   return (
-    <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
+    <Block safe flex>
       <Block flex>
-      <Block center middle>
-        <Select
-          defaultValue={'f'}
-          items={[
-            { label: 'City', value: '0' },
-            { label: 'Medellin', value: 'mde' },
-          ]}
-          shadow
-        />
-        <Select
-          defaultValue={'f'}
-          items={[
-            { label: 'State', value: '0' },
-            { label: 'Antioquia', value: '4' },
-          ]}
-          shadow
-        />
-      </Block>
-        <Block row bottom>
-          <Button type='gradient' shadow onPress={() => console.log('Enter Location Info')}>
-            <Text h2 bold color={Colors.white}>CONTINUE</Text>
-          </Button>
+        <Block order={2}>
+          <Select
+            defaultValue={'0'}
+            items={[
+              { label: 'City', value: '0' },
+              { label: 'Cali', value: 'clo' },
+              { label: 'Medellin', value: 'mde' },
+            ]}
+            shadow
+            style={{ width: 'auto',  }}
+          />
         </Block>
+        <Block order={1} paddingTop={Layout.base}>
+          <Select
+            defaultValue={'0'}
+            items={[
+              { label: 'State', value: '0' },
+              { label: 'Antioquia', value: '4' },
+            ]}
+            shadow
+            style={{ width: 'auto' }}
+          />
+        </Block>
+        <Block paddingTop={Layout.base}>
+          <Input label='Zip Code' color='primary' borderless />
+        </Block>
+      </Block>
+      <Block center middle>
+        <Button type='gradient' shadow onPress={() => console.log('Enter Location Info')}>
+          <Text h2 bold color={Colors.white}>CONTINUE</Text>
+        </Button>
       </Block>
     </Block>
   );

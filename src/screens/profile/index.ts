@@ -1,4 +1,5 @@
 import Profile from "./profile/profile.screen";
+import EnterLocationInfo from "./enter-location-info/enter-location-info.screen";
 import MyProfile from "./view-my-profile/view-my-profile.screen";
 import EditMyProfile from "./view-edit-my-profile/view-edit-my-profile.screen";
 import EditBasicInfo from "./view-edit-basic-info/view-edit-basic-info.screen";
@@ -9,5 +10,6 @@ export {
   MyProfile,
   EditMyProfile,
   EditBasicInfo,
+  EnterLocationInfo,
   Congrats
 };

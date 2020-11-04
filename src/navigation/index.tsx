@@ -25,6 +25,7 @@ import {
   MyProfile,
   EditMyProfile,
   EditBasicInfo,
+  EnterLocationInfo,
   Congrats
 } from "../screens/profile"
 
@@ -455,6 +456,22 @@ function MainNavigator() {
           header: ({ navigation, scene }) => (
             <Header
               title="Enter Info"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="EnterLocationInfo"
+        component={EnterLocationInfo}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Enter Location Info"
               navigation={navigation}
               scene={scene}
               back

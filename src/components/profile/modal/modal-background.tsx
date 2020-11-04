@@ -6,11 +6,13 @@ import { Block, Modal, Image, Text, Button, LinkButton } from '../../../shared';
 interface IModalProps {
   visible?: any;
   onVisibleChange?: any
+  onPress?: any;
 }
 
 const ModalBackground: React.FC<IModalProps> = ({ 
   visible,
-  onVisibleChange
+  onVisibleChange,
+  onPress
 }) => {
 
   const [modalVisible, setModalVisible] = React.useState(visible);
@@ -18,6 +20,7 @@ const ModalBackground: React.FC<IModalProps> = ({
   const setVisible = () => {
     setModalVisible(!visible)
     onVisibleChange && onVisibleChange(modalVisible)
+    onPress && onPress()
   }
 
   return (

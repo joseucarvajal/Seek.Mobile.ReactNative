@@ -30,6 +30,7 @@ export interface IBlockProps {
   paddingTop?: number;
   paddingBottom?: number;
   paddingLeft?: number;
+  paddingRight?: number;
   paddingHorizontal?: number;
   paddingVertical?: number;
   box?: boolean;
@@ -64,6 +65,7 @@ const Block: React.FC<IBlockProps> = ({
   paddingTop,
   paddingBottom,
   paddingLeft,
+  paddingRight,
   box,
   paddingHorizontal,
   paddingVertical,
@@ -96,6 +98,7 @@ const Block: React.FC<IBlockProps> = ({
     paddingBottom && { paddingBottom },
     paddingLeft && { paddingLeft },
     paddingVertical && { paddingVertical },
+    paddingRight && { paddingRight },
     wrap && styles.wrap,
     absolute && { position: 'absolute' },
     order && { zIndex: order },
