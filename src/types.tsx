@@ -26,7 +26,8 @@ export type RootStackParamList = {
   TutorialVideo: undefined;
   Modes: undefined;
   Notifications: undefined;
-
+  AccountInformationMenu: undefined;
+  BlockedPeople: undefined;
   NotFound: undefined;
 };
 
