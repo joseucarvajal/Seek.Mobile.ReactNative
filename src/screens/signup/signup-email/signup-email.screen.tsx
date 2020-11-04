@@ -44,7 +44,7 @@ const SignUpEmail: React.FC<ISignUpEmailProps> = ({}) => {
         </HeaderSection>
       </Block>
 
-      <Block flex={2} row center middle style={{ top: -65 }}>
+      <Block flex row>
         <Block flex>
           <Controller
             control={control}
@@ -68,21 +68,11 @@ const SignUpEmail: React.FC<ISignUpEmailProps> = ({}) => {
         </Block>
       </Block>
 
-      <Block flex center middle space="evenly">
-        <ButtonPrimary
-          onPress={onSubmit}
-          style={{ top: -80 }}
-        >
-          CONTINUE
-        </ButtonPrimary>
-        <LinkButton
-          underline
-          onPress={() => navigation.navigate("SignUpPhone")}
-          style={{ top: -30 }}
-        >
-          Continue using phone Instead
-        </LinkButton>
+      <Block flex center middle space='evenly'>
+        <ButtonPrimary onPress={() => onSubmit()}>CONTINUE</ButtonPrimary>
+        <LinkButton underline onPress={() => navigation.navigate("SignUpPhone")}>Continue using phone Instead</LinkButton>
       </Block>
+
     </Block>
   );
 };

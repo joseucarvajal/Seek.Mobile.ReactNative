@@ -6,7 +6,7 @@ import Icon from '../icons/icon.comp'
 import ToggleButton from '../../components/toggle-button/toggle-button.comp'
 import { Layout, Colors } from '../../../constants'
 import Block from '../block/block.comp';
-import { Image } from '../../../shared';
+import Image from '../image/image.comp';
 
 interface IMenuItemProps {
   avatar?: string,
@@ -36,24 +36,21 @@ const MenuItem: React.FC<IMenuItemProps> = ({
       {
         type === 'swipeable' ?
           <Block flex row style={[styles.containerSwipeableItem, { backgroundColor: color }, style]}>
-            <Image
-              size="avatar"
-              source={{ uri: avatar }}
-            />
+            <Image size="avatar" source={{ uri: avatar }} />
             <Text fontSize={Layout.fontSize} style={styles.stylesText}>{title}</Text>
           </Block>
-        : type === 'toggle' ?
-          <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
-            <Text fontSize={Layout.fontSize}>{title}</Text>
-            <ToggleButton color='primary' value={value} onValueChange={onValueChange} />
-          </Block>
-        : 
-          <TouchableHighlight underlayColor={Colors.active} onPress={onPress}>
+          : type === 'toggle' ?
             <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
               <Text fontSize={Layout.fontSize}>{title}</Text>
-              <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
+              <ToggleButton color='primary' value={value} onValueChange={onValueChange} />
             </Block>
-          </TouchableHighlight>
+            :
+            <TouchableHighlight underlayColor={Colors.active} onPress={onPress}>
+              <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
+                <Text fontSize={Layout.fontSize}>{title}</Text>
+                <Icon family='FontAwesome' name="angle-right" color={Colors.black} size={32} style={{ paddingRight: 5 }} />
+              </Block>
+            </TouchableHighlight>
       }
     </>
   );

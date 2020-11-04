@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, FlatList, ViewStyle } from "react-native";
+import { StyleSheet, ViewStyle } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import SwipeableFlatList from "react-native-swipeable-list";
-
-import { Icon, Block, Text } from '../../../shared';
+// import SwipeableFlatList from "react-native-swipeable-list";
 
 import { Colors, Icons } from '../../../constants';
 import MenuItem from '../menu-item/menu-item.comp';
+import Block from '../block/block.comp';
+import Icon from '../icons/icon.comp'
+import Text from '../text/text.comp'
 
 interface IMenuItemProps {
   items: any;
@@ -49,15 +50,17 @@ const MenuSwipeable: React.FC<IMenuItemProps> = ({
   };
 
   return (
-    <SwipeableFlatList
-      data={items}
-      keyExtractor={extractItemKey}
-      renderItem={renderItem}
-      maxSwipeDistance={130}
-      renderQuickActions={({index, item}: any) => quickActions(index, item)}
-      contentContainerStyle={styles.contentContainerStyle}
-      shouldBounceOnMount={true}
-    />
+    <>
+      {/* <SwipeableFlatList
+        data={items}
+        keyExtractor={extractItemKey}
+        renderItem={renderItem}
+        maxSwipeDistance={130}
+        renderQuickActions={({ index, item }: any) => quickActions(index, item)}
+        contentContainerStyle={styles.contentContainerStyle}
+        shouldBounceOnMount={true}
+      /> */}
+    </>
   );
 };
 

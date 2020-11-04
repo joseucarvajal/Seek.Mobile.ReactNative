@@ -31,10 +31,12 @@ const SignUp: React.FC<ISignUpProps> = ({ }) => {
           Use Email / Phone
         </ButtonTertiary>
       </Block>
-      
-      <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text>
-      
-      <Block flex row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>
+
+      <Block flex={0.2}>
+        <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text>
+      </Block>
+
+      <Block flex={0.5} row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>
         <Text small light>By registering, you agree to</Text>
         <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Our terms of service, </Text>
         <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Privacy Policy</Text>
@@ -42,7 +44,7 @@ const SignUp: React.FC<ISignUpProps> = ({ }) => {
         <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Cookie Policy</Text>
       </Block>
 
-      <Block center middle>
+      <Block flex center middle>
         <LinkButton>Having trouble logging in?</LinkButton>
       </Block>
 

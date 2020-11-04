@@ -99,7 +99,7 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({ }) => {
         ))}
       </Block>
 
-      <Block flex center middle space='around'>
+      <Block flex center middle space='evenly'>
         <ButtonPrimary
           onPress={() => {
             if (codeVerificationCollection.join("").length === codeVerificationCollection.length) {
@@ -109,9 +109,9 @@ const VerificationCode: React.FC<IVerificationCodeProps> = ({ }) => {
         >
           VALIDATE
         </ButtonPrimary>
-
         <LinkButton underline onPress={() => navigation.navigate("SignUpPhone")}>Resend code</LinkButton>
       </Block>
+
     </Block>
   );
 };

@@ -27,6 +27,9 @@ export type RootStackParamList = {
   Modes: undefined;
   Notifications: undefined;
 
+  AccountInformationMenu: undefined;
+  BlockedPeople: undefined;
+
   NotFound: undefined;
 };
 
