@@ -438,7 +438,7 @@ function RootTabs() {
 function RootNavigator() {
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
-      <RootStack.Screen name="SignUp" component={OnBoarding} />
+      {/* <RootStack.Screen name="SignUp" component={OnBoarding} /> */}
       <RootStack.Screen name='Profile' component={MainNavigator} />
       <RootStack.Screen name="Home" component={RootTabs} />
     </RootStack.Navigator>

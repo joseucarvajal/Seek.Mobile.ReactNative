@@ -54,7 +54,7 @@ const Profile: React.FC<IProfileProps> = ({
   })
 
   return (
-    <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.transparent }}>
+    <Block flex space='between' style={{ padding: Layout.base, backgroundColor: Colors.white }}>
       <Block style={{ backgroundColor: Colors.white }}>
         <Steper stepCount={stepCount} currentPage={currentPage} onIndexChanged={(position: any) => scrollToIndex(position)} />
       </Block>
