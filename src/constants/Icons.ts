@@ -11,5 +11,6 @@ export default {
   edit: 'edit',
   home:'home',
   settings:'cog',
-  user:'user'
+  user:'user',
+  locked: 'lock',
 };

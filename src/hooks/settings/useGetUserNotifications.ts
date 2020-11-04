@@ -9,11 +9,10 @@ const getNotifications = async (
   userId: string
 ) => {
   if(userId) {
-
+    const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.notificationsTypesByUser}/${userId}`;
+    const { data } = await axios.get(url);
+    return data;
   }
-  const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.notificationsTypesByUser}/${userId}`;
-  const { data } = await axios.get(url);
-  return data;
 };
 
 export function useGetUserNotifications() {

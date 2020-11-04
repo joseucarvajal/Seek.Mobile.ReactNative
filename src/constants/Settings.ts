@@ -27,7 +27,7 @@ const SettingsItems = [
     id: 'accountInformation',
     type: 'button', 
     color: Colors.white,
-    navigate: 'Legal',
+    navigate: 'AccountInformationMenu',
   },
   {
     title: 'Invite',

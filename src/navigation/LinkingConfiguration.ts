@@ -40,7 +40,9 @@ export default {
       TutorialVideo: {},
       Modes: {},
       Notifications: {},
-
+      AccountInformationMenu: {},
+      BlockedPeople: {},
+      
       NotFound: '*',
     },
   },

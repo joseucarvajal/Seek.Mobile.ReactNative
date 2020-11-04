@@ -46,6 +46,8 @@ import {
   TutorialVideo,
   Modes,
   Notifications,
+  AccountInformationMenu,
+  BlockedPeople
 } from "../screens/settings";
 
 const MyTheme = {
@@ -286,6 +288,38 @@ function SettingsStack() {
           header: ({ navigation, scene }) => (
             <Header
               title="Notifications"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="AccountInformationMenu"
+        component={AccountInformationMenu}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Account Information"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
+      <MainStack.Screen
+        name="BlockedPeople"
+        component={BlockedPeople}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Blocked People"
               navigation={navigation}
               scene={scene}
               back

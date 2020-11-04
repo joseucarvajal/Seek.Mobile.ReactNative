@@ -4,6 +4,7 @@ import ToggleButton from './components/toggle-button/toggle-button.comp';
 import Input from './components/text-input/text-input.comp';
 import MenuItem from './components/menu-item/menu-item.comp';
 import Menu from './components/menu/menu.comp';
+import MenuSwipeable from './components/menu-swipeable/menu-swipeable.comp';
 import Select from './components/select/select.comp';
 import Image from './components/image/image.comp';
 import ButtonTertiary from './components/button-tertiary/button-tertiary.comp';
@@ -36,6 +37,7 @@ export {
   Input,
   MenuItem,
   Menu,
+  MenuSwipeable,
   Image,
   Select,
   Icon,

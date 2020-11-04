@@ -6,6 +6,9 @@ const ApiEndPoints = {
     modesTypesByUser: '/modes/user',
     toggleNotificationByUser: '/notifications/user/toggle',
     toggleModeByUser: '/modes/user/toggle',
+    blockedPeopleByUser: '/blocked/user',
+    setUnlockUserByUser: '/blocked/user/unlock',
+    setBlockUserByUser: '/blocked/user/block',
   },
   signUp:{
     sendVerificationCode: "verificationcode/send",

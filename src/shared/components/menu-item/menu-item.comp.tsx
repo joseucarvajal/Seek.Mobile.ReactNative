@@ -6,8 +6,10 @@ import Icon from '../icons/icon.comp'
 import ToggleButton from '../../components/toggle-button/toggle-button.comp'
 import { Layout, Colors } from '../../../constants'
 import Block from '../block/block.comp';
+import { Image } from '../../../shared';
 
 interface IMenuItemProps {
+  avatar?: string,
   title: string,
   type: MenuItemType;
   color?: any;
@@ -17,9 +19,10 @@ interface IMenuItemProps {
   style?: any;
 }
 
-export type MenuItemType = "toggle" | "Button";
+export type MenuItemType = "toggle" | "Button" | "swipeable";
 
 const MenuItem: React.FC<IMenuItemProps> = ({
+  avatar,
   title,
   type,
   color,
@@ -31,12 +34,20 @@ const MenuItem: React.FC<IMenuItemProps> = ({
   return (
     <>
       {
-        type === 'toggle' ?
+        type === 'swipeable' ?
+          <Block flex row style={[styles.containerSwipeableItem, { backgroundColor: color }, style]}>
+            <Image
+              size="avatar"
+              source={{ uri: avatar }}
+            />
+            <Text fontSize={Layout.fontSize} style={styles.stylesText}>{title}</Text>
+          </Block>
+        : type === 'toggle' ?
           <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
             <Text fontSize={Layout.fontSize}>{title}</Text>
             <ToggleButton color='primary' value={value} onValueChange={onValueChange} />
           </Block>
-          :
+        : 
           <TouchableHighlight underlayColor={Colors.active} onPress={onPress}>
             <Block flex row center space='between' style={[styles.container, { backgroundColor: color }, style]}>
               <Text fontSize={Layout.fontSize}>{title}</Text>
@@ -56,5 +67,18 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.neutral,
     width: Layout.window.width,
     height: Layout.menu_item_height,
+  },
+  containerSwipeableItem: {
+    paddingHorizontal: Layout.base,
+    backgroundColor: Colors.neutral,
+    width: Layout.window.width,
+    height: Layout.menu_item_height,
+    paddingLeft: 30,
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'flex-start'
+  },
+  stylesText: {
+    paddingLeft: 30,
   }
 });

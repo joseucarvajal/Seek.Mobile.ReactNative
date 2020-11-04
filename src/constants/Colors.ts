@@ -77,4 +77,5 @@ export default {
     background: '#F6F6F6',
   },
   menuItemEven: '#FAFAFA',
+  unblock: '#606492',
 };
