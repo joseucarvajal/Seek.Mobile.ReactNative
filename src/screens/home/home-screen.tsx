@@ -68,7 +68,8 @@ export default Home;
 
 const defaultMenu = [
   { id: 'here', title: 'HERE AND NOW', },
-  { id: 'out', title: 'OUT THERE', }
+  { id: 'out', title: 'OUT THERE', },
+  { id: 'hapen', title: 'HAPENNING', }
 ];
 
 const db = [
