@@ -27,6 +27,7 @@ import Background from './components/background/background.comp';
 import Spinner from './components/spinner/spinner.comp';
 import { IErrorResponse, IApplicationUser } from './types';
 import DisplayError from './components/modal/display-error/display-error.comp';
+import Camera from './components/camera/camera.comp'
 
 export {
   Button,
@@ -57,6 +58,7 @@ export {
   Background,
   Spinner,
   DisplayError,
+  Camera,
 
   //Types
   IErrorResponse,

@@ -59,7 +59,17 @@ const Profile: React.FC<IProfileProps> = ({
         <Steper stepCount={stepCount} currentPage={currentPage} onIndexChanged={(position: any) => scrollToIndex(position)} />
       </Block>
       <Block flex>
-        <MySwiper ref={scrollRef} />
+      <Swiper index={currentPage} onChangeIndex={(params: any) => setCurrentPage(params.index)} renderAll>
+        <Block flex style={{ width: Layout.window.width }}>
+          <UploadPhoto />
+        </Block>
+        <Block flex style={{ width: Layout.window.width }}>
+          <EnterInfo />
+        </Block>
+        <Block flex style={{ width: Layout.window.width }}>
+          <SetInterest />
+        </Block>
+      </Swiper>
         <ButtonPrimary onPress={() => nextStep()}>
           {buttonText}
         </ButtonPrimary>
