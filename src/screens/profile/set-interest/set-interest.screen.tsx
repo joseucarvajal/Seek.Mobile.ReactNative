@@ -1,23 +1,26 @@
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Layout, Colors } from "../../../constants";
-import { Text, Block } from '../../../shared';
+import { Text, Block, Spinner, DisplayError } from '../../../shared';
 import { Chip } from "../../../shared";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
+import { IInterest, useGetInterests } from '../../../hooks/profile'
 
 export interface ISetIntetestProps {
 
 }
 
-const SetIntetest: React.FC<ISetIntetestProps> = ({
+const SetIntetest: React.FC<ISetIntetestProps> = () => {
+  const {	
+    error,	
+    data: interests,	
+    isLoading	
+  } = useGetInterests();
 
-}) => {
-
-  const chipsList = interests.map((item: any) => (
+  const chipsList = interests?.map((item: IInterest) => (
     <Block key={item.id}>
       <Chip
-        key={item.id}
-        value={item.text}
+        value={item.interest}
         activeColor={Colors.chipPrimary.active}
         inactiveColor={Colors.chipPrimary.inactive}
         textColor
@@ -27,6 +30,10 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
 
   return (
     <Block flex>
+      
+      <Spinner visible={isLoading} />	
+      <DisplayError errorResponse={error} />
+
       <Block left style={{ paddingTop: Layout.base * 2 }}>
         <Text h2 bold>Set Your Public interests</Text>
       </Block>
@@ -51,186 +58,3 @@ const SetIntetest: React.FC<ISetIntetestProps> = ({
 }
 
 export default SetIntetest;
-
-const interests = [
-  {
-    id: '1',
-    text: 'Cat lover',
-  },
-  {
-    id: '2',
-    text: 'Art',
-  },
-  {
-    id: '3',
-    text: 'Beach lover',
-  },
-  {
-    id: '4',
-    text: 'Horses',
-  },
-  {
-    id: '5',
-    text: 'Beauty',
-  },
-  {
-    id: '6',
-    text: 'Coffer',
-  },
-  {
-    id: '7',
-    text: 'Politics',
-  },
-  {
-    id: '8',
-    text: 'Cycling lover',
-  },
-  {
-    id: '9',
-    text: 'Craft beer',
-  },
-  {
-    id: '10',
-    text: 'Cat lover',
-  },
-  {
-    id: '11',
-    text: 'Art',
-  },
-  {
-    id: '12',
-    text: 'Beach lover',
-  },
-  {
-    id: '13',
-    text: 'Horses',
-  },
-  {
-    id: '14',
-    text: 'Beauty',
-  },
-  {
-    id: '15',
-    text: 'Coffer',
-  },
-  {
-    id: '16',
-    text: 'Politics',
-  },
-  {
-    id: '17',
-    text: 'Cycling',
-  },
-  {
-    id: '18',
-    text: 'Craft beer',
-  },
-  {
-    id: '19',
-    text: 'Cat lover',
-  },
-  {
-    id: '20',
-    text: 'Art',
-  },
-  {
-    id: '21',
-    text: 'Beach lover',
-  },
-  {
-    id: '22',
-    text: 'Horses',
-  },
-  {
-    id: '23',
-    text: 'Beauty',
-  },
-  {
-    id: '24',
-    text: 'Coffer',
-  },
-  {
-    id: '25',
-    text: 'Politics',
-  },
-  {
-    id: '26',
-    text: 'Cycling',
-  },
-  {
-    id: '27',
-    text: 'Craft beer',
-  },
-  {
-    id: '28',
-    text: 'Cat lover',
-  },
-  {
-    id: '29',
-    text: 'Art',
-  },
-  {
-    id: '30',
-    text: 'Beach lover',
-  },
-  {
-    id: '31',
-    text: 'Horses',
-  },
-  {
-    id: '32',
-    text: 'Beauty',
-  },
-  {
-    id: '33',
-    text: 'Coffer',
-  },
-  {
-    id: '34',
-    text: 'Politics',
-  },
-  {
-    id: '35',
-    text: 'Cycling',
-  },
-  {
-    id: '36',
-    text: 'Craft beer',
-  },
-  {
-    id: '37',
-    text: 'Cat lover',
-  },
-  {
-    id: '38',
-    text: 'Art',
-  },
-  {
-    id: '39',
-    text: 'Beach lover',
-  },
-  {
-    id: '40',
-    text: 'Horses',
-  },
-  {
-    id: '41',
-    text: 'Beauty',
-  },
-  {
-    id: '42',
-    text: 'Coffer',
-  },
-  {
-    id: '43',
-    text: 'Politics',
-  },
-  {
-    id: '44',
-    text: 'Cycling',
-  },
-  {
-    id: '45',
-    text: 'Craft beer',
-  }
-]

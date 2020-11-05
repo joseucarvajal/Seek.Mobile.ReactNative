@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from "react-native";
 import { Images, Colors, Layout } from '../../../constants';
-import { Block, Modal, Image, Text, Button, LinkButton } from '../../../shared';
+import { Block, Modal, Image, Text, LinkButton } from '../../../shared';
 
 interface IModalProps {
   visible?: any;
