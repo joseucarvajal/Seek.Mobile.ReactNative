@@ -1,10 +1,12 @@
 import React from 'react'
-import { Alert, Image, StyleSheet, Text, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { Alert, Image, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions'
 import { Camera } from 'expo-camera';
 import Block from '../block/block.comp';
+import Text from '../text/text.comp';
+import { Colors } from '../../../constants';
 
 export interface IProfileProps {
   onCloseCamera?: any
@@ -28,8 +30,10 @@ const ArCamera: React.FC<IProfileProps> = ({
 
   React.useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
+      const camera = await Permissions.askAsync(Permissions.CAMERA);
+      const audio = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
+      const hasCameraPermission = (camera.status === 'granted' && audio.status === 'granted');
+      setHasPermission(hasCameraPermission);
     })();
   }, []);
 
@@ -53,6 +57,9 @@ const ArCamera: React.FC<IProfileProps> = ({
   }
 
   const handleShortCapture = async () => {
+    if (isTakingVideo)
+      return
+    setTakingVideo(false)
     setTakingPicture(true)
     try {
       const data = await refCamera.takePictureAsync()
@@ -60,7 +67,7 @@ const ArCamera: React.FC<IProfileProps> = ({
       setTakingPicture(false)
     } catch (e) {
       Alert.alert('Could not take picture')
-      console.log("Could not take picture")
+      console.log(e)
       setTakingPicture(false)
     }
   };
@@ -71,6 +78,9 @@ const ArCamera: React.FC<IProfileProps> = ({
   };
 
   const handleLongCapture = async () => {
+    if (isTakingPicture)
+      return
+    setTakingPicture(false)
     setTakingVideo(true)
     try {
       const data = await refCamera.recordAsync()
@@ -78,13 +88,13 @@ const ArCamera: React.FC<IProfileProps> = ({
       setTakingVideo(false)
     } catch (e) {
       Alert.alert('Could not take video')
-      console.log("Could not take video")
+      console.log(e)
       setTakingVideo(false)
     }
   };
 
   return (
-    <Block style={styles.container}>
+    <Block flex>
       <StatusBar hidden={true} />
       {isCameraShown && (
         <Camera
@@ -96,13 +106,9 @@ const ArCamera: React.FC<IProfileProps> = ({
         />
       )}
       <Block style={styles.topContainer}>
-        <Block style={styles.alignCenter}>
+        <Block flex row center middle space='between'>
           <TouchableOpacity onPress={toggleCamera}>
-            <Ionicons
-              name="md-close"
-              color="white"
-              size={30}
-            />
+            <Ionicons name="md-close" color="white" size={30} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {
             setFlashMode(
@@ -111,44 +117,34 @@ const ArCamera: React.FC<IProfileProps> = ({
                 : Camera.Constants.FlashMode.off
             )
           }}>
-            <Ionicons
-              name={flashMode == Camera.Constants.FlashMode.on ? "md-flash" : 'md-flash-off'}
-              color="white"
-              size={30}
-            />
+            <Ionicons name={flashMode == Camera.Constants.FlashMode.on ? "md-flash" : 'md-flash-off'} color="white" size={30} />
           </TouchableOpacity>
         </Block>
       </Block>
-      <Block style={styles.buttonContainer}>
-        <Block style={styles.alignCenter}>
+      <Block style={styles.bottomContainer}>
+        <Block flex row center middle space='between'>
           <TouchableOpacity onPress={toggleCamera}>
-            <Ionicons
-              name={'md-images'}
-              color="white"
-              size={35}
-            />
+            <Ionicons name={'md-images'} color="white" size={35} />
           </TouchableOpacity>
           <TouchableWithoutFeedback
-            onPressIn={() => setTakingVideo(false)}
+            onPressIn={() => setTakingVideo(true)}
             onPressOut={handleCaptureOut}
             onLongPress={handleLongCapture}
             onPress={handleShortCapture}>
-            <Block style={[styles.captureBtn, isTakingVideo && styles.captureBtnActive]}>
-              {isTakingVideo && <Block style={styles.captureBtnInternal} />}
+            <Block middle center>
+              <Block style={[styles.captureBtn, isTakingVideo && styles.captureBtnActive]}>
+                {isTakingVideo && <Block style={styles.captureBtnInternal} />}
+              </Block>
+              <Block paddingTop={10}>
+                <Text extraSmall book color={Colors.white}>Hold for video, tap for photo</Text>
+              </Block>
             </Block>
           </TouchableWithoutFeedback>
+
           <TouchableOpacity onPress={() => {
-            setFlashMode(
-              flashMode === Camera.Constants.FlashMode.off
-                ? Camera.Constants.FlashMode.on
-                : Camera.Constants.FlashMode.off
-            );
+            setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back)
           }}>
-            <Ionicons
-              name="md-reverse-camera"
-              color="white"
-              size={35}
-            />
+            <Ionicons name="md-reverse-camera" color="white" size={35} />
           </TouchableOpacity>
         </Block>
       </Block>
@@ -159,38 +155,21 @@ const ArCamera: React.FC<IProfileProps> = ({
 export default ArCamera;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   topContainer: {
     position: 'absolute',
     top: 0,
     right: 0,
     left: 0,
     backgroundColor: 'rgba(10, 10, 10, 0.5)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 25,
+    padding: 20,
   },
-  buttonContainer: {
+  bottomContainer: {
     position: 'absolute',
     bottom: 0,
     right: 0,
     left: 0,
     backgroundColor: 'rgba(10, 10, 10, 0.5)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  text: {
-    padding: 10,
-    color: 'red'
-  },
-  alignCenter: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row'
+    padding: 30,
   },
   captureBtn: {
     width: 60,
