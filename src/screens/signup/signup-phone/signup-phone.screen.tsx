@@ -10,6 +10,9 @@ import { useSendVerificationCode } from "../../../hooks/signup";
 export interface ISignUpPhoneProps { }
 
 const SignUpPhone: React.FC<ISignUpPhoneProps> = ({ }) => {
+
+  //console.disableYellowBox = true;
+  
   const navigation = useNavigation();
 
   type TFormData = {
@@ -68,7 +71,7 @@ const SignUpPhone: React.FC<ISignUpPhoneProps> = ({ }) => {
             defaultValue={indicativeItems[1]}
           ></Controller>
         </Block>
-        <Block flex={3} paddingLeft={Layout.base} paddingTop={Layout.input_vertical_label * 1.5}>
+        <Block flex={3} paddingLeft={Layout.base} paddingTop={Layout.input_vertical_label * 1.8}>
           <Text fontSize={12} color={Colors.fontSoft1}></Text>
           <Controller
             control={control}
