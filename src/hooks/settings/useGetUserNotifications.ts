@@ -30,7 +30,7 @@ export function useGetUserNotifications() {
 
 export interface INotification {
   idNotification: string; 
-  notificationTypeId: number; // notificationTypeId  
-  notificationTypeName: string; // notificationTypeName
+  notificationTypeId: number;
+  notificationTypeName: string;
   active: boolean;
 }

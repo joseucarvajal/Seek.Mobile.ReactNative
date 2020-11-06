@@ -6,7 +6,6 @@ import {
   DisplayError	
 } from '../../../shared';	
 import {	
-  INotification,	
   useGetUserNotifications,	
   useToggleNotification
 } from '../../../hooks/settings';	

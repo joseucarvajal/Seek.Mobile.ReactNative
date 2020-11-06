@@ -7,6 +7,7 @@ import { useBlockUser } from "./useBlockUser";
 import { useUnlockUser } from "./useUnlockUser";
 import { ModeTypeEnum, NotificationTypeEnum  } from "./types";
 import { useNotificationSettings } from "./useNotificationSettings";
+import { useModeSettings } from "./useModeSettings";
 
 export {    
   INotification,
@@ -21,5 +22,6 @@ export {
   useUnlockUser,
   ModeTypeEnum,
   NotificationTypeEnum,
-  useNotificationSettings
+  useNotificationSettings,
+  useModeSettings
 };
