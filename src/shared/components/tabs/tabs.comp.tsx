@@ -135,7 +135,7 @@ const Tabs: React.FC<ITabsProps> = ({
 
   const FlatListItemSeparator = () => {
     return (
-      <Block backgroundColor={Colors.white} width={1} height={'70%'} style={{ margin: 5, marginRight: Layout.base }} />
+      <Block backgroundColor={Colors.white} width={1} height={'70%'} style={{ margin: 5, marginRight: 0 }} />
     )
   }
 
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     elevation: Layout.android_elevation,
   },
   menu: {
-    paddingHorizontal: Layout.base * 2.5,
+    paddingHorizontal: Layout.base * 2,
     paddingTop: 8,
     paddingBottom: 8,
   },
@@ -182,15 +182,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.tabs,
     borderRadius: 20,
-    marginRight: 9,
-    paddingHorizontal: 10,
+    marginRight: 0,
+    paddingHorizontal: 0,
     paddingVertical: 3,
   },
   menuTitle: {
     fontWeight: '600',
     fontSize: 14,
     paddingVertical: 8,
-    paddingHorizontal: 12,
+    paddingHorizontal: 5,
     color: Colors.black
   }
 });

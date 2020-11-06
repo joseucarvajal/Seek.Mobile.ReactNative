@@ -11,7 +11,7 @@ const setToggleModeRequest = async (requestData: IUseSetToggleModeRequestParams)
   }
 };
 
-export function useSetToggleMode() {
+export function useToggleMode() {
   const [mutate, { isLoading, error }] = useMutation<
     {},
     IErrorResponse,

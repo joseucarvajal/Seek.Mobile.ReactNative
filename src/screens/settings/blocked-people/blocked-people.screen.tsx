@@ -3,8 +3,8 @@ import { Block, DisplayError, MenuSwipeable, Spinner } from "../../../shared";
 import {	
   IGetBlockedPeople,
   useGetBlockedPeople,
-  useSetUnlockUser,
-  useSetBlockUser
+  useUnlockUser,
+  useBlockUser
 } from '../../../hooks/settings';	
 import { Colors } from "../../../constants";
 export interface IAccountInformationMenuProps { }
@@ -16,7 +16,9 @@ const BlockedPeople: React.FC<IAccountInformationMenuProps> = () => {
     isLoading	
   } = useGetBlockedPeople();
 
-  const { setUnlockUser } = useSetUnlockUser();
+  const { setUnlockUser } = useUnlockUser();
+
+  console.log(error, data, isLoading);
 
   const mappingData = () => {	
     return data?.map(( blockedUser: IGetBlockedPeople, index: number ) => ({	

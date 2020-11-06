@@ -8,7 +8,7 @@ import {
 import {
   IMode,
   useGetUserModes,
-  useSetToggleMode
+  useToggleMode
 } from '../../../hooks/settings';
 import { Colors } from '../../../constants';
 
@@ -21,7 +21,7 @@ const Modes: React.FC<IModesProps> = () => {
     isLoading
   } = useGetUserModes();
 
-  const { setToggleNotification } = useSetToggleMode();
+  const { setToggleNotification } = useToggleMode();
   
   const mappingData = () => {
     return data?.map(( mode: IMode, index: number ) => ({

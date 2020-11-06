@@ -9,6 +9,7 @@ const getModes = async (
   userId: string
 ) => {
   const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.modesTypesByUser}/${userId}`;
+  // const url = 'https://run.mocky.io/v3/d1de5e15-f938-4002-be40-1689e72314bc';
   const { data } = await axios.get(url);
   return data;
 };
@@ -16,7 +17,7 @@ const getModes = async (
 export function useGetUserModes() {
   const { applicationUser } = useIdentityState();
   return useQuery<IMode[], IErrorResponse>(
-    ["/notifications/user/", applicationUser?.id],
+    [ApiEndPoints.settings.modesTypesByUser, applicationUser?.id],
     getModes,
     {
       cacheTime: 0,

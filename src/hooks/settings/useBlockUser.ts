@@ -3,35 +3,35 @@ import axios from "axios";
 import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 
-const setUnlockUserRequest = async (requestData: IUseSetUnlockUserRequestParams) => {
+const setUnlockUserRequest = async (requestData: IUseSetBlockUserRequestParams) => {
   if(requestData.UserId !== '') {
-    // const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.setUnlockUserByUser}`;
+    // const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.setBlockUserByUser}`;
     const url = 'https://run.mocky.io/v3/654301d4-dda5-478a-8152-2d0def058f2c';
     const { data } = await axios.post(url, requestData);    
     return data;
   }
 };
 
-export function useSetUnlockUser() {
+export function useBlockUser() {
   const [mutate, { isLoading, error }] = useMutation<
     {},
     IErrorResponse,
-    IUseSetUnlockUserRequestParams
+    IUseSetBlockUserRequestParams
   >(setUnlockUserRequest, {
     onSuccess: () => {
-      console.log("User unlocked successfully");
+      console.log("User blocked successfully");
     },
   });
 
-  const setUnlockUser = async (UserId: string) => {    
+  const setBlockUser = async (UserId: string) => {    
     return mutate({
       UserId,
     });
   };
 
-  return { setUnlockUser, isLoading, error };
+  return { setBlockUser, isLoading, error };
 }
 
-interface IUseSetUnlockUserRequestParams {
+interface IUseSetBlockUserRequestParams {
   UserId: string;
 }

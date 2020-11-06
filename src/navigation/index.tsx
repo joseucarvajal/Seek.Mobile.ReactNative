@@ -47,7 +47,8 @@ import {
   Modes,
   Notifications,
   AccountInformationMenu,
-  BlockedPeople
+  BlockedPeople,
+  SettingsVisualization
 } from "../screens/settings";
 
 const MyTheme = {
@@ -122,6 +123,7 @@ function OnBoarding() {
         options={{ headerShown: false }}
       />
       <RootStack.Screen name="Legal" component={LegalStack} />
+      <RootStack.Screen name="Settings" component={SettingsStack} />
     </MainStack.Navigator>
   )
 }
@@ -366,6 +368,22 @@ function SettingsStack() {
           cardStyle: { backgroundColor: Colors.header },
         }}
       />
+      <MainStack.Screen
+        name="Visualization"
+        component={SettingsVisualization}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Visualization Settings"
+              navigation={navigation}
+              scene={scene}
+              back
+              bgColor={Colors.header}
+            />
+          ),
+          cardStyle: { backgroundColor: Colors.header },
+        }}
+      />
     </MainStack.Navigator>
   )
 }
@@ -473,8 +491,8 @@ function RootNavigator() {
   return (
     <RootStack.Navigator mode="modal" headerMode="none">
       <RootStack.Screen name="SignUp" component={OnBoarding} />
-      <RootStack.Screen name='Profile' component={MainNavigator} />
       <RootStack.Screen name="Home" component={RootTabs} />
+      <RootStack.Screen name='Profile' component={MainNavigator} />
     </RootStack.Navigator>
   )
 }

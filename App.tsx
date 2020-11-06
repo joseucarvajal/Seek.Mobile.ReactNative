@@ -11,6 +11,7 @@ import { IdentityProvider } from "./src/providers/identity";
 const queryCache = new QueryCache();
 
 export default function App() {
+  console.disableYellowBox = true;
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 

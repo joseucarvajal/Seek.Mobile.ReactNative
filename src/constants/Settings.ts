@@ -56,6 +56,13 @@ const SettingsItems = [
     type: 'button', 
     color: Colors.white,
     navigate: 'Profile',
+  },
+  {
+    title: 'Visualization Settings',
+    id: 'visualization',
+    type: 'button', 
+    color: Colors.white,
+    navigate: 'Visualization',
   }
 ];
 

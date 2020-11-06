@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useQueryCache, useMutation } from "react-query";
 import axios from "axios";
 import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
@@ -11,14 +11,15 @@ const setToggleNotificationRequest = async (requestData: IUseSetToggleNotificati
   }
 };
 
-export function useSetToggleNotification() {
+export function useToggleNotification() {
+  const queryCache = useQueryCache();
   const [mutate, { isLoading, error }] = useMutation<
     {},
     IErrorResponse,
     IUseSetToggleNotificationRequestParams
   >(setToggleNotificationRequest, {
-    onSuccess: () => {
-      console.log("Toggle changed successfully");
+    onSuccess: async () => {
+      queryCache.invalidateQueries(ApiEndPoints.settings.notificationsTypesByUser);
     },
   });
 

@@ -8,12 +8,12 @@ const getBlockedPeople = async (
   _: any,
   userId: string
 ) => {
-  if(userId) {
+  // if(userId) {
     // const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.blockedPeopleByUser}/${userId}`;
     const url = 'https://run.mocky.io/v3/57792cbe-37b4-4034-93a0-3e8aa5374ec9';
     const { data } = await axios.get(url);
     return data;
-  }
+  // }
 };
 
 export function useGetBlockedPeople() {
