@@ -4,7 +4,9 @@ import {
 } from "./constants";
 
 export default function useApiAuth() {
-  return axios.create({
+  const apiAuth = axios.create({
     baseURL: API_GATEWAY_BFF_MOBILE, //Gateway
   });
+
+  return apiAuth;
 }

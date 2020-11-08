@@ -4,7 +4,10 @@ import {
 } from "./constants";
 
 export default function useApiAnonymous() {
-  return axios.create({
+  
+  const apiAnonymous = axios.create({
     baseURL: API_GATEWAY_BFF_MOBILE, //Gateway
   });
+
+  return apiAnonymous;
 }
