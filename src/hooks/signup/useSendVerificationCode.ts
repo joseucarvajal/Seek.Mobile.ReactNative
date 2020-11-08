@@ -4,28 +4,23 @@ import { useNavigation } from "@react-navigation/native";
 import { IErrorResponse, IApplicationUser } from "../../shared";
 import { useIdentityActions } from "../../providers/identity";
 import { ApiEndPoints } from "../../constants";
+import { useApiAnonymous } from "../../api";
 
-const sendVerificationCodeFn = async (
-  _: any,
-  phoneNumberOrEmail: string
-) => {
-  const url = `http://192.168.0.100:32700/api/v1/${ApiEndPoints.signUp.sendVerificationCode}/${phoneNumberOrEmail}`;
-  //const url = `https://run.mocky.io/v3/4d13c141-982d-427d-8627-e3cdfc74530d/${phoneNumberOrEmail}`;
-  const { data } = await axios.post(url);
-  return data;
-};
+export default function useSendVerificationCode(phoneNumberOrEmail: string) {
+  const api = useApiAnonymous();
 
-export default function useSendVerificationCode(
-  phoneNumberOrEmail: string
-) {
-  
   const { setUser } = useIdentityActions();
 
-  const navigation = useNavigation();  
+  const navigation = useNavigation();
 
   return useQuery<IApplicationUser, IErrorResponse>(
-    [ApiEndPoints.signUp.sendVerificationCode, phoneNumberOrEmail],
-    sendVerificationCodeFn,
+    [ApiEndPoints.identity.sendVerificationCode, phoneNumberOrEmail],
+    async (_: any, phoneNumberOrEmail: string): Promise<IApplicationUser> => {
+      const { data } = await api.post(
+        `${ApiEndPoints.identity.sendVerificationCode}/${phoneNumberOrEmail}`
+      );
+      return data;
+    },
     {
       refetchOnWindowFocus: false,
       enabled: false, // turned off, manual refetch is needed
@@ -36,7 +31,7 @@ export default function useSendVerificationCode(
         navigation.navigate("SignUpVerificationCode", {
           phoneNumberOrEmail: phoneNumberOrEmail,
         });
-      }
+      },
     }
   );
 }

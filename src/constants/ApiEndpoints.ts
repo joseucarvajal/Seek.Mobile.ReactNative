@@ -10,10 +10,13 @@ const ApiEndPoints = {
     setUnlockUserByUser: '/blocked/user/unlock',
     setBlockUserByUser: '/blocked/user/block',
   },
-  signUp: {
-    sendVerificationCode: "verificationcode/send",
-    checkVerificationCode: "verificationcode/check",
-    setUserPassword: "set/password"
+  identity: {
+    //Verification code
+    sendVerificationCode: "identity/verificationcode/send",
+    checkVerificationCode: "identity/verificationcode/check",
+
+    //Profile
+    setUserPassword: "identity/profile/set/password"
   },
   profile: {
     getProfile: "https://run.mocky.io/v3/31eea2d7-1488-4a95-8bda-81a7dabfee3f",
