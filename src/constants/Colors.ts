@@ -79,4 +79,6 @@ export default {
   },
   menuItemEven: '#FAFAFA',
   unblock: '#606492',
+  toastColor: '#60649226',
+  messageToast: '#002F87',
 };

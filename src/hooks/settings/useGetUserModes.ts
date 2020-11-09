@@ -1,31 +1,33 @@
 import { useQuery } from "react-query";
-import axios from "axios";
-import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
+import { ApiEndPoints } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 import { useIdentityState } from "../../providers/identity";
-
-const getModes = async (
-  _: any,
-  userId: string
-) => {
-  const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.modesTypesByUser}/${userId}`;
-  const { data } = await axios.get(url);
-  return data;
-};
+import { useApiAuth } from "../../api";
 
 export function useGetUserModes() {
+  const api = useApiAuth();
+
   const { applicationUser } = useIdentityState();
-  return useQuery<IMode[], IErrorResponse>(
-    ["/notifications/user/", applicationUser?.id],
-    getModes,
-    {
-      cacheTime: 0,
-    }
+  return useQuery<Map<number, IMode>, IErrorResponse>(
+    [ApiEndPoints.notificationsandmodessettings.modesTypesByUser, applicationUser?.id],
+    async (_: any, userId: string): Promise<Map<number, IMode>> => {
+      const { data } = await api.get(
+        `${ApiEndPoints.notificationsandmodessettings.modesTypesByUser}/${userId}`
+      );
+
+      let modesMap = new Map<number, IMode>();
+      for(let mode of data) {
+        modesMap.set(mode.modeTypeId, mode);
+      }
+
+      return modesMap;
+    },
   );
 }
 
 export interface IMode {
-  idMode: string;        
-  modeName: string;
+  idMode: string;     
+  modeTypeId: number;
+  modeTypeName: string;
   active: boolean;
 }

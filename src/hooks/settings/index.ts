@@ -1,20 +1,27 @@
 import { IMode, useGetUserModes } from "./useGetUserModes";
 import { INotification, useGetUserNotifications } from "./useGetUserNotifications";
-import { useSetToggleMode } from "./useSetToggleMode";
-import { useSetToggleNotification } from "./useSetToggleNotification";
+import { useToggleMode } from "./useToggleMode";
+import { useToggleNotification } from "./useToggleNotification";
 import { IGetBlockedPeople, useGetBlockedPeople } from "./useGetBlockedPeople";
-import { useSetBlockUser } from "./useSetBlockUser";
-import { useSetUnlockUser } from "./useSetUnlockUser";
+import { useBlockUser } from "./useBlockUser";
+import { useUnlockUser } from "./useUnlockUser";
+import { ModeTypeEnum, NotificationTypeEnum  } from "./types";
+import { useNotificationSettings } from "./useNotificationSettings";
+import { useModeSettings } from "./useModeSettings";
 
 export {    
   INotification,
   useGetUserNotifications,
   IMode,
   useGetUserModes,
-  useSetToggleMode,
-  useSetToggleNotification,
+  useToggleMode,
+  useToggleNotification,
   IGetBlockedPeople,
   useGetBlockedPeople,
-  useSetBlockUser,
-  useSetUnlockUser
+  useBlockUser,
+  useUnlockUser,
+  ModeTypeEnum,
+  NotificationTypeEnum,
+  useNotificationSettings,
+  useModeSettings
 };

@@ -6,9 +6,8 @@ import {
   DisplayError
 } from '../../../shared';
 import {
-  IMode,
   useGetUserModes,
-  useSetToggleMode
+  useToggleMode
 } from '../../../hooks/settings';
 import { Colors } from '../../../constants';
 
@@ -21,24 +20,33 @@ const Modes: React.FC<IModesProps> = () => {
     isLoading
   } = useGetUserModes();
 
-  const { setToggleNotification } = useSetToggleMode();
+  const { setToggleNotification } = useToggleMode();
   
   const mappingData = () => {
-    return data?.map(( mode: IMode, index: number ) => ({
-      id: mode.idMode,
-      title: mode.modeName, 
-      type: 'toggle',
-      color: ((index+1) % 2 === 0) ? Colors.menuItemEven : Colors.white, 
-      value: mode.active,
-      action: (active: boolean) => {
-        setToggleNotification(mode.idMode, active);
-      },
-      block: `
-        Amet minim mollit non deserunt ullamco
-        est sit aliqua dolor do amet sint. Velit
-        officia consequat duis enim velit mollit.
-      `
-    }));
+    let mapped: any = [];
+    let index = 0;
+    
+    for (let [key, value] of Object(data) ) {
+      const { idMode, modeTypeName, active } = value;
+      mapped.push({
+        id: idMode, 	
+        title: modeTypeName, 	
+        type: 'toggle', 	
+        color: ((index+1) % 2 === 0) ? Colors.menuItemEven : Colors.white, 	
+        value: active,	
+        action: (active: boolean) => {	
+          setToggleNotification(idMode, active);
+        },
+        block: `
+          Amet minim mollit non deserunt ullamco
+          est sit aliqua dolor do amet sint. Velit
+          officia consequat duis enim velit mollit.
+        `
+      });
+      index++;
+    }
+
+    return mapped;
   };
 
   return (

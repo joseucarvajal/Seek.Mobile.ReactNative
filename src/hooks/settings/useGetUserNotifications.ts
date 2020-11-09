@@ -1,30 +1,33 @@
 import { useQuery } from "react-query";
-import axios from "axios";
-import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
+import { ApiEndPoints } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 import { useIdentityState } from "../../providers/identity";
-
-const getNotifications = async (
-  _: any,
-  userId: string
-) => {
-  if(userId) {
-    const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.notificationsTypesByUser}/${userId}`;
-    const { data } = await axios.get(url);
-    return data;
-  }
-};
+import { useApiAuth } from "../../api";
 
 export function useGetUserNotifications() {
+  const api = useApiAuth();
+  
   const { applicationUser } = useIdentityState();
-  return useQuery<INotification[], IErrorResponse>(
-    ["/notifications/user/", applicationUser?.id],
-    getNotifications
+  return useQuery<Map<number, INotification>, IErrorResponse>(
+    [ApiEndPoints.notificationsandmodessettings.notificationsTypesByUser, applicationUser?.id],
+    async (_: any, userId: string): Promise<Map<number, INotification>> => {
+      const { data } = await api.get(
+        `${ApiEndPoints.notificationsandmodessettings.notificationsTypesByUser}/${userId}`
+      );
+
+      let notificationsMap = new Map<number, INotification>();
+      for(let notification of data) {
+        notificationsMap.set(notification.notificationTypeId, notification);
+      }
+
+      return notificationsMap;
+    },
   );
 }
 
 export interface INotification {
-  idNotification: string;        
-  notificationName: string;
+  idNotification: string; 
+  notificationTypeId: number;
+  notificationTypeName: string;
   active: boolean;
 }

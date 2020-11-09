@@ -33,15 +33,16 @@ const SignUp: React.FC<ISignUpProps> = ({ }) => {
       </Block>
 
       <Block flex={0.2}>
-        <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text>
+        {/* <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text> */}
+        <Text small boldItalic center onPress={() => navigation.navigate("Settings", { screen: 'Settings' } ) }>Already have an Account</Text>
       </Block>
 
       <Block flex={0.5} row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>
         <Text small light>By registering, you agree to</Text>
-        <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Our terms of service, </Text>
-        <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Privacy Policy</Text>
+        <Text small mediumItalic onPress={() => navigation.navigate("Legal", { screen: 'Legal', params: { tab: 'terms' } })}>Our terms of service, </Text>
+        <Text small mediumItalic onPress={() => navigation.navigate("Legal", { screen: 'Legal', params: { tab: 'privacy' } })}>Privacy Policy</Text>
         <Text small light> and </Text>
-        <Text small mediumItalic onPress={() => navigation.navigate("Legal")}>Cookie Policy</Text>
+        <Text small mediumItalic onPress={() => navigation.navigate("Legal", { screen: 'Legal', params: { tab: 'cookies' } })}>Cookie Policy</Text>
       </Block>
 
       <Block flex center middle>

@@ -6,9 +6,8 @@ import {
   DisplayError	
 } from '../../../shared';	
 import {	
-  INotification,	
   useGetUserNotifications,	
-  useSetToggleNotification
+  useToggleNotification
 } from '../../../hooks/settings';	
 import { Colors } from '../../../constants';	
 
@@ -17,23 +16,32 @@ export interface INotificationsProps {}
 const Notifications: React.FC<INotificationsProps> = () => {	
   const {	
     error,	
-    data,	
+    data,
     isLoading	
   } = useGetUserNotifications();
 
-  const { setToggleNotification } = useSetToggleNotification();
+  const { setToggleNotification } = useToggleNotification();
 
   const mappingData = () => {	
-    return data?.map(( notification: INotification, index: number ) => ({	
-      id: notification.idNotification, 	
-      title: notification.notificationName, 	
-      type: 'toggle', 	
-      color: ((index+1) % 2 === 0) ? Colors.menuItemEven : Colors.white, 	
-      value: notification.active,	
-      action: (active: boolean) => {	
-        setToggleNotification(notification.idNotification, active);
-      },	
-    }));	
+    let mapped: any = [];
+    let index = 0;
+    
+    for (let [key, value] of Object(data) ) {
+      const { idNotification, notificationTypeName, active } = value;
+      mapped.push({
+        id: idNotification, 	
+          title: notificationTypeName, 	
+          type: 'toggle', 	
+          color: ((index+1) % 2 === 0) ? Colors.menuItemEven : Colors.white, 	
+          value: active,	
+          action: (active: boolean) => {	
+            setToggleNotification(idNotification, active);
+          },	
+      });
+      index++;
+    }
+
+    return mapped;
   };	
 
 

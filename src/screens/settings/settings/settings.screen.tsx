@@ -1,6 +1,7 @@
 import React from "react";
 import SettingsItems from "../../../constants/Settings";
-import { Block, Menu } from "../../../shared";
+import { useNotificationSettings } from "../../../hooks/settings";
+import { Block, Menu, Text } from "../../../shared";
 
 export interface ISettingsProps { }
 

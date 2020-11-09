@@ -12,7 +12,7 @@ const setUnlockUserRequest = async (requestData: IUseSetBlockUserRequestParams) 
   }
 };
 
-export function useSetBlockUser() {
+export function useBlockUser() {
   const [mutate, { isLoading, error }] = useMutation<
     {},
     IErrorResponse,
