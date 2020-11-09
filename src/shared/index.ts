@@ -28,11 +28,8 @@ import Spinner from './components/spinner/spinner.comp';
 import { IErrorResponse, IApplicationUser } from './types';
 import DisplayError from './components/modal/display-error/display-error.comp';
 import Camera from './components/camera/camera.comp'
-<<<<<<< HEAD
 import ImagePreviwer from './components/upload-photo/upload-photo.comp'
-=======
 import Toast from './components/toast/toast.comp';
->>>>>>> e6c4a659eb1839b6211405813247475c738e4b1f
 
 export {
   Button,
@@ -64,12 +61,9 @@ export {
   Spinner,
   DisplayError,
   Camera,
-<<<<<<< HEAD
   ImagePreviwer,
-=======
   Toast,
   
->>>>>>> e6c4a659eb1839b6211405813247475c738e4b1f
   //Types
   IErrorResponse,
   IApplicationUser,
