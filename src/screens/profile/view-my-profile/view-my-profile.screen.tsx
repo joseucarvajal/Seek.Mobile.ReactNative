@@ -5,9 +5,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Colors, Icons, Layout } from "../../../constants";
 import { Text, Block, Card, Swiper, ButtonPrimary, Icon, Chip } from '../../../shared';
 
-export interface IMyProfileProps { }
+export interface IMyProfileProps { 
+  
+}
 
-const MyProfile: React.FC<IMyProfileProps> = ({ }) => {
+const MyProfile: React.FC<IMyProfileProps> = ({ 
+  
+}) => {
   const navigation = useNavigation();
   const [currentPage, setCurrentPage] = React.useState<number>(0);
 

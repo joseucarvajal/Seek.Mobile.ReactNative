@@ -28,6 +28,7 @@ import Spinner from './components/spinner/spinner.comp';
 import { IErrorResponse, IApplicationUser } from './types';
 import DisplayError from './components/modal/display-error/display-error.comp';
 import Camera from './components/camera/camera.comp'
+import ImagePreviwer from './components/upload-photo/upload-photo.comp'
 import Toast from './components/toast/toast.comp';
 
 export {
@@ -60,6 +61,7 @@ export {
   Spinner,
   DisplayError,
   Camera,
+  ImagePreviwer,
   Toast,
   
   //Types

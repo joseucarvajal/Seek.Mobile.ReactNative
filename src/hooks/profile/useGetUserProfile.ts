@@ -8,8 +8,9 @@ const getUserProfile = async (
   _: any,
   userId: string
 ) => {
-  if(userId) {
-    const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.profile.getInterests}/${userId}`;
+  if (userId) {
+    //const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.profile.getProfile}/${userId}`;
+    const url = `${ApiEndPoints.profile.getProfile}`;
     const { data } = await axios.get(url);
     return data;
   }
@@ -17,24 +18,29 @@ const getUserProfile = async (
 
 export function useGetUserProfile() {
   const { applicationUser } = useIdentityState();
-  return useQuery<IProfile[], IErrorResponse>(["/profile/", applicationUser?.id], getUserProfile);
+  return useQuery<IMyProfile, IErrorResponse>(["/profile/", applicationUser?.id], getUserProfile);
 }
 
-export interface IProfile {
-  id: string;        
-  image: string;
+export interface IMyProfile {
+  id: string
+  profileImage: string;
+  rollImages: string[];
   nickName: string;
   firstName: string;
   lastName: string;
   phone: string;
   birthdate: string;
+  age: string;
   gender: string;
   emailAddress: string;
-  languageKnow: string;
+  languageKnow: string[];
   school: string;
   jobIndustry: string;
   about: string;
-  innerThoughts: string;
-  publicInterest: string;
+  innerThoughts: string[];
+  publicInterest: string[];
   matchingInterest: string;
+  miles: string;
+  city: string;
+  country: string;
 }

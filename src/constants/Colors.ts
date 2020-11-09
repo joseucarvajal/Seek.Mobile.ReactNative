@@ -43,6 +43,7 @@ export default {
   facebook: '#4267B2',
   apple: '#252525',
   iconProfile: '#FF4814',
+  send: '#007aff', 
   homeTab: {
     active: '#FF4814',
     inactive: '#FF8414',

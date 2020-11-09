@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, Image, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
+import { Alert, StyleSheet, TouchableOpacity, TouchableWithoutFeedback } from 'react-native'
 import { StatusBar } from "expo-status-bar";
 import { Ionicons } from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions'
@@ -7,25 +7,28 @@ import { Camera } from 'expo-camera';
 import Block from '../block/block.comp';
 import Text from '../text/text.comp';
 import { Colors } from '../../../constants';
+import { DrawerActions } from '@react-navigation/native';
 
 export interface IProfileProps {
-  onCloseCamera?: any
+  onCloseCamera?: any;
+  onOpenImagePicker?: any;
 }
 
 const ArCamera: React.FC<IProfileProps> = ({
-  onCloseCamera
+  onCloseCamera,
+  onOpenImagePicker
 }) => {
 
   let refCamera: any = React.createRef()
 
-  const [hasPermission, setHasPermission] = React.useState(false);
+  const [, setHasPermission] = React.useState(false);
   const [type, setType] = React.useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = React.useState(Camera.Constants.FlashMode.off);
 
   const [isTakingPicture, setTakingPicture] = React.useState(false);
   const [isTakingVideo, setTakingVideo] = React.useState(false);
 
-  const [isCameraReady, setCameraReady] = React.useState(false);
+  const [, setCameraReady] = React.useState(false);
   const [isCameraShown, setCameraShown] = React.useState(true);
 
   React.useEffect(() => {
@@ -62,8 +65,10 @@ const ArCamera: React.FC<IProfileProps> = ({
     setTakingVideo(false)
     setTakingPicture(true)
     try {
-      const data = await refCamera.takePictureAsync()
-      console.log("takePicture")
+      await refCamera.takePictureAsync()
+        .then((data: any) => {
+          onOpenImagePicker && onOpenImagePicker(data)
+        });
       setTakingPicture(false)
     } catch (e) {
       Alert.alert('Could not take picture')
@@ -83,8 +88,11 @@ const ArCamera: React.FC<IProfileProps> = ({
     setTakingPicture(false)
     setTakingVideo(true)
     try {
-      const data = await refCamera.recordAsync()
-      console.log("takeVideo")
+      await refCamera.recordAsync()
+        .then((data: any) => {
+          onOpenImagePicker && onOpenImagePicker(data)
+        });
+
       setTakingVideo(false)
     } catch (e) {
       Alert.alert('Could not take video')
@@ -107,45 +115,62 @@ const ArCamera: React.FC<IProfileProps> = ({
       )}
       <Block style={styles.topContainer}>
         <Block flex row center middle space='between'>
-          <TouchableOpacity onPress={toggleCamera}>
-            <Ionicons name="md-close" color="white" size={30} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-            setFlashMode(
-              flashMode === Camera.Constants.FlashMode.off
-                ? Camera.Constants.FlashMode.on
-                : Camera.Constants.FlashMode.off
-            )
-          }}>
-            <Ionicons name={flashMode == Camera.Constants.FlashMode.on ? "md-flash" : 'md-flash-off'} color="white" size={30} />
-          </TouchableOpacity>
+          <Block>
+            <TouchableOpacity onPress={toggleCamera}>
+              <Ionicons name="md-close" color="white" size={30} />
+            </TouchableOpacity>
+          </Block>
+          <Block>
+            <TouchableOpacity onPress={() => {
+              setFlashMode(
+                flashMode === Camera.Constants.FlashMode.off
+                  ? Camera.Constants.FlashMode.on
+                  : Camera.Constants.FlashMode.off
+              )
+            }}>
+              <Ionicons
+                name={flashMode == Camera.Constants.FlashMode.on ? "ios-flash" : 'ios-flash-off'}
+                color={flashMode === Camera.Constants.FlashMode.off ? "white" : Colors.primary}
+                size={30}
+              />
+            </TouchableOpacity>
+          </Block>
         </Block>
       </Block>
       <Block style={styles.bottomContainer}>
         <Block flex row center middle space='between'>
-          <TouchableOpacity onPress={toggleCamera}>
-            <Ionicons name={'md-images'} color="white" size={35} />
-          </TouchableOpacity>
-          <TouchableWithoutFeedback
-            onPressIn={() => setTakingVideo(true)}
-            onPressOut={handleCaptureOut}
-            onLongPress={handleLongCapture}
-            onPress={handleShortCapture}>
-            <Block middle center>
-              <Block style={[styles.captureBtn, isTakingVideo && styles.captureBtnActive]}>
-                {isTakingVideo && <Block style={styles.captureBtnInternal} />}
+          <Block>
+            <TouchableOpacity onPress={toggleCamera}>
+              <Ionicons name={'md-images'} color="white" size={35} />
+            </TouchableOpacity>
+          </Block>
+          <Block>
+            <TouchableWithoutFeedback
+              onPressIn={() => setTakingVideo(true)}
+              onPressOut={handleCaptureOut}
+              onLongPress={handleLongCapture}
+              onPress={handleShortCapture}>
+              <Block middle center>
+                <Block style={[styles.captureBtn, isTakingVideo && styles.captureBtnActive]}>
+                  {isTakingVideo && <Block style={styles.captureBtnInternal} />}
+                </Block>
+                <Block paddingTop={10}>
+                  <Text extraSmall book color={Colors.white}>Hold for video, tap for photo</Text>
+                </Block>
               </Block>
-              <Block paddingTop={10}>
-                <Text extraSmall book color={Colors.white}>Hold for video, tap for photo</Text>
-              </Block>
-            </Block>
-          </TouchableWithoutFeedback>
-
-          <TouchableOpacity onPress={() => {
-            setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back)
-          }}>
-            <Ionicons name="md-reverse-camera" color="white" size={35} />
-          </TouchableOpacity>
+            </TouchableWithoutFeedback>
+          </Block>
+          <Block>
+            <TouchableOpacity onPress={() => {
+              setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back)
+            }}>
+              <Ionicons
+                name={type === Camera.Constants.Type.back ? "ios-reverse-camera" : "ios-camera"}
+                color={type === Camera.Constants.Type.back ? "white" : Colors.primary}
+                size={40}
+              />
+            </TouchableOpacity>
+          </Block>
         </Block>
       </Block>
     </Block>
