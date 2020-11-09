@@ -15,9 +15,12 @@ const ApiEndPoints = {
     checkVerificationCode: "verificationcode/check",
     setUserPassword: "set/password"
   },
+  interest: {
+    getInterests: "https://run.mocky.io/v3/77684a79-0430-485f-9282-be4873411063"
+  },
   profile: {
     getProfile: "https://run.mocky.io/v3/31eea2d7-1488-4a95-8bda-81a7dabfee3f",
-    getInterests: "https://run.mocky.io/v3/77684a79-0430-485f-9282-be4873411063"
+    getAllProfiles: "https://run.mocky.io/v3/77684a79-0430-485f-9282-be4873411063"
   }
 };
 

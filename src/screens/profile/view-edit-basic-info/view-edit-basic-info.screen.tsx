@@ -3,12 +3,13 @@ import { ScrollView } from 'react-native'
 import { Colors, Layout } from "../../../constants";
 import { Text, Block, Input, ToggleButton, Calendar, Select, ButtonPrimary, Image, Icon } from '../../../shared';
 
-export interface IEditBasicInfoProps { }
+export interface IEditBasicInfoProps { 
+
+}
 
 const EditBasicInfo: React.FC<IEditBasicInfoProps> = ({ 
   
 }) => {
-
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Block flex safe backgroundColor={Colors.white}>

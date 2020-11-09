@@ -1,9 +1,12 @@
 import { IInterest, useGetInterests } from "./useGetInterests";
-import { IProfile, useGetUserProfile } from "./useGetUserProfile";
+import { IMyProfile, useGetUserProfile } from "./useGetUserProfile";
+import { IUserProfile, useGetAllProfiles } from "./useGetAllUsers";
 
 export {    
   IInterest,
   useGetInterests,
-  IProfile,
-  useGetUserProfile
+  IMyProfile,
+  useGetUserProfile,
+  IUserProfile,
+  useGetAllProfiles
 };
