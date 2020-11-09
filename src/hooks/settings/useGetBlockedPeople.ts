@@ -1,32 +1,37 @@
-import { useQuery } from "react-query";
-import axios from "axios";
-import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
+import { queryCache, useQuery } from "react-query";
+import { ApiEndPoints } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
 import { useIdentityState } from "../../providers/identity";
-
-const getBlockedPeople = async (
-  _: any,
-  userId: string
-) => {
-  // if(userId) {
-    // const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.blockedPeopleByUser}/${userId}`;
-    const url = 'https://run.mocky.io/v3/57792cbe-37b4-4034-93a0-3e8aa5374ec9';
-    const { data } = await axios.get(url);
-    return data;
-  // }
-};
+import { useApiAuth } from "../../api";
 
 export function useGetBlockedPeople() {
+  const api = useApiAuth();
+
   const { applicationUser } = useIdentityState();
   return useQuery<IGetBlockedPeople[], IErrorResponse>(
-    ["/blocked/user/", applicationUser?.id],
-    getBlockedPeople
+    [ApiEndPoints.myconnections.blockedUsers, applicationUser?.id],
+    async (_: any, userId: string): Promise<IGetBlockedPeople[]> => {
+      const { data } = await api.get(
+        `${ApiEndPoints.myconnections.blockedUsers}/${userId}/blockedusers`
+      );
+      return data;
+    },
+    {
+      retry: 1,
+      cacheTime: 0,
+      onSuccess: async () => {
+        console.log("New unblocked updated");
+        queryCache.invalidateQueries(ApiEndPoints.myconnections.blockedUsers);
+      },
+    }
   );
 }
 
 export interface IGetBlockedPeople {
+  idConnection: string;
   avatar: string;        
   fullName: string;
   age: number;
   userId: string;
+  connectionUserId: string;
 }

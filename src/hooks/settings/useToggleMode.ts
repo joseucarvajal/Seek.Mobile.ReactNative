@@ -1,26 +1,34 @@
-import { useMutation } from "react-query";
-import axios from "axios";
-import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
+import { useMutation, useQueryCache } from "react-query";
+import { ApiEndPoints } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
-
-const setToggleModeRequest = async (requestData: IUseSetToggleModeRequestParams) => {
-  if(requestData.id !== '') {
-    const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.toggleModeByUser}`;
-    const { data } = await axios.post(url, requestData);    
-    return data;
-  }
-};
+import { useApiAuth } from "../../api";
 
 export function useToggleMode() {
-  const [mutate, { isLoading, error }] = useMutation<
+  const api = useApiAuth();
+  const queryCache = useQueryCache();
+  
+  const [mutate, { isLoading, error, data }] = useMutation<
     {},
     IErrorResponse,
     IUseSetToggleModeRequestParams
-  >(setToggleModeRequest, {
-    onSuccess: () => {
-      console.log("Toggle changed successfully");
-    },
-  });
+  >(
+    async (
+      requestData: IUseSetToggleModeRequestParams
+    ): Promise<{}> => {
+      const { data } = await api.post(
+        `${ApiEndPoints.notificationsandmodessettings.modesTypesByUser}`,
+        requestData
+      );
+      return data;
+    }, 
+    {
+      onSuccess: () => {
+        console.log("Toggle changed successfully");
+        queryCache.invalidateQueries(ApiEndPoints.notificationsandmodessettings.modesTypesByUser);
+      },
+    }
+  );
+
   const setToggleNotification = async (UserModeTypeId: string, active: boolean) => {    
     return mutate({
       id: UserModeTypeId,
@@ -28,7 +36,7 @@ export function useToggleMode() {
     });
   };
 
-  return { setToggleNotification, isLoading, error };
+  return { setToggleNotification, isLoading, data, error };
 }
 
 interface IUseSetToggleModeRequestParams {

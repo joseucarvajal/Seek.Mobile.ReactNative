@@ -1,37 +1,42 @@
-import { useMutation } from "react-query";
-import axios from "axios";
-import { ApiEndPoints, API_URL_SETTINGS_DEV } from '../../constants/ApiEndpoints';
+import { queryCache, useMutation } from "react-query";
+import { ApiEndPoints } from '../../constants/ApiEndpoints';
 import { IErrorResponse } from "../../shared";
-
-const setUnlockUserRequest = async (requestData: IUseSetUnlockUserRequestParams) => {
-  // if(requestData.UserId !== '') {
-    // const url = `${API_URL_SETTINGS_DEV}${ApiEndPoints.settings.setUnlockUserByUser}`;
-    const url = 'https://run.mocky.io/v3/654301d4-dda5-478a-8152-2d0def058f2c';
-    const { data } = await axios.post(url, requestData);    
-    return data;
-  // }
-};
+import { useApiAuth } from "../../api";
 
 export function useUnlockUser() {
-  const [mutate, { isLoading, error }] = useMutation<
+  const api = useApiAuth();
+  
+  const [mutate, { isLoading, error, data }] = useMutation<
     {},
     IErrorResponse,
     IUseSetUnlockUserRequestParams
-  >(setUnlockUserRequest, {
-    onSuccess: () => {
-      console.log("User unlocked successfully");
+  >(
+    async (
+      requestData: IUseSetUnlockUserRequestParams
+    ): Promise<{}> => {
+      const { data } = await api.post(
+        `${ApiEndPoints.myconnections.unblock}`,
+        requestData
+      );
+      return data;
     },
-  });
+    {
+      onSuccess: async () => {
+        console.log("User unblocked");
+        queryCache.invalidateQueries(ApiEndPoints.myconnections.blockedUsers);
+      },
+    }
+  );
 
-  const setUnlockUser = async (UserId: string) => {    
+  const setUnlockUser = async (Id: string) => {    
     return mutate({
-      UserId,
+      id: Id,
     });
   };
 
-  return { setUnlockUser, isLoading, error };
+  return { setUnlockUser, isLoading, data, error };
 }
 
 interface IUseSetUnlockUserRequestParams {
-  UserId: string;
+  id: string;
 }

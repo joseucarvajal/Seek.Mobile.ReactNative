@@ -7,6 +7,8 @@ import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
 import Navigation from "./src/navigation/";
 import { IdentityProvider } from "./src/providers/identity";
+import Toast from "./src/shared/components/toast/toast.comp";
+import { ToastProvider } from "./src/shared/components/toast-provider/toast-provider";
 
 const queryCache = new QueryCache();
 
@@ -22,8 +24,11 @@ export default function App() {
       <IdentityProvider>
         <SafeAreaProvider>
           <ReactQueryCacheProvider queryCache={queryCache}>
-            <Navigation colorScheme={colorScheme} />
-            <StatusBar />
+            <ToastProvider>
+              <Navigation colorScheme={colorScheme} />
+              <StatusBar />
+              <Toast />
+            </ToastProvider>
           </ReactQueryCacheProvider>
         </SafeAreaProvider>
       </IdentityProvider>

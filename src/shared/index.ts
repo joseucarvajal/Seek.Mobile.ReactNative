@@ -28,6 +28,7 @@ import Spinner from './components/spinner/spinner.comp';
 import { IErrorResponse, IApplicationUser } from './types';
 import DisplayError from './components/modal/display-error/display-error.comp';
 import Camera from './components/camera/camera.comp'
+import Toast from './components/toast/toast.comp';
 
 export {
   Button,
@@ -59,7 +60,8 @@ export {
   Spinner,
   DisplayError,
   Camera,
-
+  Toast,
+  
   //Types
   IErrorResponse,
   IApplicationUser,
