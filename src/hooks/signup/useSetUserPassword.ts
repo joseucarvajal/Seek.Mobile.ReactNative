@@ -9,18 +9,19 @@ export function useSetUserPassword() {
   const navigation = useNavigation();
   const api = useApiAnonymous();
   const { applicationUser } = useIdentityState();
+  const doRequestFn = async (requestData: IUseSetUserPasswordRequestParams): Promise<{}> => {
+    const { data } = await api.post(
+      `${ApiEndPoints.identity.setUserPassword}`,
+      requestData
+    );
+    return data;
+  }
+
   const [mutate, { isLoading, error }] = useMutation<
     {},
     IErrorResponse,
     IUseSetUserPasswordRequestParams
-  >(
-    async (requestData: IUseSetUserPasswordRequestParams): Promise<{}> => {
-      const { data } = await api.post(
-        `${ApiEndPoints.identity.setUserPassword}`,
-        requestData
-      );
-      return data;
-    },
+  >(doRequestFn,
     {
       onSuccess: () => {
         navigation.navigate("SignUpReady");

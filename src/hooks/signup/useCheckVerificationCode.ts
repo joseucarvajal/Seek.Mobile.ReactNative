@@ -6,24 +6,26 @@ import { ApiEndPoints } from "../../constants";
 import { useApiAnonymous } from "../../api";
 
 export function useCheckVerificationCode() {
+
   const navigation = useNavigation();
   const api = useApiAnonymous();
   const { applicationUser } = useIdentityState();
+
+  const doRequestFn = async (
+    requestData: ICheckVerificationCodeRequestParams
+  ): Promise<IApplicationUser> => {
+    const { data } = await api.post(
+      `${ApiEndPoints.identity.checkVerificationCode}`,
+      requestData
+    );
+    return data;
+  };
 
   const [mutate, { isLoading, error, data }] = useMutation<
     IApplicationUser,
     IErrorResponse,
     ICheckVerificationCodeRequestParams
-  >(
-    async (
-      requestData: ICheckVerificationCodeRequestParams
-    ): Promise<IApplicationUser> => {
-      const { data } = await api.post(
-        `${ApiEndPoints.identity.checkVerificationCode}`,
-        requestData
-      );
-      return data;
-    },
+  >(doRequestFn,
     {
       onSuccess: (responseData: IApplicationUser) => {
         if (responseData.emailConfirmed || responseData.phoneNumberConfirmed) {

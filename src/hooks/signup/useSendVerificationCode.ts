@@ -7,20 +7,21 @@ import { ApiEndPoints } from "../../constants";
 import { useApiAnonymous } from "../../api";
 
 export default function useSendVerificationCode(phoneNumberOrEmail: string) {
+
   const api = useApiAnonymous();
-
   const { setUser } = useIdentityActions();
-
   const navigation = useNavigation();
+
+  const doRequestFn = async (_: any, phoneNumberOrEmail: string): Promise<IApplicationUser> => {
+    const { data } = await api.post(
+      `${ApiEndPoints.identity.sendVerificationCode}/${phoneNumberOrEmail}`
+    );
+    return data;
+  }
 
   return useQuery<IApplicationUser, IErrorResponse>(
     [ApiEndPoints.identity.sendVerificationCode, phoneNumberOrEmail],
-    async (_: any, phoneNumberOrEmail: string): Promise<IApplicationUser> => {
-      const { data } = await api.post(
-        `${ApiEndPoints.identity.sendVerificationCode}/${phoneNumberOrEmail}`
-      );
-      return data;
-    },
+    doRequestFn,
     {
       refetchOnWindowFocus: false,
       enabled: false, // turned off, manual refetch is needed
