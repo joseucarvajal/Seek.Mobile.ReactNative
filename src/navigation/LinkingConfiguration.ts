@@ -28,6 +28,7 @@ export default {
       SignUpVerificationCode: {},
       SignUpCreatePassword: {},
       SignUpReady: {},
+      Login: {},
 
       //Profile screens
       Profile: {},

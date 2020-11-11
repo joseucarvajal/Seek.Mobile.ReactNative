@@ -10,6 +10,7 @@ export type RootStackParamList = {
   SignUpVerificationCode: { phoneNumberOrEmail: string };
   SignUpCreatePassword: { phoneNumberOrEmail: string };
   SignUpReady: undefined;
+  Login: undefined;
 
   // Profile Screens
   Profile: undefined;

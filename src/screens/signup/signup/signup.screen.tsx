@@ -34,7 +34,7 @@ const SignUp: React.FC<ISignUpProps> = ({ }) => {
 
       <Block flex={0.2}>
         {/* <Text small boldItalic center onPress={() => console.log("Already have an Account")}>Already have an Account</Text> */}
-        <Text small boldItalic center onPress={() => navigation.navigate("Settings", { screen: 'Settings' } ) }>Already have an Account</Text>
+        <Text small boldItalic center onPress={() => navigation.navigate("Login") }>Already have an Account</Text>
       </Block>
 
       <Block flex={0.5} row center middle wrap padding={Layout.base} paddingTop={Layout.base * 2}>

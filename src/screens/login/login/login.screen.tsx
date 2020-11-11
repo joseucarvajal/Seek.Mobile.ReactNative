@@ -12,7 +12,7 @@ const redirectUri = AuthSession.makeRedirectUri({
   useProxy,
 });
 
-export default function App() {
+export default function Login() {
   const discovery = AuthSession.useAutoDiscovery('https://demo.identityserver.io');
   
   // Create and load an auth request

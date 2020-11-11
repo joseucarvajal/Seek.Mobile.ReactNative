@@ -50,6 +50,7 @@ import {
   BlockedPeople,
   SettingsVisualization
 } from "../screens/settings";
+import { Login } from "../screens/login";
 
 const MyTheme = {
   ...DefaultTheme,
@@ -120,6 +121,11 @@ function OnBoarding() {
       <MainStack.Screen
         name="SignUpReady"
         component={SignUpReady}
+        options={{ headerShown: false }}
+      />
+      <MainStack.Screen
+        name="Login"
+        component={Login}
         options={{ headerShown: false }}
       />
       <RootStack.Screen name="Legal" component={LegalStack} />
